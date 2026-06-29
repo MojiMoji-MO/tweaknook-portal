@@ -1,1 +1,165 @@
-<h1>TweakNook is coming soon!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tweaknook - Practical IT guides, AI prompt tips, and productivity hacks to streamline your workflow.">
+    <title>Tweaknook | Tech & Productivity Hacks</title>
+    
+    <!-- 파비콘 연결 연결 (루트 폴더에 favicon.png 배치) -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- 다국어 SEO 구조 선언 -->
+    <link rel="alternate" hreflang="en" href="https://tweaknook.com/" />
+    <link rel="alternate" hreflang="ko" href="https://tweaknook.com/ko/" />
+    <link rel="alternate" hreflang="x-default" href="https://tweaknook.com/" />
+
+    <style>
+        /* 변수 설정 및 초경량 최적화 스타일 */
+        :root { --primary-color: #0056b3; --text-color: #111; --meta-color: #666; --border-color: #eee; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; margin: 0; padding: 0; color: var(--text-color); background-color: #fff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 헤더 & 로고 영역 */
+        header { border-bottom: 2px solid #000; padding: 25px 0 15px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; text-decoration: none; color: #000; }
+        .logo-image { height: 40px; width: auto; margin-right: 10px; display: none; } /* 로고 이미지 업로드 후 display: block으로 변경 */
+        .logo-text { font-size: 2.2rem; font-weight: 900; letter-spacing: -1.5px; }
+        
+        /* 언어 전환 버튼 */
+        .lang-switch a { font-size: 0.85rem; font-weight: bold; text-decoration: none; color: var(--meta-color); padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; transition: all 0.2s ease; }
+        .lang-switch a:hover { background: #000; color: #fff; border-color: #000; }
+
+        /* 네비게이션 */
+        nav { font-size: 0.95rem; font-weight: bold; margin-top: 10px; display: flex; gap: 20px; }
+        nav a { text-decoration: none; color: #444; transition: color 0.2s; }
+        nav a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        /* [신규] 사이트 소개 탑 배너 영역 */
+        .site-intro { background: #f9f9f9; border-left: 4px solid #000; padding: 20px; margin: 30px 0; border-radius: 0 4px 4px 0; }
+        .site-intro h1 { margin: 0 0 8px 0; font-size: 1.3rem; font-weight: 800; }
+        .site-intro p { margin: 0; font-size: 0.95rem; color: #555; }
+
+        /* 섹션 공통 타이틀 */
+        .section-title { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; padding-bottom: 5px; margin: 40px 0 20px; color: #000; }
+
+        /* [신규] 인기 / 추천 글 섹션 (Grid 스타일) */
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+        .featured-card { border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .featured-card:hover { transform: translateY(-2px); border-color: #aaa; }
+        .featured-card h3 { margin: 0 0 10px 0; font-size: 1.2rem; line-height: 1.4; }
+        .featured-card h3 a { text-decoration: none; color: var(--text-color); transition: color 0.2s; }
+        .featured-card h3 a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        /* 일반 리스트형 게시판 구조 */
+        .article-list { list-style: none; padding: 0; margin: 0; }
+        .article-item { border-bottom: 1px solid var(--border-color); padding: 22px 0; }
+        .article-item:last-child { border-bottom: none; }
+        
+        /* 작성자 및 메타데이터 영역 */
+        .article-meta { font-size: 0.85rem; color: var(--meta-color); margin-bottom: 8px; font-family: monospace; }
+        .article-category { font-weight: bold; color: var(--primary-color); margin-right: 8px; }
+        .article-author { font-style: italic; color: #333; }
+        
+        /* 미세 팁 반영: 링크 호버 효과 디테일화 */
+        .article-title { font-size: 1.45rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.35; }
+        .article-title a { text-decoration: none; color: var(--text-color); transition: color 0.2s ease, text-decoration 0.2s ease; }
+        .article-title a:hover { color: var(--primary-color); text-decoration: underline; }
+        
+        .article-excerpt { font-size: 1rem; color: #444; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* 푸터 영역 */
+        footer { border-top: 2px solid #000; text-align: center; padding: 35px 0; margin-top: 60px; font-size: 0.9rem; color: var(--meta-color); }
+        footer .legal-links { margin-bottom: 15px; }
+        footer a { color: #444; text-decoration: none; margin: 0 12px; font-weight: bold; transition: color 0.2s; }
+        footer a:hover { text-decoration: underline; color: #000; }
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <div>
+            <a href="/" class="logo-area">
+                <!-- 이미지 로고가 준비되면 아래 주소를 매칭하고 display를 켜세요 -->
+                <img src="/images/logo.svg" alt="tweaknook logo" class="logo-image">
+                <span class="logo-text">tweaknook.</span>
+            </a>
+            <nav>
+                <a href="/category/productivity">Productivity</a>
+                <a href="/category/ai-guides">AI Guides</a>
+                <a href="/category/tech-tips">Tech Tips</a>
+            </nav>
+        </div>
+        <div class="lang-switch">
+            <a href="/ko/">한국어</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- [신규] 상단 미니 소개 배너 -->
+        <section class="site-intro">
+            <h1>Quick Tweaks for Smarter Workflows</h1>
+            <p>Welcome to Tweaknook. We deliver concise, text-based guides on IT automation, advanced AI prompting techniques, and essential tech tips designed to save your time and eliminate office friction.</p>
+        </section>
+
+        <!-- [신규] 인기 / 추천 글 섹션 -->
+        <section>
+            <div class="section-title">Featured Articles</div>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="article-meta">
+                        <span class="article-category">AI Guides</span> • <span class="article-author">By Tweaknook Editorial</span>
+                    </div>
+                    <h3><a href="/posts/system-prompt-engineering.html">The Art of System Prompts: How to Control AI Output with 100% Accuracy</a></h3>
+                    <p class="article-excerpt" style="font-size:0.95rem; color:#555;">Learn how to craft robust system prompts that define an AI's persona, output format, and constraints.</p>
+                </div>
+                <div class="featured-card">
+                    <div class="article-meta">
+                        <span class="article-category">Productivity</span> • <span class="article-author">By Tweaknook Editorial</span>
+                    </div>
+                    <h3><a href="/posts/mastering-vlookup-alternatives.html">Beyond VLOOKUP: Why INDEX MATCH is the Ultimate Data Retrieval Formula</a></h3>
+                    <p class="article-excerpt" style="font-size:0.95rem; color:#555;">Discover how combining INDEX and MATCH creates a dynamic, unbreakable formula for complex spreadsheets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 최신 아티클 리스트 섹션 -->
+        <section>
+            <div class="section-title">Latest Updates</div>
+            <ul class="article-list">
+                
+                <li class="article-item">
+                    <div class="article-meta">
+                        <span class="article-category">Tech Tips</span> | June 27, 2026 | <span class="article-author">By Tweaknook Editorial</span>
+                    </div>
+                    <h2 class="article-title"><a href="/posts/seo-content-length-guide.html">Does Word Count Still Matter for SEO? A 2026 Algorithmic Breakdown</a></h2>
+                    <p class="article-excerpt">In the era of AI-generated content, Google's algorithms have evolved. We analyze the exact relationship between text density, semantic HTML structures, and achieving top-tier search engine rankings.</p>
+                </li>
+
+                <li class="article-item">
+                    <div class="article-meta">
+                        <span class="article-category">Productivity</span> | June 26, 2026 | <span class="article-author">By Tweaknook Editorial</span>
+                    </div>
+                    <h2 class="article-title"><a href="/posts/excel-string-length-count.html">How to Count Characters in Excel: LEN Function and Practical Use Cases</a></h2>
+                    <p class="article-excerpt">A comprehensive guide on using the LEN function in Excel to verify string lengths, handle data validation, and clean up imported database text fields effortlessly.</p>
+                </li>
+
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="legal-links">
+                <a href="/about.html">About Us</a>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact Us</a>
+            </div>
+            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
