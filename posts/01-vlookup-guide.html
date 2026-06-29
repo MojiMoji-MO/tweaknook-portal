@@ -4,115 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tired of VLOOKUP breaking your Excel spreadsheets? Learn how I transitioned to INDEX MATCH to save time and prevent data errors.">
-    <title>Why I Stopped Using VLOOKUP (And What I Use Instead) | Tweaknook</title>
+    <title>Why I Stopped Using VLOOKUP | Tweaknook</title>
     
-    <link rel="icon" type="image/png" href="/tweaknook-Favi.png">
-
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
+    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21E5Z191ZY');
+    </script>
     <style>
         :root { --primary-color: #0056b3; --text-color: #111; --meta-color: #666; --border-color: #eee; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; margin: 0; padding: 0; color: var(--text-color); background-color: #fff; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; margin: 0; padding: 0; color: var(--text-color); background-color: #fff; scroll-behavior: smooth; }
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        
-        header { border-bottom: 2px solid #000; padding: 40px 0 20px 0; margin-bottom: 40px; }
+        header { border-bottom: 2px solid #000; padding: 40px 0 20px 0; }
         .header-top { display: flex; justify-content: space-between; align-items: center; }
-        .logo-area { display: flex; align-items: center; text-decoration: none; }
-        .logo-text { color: #fa6910; font-size: 2.4rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 5px; }
+        .logo-text { color: #fa6910; font-size: 2.4rem; font-weight: 900; letter-spacing: -1.5px; }
+        nav { display: flex; gap: 25px; margin-top: 15px; }
+        nav a { font-size: 0.95rem; font-weight: bold; text-decoration: none; color: #444; transition: color 0.2s; }
+        nav a:hover { color: var(--primary-color); text-decoration: underline; }
         
-        .post-header { margin-bottom: 40px; }
+        .page-content { margin: 60px 0; }
+        .page-content h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 30px; color: #000; line-height: 1.3; }
+        .page-content h2 { font-size: 1.5rem; margin: 40px 0 15px 0; color: #000; border-left: 4px solid #fa6910; padding-left: 10px; }
+        .page-content h3 { font-size: 1.3rem; margin: 30px 0 10px 0; }
+        .page-content p { font-size: 1.05rem; color: #333; margin-bottom: 20px; line-height: 1.8; }
+        .page-content ul { font-size: 1.05rem; color: #333; line-height: 1.8; margin-bottom: 20px; }
+        .page-content code { background-color: #f1f3f5; color: #d63384; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; }
+        .page-content pre { background-color: #212529; color: #f8f9fa; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: monospace; line-height: 1.5; margin-bottom: 20px; }
+        .page-content table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
+        .page-content th, .page-content td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
+        .page-content th { background-color: #f8f9fa; color: #000; font-weight: bold; }
         .post-category { font-weight: bold; color: var(--primary-color); text-transform: uppercase; font-size: 0.9rem; }
-        .post-title { font-size: 2.2rem; font-weight: 800; line-height: 1.3; margin: 10px 0 20px 0; color: #000; }
         .post-meta { font-size: 0.9rem; color: var(--meta-color); font-family: monospace; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
         
-        .post-content h2 { font-size: 1.6rem; color: #000; margin: 40px 0 15px 0; border-left: 4px solid #fa6910; padding-left: 10px; }
-        .post-content h3 { font-size: 1.3rem; margin: 30px 0 10px 0; }
-        .post-content p { font-size: 1.05rem; color: #333; margin-bottom: 20px; }
-        
-        .post-content code { background-color: #f1f3f5; color: #d63384; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; }
-        .post-content pre { background-color: #212529; color: #f8f9fa; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: monospace; line-height: 1.5; margin-bottom: 20px; }
-        
-        .post-content table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
-        .post-content th, .post-content td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
-        .post-content th { background-color: #f8f9fa; color: #000; font-weight: bold; }
-
         footer { border-top: 2px solid #000; text-align: center; padding: 35px 0; margin-top: 60px; font-size: 0.9rem; color: var(--meta-color); }
+        footer .legal-links { margin-bottom: 15px; }
         footer a { color: #444; text-decoration: none; margin: 0 12px; font-weight: bold; }
+        footer a:hover { text-decoration: underline; color: #000; }
+
+        @media (max-width: 600px) {
+            .logo-text { font-size: 1.8rem; }
+            nav { gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+            nav a { font-size: 0.85rem; }
+            .page-content { margin: 30px 0; padding: 15px 0; }
+            .page-content h1 { font-size: 1.8rem; }
+            .page-content h2 { font-size: 1.35rem; }
+            footer a { display: inline-block; margin: 5px 10px; }
+        }
     </style>
 </head>
 <body>
 
     <header class="container">
         <div class="header-top">
-            <a href="/" class="logo-area">
+            <a href="/" style="text-decoration: none;">
                 <span class="logo-text">tweaknook</span>
             </a>
-            <a href="/" style="font-size: 0.9rem; font-weight: bold; color: #666; text-decoration: none;">&larr; Back to Home</a>
+            <div class="lang-switch">
+                <a href="/ko/" style="font-size: 0.85rem; font-weight: bold; text-decoration: none; color: #666; border: 1px solid #ddd; padding: 6px 12px; border-radius: 4px;">한국어</a>
+            </div>
         </div>
+        <nav>
+            <a href="/#productivity">Productivity</a>
+            <a href="/#ai-guides">AI Guides</a>
+            <a href="/#tech-tips">Tech Tips</a>
+        </nav>
     </header>
 
     <main class="container">
-        <article>
-            <div class="post-header">
+        <article class="page-content">
+            <div style="margin-bottom: 30px;">
                 <span class="post-category">Productivity</span>
-                <h1 class="post-title">Why I Stopped Using VLOOKUP (And What I Use Instead to Prevent Excel Crashes)</h1>
+                <h1>Why I Stopped Using VLOOKUP (And What I Use Instead to Prevent Excel Crashes)</h1>
                 <div class="post-meta">Published on June 29, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <div class="post-content">
-                <p>It was 5:30 PM on a Friday. My boss asked me to quickly merge two massive datasets containing over 10,000 customer records. No problem, I thought. I typed out my trusty <code>VLOOKUP</code> formula, dragged it down, and waited. Suddenly, half of my spreadsheet turned into a sea of <code>#N/A</code> errors. Why? Someone from another department had inserted a new column into the raw data, completely breaking my hardcoded column index.</p>
-                <p>That was the exact moment I realized VLOOKUP is a ticking time bomb for anyone working with dynamic data. Since that day, I haven't used it once. Instead, I switched entirely to the <strong>INDEX MATCH</strong> combination. Let me show you exactly why it’s better and how you can start using it today.</p>
+            <p>It was 5:30 PM on a Friday. My boss asked me to quickly merge two massive datasets containing over 10,000 customer records. No problem, I thought. I typed out my trusty <code>VLOOKUP</code> formula, dragged it down, and waited. Suddenly, half of my spreadsheet turned into a sea of <code>#N/A</code> errors. Why? Someone from another department had inserted a new column into the raw data, completely breaking my hardcoded column index.</p>
+            <p>That was the exact moment I realized VLOOKUP is a ticking time bomb for anyone working with dynamic data. Since that day, I haven't used it once. Instead, I switched entirely to the <strong>INDEX MATCH</strong> combination. Let me show you exactly why it’s better and how you can start using it today.</p>
 
-                <h2>The Three Fatal Flaws of VLOOKUP</h2>
-                <p>Don't get me wrong, VLOOKUP is great for beginners. But if you're dealing with real-world office tasks, it has three massive limitations that will eventually cause you a headache:</p>
-                <ul>
-                    <li><strong>It only looks right:</strong> The value you are searching for MUST be in the very first column of your table. If your Lookup ID is in column C, and you want to return a value from column A, VLOOKUP simply cannot do it.</li>
-                    <li><strong>It breaks easily:</strong> Because you have to type in a static column number (like "3"), if someone adds a new column, your formula will pull the wrong data without warning you.</li>
-                    <li><strong>It’s painfully slow:</strong> VLOOKUP processes the entire table array. In large workbooks, this causes the dreaded "Calculating... 15%" freeze.</li>
-                </ul>
+            <h2>The Three Fatal Flaws of VLOOKUP</h2>
+            <p>Don't get me wrong, VLOOKUP is great for beginners. But if you're dealing with real-world office tasks, it has three massive limitations that will eventually cause you a headache:</p>
+            <ul>
+                <li><strong>It only looks right:</strong> The value you are searching for MUST be in the very first column of your table. If your Lookup ID is in column C, and you want to return a value from column A, VLOOKUP simply cannot do it.</li>
+                <li><strong>It breaks easily:</strong> Because you have to type in a static column number (like "3"), if someone adds a new column, your formula will pull the wrong data without warning you.</li>
+                <li><strong>It’s painfully slow:</strong> VLOOKUP processes the entire table array. In large workbooks, this causes the dreaded "Calculating... 15%" freeze.</li>
+            </ul>
 
-                <h2>The Solution: INDEX and MATCH</h2>
-                <p>By nesting the <code>MATCH</code> function inside the <code>INDEX</code> function, we decouple the lookup process. MATCH finds the row, and INDEX returns the value. It sounds complicated, but once you memorize the structure, it’s actually incredibly logical.</p>
+            <h2>The Solution: INDEX and MATCH</h2>
+            <p>By nesting the <code>MATCH</code> function inside the <code>INDEX</code> function, we decouple the lookup process. MATCH finds the row, and INDEX returns the value. It sounds complicated, but once you memorize the structure, it’s actually incredibly logical.</p>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>VLOOKUP</th>
-                            <th>INDEX MATCH</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Look Left?</strong></td>
-                            <td>No (Right only)</td>
-                            <td>Yes (Any direction)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Column Insertions</strong></td>
-                            <td>Breaks the formula</td>
-                            <td>Adapts automatically</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Processing Speed</strong></td>
-                            <td>Slow on large datasets</td>
-                            <td>Lightning fast</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>VLOOKUP</th>
+                        <th>INDEX MATCH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Look Left?</strong></td>
+                        <td>No (Right only)</td>
+                        <td>Yes (Any direction)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Column Insertions</strong></td>
+                        <td>Breaks the formula</td>
+                        <td>Adapts automatically</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Processing Speed</strong></td>
+                        <td>Slow on large datasets</td>
+                        <td>Lightning fast</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <h2>How to Write the Formula (My Template)</h2>
-                <p>Here is the exact syntax I use every single day. I highly recommend saving this in your notes:</p>
+            <h2>How to Write the Formula (My Template)</h2>
+            <p>Here is the exact syntax I use every single day. I highly recommend saving this in your notes:</p>
+            <pre><code>=INDEX(Column_I_Want_To_Return, MATCH(Lookup_Value, Column_I_Am_Searching_In, 0))</code></pre>
 
-                <pre><code>=INDEX(Column_I_Want_To_Return, MATCH(Lookup_Value, Column_I_Am_Searching_In, 0))</code></pre>
+            <p>Let's say you want to find an Employee's Name (Column A) based on their Employee ID (Column C). The ID you are looking for is typed in cell F2. Here is what the formula looks like:</p>
+            <pre><code>=INDEX(A:A, MATCH(F2, C:C, 0))</code></pre>
 
-                <p>Let's say you want to find an Employee's Name (Column A) based on their Employee ID (Column C). The ID you are looking for is typed in cell F2. Here is what the formula looks like:</p>
+            <p>It’s that simple. <code>MATCH</code> looks down column C to find the ID, realizes it's on row 42, and passes that number to <code>INDEX</code>. Then, <code>INDEX</code> looks at row 42 in column A and gives you the name.</p>
 
-                <pre><code>=INDEX(A:A, MATCH(F2, C:C, 0))</code></pre>
-
-                <p>It’s that simple. <code>MATCH</code> looks down column C to find the ID, realizes it's on row 42, and passes that number to <code>INDEX</code>. Then, <code>INDEX</code> looks at row 42 in column A and gives you the name.</p>
-
-                <h2>Final Thoughts</h2>
-                <p>It takes about ten minutes of practice to get comfortable typing <code>INDEX(MATCH())</code> instead of VLOOKUP. But those ten minutes will save you hours of debugging broken spreadsheets in the future. Try it on your next report, and I promise you’ll never look back.</p>
-            </div>
+            <h2>Final Thoughts</h2>
+            <p>It takes about ten minutes of practice to get comfortable typing <code>INDEX(MATCH())</code> instead of VLOOKUP. But those ten minutes will save you hours of debugging broken spreadsheets in the future. Try it on your next report, and I promise you’ll never look back.</p>
         </article>
     </main>
 
@@ -127,6 +149,5 @@
             <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>
