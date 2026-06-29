@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accidentally deleted a local Git branch or executed a hard reset? Learn how to use git reflog to recover your lost work instantly.">
+    
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
+    <title>How to Recover Deleted Git Commits | Tweaknook</title>
+    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21E5Z191ZY');
+    </script>
+    </head>
+<body>
+
+    <header class="container">
+        <div class="header-top">
+            <a href="/" style="text-decoration: none;">
+                <span class="logo-text">tweaknook</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/#productivity">Productivity</a>
+            <a href="/#ai-guides">AI Guides</a>
+            <a href="/#tech-tips">Tech Tips</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="page-content">
+            <div style="margin-bottom: 30px;">
+                <span class="post-category">Tech Tips</span>
+                <h1>Don't Panic: How to Recover "Permanently" Deleted Git Commits and Branches</h1>
+                <div class="post-meta">Published on June 30, 2026 • By Tweaknook Editorial</div>
+            </div>
+
+            <p>It’s a nightmare scenario for any developer: you are cleaning up your local repository, and you accidentally delete the wrong branch. Or worse, you run a <code>git reset --hard</code> on the wrong commit, vaporizing a whole day's worth of unpushed source code. Your heart drops, and you assume the work is gone forever.</p>
+            <p>But here is the golden rule of Git: **Git almost never loses data.** Even if a commit is no longer visible in your normal logs, it is usually still floating around in the background database for up to 30 to 90 days. Today, we’re going to look at the ultimate developer safety net: <strong>Git Reflog</strong>.</p>
+
+            <h2>What is Git Reflog?</h2>
+            <p>While <code>git log</code> shows you a clean timeline of the commits that belong to your active branch, <code>git reflog</code> (Reference Logs) keeps track of *everything* your HEAD pointer has ever touched. Whether you checked out a branch, made a commit, amended a message, or performed a hard reset, reflog records every single action chronologically.</p>
+
+            <h2>How to Rescue Your Deleted Commit</h2>
+            <p>If you just wiped out your code with a hard reset, do not close your terminal. Follow these quick steps to pull it back from the grave:</p>
+            
+            <h3>Step 1: Open the Reference History</h3>
+            <p>Type the following command into your terminal project directory:</p>
+            <pre><code>git reflog</code></pre>
+            <p>You will see a list of entries that looks like this:</p>
+            <pre><code>a1b2c3d HEAD@{0}: reset: moving to HEAD~1
+e5f6g7h HEAD@{1}: commit: Added complete checkout layout feature
+9j8k7l6 HEAD@{2}: checkout: moving from main to dev</code></pre>
+
+            <h3>Step 2: Locate the Missing Hash</h3>
+            <p>Look at the action descriptions. In the example above, <code>HEAD@{1}</code> is the exact point right *before* the accidental reset happened. The alphanumeric string at the start (<code>e5f6g7h</code>) is the commit hash code we need.</p>
+
+            <h3>Step 3: Point Your Branch Back to Safety</h3>
+            <p>To safely recover the code without destroying any current file state, you can create a temporary branch right from that lost hash point:</p>
+            <pre><code>git checkout -b rescue-branch e5f6g7h</code></pre>
+            <p>Boom! Switch to your editor, and you will find all your "permanently deleted" files sitting there exactly as they were before the panic ensued.</p>
+
+            <h2>When Reflog Won't Save You</h2>
+            <p>As powerful as this utility is, it does have one critical limitation you must remember:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Can Reflog Recover It?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Committed files deleted by a hard reset</strong></td>
+                        <td>Yes (100% recoverable)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deleted local branch that was never pushed</strong></td>
+                        <td>Yes (Via branch commit history)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Untracked files deleted *before* any commit</strong></td>
+                        <td>No (Git never tracked them)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Conclusion</h2>
+            <p>Accidents happen to even the most senior engineers. The difference between a junior and a senior developer is knowing how to use Git's internal safety mechanics to undo mistakes without rewriting code from scratch. Keep calm, type <code>git reflog</code>, and get your code back safely.</p>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="legal-links">
+                <a href="/about.html">About Us</a>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact Us</a>
+            </div>
+            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
