@@ -6,13 +6,13 @@
     <meta name="description" content="Tweaknook - Practical IT guides, AI prompt tips, and productivity hacks to streamline your workflow.">
     <title>Tweaknook | Tech & Productivity Hacks</title>
     
-    <!-- 파비콘 연결 연결 (루트 폴더에 favicon.png 배치) -->
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    <link rel="icon" type="image/png" href="/tweaknook-Favi.png">
     
-    <!-- 다국어 SEO 구조 선언 -->
     <link rel="alternate" hreflang="en" href="https://tweaknook.com/" />
     <link rel="alternate" hreflang="ko" href="https://tweaknook.com/ko/" />
     <link rel="alternate" hreflang="x-default" href="https://tweaknook.com/" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
     <style>
         /* 변수 설정 및 초경량 최적화 스타일 */
@@ -22,9 +22,15 @@
         
         /* 헤더 & 로고 영역 */
         header { border-bottom: 2px solid #000; padding: 25px 0 15px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-area { display: flex; align-items: center; text-decoration: none; color: #000; }
-        .logo-image { height: 40px; width: auto; margin-right: 10px; display: none; } /* 로고 이미지 업로드 후 display: block으로 변경 */
-        .logo-text { font-size: 2.2rem; font-weight: 900; letter-spacing: -1.5px; }
+        .logo-area { display: flex; align-items: center; text-decoration: none; }
+        
+        /* V1.1 수정: 텍스트 로고에 둥근 폰트 및 오렌지 색상(#fa6910) 적용 */
+        .logo-text { 
+            font-family: 'Varela Round', sans-serif; 
+            color: #fa6910; 
+            font-size: 2.4rem; 
+            letter-spacing: -1px; 
+        }
         
         /* 언어 전환 버튼 */
         .lang-switch a { font-size: 0.85rem; font-weight: bold; text-decoration: none; color: var(--meta-color); padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; transition: all 0.2s ease; }
@@ -35,7 +41,7 @@
         nav a { text-decoration: none; color: #444; transition: color 0.2s; }
         nav a:hover { color: var(--primary-color); text-decoration: underline; }
 
-        /* [신규] 사이트 소개 탑 배너 영역 */
+        /* 사이트 소개 탑 배너 영역 */
         .site-intro { background: #f9f9f9; border-left: 4px solid #000; padding: 20px; margin: 30px 0; border-radius: 0 4px 4px 0; }
         .site-intro h1 { margin: 0 0 8px 0; font-size: 1.3rem; font-weight: 800; }
         .site-intro p { margin: 0; font-size: 0.95rem; color: #555; }
@@ -43,7 +49,7 @@
         /* 섹션 공통 타이틀 */
         .section-title { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; padding-bottom: 5px; margin: 40px 0 20px; color: #000; }
 
-        /* [신규] 인기 / 추천 글 섹션 (Grid 스타일) */
+        /* 인기 / 추천 글 섹션 (Grid 스타일) */
         .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
         .featured-card { border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; transition: transform 0.2s ease, border-color 0.2s ease; }
         .featured-card:hover { transform: translateY(-2px); border-color: #aaa; }
@@ -61,7 +67,7 @@
         .article-category { font-weight: bold; color: var(--primary-color); margin-right: 8px; }
         .article-author { font-style: italic; color: #333; }
         
-        /* 미세 팁 반영: 링크 호버 효과 디테일화 */
+        /* 글 제목 링크 효과 */
         .article-title { font-size: 1.45rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.35; }
         .article-title a { text-decoration: none; color: var(--text-color); transition: color 0.2s ease, text-decoration 0.2s ease; }
         .article-title a:hover { color: var(--primary-color); text-decoration: underline; }
@@ -80,9 +86,7 @@
     <header class="container">
         <div>
             <a href="/" class="logo-area">
-                <!-- 이미지 로고가 준비되면 아래 주소를 매칭하고 display를 켜세요 -->
-                <img src="/images/logo.svg" alt="tweaknook logo" class="logo-image">
-                <span class="logo-text">tweaknook.</span>
+                <span class="logo-text">tweaknook</span>
             </a>
             <nav>
                 <a href="/category/productivity">Productivity</a>
@@ -97,13 +101,11 @@
 
     <main class="container">
         
-        <!-- [신규] 상단 미니 소개 배너 -->
         <section class="site-intro">
             <h1>Quick Tweaks for Smarter Workflows</h1>
             <p>Welcome to Tweaknook. We deliver concise, text-based guides on IT automation, advanced AI prompting techniques, and essential tech tips designed to save your time and eliminate office friction.</p>
         </section>
 
-        <!-- [신규] 인기 / 추천 글 섹션 -->
         <section>
             <div class="section-title">Featured Articles</div>
             <div class="featured-grid">
@@ -124,7 +126,6 @@
             </div>
         </section>
 
-        <!-- 최신 아티클 리스트 섹션 -->
         <section>
             <div class="section-title">Latest Updates</div>
             <ul class="article-list">
