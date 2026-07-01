@@ -24,10 +24,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- 💡 4번 글 추가 완료 -->
   <url>
     <loc>https://tweaknook.com/posts/04-importrange-dashboard</loc>
     <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 💡 5번 글 추가 완료 -->
+  <url>
+    <loc>https://tweaknook.com/posts/05-chatgpt-hallucination-fix</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
