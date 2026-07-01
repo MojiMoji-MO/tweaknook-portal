@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop letting ChatGPT lie to you. Learn the exact anti-hallucination prompt framework to force AI to output 100% factual and verified information.">
+    
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
+    <title>I Caught ChatGPT Lying: The Exact Prompt I Use to Stop AI Hallucinations | Tweaknook</title>
+    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    <link rel="stylesheet" href="/style.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21E5Z191ZY');
+    </script>
+</head>
+<body>
+
+    <header class="container">
+        <div class="header-top">
+            <a href="/" style="text-decoration: none;">
+                <span class="logo-text">tweaknook</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/#productivity">Productivity</a>
+            <a href="/#ai-guides">AI Guides</a>
+            <a href="/#tech-tips">Tech Tips</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="page-content">
+            <div style="margin-bottom: 30px;">
+                <span class="post-category">AI Guides</span>
+                <h1>I Caught ChatGPT Lying in a Board Meeting. Here is the Exact Prompt I Use to Stop AI Hallucinations</h1>
+                <div class="post-meta">Published on July 2, 2026 • By Tweaknook Editorial</div>
+            </div>
+
+            <p>Last Tuesday, I experienced the most embarrassing moment of my career. My startup's CEO asked me to pull some quick industry growth statistics for an emergency pitch deck we were presenting to potential investors. Running short on time, I asked ChatGPT to give me the projected market size for cloud computing in 2027. It confidently spit out a highly detailed paragraph with specific billions of dollars and cited a well-known research firm. I copied it, pasted it onto the slide, and we presented it.</p>
+            <p>Right in the middle of the Q&A session, an investor raised his hand. He happened to be an expert in that specific sector. He looked at my slide, squinted, and said, <em>"That number is completely fabricated. That research firm never published that report."</em> My stomach dropped. I panicked. The AI had lied to my face, and I blindly trusted it. That is the day I learned a very hard lesson about a concept called "AI Hallucination."</p>
+
+            <h2>Why Your AI is Confidently Lying to You</h2>
+            <p>If you are using generative AI for serious office work, you have to understand one fundamental truth: Large Language Models (LLMs) like ChatGPT, Claude, or Gemini are not search engines. They do not look up facts in a giant encyclopedia. They are essentially highly advanced autocomplete machines. Their primary goal is to predict the next logical word in a sentence, not to tell the truth.</p>
+            <p>When you ask an AI for a fact it doesn't know, its programming forces it to give you an answer anyway. So, it simply invents a fact that sounds incredibly plausible. It will make up fake book titles, fake academic papers, and fake data points. If you do not put strict guardrails in place, it will eventually sabotage your work.</p>
+
+            <h2>The Shift: From Requesting to Constraining</h2>
+            <p>Most people try to solve this by simply typing <em>"Don't lie"</em> at the end of their prompts. The AI ignores this. To stop hallucinations, you have to fundamentally change how you write your instructions. You need to transition from a "request-based" prompt to a "constraint-based" prompt.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prompt Strategy</th>
+                        <th>Example</th>
+                        <th>Hallucination Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lazy Request</strong></td>
+                        <td>"Give me statistics on remote work in 2025."</td>
+                        <td>Extremely High. It will invent numbers if it lacks data.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Constraint-Based</strong></td>
+                        <td>"Only use data from the provided text. If the text does not contain the answer, say 'I do not know.'"</td>
+                        <td>Near Zero. The AI is locked into a specific rule set.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>The "Ironclad" Anti-Hallucination Framework</h2>
+            <p>After my disaster in the boardroom, I spent weeks testing different prompt structures to force the AI to admit when it didn't know something. I finally developed a template that works flawlessly. I now use this exact block of text as a system instruction before I ask the AI to summarize reports, extract data, or draft professional documents.</p>
+            <p>Copy this framework and save it in your notes app:</p>
+
+<pre><code>[STRICT RULES FOR THIS TASK]
+1. You are a highly accurate data verification assistant.
+2. You must ONLY use the information I explicitly provide in the [SOURCE TEXT] below.
+3. Do NOT use your pre-trained knowledge to fill in gaps.
+4. Do NOT guess, infer, or hallucinate numbers, names, or dates.
+5. If the answer to my question cannot be found entirely within the [SOURCE TEXT], you must reply exactly with: "DATA NOT FOUND IN SOURCE."
+
+[TASK]
+Based ONLY on the rules above, extract the Q3 revenue numbers from the text below.
+
+[SOURCE TEXT]
+(Paste your PDF, article, or raw data here)</code></pre>
+
+            <h2>Why This Specific Prompt Works So Well</h2>
+            <p>Let's break down the psychology of why this works on an AI model.</p>
+            <p>First, by assigning the persona of a <strong>"highly accurate data verification assistant"</strong>, you prime the model's neural weights to favor precision over creativity. Second, Rule number 5 gives the AI a literal "escape hatch." Normally, AI models want to please the user by providing an answer. By giving it permission to say <strong>"DATA NOT FOUND,"</strong> you remove its internal pressure to invent a lie.</p>
+
+            <h2>The Two-Step Verification Method</h2>
+            <p>Even with the best prompt in the world, you still need a workflow that protects you from yourself. When I am writing an important email to a client or a report for my manager, I use a two-step process.</p>
+            <ul>
+                <li><strong>Step 1: Generation.</strong> I use the AI to draft the structure of the document, leaving placeholders for hard facts. (e.g., "Our revenue increased by [INSERT X%]").</li>
+                <li><strong>Step 2: Injection.</strong> I manually type in the critical numbers or names myself. I never let the AI generate the final metric.</li>
+            </ul>
+
+            <h2>Take Control of Your Tools</h2>
+            <p>AI is the most powerful productivity tool we have ever seen, but it is also a massive liability if used blindly. Treat ChatGPT like a brilliant, fast-typing intern who occasionally makes things up to impress you. You wouldn't send an intern's report to the CEO without checking the numbers first. Do not do it with your AI. Start using constraint-based prompts today, and never get caught defending a fake statistic again.</p>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="legal-links">
+                <a href="/about">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
