@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Stop wasting time copy-pasting data between Google Sheets. Learn how to use the IMPORTRANGE formula to build automated, real-time dashboards.">
     
-    <!-- 구글 서치콘솔 소유권 확인 태그 -->
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
     <title>Stop Copy-Pasting Data: How I Built a Real-Time Google Sheets Dashboard | Tweaknook</title>
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
     
-    <!-- 구글 애널리틱스 (GA4) 추적 코드 시작 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,7 +17,6 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-    <!-- 구글 애널리틱스 (GA4) 추적 코드 끝 -->
 </head>
 <body>
 
@@ -110,11 +107,28 @@
             <p>Before you go connecting every spreadsheet in your company, remember that too many heavy imports can slow down your file. If you are trying to import over 50,000 rows from 10 different files simultaneously, Google Sheets might get stuck on a "Loading..." message. Keep your ranges tight. Instead of importing <code>A:Z</code> (the entire sheet), only import <code>A:D</code> if those are the only columns you actually need.</p>
             <p>Setting up my automated dashboard took me about an hour upfront. But now? My Friday 3:00 PM reporting nightmare is completely gone. I just open the master link, watch the numbers update themselves, export it as a PDF, and head out for the weekend. Try it out on your next project.</p>
      
-        <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
+                <strong>💡 Pro Tip:</strong> Syncing data is powerful, but looking up specific values within that raw data requires robust formulas. See <a href="/posts/01-vlookup-guide" style="color: #007bff; text-decoration: underline; font-weight: bold;">why I stopped using VLOOKUP and switched to INDEX/MATCH</a> to prevent errors.
+            </p>
+
+            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
+                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
+                    <a href="/posts/01-vlookup-guide" style="text-decoration: none; color: #007bff;">Why I Stopped Using VLOOKUP (And What I Use Instead)</a>
+                </h3>
             </div>
-        
-        </article>
+
+            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
+                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
+                </p>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+            </div>
+            </article>
     </main>
 
     <footer>
