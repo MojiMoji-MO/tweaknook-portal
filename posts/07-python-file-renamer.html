@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop renaming files manually. Learn how a simple 5-line Python script can bulk rename hundreds of documents or images in just 2 seconds.">
+    
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
+    <title>I Wasted 3 Hours Renaming 500 Files. Here is the 5-Line Python Script That Does It in 2 Seconds | Tweaknook</title>
+    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    <link rel="stylesheet" href="/style.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21E5Z191ZY');
+    </script>
+</head>
+<body>
+
+    <header class="container">
+        <div class="header-top">
+            <a href="/" style="text-decoration: none;">
+                <span class="logo-text">tweaknook</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/#productivity">Productivity</a>
+            <a href="/#ai-guides">AI Guides</a>
+            <a href="/#tech-tips">Tech Tips</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="page-content">
+            <div style="margin-bottom: 30px;">
+                <span class="post-category">Productivity</span>
+                <h1>I Wasted 3 Hours Renaming 500 Files. Here is the 5-Line Python Script That Does It in 2 Seconds</h1>
+                <div class="post-meta">Published on July 4, 2026 • By Tweaknook Editorial</div>
+            </div>
+
+            <p>Last Thursday, our external marketing agency sent over a massive ZIP file containing 500 new product photos. The problem? Every single file was named something completely useless like "IMG_9921_final_v2_edit.jpg". The e-commerce manager came to my desk and told me I needed to rename all 500 of them to match our internal inventory system (e.g., "SUMMER_COLLECTION_001") by 5:00 PM so they could be uploaded to the website.</p>
+            <p>I started doing it manually. I clicked the first file, pressed F2, typed the new name, and hit Enter. Then I did the second one. Then the third. After 50 files and a cramping wrist, I looked at the clock. I realized this mind-numbing task was going to take me at least three hours of continuous typing. I stopped what I was doing, opened my code editor, and wrote a simple five-line Python script. Two seconds later, all 500 files were perfectly renamed in sequential order. Here is exactly how you can do it too, even if you have never coded in your life.</p>
+
+            <h2>You Do Not Need to Be a Developer to Use Python</h2>
+            <p>When normal office workers hear the word "Python," they imagine a dark room with a hacker typing furiously on multiple screens. That is a myth. Python is just a tool, exactly like Excel or a calculator. You do not need a computer science degree to use it for basic office automation.</p>
+            <p>Before writing my script, I considered downloading a bulk file renaming software from the internet. But let's look at why that is a terrible idea for your productivity and computer security.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Speed</th>
+                        <th>Safety & Security Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Manual F2 Renaming</strong></td>
+                        <td>Extremely slow (Hours)</td>
+                        <td>High risk of human typo errors.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Free Bulk Renamer Software</strong></td>
+                        <td>Fast</td>
+                        <td>High risk. Often bundled with adware or malware.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5-Line Python Script</strong></td>
+                        <td>Instant (2 Seconds)</td>
+                        <td>100% Safe. You control the exact logic.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Step 1: The One-Time Setup</h2>
+            <p>If you do not have Python installed on your work computer, go to the official Python website and download the latest version. During the installation, there is one crucial step: <strong>You must check the box that says "Add Python to PATH"</strong> before clicking install. This allows your computer to understand Python commands from any folder. That is it. You are ready to automate.</p>
+
+            <h2>Step 2: The Magic 5-Line Script</h2>
+            <p>Open a basic text editor on your computer (Notepad on Windows or TextEdit on Mac is perfectly fine). Copy and paste the following block of code directly into the blank document:</p>
+
+<pre><code>import os
+
+folder_path = r"C:\Users\YourName\Desktop\ProductPhotos"
+prefix = "SUMMER_COLLECTION_"
+
+for index, filename in enumerate(os.listdir(folder_path)):
+    old_file = os.path.join(folder_path, filename)
+    new_file = os.path.join(folder_path, f"{prefix}{index+1}.jpg")
+    os.rename(old_file, new_file)</code></pre>
+
+            <p>Save this file to your desktop and name it <code>renamer.py</code>. Make sure it ends in <code>.py</code> and not <code>.txt</code>.</p>
+
+            <h2>Step 3: Translating the Code into Plain English</h2>
+            <p>I never want you to run code you do not understand. Let me break down exactly what these five lines are doing behind the scenes so you can customize them for your own projects.</p>
+            <ul>
+                <li><strong>Line 1 (import os):</strong> This simply wakes up Python's internal file manager. It gives the script permission to look at your computer's folders.</li>
+                <li><strong>Line 3 (folder_path):</strong> This is where you tell the script where your messy files are living. You just replace my example path with the actual location of your folder. The <code>r</code> before the quote just tells Python to read the path exactly as it is written.</li>
+                <li><strong>Line 4 (prefix):</strong> This is the new name you want to give everything. In my case, it was "SUMMER_COLLECTION_".</li>
+                <li><strong>Line 6 (for loop):</strong> The <code>os.listdir</code> command grabs every single file in your folder. The <code>enumerate</code> command is the secret sauce—it automatically assigns a number (1, 2, 3...) to each file as it goes down the list.</li>
+                <li><strong>Line 9 (os.rename):</strong> The script takes the old ugly filename, attaches your new prefix to the new number, slaps a ".jpg" at the end, and hits save. It does this 500 times in the blink of an eye.</li>
+            </ul>
+
+            <h2>How to Avoid the "Double Extension" Error</h2>
+            <p>There is one common mistake beginners make when using this script. If your original files already have their extensions showing (like <code>image.jpg</code>) and you accidentally tell the script to add another <code>.jpg</code>, you will end up with files named <code>SUMMER_COLLECTION_1.jpg.jpg</code>. This will break the file.</p>
+            <p>To prevent this, always run the script on a small batch of 5 test files first. Create a dummy folder, copy 5 files into it, and point your <code>folder_path</code> to that dummy folder. If the result looks perfect, point it to the main folder with the 500 files and let it rip.</p>
+
+            <h2>Buy Back Your Time</h2>
+            <p>Your brain is highly paid to solve complex business problems, analyze trends, and communicate with clients. You are not being paid to act like a robot pressing the F2 key for three hours straight. The next time you face a massive list of files, data rows, or folders that need organizing, do not reach for your mouse. Reach for a Python script. It might take you ten minutes to set up the first time, but it will save you hundreds of hours over the rest of your career.</p>
+
+            <!-- 💡 약속드린 '이전으로 돌아가기' 버튼 기본 탑재 완료 -->
+            <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="legal-links">
+                <a href="/about">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
