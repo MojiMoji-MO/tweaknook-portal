@@ -48,10 +48,15 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- 💡 8번 글 추가 완료 -->
   <url>
     <loc>https://tweaknook.com/posts/08-ai-meeting-minutes</loc>
     <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tweaknook.com/posts/09-chrome-memory-saver</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
