@@ -60,10 +60,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- 💡 10번 글 추가 완료 -->
   <url>
     <loc>https://tweaknook.com/posts/10-excel-power-query</loc>
     <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 💡 11번 글 추가 완료 -->
+  <url>
+    <loc>https://tweaknook.com/posts/11-ai-pdf-data-extraction</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
