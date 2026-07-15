@@ -103,8 +103,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tweaknook.com/posts/17-ai-competitor-feature-mapping</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tweaknook.com/posts/18-windows-winget-setup</loc>
     <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 💡 19번 글 추가 완료 -->
+  <url>
+    <loc>https://tweaknook.com/posts/19-google-sheets-regex</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
