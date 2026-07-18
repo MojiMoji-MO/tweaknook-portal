@@ -1,158 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">
   <url>
-    <loc>https://tweaknook.com/</loc>
+    <loc>[https://tweaknook.com/](https://tweaknook.com/)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/01-vlookup-guide</loc>
+    <loc>[https://tweaknook.com/posts/01-vlookup-guide](https://tweaknook.com/posts/01-vlookup-guide)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/02-system-prompt</loc>
+    <loc>[https://tweaknook.com/posts/02-system-prompt](https://tweaknook.com/posts/02-system-prompt)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/03-git-safety-net</loc>
+    <loc>[https://tweaknook.com/posts/03-git-safety-net](https://tweaknook.com/posts/03-git-safety-net)</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/04-importrange-dashboard</loc>
+    <loc>[https://tweaknook.com/posts/04-importrange-dashboard](https://tweaknook.com/posts/04-importrange-dashboard)</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/05-chatgpt-hallucination-fix</loc>
+    <loc>[https://tweaknook.com/posts/05-chatgpt-hallucination-fix](https://tweaknook.com/posts/05-chatgpt-hallucination-fix)</loc>
     <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/06-laptop-speed-fix</loc>
+    <loc>[https://tweaknook.com/posts/06-laptop-speed-fix](https://tweaknook.com/posts/06-laptop-speed-fix)</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/07-python-file-renamer</loc>
+    <loc>[https://tweaknook.com/posts/07-python-file-renamer](https://tweaknook.com/posts/07-python-file-renamer)</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/08-ai-meeting-minutes</loc>
+    <loc>[https://tweaknook.com/posts/08-ai-meeting-minutes](https://tweaknook.com/posts/08-ai-meeting-minutes)</loc>
     <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/09-chrome-memory-saver</loc>
+    <loc>[https://tweaknook.com/posts/09-chrome-memory-saver](https://tweaknook.com/posts/09-chrome-memory-saver)</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/10-excel-power-query</loc>
+    <loc>[https://tweaknook.com/posts/10-excel-power-query](https://tweaknook.com/posts/10-excel-power-query)</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/11-ai-pdf-data-extraction</loc>
+    <loc>[https://tweaknook.com/posts/11-ai-pdf-data-extraction](https://tweaknook.com/posts/11-ai-pdf-data-extraction)</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/12-windows-clipboard-history</loc>
+    <loc>[https://tweaknook.com/posts/12-windows-clipboard-history](https://tweaknook.com/posts/12-windows-clipboard-history)</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/13-ai-sentiment-analysis</loc>
+    <loc>[https://tweaknook.com/posts/13-ai-sentiment-analysis](https://tweaknook.com/posts/13-ai-sentiment-analysis)</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/14-gmail-inbox-zero</loc>
+    <loc>[https://tweaknook.com/posts/14-gmail-inbox-zero](https://tweaknook.com/posts/14-gmail-inbox-zero)</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/15-windows-robocopy-backup</loc>
+    <loc>[https://tweaknook.com/posts/15-windows-robocopy-backup](https://tweaknook.com/posts/15-windows-robocopy-backup)</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/16-google-sheets-invoice-script</loc>
+    <loc>[https://tweaknook.com/posts/16-google-sheets-invoice-script](https://tweaknook.com/posts/16-google-sheets-invoice-script)</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/17-ai-competitor-feature-mapping</loc>
+    <loc>[https://tweaknook.com/posts/17-ai-competitor-feature-mapping](https://tweaknook.com/posts/17-ai-competitor-feature-mapping)</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/18-windows-winget-setup</loc>
+    <loc>[https://tweaknook.com/posts/18-windows-winget-setup](https://tweaknook.com/posts/18-windows-winget-setup)</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/19-google-sheets-regex</loc>
+    <loc>[https://tweaknook.com/posts/19-google-sheets-regex](https://tweaknook.com/posts/19-google-sheets-regex)</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/posts/20-ai-sql-queries</loc>
+    <loc>[https://tweaknook.com/posts/20-ai-sql-queries](https://tweaknook.com/posts/20-ai-sql-queries)</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- 💡 21번 글 추가 완료 -->
   <url>
-    <loc>https://tweaknook.com/posts/21-tailscale-remote-access</loc>
+    <loc>[https://tweaknook.com/posts/21-tailscale-remote-access](https://tweaknook.com/posts/21-tailscale-remote-access)</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- 💡 22번 글 신규 추가 완료 -->
   <url>
-    <loc>https://tweaknook.com/about</loc>
+    <loc>[https://tweaknook.com/posts/22-ai-pdf-extraction](https://tweaknook.com/posts/22-ai-pdf-extraction)</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[https://tweaknook.com/about](https://tweaknook.com/about)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/privacy</loc>
+    <loc>[https://tweaknook.com/privacy](https://tweaknook.com/privacy)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/terms</loc>
+    <loc>[https://tweaknook.com/terms](https://tweaknook.com/terms)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://tweaknook.com/contact</loc>
+    <loc>[https://tweaknook.com/contact](https://tweaknook.com/contact)</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
