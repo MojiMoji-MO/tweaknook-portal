@@ -144,10 +144,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- 💡 24번 글 신규 추가 완료 -->
   <url>
     <loc>https://tweaknook.com/posts/24-powershell-duplicate-finder</loc>
     <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 💡 25번 글 신규 추가 완료 -->
+  <url>
+    <loc>https://tweaknook.com/posts/25-excel-power-query-folder-merge</loc>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
