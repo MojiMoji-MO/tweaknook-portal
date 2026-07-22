@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Is your work laptop freezing? Learn how to instantly free up space and boost PC performance using native Windows tools without installing sketchy cleaner software.">
+    <meta name="description" content="Use temporary-file cleanup and Storage Sense to recover disk space with built-in Windows tools. The amount of space recovered varies by device.">
     
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>My Work Laptop Froze Mid-Presentation. Here is the 2-Minute Fix to Clear 20GB of Junk | Tweaknook</title>
+    <title>How to Free Up Disk Space with Built-In Windows Tools | Tweaknook</title>
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
     
@@ -37,7 +37,7 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">Tech Tips</span>
-                <h1>My Work Laptop Froze Mid-Presentation. Here is the 2-Minute Fix to Clear 20GB of Junk (Without Sketchy Software)</h1>
+                <h1>How to Free Up Disk Space with Built-In Windows Tools</h1>
                 <div class="post-meta">Published on July 3, 2026 • By Tweaknook Editorial</div>
             </div>
 
@@ -46,11 +46,11 @@
 
             <h2>The Trap of Third-Party "PC Cleaners"</h2>
             <p>When most office workers experience a slow computer, they immediately go to Google and download a free "PC Optimizer" or "Junk Cleaner" software. I used to do this too. I highly advise you to stop doing this immediately.</p>
-            <p>Most of these third-party optimization tools are basically malware in disguise. They run heavy background processes, spam you with pop-up ads urging you to buy their premium versions, and sometimes even delete critical registry files that cause your operating system to crash. You absolutely do not need them. Everything you need to make your laptop run like it is brand new is already built directly into Windows. You just need to know where it is hidden.</p>
+            <p>Some third-party cleanup tools add background processes, advertising, or aggressive cleanup options. Windows already includes tools that can remove temporary files and manage storage without installing additional software.</p>
 
             <h2>Method 1: Nuking the Hidden Temp Folder</h2>
             <p>Every time you open an application, browse the web, or extract a ZIP file, Windows creates temporary files. The problem is that Windows is terrible at cleaning up after itself. These files pile up for years, eating away at your precious SSD space and slowing down file indexing.</p>
-            <p>Here is my exact routine for clearing this hidden graveyard manually. Do not worry, deleting files from this specific folder is 100% safe.</p>
+            <p>The steps below remove temporary files. Review the selection before deleting, and skip any file that Windows reports as currently in use.</p>
             <ol>
                 <li>Hold down the <strong>Windows Key</strong> and press <strong>R</strong> to open the Run dialog box.</li>
                 <li>Type exactly <code>%temp%</code> into the box and hit Enter.</li>
@@ -58,7 +58,7 @@
                 <li>Press <strong>Ctrl + A</strong> to select every single file in that folder.</li>
                 <li>Press <strong>Shift + Delete</strong> to permanently bypass the recycle bin and obliterate them.</li>
             </ol>
-            <p>If a warning pops up saying "The action can't be completed because the file is open in another program," just check the box that says "Do this for all current items" and click <strong>Skip</strong>. I did this on a colleague's laptop last week and we instantly recovered 14 gigabytes of dead weight.</p>
+            <p>If a warning pops up saying "The action can't be completed because the file is open in another program," just check the box that says "Do this for all current items" and click <strong>Skip</strong>. The amount of space recovered depends on update files, browser caches, and how long the device has been in use.</p>
 
             <h2>Method 2: Automating with Storage Sense</h2>
             <p>Manually deleting temp files is great for emergencies, but I hate doing manual maintenance. Thankfully, Windows 10 and 11 have a brilliant, hidden feature called Storage Sense that does this automatically in the background. Most IT departments forget to turn this on when they issue new laptops.</p>
@@ -75,7 +75,7 @@
                     <tr>
                         <td><strong>Cost</strong></td>
                         <td>Usually requires a paid subscription.</td>
-                        <td>100% Free (Native Tool).</td>
+                        <td>Included with Windows.</td>
                     </tr>
                     <tr>
                         <td><strong>Resource Usage</strong></td>
@@ -90,7 +90,7 @@
                 </tbody>
             </table>
 
-            <p>To activate it, hit the Windows key, type "Storage Settings," and hit Enter. Toggle the switch for <strong>Storage Sense</strong> to the "On" position. Click on "Configure Storage Sense" right below it. I set mine to run <em>Every Week</em>, and I command it to automatically delete files in my Recycle Bin and Downloads folder if they have been sitting there for over 30 days. It is a set-and-forget solution that guarantees you will never see that "Disk Full" error again.</p>
+            <p>To activate it, hit the Windows key, type "Storage Settings," and hit Enter. Toggle the switch for <strong>Storage Sense</strong> to the "On" position. Click on "Configure Storage Sense" right below it. I set mine to run <em>Every Week</em>, and I command it to automatically delete files in my Recycle Bin and Downloads folder if they have been sitting there for over 30 days. It can reduce repeated low-disk warnings, but it does not replace regular storage checks or backups.</p>
 
             <h2>Method 3: The Advanced Command Prompt Cleanup</h2>
             <p>If you have run major Windows Updates recently, your system is likely holding onto massive gigabytes of old installation files just in case you want to downgrade. To wipe these out safely, we use a slightly more advanced trick. You will feel like a hacker doing this, but it is incredibly easy.</p>

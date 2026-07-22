@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stop reading hundreds of customer reviews manually. Learn the exact AI prompt framework to instantly analyze sentiment and categorize customer feedback at scale.">
+    <meta name="description" content="Use a consistent schema to classify sentiment, category, urgency, and action items from customer feedback.">
     
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>How I Automated Customer Feedback Analysis: The AI Prompt That Categorizes 1,000 Reviews in Seconds | Tweaknook</title>
+    <title>How to Analyze Customer Feedback with a Structured AI Prompt | Tweaknook</title>
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
     
@@ -37,7 +37,7 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">AI Guides</span>
-                <h1>How I Automated Customer Feedback Analysis: The AI Prompt That Categorizes 1,000 Reviews in Seconds</h1>
+                <h1>How to Analyze Customer Feedback with a Structured AI Prompt</h1>
                 <div class="post-meta">Published on July 10, 2026 • By Tweaknook Editorial</div>
             </div>
 
@@ -46,7 +46,7 @@
 
             <h2>The Limitation of Human Coding vs. AI</h2>
             <p>In data analytics, sorting qualitative text data into buckets is known as "sentiment classification." Historically, companies had to choose between paying a human team to do it slowly, or hiring a data scientist to write a complex Python script using natural language processing (NLP) libraries like NLTK or SpaCy.</p>
-            <p>While Python scripts are fast, they struggle with human nuance. For example, if a customer leaves a sarcastic review like, <em>"Oh great, another update that breaks my layout. Fantastic job guys,"</em> a traditional keyword-matching script will see the words "great" and "fantastic" and mistakenly label the review as highly positive. Large Language Models (LLMs), however, possess an advanced semantic understanding of tone, sarcasm, and human emotion, making them the perfect tool for massive text sorting tasks.</p>
+            <p>While Python scripts are fast, they struggle with human nuance. For example, if a customer leaves a sarcastic review like, <em>"Oh great, another update that breaks my layout. Fantastic job guys,"</em> a traditional keyword-matching script will see the words "great" and "fantastic" and mistakenly label the review as highly positive. Large Language Models (LLMs), however, possess an advanced semantic understanding of tone, sarcasm, and human emotion, making them useful for reviewing tone and organizing large text collections.</p>
 
             <h2>The Workflow Efficiency Breakdown</h2>
             <p>Let's look at how utilizing a structured prompt fundamentally transforms the speed and accuracy of operational feedback loops:</p>
@@ -65,7 +65,7 @@
                         <td><strong>Processing Speed</strong></td>
                         <td>6 Hours per 1,000 rows</td>
                         <td>3 Seconds</td>
-                        <td>5 Seconds</td>
+                        <td>Varies by model and batch size</td>
                     </tr>
                     <tr>
                         <td><strong>Sarcasm & Nuance</strong></td>
@@ -107,17 +107,17 @@ ID 3: "Wow, wonderful job updating the app. Now it crashes every time I open the
 
             <h2>Deconstructing the Prompt's Success</h2>
             <p>Let's break down why this prompt is highly effective. First, the <strong>Constraints</strong> explicitly wipe out the AI's tendency to write fluff like "Sure, here is the analysis you requested." This allows you to process thousands of words without cluttering your token bandwidth. </p>
-            <p>Second, the predefined categories (Bug, Pricing, etc.) prevent the AI from creating fifty different random labels, which would ruin your sorting columns. Finally, by forcing the AI to create a "1-Sentence Action Item," it translates raw complaining into clear, actionable commands that you can instantly forward to your product engineers or support staff.</p>
+            <p>Second, the predefined categories (Bug, Pricing, etc.) prevent the AI from creating fifty different random labels, which would ruin your sorting columns. Finally, by forcing the AI to create a "1-Sentence Action Item," it converts raw feedback into draft action items that can be reviewed before sharing with product or support teams.</p>
 
             <h2>Scaling Up with API and CSV Uploads</h2>
             <p>If you are processing 20 reviews, copying and pasting them directly into a standard chat window is perfectly fine. But what if you have 1,000 rows? If you paste too much text at once, you run the risk of exceeding the model's single-turn generation capacity.</p>
             <p>To scale this efficiently, utilize the Advanced Data Analysis features in premium AI tiers. Convert your feedback Excel sheet into a standard <code>.csv</code> file, upload the file directly, and command the AI to: <em>"Read the column labeled 'Feedback Text', apply the sentiment analysis prompt rules, append the results as three new columns to the original data, and provide a download link to the updated CSV file."</em> The AI will execute the logic behind the scenes and give you back a completed, fully coded spreadsheet in seconds.</p>
 
             <h2>Turn Data into Fuel</h2>
-            <p>Customer feedback is the single most valuable asset your company possesses, but it is completely useless if it sits rotting in a massive, unread spreadsheet log. By automating the categorization and sentiment tagging process, you instantly bridge the gap between customer pain points and engineering solutions. Stop wasting valuable analyst hours reading text one row at a time. Deploy a structured sentiment prompt this week, clear out your feedback queues, and spend your energy actually building a better product.</p>
+            <p>Customer feedback is the single most valuable asset your company possesses, but it is completely useless if it sits rotting in a massive, unread spreadsheet log. Automating the first-pass categorization can shorten the time between customer feedback and internal review. Stop wasting valuable analyst hours reading text one row at a time. Deploy a structured sentiment prompt this week, clear out your feedback queues, and spend your energy actually building a better product.</p>
 
             <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> When analyzing thousands of customer feedback lines, ensuring your AI doesn't hallucinate non-existent issues is vital. See my full guide on <a href="/posts/05-chatgpt-hallucination-fix" style="color: #007bff; text-decoration: underline; font-weight: bold;">how I use constraint-based prompts to force 100% factual data output</a>.
+                <strong>💡 Pro Tip:</strong> When analyzing thousands of customer feedback lines, ensuring your AI doesn't hallucinate non-existent issues is vital. See my full guide on <a href="/posts/05-chatgpt-hallucination-fix" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to use constraints and verification steps to reduce unsupported AI claims</a>.
             </p>
 
             <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stop using nested SUBSTITUTE formulas to clean messy spreadsheet data. Learn how to use Regular Expressions (Regex) in Google Sheets to parse 5,000 rows in one second.">
+    <meta name="description" content="Use REGEXEXTRACT and REGEXREPLACE to standardize emails and phone numbers in Google Sheets. Test each pattern on your own data.">
     
     <!-- 구글 서치콘솔 소유권 확인 코드 -->
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
     
-    <title>I Wasted 6 Hours Manually Cleaning Messy Lead Data. Here is the Hidden Regex Formula That Cleans 5,000 Rows in 1 Second | Tweaknook</title>
+    <title>How to Clean Messy Spreadsheet Data with Google Sheets Regex | Tweaknook</title>
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
     
@@ -21,7 +21,7 @@
       gtag('config', 'G-21E5Z191ZY');
     </script>
 
-   
+    <!-- 💡 본인의 구글 애드센스 코드를 여기에 붙여넣으세요 -->
 </head>
 <body>
 
@@ -42,7 +42,7 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">Productivity</span>
-                <h1>I Wasted 6 Hours Manually Cleaning Messy Lead Data. Here is the Hidden Regex Formula That Cleans 5,000 Rows in 1 Second</h1>
+                <h1>How to Clean Messy Spreadsheet Data with Google Sheets Regex</h1>
                 <div class="post-meta">Published on July 16, 2026 • By Tweaknook Editorial</div>
             </div>
 
@@ -65,7 +65,7 @@
                     <tr>
                         <th>Data Cleaning Challenge</th>
                         <th>Traditional Formula (Fragile)</th>
-                        <th>Google Sheets Regex (Unbreakable)</th>
+                        <th>Google Sheets Regex (Pattern-Based)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,19 +97,19 @@
                 <li><strong><code>[a-zA-Z0-9.-]+</code></strong> : This captures the domain name (like "google" or "corporate-inc").</li>
                 <li><strong><code>\.[a-zA-Z]{2,}</code></strong> : This looks for a literal dot, followed by exactly two or more letters (capturing the ".com", ".net", or ".co.uk").</li>
             </ul>
-            <p>When you hit enter, Google Sheets will instantly slice through the paragraph of raw text, grab only the perfect email address, and drop it cleanly into your new column. You can drag this formula down 5,000 rows, and it will flawlessly extract every single email in less than a second.</p>
+            <p>When you press Enter, Google Sheets extracts the first address that matches the pattern. Fill the formula down the column, then review unmatched or unusual addresses because one pattern will not cover every valid email format.</p>
 
-            <h2>Scenario 2: The Unbreakable Phone Number Standardizer</h2>
+            <h2>Scenario 2: A Phone Number Standardizer</h2>
             <p>Now we need to fix the chaotic phone numbers. We do not care if the user typed dashes, parentheses, periods, spaces, or weird emojis. We simply want to strip away every single piece of garbage and leave only the raw numeric digits (e.g., turning `(555) 123-4567` into `5551234567`).</p>
             
-            <p>Type this formula: <code>=REGEXREPLACE(A2, "[^\d]", "")</code>. This is my absolute favorite piece of code on the planet. Here is how the logic executes:</p>
+            <p>Type this formula: <code>=REGEXREPLACE(A2, "[^\d]", "")</code>. This compact pattern removes non-numeric characters. Here is how the logic executes:</p>
             <ul>
                 <li>The <code>\d</code> command means "digit" (any number from 0 to 9).</li>
                 <li>The <code>^</code> symbol inside the brackets acts as a mathematical "NOT" operator.</li>
                 <li>Therefore, <code>[^\d]</code> translates exactly to: "Any character that is NOT a number."</li>
                 <li>The final <code>""</code> tells the formula to replace those non-numbers with absolutely nothing (a blank string).</li>
             </ul>
-            <p>In exactly 15 characters of code, you have built an impenetrable filter. It will instantly nuke all parentheses, dashes, letters, spaces, and formatting artifacts, leaving you with a perfectly clean, standardized string of integers ready for database ingestion.</p>
+            <p>The pattern removes non-numeric characters and returns a digits-only value. Check country codes, extensions, leading zeros, and expected phone lengths before importing the result into another system.</p>
 
             <!-- 💡 [본문 내부 링크] 10번 글(파워쿼리 자동화)로 자연스럽게 유도 -->
             <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
@@ -117,7 +117,7 @@
             </p>
 
             <h2>Stop Treating Symptoms, Start Curing the Data</h2>
-            <p>Learning the syntax of Regular Expressions has a steeper learning curve than standard spreadsheet formulas, but the return on investment for your career is staggering. When you master Regex, you stop fighting against the symptoms of messy data and start controlling the underlying mathematical patterns. What previously took a junior analyst six hours of miserable, manual backspacing can now be executed by a single line of perfectly engineered logic in one millisecond. Stop writing fragile nested text formulas. Embrace the power of the <code>REGEX</code> command, automate your data pipeline, and reclaim your Friday afternoons.</p>
+            <p>Learning the syntax of Regular Expressions has a steeper learning curve than standard spreadsheet formulas, but the return on investment for your career is staggering. When you master Regex, you stop fighting against the symptoms of messy data and start controlling the underlying mathematical patterns. A tested regular expression can process repeated cleanup rules much faster than editing each cell manually. Stop writing fragile nested text formulas. Embrace the power of the <code>REGEX</code> command, automate your data pipeline, and reclaim your Friday afternoons.</p>
 
             <!-- ======================================================= -->
             <!-- 💡 [V4.0 프리미엄 모듈] Read Next + Author Bio + Back Button -->

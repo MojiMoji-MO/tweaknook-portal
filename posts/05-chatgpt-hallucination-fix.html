@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stop letting ChatGPT lie to you. Learn the exact anti-hallucination prompt framework to force AI to output 100% factual and verified information.">
+    <meta name="description" content="Use source requirements, uncertainty labels, and verification steps to reduce unsupported claims in AI-generated work.">
     
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>I Caught ChatGPT Lying: The Exact Prompt I Use to Stop AI Hallucinations | Tweaknook</title>
+    <title>A Verification Prompt That Helps Reduce AI Hallucinations | Tweaknook</title>
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
     
@@ -37,19 +37,19 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">AI Guides</span>
-                <h1>I Caught ChatGPT Lying in a Board Meeting. Here is the Exact Prompt I Use to Stop AI Hallucinations</h1>
+                <h1>A Verification Prompt That Helps Reduce AI Hallucinations</h1>
                 <div class="post-meta">Published on July 2, 2026 • By Tweaknook Editorial</div>
             </div>
 
             <p>Last Tuesday, I experienced the most embarrassing moment of my career. My startup's CEO asked me to pull some quick industry growth statistics for an emergency pitch deck we were presenting to potential investors. Running short on time, I asked ChatGPT to give me the projected market size for cloud computing in 2027. It confidently spit out a highly detailed paragraph with specific billions of dollars and cited a well-known research firm. I copied it, pasted it onto the slide, and we presented it.</p>
             <p>Right in the middle of the Q&A session, an investor raised his hand. He happened to be an expert in that specific sector. He looked at my slide, squinted, and said, <em>"That number is completely fabricated. That research firm never published that report."</em> My stomach dropped. I panicked. The AI had lied to my face, and I blindly trusted it. That is the day I learned a very hard lesson about a concept called "AI Hallucination."</p>
 
-            <h2>Why Your AI is Confidently Lying to You</h2>
+            <h2>Why AI Can Produce Confident but Unsupported Answers</h2>
             <p>If you are using generative AI for serious office work, you have to understand one fundamental truth: Large Language Models (LLMs) like ChatGPT, Claude, or Gemini are not search engines. They do not look up facts in a giant encyclopedia. They are essentially highly advanced autocomplete machines. Their primary goal is to predict the next logical word in a sentence, not to tell the truth.</p>
             <p>When you ask an AI for a fact it doesn't know, its programming forces it to give you an answer anyway. So, it simply invents a fact that sounds incredibly plausible. It will make up fake book titles, fake academic papers, and fake data points. If you do not put strict guardrails in place, it will eventually sabotage your work.</p>
 
             <h2>The Shift: From Requesting to Constraining</h2>
-            <p>Most people try to solve this by simply typing <em>"Don't lie"</em> at the end of their prompts. The AI ignores this. To stop hallucinations, you have to fundamentally change how you write your instructions. You need to transition from a "request-based" prompt to a "constraint-based" prompt.</p>
+            <p>Simply adding <em>"Do not invent facts"</em> at the end of a prompt is not enough. To reduce unsupported answers, define the permitted sources, require uncertainty labels, and ask for a verification checklist.</p>
             
             <table>
                 <thead>
@@ -74,7 +74,7 @@
             </table>
 
             <h2>The "Ironclad" Anti-Hallucination Framework</h2>
-            <p>After my disaster in the boardroom, I spent weeks testing different prompt structures to force the AI to admit when it didn't know something. I finally developed a template that works flawlessly. I now use this exact block of text as a system instruction before I ask the AI to summarize reports, extract data, or draft professional documents.</p>
+            <p>The template below is designed to make uncertainty visible and reduce unsupported claims. No prompt can guarantee factual accuracy, so critical numbers, names, dates, and citations must still be checked against the original source.</p>
             <p>Copy this framework and save it in your notes app:</p>
 
 <pre><code>[STRICT RULES FOR THIS TASK]
@@ -102,7 +102,7 @@ Based ONLY on the rules above, extract the Q3 revenue numbers from the text belo
             </ul>
 
             <h2>Take Control of Your Tools</h2>
-            <p>AI is the most powerful productivity tool we have ever seen, but it is also a massive liability if used blindly. Treat ChatGPT like a brilliant, fast-typing intern who occasionally makes things up to impress you. You wouldn't send an intern's report to the CEO without checking the numbers first. Do not do it with your AI. Start using constraint-based prompts today, and never get caught defending a fake statistic again.</p>
+            <p>AI is the most powerful productivity tool we have ever seen, but it is also a massive liability if used blindly. Treat ChatGPT like a brilliant, fast-typing intern who occasionally makes things up to impress you. You wouldn't send an intern's report to the CEO without checking the numbers first. Do not do it with your AI. Use constraint-based prompts as a review aid, and verify critical claims before sharing the final work.</p>
 
             <!-- 💡 [본문 내부 링크] 자연스러운 유도 -->
             <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
