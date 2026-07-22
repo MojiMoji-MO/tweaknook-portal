@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use REGEXEXTRACT and REGEXREPLACE to standardize emails and phone numbers in Google Sheets. Test each pattern on your own data.">
+    <meta name="description" content="Use REGEXEXTRACT and REGEXREPLACE to standardize emails and phone numbers in Google Sheets, then review exceptions.">
     
     <!-- 구글 서치콘솔 소유권 확인 코드 -->
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
@@ -46,88 +46,69 @@
                 <div class="post-meta">Published on July 16, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <p>Late last quarter, our inbound sales team attended a massive industry trade show. They returned to the office triumphantly holding a raw CSV file containing over 5,000 highly qualified prospective client leads. They immediately handed the file to my department with a simple request: "Please format these phone numbers and emails so we can upload them into our CRM system for the marketing broadcast tomorrow morning." I opened the spreadsheet, and my heart immediately sank into my stomach. The data was a complete disaster.</p>
-            
-            <p>Because the leads were scraped from a mix of handwritten physical forms, digital QR codes, and unformatted web inputs, there was absolutely zero structural consistency. Phone numbers looked like `(555) 123-4567`, `555.123.4567`, `555 123 4567`, and even `+1-555-123-4567 ext 402`. The email addresses were buried in the middle of long, messy text strings like: <em>"Please contact John at john.doe@corporate.com for purchasing details."</em> If you attempt to clean 5,000 rows of garbage data using standard manual methods, you will permanently damage your wrists and likely miss your Friday deadline. That afternoon, I abandoned standard Excel formulas entirely and utilized the most powerful, intimidating text-parsing tool in modern computing: <strong>Regular Expressions (Regex)</strong>.</p>
+            <p>Google Sheets includes regular-expression functions that can extract or replace text based on a pattern. They are useful for repeated cleanup, but every pattern has limits. Test formulas on a sample before applying them to an entire dataset.</p>
 
-            <h2>The Fragile Nature of Standard Cleaning Formulas</h2>
-            <p>When junior analysts encounter messy data, their first instinct is to build a massive, fragile wall of nested text formulas. To clean up the phone numbers, they will write something horrifying like <code>=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(A2, "(", ""), ")", ""), "-", ""), " ", "")</code>. They attempt to manually guess every single possible variation of a parenthesis, dash, or space, and command the computer to replace it with a blank space.</p>
-            
-            <p>This approach is fundamentally broken. What happens if a lead typed a period instead of a dash? What happens if they added an invisible line-break? Your rigid <code>SUBSTITUTE</code> formula will instantly break, leaving the messy data intact and causing your CRM database import to fail. You cannot predict every single human typo using static text replacement functions. Instead of telling the computer exactly what specific characters to delete, you must tell the computer to mathematically identify the underlying pattern.</p>
-
-            <h2>Introduction to Regular Expressions (Regex)</h2>
-            <p>Regular Expressions (commonly abbreviated as Regex) are a sequence of characters that specify a highly advanced search pattern. Originally developed in the 1950s for theoretical computer science, Regex is the universal language of string parsing. It is supported by Python, JavaScript, and critically, natively inside Google Sheets through the <code>REGEXREPLACE</code>, <code>REGEXEXTRACT</code>, and <code>REGEXMATCH</code> functions.</p>
-            
-            <p>Regex looks like absolute gibberish to the untrained eye, but it is actually a beautifully logical syntax. Instead of searching for the exact letter "A", you can command Regex to search for "any uppercase letter followed by exactly three numbers." Let's look at how utilizing Regex fundamentally crushes traditional spreadsheet functions:</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Data Cleaning Challenge</th>
-                        <th>Traditional Formula (Fragile)</th>
-                        <th>Google Sheets Regex (Pattern-Based)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Extract Email from Text</strong></td>
-                        <td>Impossible (Requires finding the "@" and guessing the length left and right).</td>
-                        <td><code>=REGEXEXTRACT(A2, "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")</code></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Strip Non-Numeric Characters</strong></td>
-                        <td>Nested <code>SUBSTITUTE</code> functions that fail on new symbols.</td>
-                        <td><code>=REGEXREPLACE(A2, "[^\d]", "")</code></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Remove Trailing/Leading Spaces</strong></td>
-                        <td><code>=TRIM(A2)</code> (Fails on invisible HTML line breaks).</td>
-                        <td><code>=REGEXREPLACE(A2, "^\s+|\s+$", "")</code></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Scenario 1: Extracting Buried Emails</h2>
-            <p>Let's solve the most difficult problem first. You have a cell (A2) containing a long paragraph of sales notes, and buried somewhere in the middle is an email address. A standard <code>FIND</code> or <code>SEARCH</code> formula will only tell you what character position the "@" symbol is located at. It will not accurately extract the whole email address.</p>
-            
-            <p>Type this formula into the adjacent cell: <code>=REGEXEXTRACT(A2, "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")</code>. Let's deconstruct this engineering marvel:</p>
+            <h2>Functions Used in This Guide</h2>
             <ul>
-                <li><strong><code>[a-zA-Z0-9._%+-]+</code></strong> : This tells the engine to look for one or more (+) characters that are lowercase letters, uppercase letters, numbers, or specific symbols (like dots or underscores). This covers everything before the "@" sign.</li>
-                <li><strong><code>@</code></strong> : This explicitly demands that the "@" symbol must be present immediately after the first block of text.</li>
-                <li><strong><code>[a-zA-Z0-9.-]+</code></strong> : This captures the domain name (like "google" or "corporate-inc").</li>
-                <li><strong><code>\.[a-zA-Z]{2,}</code></strong> : This looks for a literal dot, followed by exactly two or more letters (capturing the ".com", ".net", or ".co.uk").</li>
+                <li><code>REGEXEXTRACT</code> returns the first part of a text value that matches a pattern.</li>
+                <li><code>REGEXREPLACE</code> replaces matching text with another value.</li>
+                <li><code>REGEXMATCH</code> returns TRUE or FALSE when text matches a pattern.</li>
             </ul>
-            <p>When you press Enter, Google Sheets extracts the first address that matches the pattern. Fill the formula down the column, then review unmatched or unusual addresses because one pattern will not cover every valid email format.</p>
+            <p>Google Sheets uses the RE2 regular-expression engine, so some patterns from other programming languages may not work in the same way.</p>
 
-            <h2>Scenario 2: A Phone Number Standardizer</h2>
-            <p>Now we need to fix the chaotic phone numbers. We do not care if the user typed dashes, parentheses, periods, spaces, or weird emojis. We simply want to strip away every single piece of garbage and leave only the raw numeric digits (e.g., turning `(555) 123-4567` into `5551234567`).</p>
-            
-            <p>Type this formula: <code>=REGEXREPLACE(A2, "[^\d]", "")</code>. This compact pattern removes non-numeric characters. Here is how the logic executes:</p>
+            <h2>Example 1: Extract an Email Address</h2>
+            <p>Assume cell A2 contains:</p>
+            <pre><code>Please contact John at john.doe@example.com about the order.</code></pre>
+            <p>Use:</p>
+            <pre><code>=IFERROR(REGEXEXTRACT(A2, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"), "Review")</code></pre>
+            <p>The formula returns the first matching address. <code>IFERROR</code> places <strong>Review</strong> in rows where no match is found.</p>
+
+            <h3>Limitations</h3>
+            <p>This practical pattern does not validate every address allowed by formal email standards, and it returns only the first match. Use it for cleanup and review, not as proof that an address exists or can receive mail.</p>
+
+            <h2>Example 2: Keep Only Phone Digits</h2>
+            <p>Assume A2 contains <code>(555) 123-4567</code>. Use:</p>
+            <pre><code>=REGEXREPLACE(A2, "[^0-9]", "")</code></pre>
+            <p>The result is <code>5551234567</code>. Before importing the value into another system, check country codes, extensions, leading zeros, and required number length.</p>
+
+            <h2>Example 3: Flag Rows for Review</h2>
+            <p>For a dataset where a valid local phone number should contain exactly ten digits after cleanup, place the cleaned number in B2 and use:</p>
+            <pre><code>=IF(REGEXMATCH(B2, "^[0-9]{10}$"), "OK", "Review")</code></pre>
+            <p>This checks only the chosen ten-digit rule. It is not suitable for international numbers unless the pattern is adjusted.</p>
+
+            <h2>Example 4: Trim Repeated Spaces</h2>
+            <p>To replace runs of spaces with a single space:</p>
+            <pre><code>=TRIM(REGEXREPLACE(A2, "[[:space:]]+", " "))</code></pre>
+            <p>Test this formula with line breaks and imported web text because whitespace can vary by source.</p>
+
+            <h2>A Safer Cleanup Workflow</h2>
+            <ol>
+                <li>Keep the original column unchanged.</li>
+                <li>Place the cleanup formula in a new column.</li>
+                <li>Add a status column that flags unmatched values.</li>
+                <li>Filter the status column and review exceptions.</li>
+                <li>Copy and paste values only after confirming the output.</li>
+            </ol>
+
+            <h2>Common Mistakes</h2>
             <ul>
-                <li>The <code>\d</code> command means "digit" (any number from 0 to 9).</li>
-                <li>The <code>^</code> symbol inside the brackets acts as a mathematical "NOT" operator.</li>
-                <li>Therefore, <code>[^\d]</code> translates exactly to: "Any character that is NOT a number."</li>
-                <li>The final <code>""</code> tells the formula to replace those non-numbers with absolutely nothing (a blank string).</li>
+                <li>Using one pattern for every country or data source.</li>
+                <li>Deleting punctuation before checking whether it separates an extension.</li>
+                <li>Overwriting the original data before reviewing results.</li>
+                <li>Assuming a matching email or phone number is valid.</li>
+                <li>Forgetting that <code>REGEXEXTRACT</code> returns the first match unless capture groups are used.</li>
             </ul>
-            <p>The pattern removes non-numeric characters and returns a digits-only value. Check country codes, extensions, leading zeros, and expected phone lengths before importing the result into another system.</p>
 
-            <!-- 💡 [본문 내부 링크] 10번 글(파워쿼리 자동화)로 자연스럽게 유도 -->
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> If your raw data export is so large that Google Sheets begins to crash under the weight of the formulas, you need to transition to dedicated desktop data cleaning. See my full guide on <a href="/posts/10-excel-power-query" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to permanently automate massive daily CSV reports using Excel's hidden Power Query tool</a>.
-            </p>
+            <p>See Google's official references for <a href="https://support.google.com/docs/answer/3098244?hl=en" target="_blank" rel="noopener">REGEXEXTRACT</a> and <a href="https://support.google.com/docs/answer/3098245?hl=en" target="_blank" rel="noopener">REGEXREPLACE</a>.</p>
 
-            <h2>Stop Treating Symptoms, Start Curing the Data</h2>
-            <p>Learning the syntax of Regular Expressions has a steeper learning curve than standard spreadsheet formulas, but the return on investment for your career is staggering. When you master Regex, you stop fighting against the symptoms of messy data and start controlling the underlying mathematical patterns. A tested regular expression can process repeated cleanup rules much faster than editing each cell manually. Stop writing fragile nested text formulas. Embrace the power of the <code>REGEX</code> command, automate your data pipeline, and reclaim your Friday afternoons.</p>
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/10-excel-power-query">How to Automate Recurring CSV Cleanup with Excel Power Query</a></li>
+                    <li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li>
+                </ul>
+            </section>
 
-            <!-- ======================================================= -->
-            <!-- 💡 [V4.0 프리미엄 모듈] Read Next + Author Bio + Back Button -->
-            <!-- ======================================================= -->
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/10-excel-power-query" style="text-decoration: none; color: #007bff;">Stop Formatting CSV Files Every Morning: How I Automate Daily Reports in 1 Click</a>
-                </h3>
-            </div>
 
             <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
                 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
@@ -139,7 +120,7 @@
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
                 <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
             </div>
-            <!-- ======================================================= -->
+
         </article>
     </main>
 

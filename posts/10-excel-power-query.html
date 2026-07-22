@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stop wasting time formatting CSV files every morning. Learn how to use Excel's hidden Power Query tool to automate your daily data cleaning with one click.">
+    <meta name="description" content="Create a repeatable Power Query workflow for importing, cleaning, and refreshing recurring CSV reports in Excel.">
     
     <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>Stop Formatting CSV Files Every Morning: How I Automate Daily Reports in 1 Click | Tweaknook</title>
+    <title>How to Automate Recurring CSV Cleanup with Excel Power Query | Tweaknook</title>
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
     
@@ -37,81 +37,72 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">Productivity</span>
-                <h1>Stop Formatting CSV Files Every Morning: How I Automate Daily Reports in 1 Click</h1>
+                <h1>How to Automate Recurring CSV Cleanup with Excel Power Query</h1>
                 <div class="post-meta">Published on July 7, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <p>Every morning at 8:30 AM, my old routine was exactly the same. I would log into our company's CRM, download the daily sales export as a messy CSV file, and open it in Excel. Then the robotic work began: delete columns B and F, change the date format from European to US standard, filter out the blank rows, and convert the revenue column into a currency format. It took me exactly 15 minutes of furious clicking.</p>
-            <p>Fifteen minutes doesn't sound like much, but multiply that by five days a week, and I was wasting over 60 hours a year just highlighting columns and pressing the delete key. I tried recording standard Excel Macros, but they kept breaking every time the raw data had a different number of rows. Finally, I discovered the most powerful, underutilized tool built directly into Excel: <strong>Power Query</strong>. Today, my 15-minute morning routine takes exactly one second.</p>
+            <p>Power Query is useful when the same type of CSV report arrives repeatedly and requires the same cleanup steps. Instead of editing each file manually, you define the transformations once and refresh the query when new data is available.</p>
 
-            <h2>What is Power Query?</h2>
-            <p>If you have never heard of Power Query, you are not alone. Microsoft hid it deep inside the "Data" ribbon, but it is fundamentally changing how businesses handle data. Think of Power Query as a smart, automated assembly line for your spreadsheets.</p>
-            <p>Instead of manually changing the raw data file, Power Query acts as a bridge. It looks at your messy CSV file, applies a strict set of cleaning instructions that you define (like deleting columns or fixing dates), and then spits out a perfectly clean, formatted table in a brand new sheet. The best part? It remembers every single step permanently.</p>
+            <h2>Before You Start</h2>
+            <p>This workflow works best when each CSV uses the same column structure. Make a backup of the original file and test the query with a copy before using it for an important report.</p>
 
-            <h2>The Vicious Cycle of Manual Formatting</h2>
-            <p>To understand why this is a lifesaver, look at the fundamental difference in how data workflows operate:</p>
+            <h2>Step 1: Import the CSV</h2>
+            <ol>
+                <li>Open Excel and select <strong>Data</strong>.</li>
+                <li>Select <strong>Get Data</strong> → <strong>From File</strong> → <strong>From Text/CSV</strong>.</li>
+                <li>Choose the CSV file.</li>
+                <li>Confirm the delimiter and character encoding in the preview.</li>
+                <li>Select <strong>Transform Data</strong> to open Power Query Editor.</li>
+            </ol>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Workflow Step</th>
-                        <th>The Manual Method (Old Way)</th>
-                        <th>The Power Query Method (New Way)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Step 1: Download</strong></td>
-                        <td>Save new CSV to desktop.</td>
-                        <td>Save new CSV to a specific folder, overwriting the old one.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Step 2: Clean Data</strong></td>
-                        <td>Manually delete columns, format numbers, and filter rows.</td>
-                        <td>Skipped. (Power Query remembers the rules).</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Step 3: Update Report</strong></td>
-                        <td>Copy and paste the clean data into the master dashboard.</td>
-                        <td>Open master file, click "Refresh All". You are done.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Step 2: Record the Cleanup Steps</h2>
+            <p>Each change appears in the <strong>Applied Steps</strong> panel. Common cleanup steps include:</p>
+            <ul>
+                <li>Removing columns that are not needed.</li>
+                <li>Renaming headings to consistent names.</li>
+                <li>Changing text, date, and number data types.</li>
+                <li>Filtering blank or invalid rows.</li>
+                <li>Splitting a combined column by a delimiter.</li>
+                <li>Trimming extra spaces from text.</li>
+            </ul>
+            <p>Check data types carefully. An automatically detected date or decimal type may be wrong when the file uses a different regional format.</p>
 
-            <h2>How to Build Your First Automated Query</h2>
-            <p>You do not need to know a single line of VBA code to set this up. The interface is completely visual. Follow these exact steps to build your first automation bridge.</p>
+            <h2>Step 3: Load the Result</h2>
+            <p>Select <strong>Home</strong> → <strong>Close &amp; Load</strong>. Excel loads the transformed result into a table while keeping the original CSV unchanged.</p>
 
-            <h3>1. Connect the Data Source</h3>
-            <p>Open a blank Excel workbook. This will become your new "Master Report." Go to the <strong>Data</strong> tab on the top ribbon, click <strong>Get Data</strong>, select <strong>From File</strong>, and choose <strong>From Text/CSV</strong>. Browse your computer and select that messy daily export file you downloaded.</p>
+            <h2>Step 4: Refresh with New Data</h2>
+            <p>If the next CSV replaces the previous file at the same path and keeps the same name, use <strong>Data</strong> → <strong>Refresh All</strong>. Power Query reads the new source and repeats the recorded transformations.</p>
+            <p>If every report has a different filename, use the <strong>From Folder</strong> connector instead. That workflow can combine files with the same structure and refresh when new files are added to the folder.</p>
 
-            <h3>2. Transform the Data</h3>
-            <p>A preview window will pop up. Do not click "Load." Instead, click the <strong>Transform Data</strong> button. This opens the Power Query Editor—a completely separate window that looks like a lighter version of Excel.</p>
-            <p>Now, just do the things you normally do: right-click a column header to remove it, click the data type icon next to a header to change it to "Currency," or use the dropdown arrows to filter out "Null" values. Notice the panel on the right side called <em>"Applied Steps"</em>. Every click you make is being recorded there as a permanent rule. If you make a mistake, just click the red 'X' next to the step to undo it.</p>
+            <h2>Common Refresh Problems</h2>
+            <h3>Source file not found</h3>
+            <p>The file was moved, renamed, or stored on a drive that is not connected. Open <strong>Data Source Settings</strong> or edit the Source step to select the correct location.</p>
 
-            <h3>3. Close and Load</h3>
-            <p>Once the data looks absolutely perfect, click the <strong>Close & Load</strong> button in the top left corner. Power Query will magically pull the data through your assembly line rules and drop a beautiful, formatted green table into your Excel sheet.</p>
+            <h3>Column not found</h3>
+            <p>The latest CSV changed a heading. Compare the new file with the sample used to create the query and update the affected step.</p>
 
-            <h2>The One-Click Magic Trick</h2>
-            <p>Here is where the magic happens. Tomorrow morning, when you download the new daily sales CSV, do not open it. Just save it into the exact same folder with the exact same file name as yesterday, overwriting the old file.</p>
-            <p>Then, open your Master Report Excel file. Go to the Data tab and click the giant <strong>Refresh All</strong> button. Power Query will reach into the folder, grab the new file, run it through all your cleaning rules in milliseconds, and update your screen with the fresh data. Just like that, you bought yourself 15 minutes to go grab a coffee.</p>
+            <h3>Numbers load as text</h3>
+            <p>Check the delimiter, decimal separator, and locale used by the Changed Type step. Convert the column only after confirming how the source represents numbers.</p>
 
-            <h2>Take Control of Your Mornings</h2>
-            <p>Manual data entry and formatting are the enemies of deep, strategic work. If you find yourself clicking the same buttons in Excel every single day, you are functioning as a human software script. Take 20 minutes this afternoon to build a Power Query connection for your most annoying report. Once you experience the satisfaction of the one-click refresh, you will start looking for ways to automate every spreadsheet in your office.</p>
+            <h2>Safe Operating Checklist</h2>
+            <ul>
+                <li>Keep untouched source files in an archive folder.</li>
+                <li>Review row counts before and after filtering.</li>
+                <li>Check a few sample records after each refresh.</li>
+                <li>Document expected column names and data types.</li>
+                <li>Do not assume a refresh succeeded just because no error window appeared.</li>
+            </ul>
 
-            <!-- 💡 [본문 내부 링크] 자연스러운 유도 -->
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> Now that Power Query is automatically cleaning your data, you can seamlessly send it to other departments in real-time. Check out my guide on <a href="/posts/04-importrange-dashboard" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to build an automated Google Sheets dashboard using IMPORTRANGE</a>.
-            </p>
+            <p>Microsoft documents Power Query as Excel's data connection and transformation technology. See <a href="https://support.microsoft.com/en-us/excel/about-power-query-in-excel" target="_blank" rel="noopener">About Power Query in Excel</a> for current availability and features.</p>
 
-            <!-- ======================================================= -->
-            <!-- 💡 [V4.0 프리미엄 모듈] Read Next + Author Bio + Back Button -->
-            <!-- ======================================================= -->
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/01-vlookup-guide" style="text-decoration: none; color: #007bff;">Why I Stopped Using VLOOKUP (And What I Use Instead)</a>
-                </h3>
-            </div>
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li>
+                    <li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
+                </ul>
+            </section>
+
 
             <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
                 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
@@ -123,7 +114,7 @@
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
                 <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
             </div>
-            <!-- ======================================================= -->
+
         </article>
     </main>
 
