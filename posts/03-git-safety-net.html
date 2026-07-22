@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Accidentally deleted a local Git branch or executed a hard reset? Learn how to use git reflog to recover your lost work instantly.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>How to Recover Deleted Git Commits | Tweaknook</title>
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." name="description"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>Recover Deleted Git Commits with Reflog | Tweaknook</title>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -19,115 +18,87 @@
     </script>
 </head>
 <body>
-
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">Tech Tips</span>
-                <h1>Don't Panic: How to Recover "Permanently" Deleted Git Commits and Branches</h1>
-                <div class="post-meta">Published on June 30, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>It’s a nightmare scenario for any developer: you are cleaning up your local repository, and you accidentally delete the wrong branch. Or worse, you run a <code>git reset --hard</code> on the wrong commit, vaporizing a whole day's worth of unpushed source code. Your heart drops, and you assume the work is gone forever.</p>
-            <p>But here is the golden rule of Git: **Git almost never loses data.** Even if a commit is no longer visible in your normal logs, it is usually still floating around in the background database for up to 30 to 90 days. Today, we’re going to look at the ultimate developer safety net: <strong>Git Reflog</strong>.</p>
-
-            <h2>What is Git Reflog?</h2>
-            <p>While <code>git log</code> shows you a clean timeline of the commits that belong to your active branch, <code>git reflog</code> (Reference Logs) keeps track of *everything* your HEAD pointer has ever touched. Whether you checked out a branch, made a commit, amended a message, or performed a hard reset, reflog records every single action chronologically.</p>
-
-            <h2>How to Rescue Your Deleted Commit</h2>
-            <p>If you just wiped out your code with a hard reset, do not close your terminal. Follow these quick steps to pull it back from the grave:</p>
-            
-            <h3>Step 1: Open the Reference History</h3>
-            <p>Type the following command into your terminal project directory:</p>
-            <pre><code>git reflog</code></pre>
-            <p>You will see a list of entries that looks like this:</p>
-            <pre><code>a1b2c3d HEAD@{0}: reset: moving to HEAD~1
-e5f6g7h HEAD@{1}: commit: Added complete checkout layout feature
-9j8k7l6 HEAD@{2}: checkout: moving from main to dev</code></pre>
-
-            <h3>Step 2: Locate the Missing Hash</h3>
-            <p>Look at the action descriptions. In the example above, <code>HEAD@{1}</code> is the exact point right *before* the accidental reset happened. The alphanumeric string at the start (<code>e5f6g7h</code>) is the commit hash code we need.</p>
-
-            <h3>Step 3: Point Your Branch Back to Safety</h3>
-            <p>To safely recover the code without destroying any current file state, you can create a temporary branch right from that lost hash point:</p>
-            <pre><code>git checkout -b rescue-branch e5f6g7h</code></pre>
-            <p>Boom! Switch to your editor, and you will find all your "permanently deleted" files sitting there exactly as they were before the panic ensued.</p>
-
-            <h2>When Reflog Won't Save You</h2>
-            <p>As powerful as this utility is, it does have one critical limitation you must remember:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Scenario</th>
-                        <th>Can Reflog Recover It?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Committed files deleted by a hard reset</strong></td>
-                        <td>Yes (100% recoverable)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Deleted local branch that was never pushed</strong></td>
-                        <td>Yes (Via branch commit history)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Untracked files deleted *before* any commit</strong></td>
-                        <td>No (Git never tracked them)</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Conclusion</h2>
-            <p>Accidents happen to even the most senior engineers. The difference between a junior and a senior developer is knowing how to use Git's internal safety mechanics to undo mistakes without rewriting code from scratch. Keep calm, type <code>git reflog</code>, and get your code back safely.</p>
-      
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> Now that your code is safe, you can start automating your repetitive tasks. Discover <a href="/posts/07-python-file-renamer" style="color: #007bff; text-decoration: underline; font-weight: bold;">how a 5-line Python script can bulk rename hundreds of files in 2 seconds</a>.
-            </p>
-
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/07-python-file-renamer" style="text-decoration: none; color: #007bff;">I Wasted 3 Hours Renaming 500 Files. Here is the 2-Second Fix</a>
-                </h3>
-            </div>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
-                </p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
-            </div>
-            </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content"><div style="margin-bottom: 30px;">
+<span class="post-category">Tech Tips</span>
+<h1>How to Recover a Deleted Git Commit or Branch with Reflog</h1>
+<div class="post-meta">Published on June 30, 2026 • Updated on July 23, 2026 • By Tweaknook Editorial</div>
+</div>
+<p>A deleted local branch or an accidental <code>git reset --hard</code> does not always mean the commit is gone. Git usually records recent movements of <code>HEAD</code> in the local reflog, which can help you find the previous commit and create a rescue branch.</p>
+<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
+<strong>Important:</strong> Reflog is local to your repository. It cannot recover an untracked file that was never committed or stashed, and old entries may eventually expire.
+</div>
+<h2>Step 1: Check the Recent Reference History</h2>
+<p>Open a terminal inside the affected repository and run:</p>
+<pre><code>git reflog</code></pre>
+<p>A simplified result may look like this:</p>
+<pre><code>a1b2c3d HEAD@{0}: reset: moving to HEAD~1
+e5f6a7b HEAD@{1}: commit: Add checkout layout
+9a8b7c6 HEAD@{2}: checkout: moving from main to dev</code></pre>
+<p>The values at the left are abbreviated commit hashes. In this example, <code>e5f6a7b</code> is the commit immediately before the reset.</p>
+<h2>Step 2: Inspect the Commit Before Restoring It</h2>
+<p>Confirm that the commit contains the work you expect:</p>
+<pre><code>git show e5f6a7b</code></pre>
+<p>Review the author, date, message, and changed files before continuing.</p>
+<h2>Step 3: Create a Rescue Branch</h2>
+<p>Create a new branch at the recovered commit instead of moving your current branch immediately:</p>
+<pre><code>git switch -c rescue-branch e5f6a7b</code></pre>
+<p>On older Git versions, use:</p>
+<pre><code>git checkout -b rescue-branch e5f6a7b</code></pre>
+<p>Your recovered work is now attached to <code>rescue-branch</code>. You can test it and then merge or cherry-pick the commit into the correct branch.</p>
+<h2>Recover a Deleted Local Branch</h2>
+<p>If a branch was deleted but its commit still appears in reflog, recreate it with:</p>
+<pre><code>git branch recovered-work e5f6a7b</code></pre>
+<p>This creates the branch without changing your current working branch.</p>
+<h2>What Reflog Can and Cannot Recover</h2>
+<table>
+<thead><tr><th>Situation</th><th>Typical result</th></tr></thead>
+<tbody>
+<tr><td>Committed work removed by a reset</td><td>Often recoverable while the reflog entry and Git object still exist</td></tr>
+<tr><td>Deleted local branch</td><td>Often recoverable if its commit can be found</td></tr>
+<tr><td>Untracked file never committed or stashed</td><td>Not recoverable through Git reflog</td></tr>
+<tr><td>Repository copied to another computer</td><td>The original computer's reflog is not transferred by a normal clone</td></tr>
+</tbody>
+</table>
+<h2>Safer Habits for Future Work</h2>
+<ul>
+<li>Create a temporary branch before destructive resets.</li>
+<li>Use <code>git status</code> before deleting or resetting.</li>
+<li>Commit or stash important work before major changes.</li>
+<li>Push important branches to a remote repository as an additional copy.</li>
+</ul>
+<p>Reflog is a useful recovery tool, but it is not a substitute for commits and remote backups. The safest approach is to inspect the reflog, verify the target commit, and recover it into a new branch.</p>
+<p><strong>Official reference:</strong> <a href="https://git-scm.com/docs/git-reflog" rel="noopener noreferrer" target="_blank">Git reflog documentation</a></p>
+<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI tools, and everyday technology.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+</div></article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/about">About Us</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact Us</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>
