@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stop renaming files manually. Learn how a simple 5-line Python script can bulk rename hundreds of documents or images in just 2 seconds.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>I Wasted 3 Hours Renaming 500 Files. Here is the 5-Line Python Script That Does It in 2 Seconds | Tweaknook</title>
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." name="description"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Safely Bulk Rename Files with Python | Tweaknook</title>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -19,136 +18,117 @@
     </script>
 </head>
 <body>
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content"><div style="margin-bottom: 30px;">
+<span class="post-category">Productivity</span>
+<h1>How to Safely Bulk Rename Files with Python</h1>
+<div class="post-meta">Published on July 4, 2026 • Updated on July 23, 2026 • By Tweaknook Editorial</div>
+</div>
+<p>Python can rename a large group of files in sequence, but a safe script should do more than attach a new name. It should ignore folders, preserve each file extension, preview the changes, and reduce the chance of filename collisions.</p>
+<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
+<strong>Before starting:</strong> Copy a few sample files into a test folder. Do not run a new renaming script on your only copy of important files.
+</div>
+<h2>Step 1: Install Python</h2>
+<p>Download Python from the official Python website. On Windows, enable the option to add Python to <code>PATH</code> during installation. Then open Command Prompt and verify the installation:</p>
+<pre><code>python --version</code></pre>
+<h2>Step 2: Save This Script Outside the Target Folder</h2>
+<p>Create a file named <code>safe_renamer.py</code> on your Desktop. Replace the example folder path and prefix, then paste this code:</p>
+<pre><code>from pathlib import Path
 
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
+folder = Path(r"C:\Users\YourName\Desktop\ProductPhotos")
+prefix = "SUMMER_COLLECTION"
 
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">Productivity</span>
-                <h1>I Wasted 3 Hours Renaming 500 Files. Here is the 5-Line Python Script That Does It in 2 Seconds</h1>
-                <div class="post-meta">Published on July 4, 2026 • By Tweaknook Editorial</div>
-            </div>
+files = sorted(
+    (item for item in folder.iterdir() if item.is_file()),
+    key=lambda item: item.name.lower()
+)
 
-            <p>Last Thursday, our external marketing agency sent over a massive ZIP file containing 500 new product photos. The problem? Every single file was named something completely useless like "IMG_9921_final_v2_edit.jpg". The e-commerce manager came to my desk and told me I needed to rename all 500 of them to match our internal inventory system (e.g., "SUMMER_COLLECTION_001") by 5:00 PM so they could be uploaded to the website.</p>
-            <p>I started doing it manually. I clicked the first file, pressed F2, typed the new name, and hit Enter. Then I did the second one. Then the third. After 50 files and a cramping wrist, I looked at the clock. I realized this mind-numbing task was going to take me at least three hours of continuous typing. I stopped what I was doing, opened my code editor, and wrote a simple five-line Python script. Two seconds later, all 500 files were perfectly renamed in sequential order. Here is exactly how you can do it too, even if you have never coded in your life.</p>
+if not files:
+    raise SystemExit("No files were found in the selected folder.")
 
-            <h2>You Do Not Need to Be a Developer to Use Python</h2>
-            <p>When normal office workers hear the word "Python," they imagine a dark room with a hacker typing furiously on multiple screens. That is a myth. Python is just a tool, exactly like Excel or a calculator. You do not need a computer science degree to use it for basic office automation.</p>
-            <p>Before writing my script, I considered downloading a bulk file renaming software from the internet. But let's look at why that is a terrible idea for your productivity and computer security.</p>
+plan = []
+for number, old_path in enumerate(files, start=1):
+    new_name = f"{prefix}_{number:03d}{old_path.suffix}"
+    plan.append((old_path, folder / new_name))
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Method</th>
-                        <th>Speed</th>
-                        <th>Safety & Security Risk</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Manual F2 Renaming</strong></td>
-                        <td>Extremely slow (Hours)</td>
-                        <td>High risk of human typo errors.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Free Bulk Renamer Software</strong></td>
-                        <td>Fast</td>
-                        <td>High risk. Often bundled with adware or malware.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>5-Line Python Script</strong></td>
-                        <td>Instant (2 Seconds)</td>
-                        <td>100% Safe. You control the exact logic.</td>
-                    </tr>
-                </tbody>
-            </table>
+print("Planned changes:")
+for old_path, new_path in plan:
+    print(f"{old_path.name}  -&gt;  {new_path.name}")
 
-            <h2>Step 1: The One-Time Setup</h2>
-            <p>If you do not have Python installed on your work computer, go to the official Python website and download the latest version. During the installation, there is one crucial step: <strong>You must check the box that says "Add Python to PATH"</strong> before clicking install. This allows your computer to understand Python commands from any folder. That is it. You are ready to automate.</p>
+answer = input("Type YES to rename these files: ")
+if answer != "YES":
+    raise SystemExit("No files were changed.")
 
-            <h2>Step 2: The Magic 5-Line Script</h2>
-            <p>Open a basic text editor on your computer (Notepad on Windows or TextEdit on Mac is perfectly fine). Copy and paste the following block of code directly into the blank document:</p>
+# Temporary names prevent source and destination names from colliding.
+temporary_plan = []
+for number, (old_path, new_path) in enumerate(plan, start=1):
+    temp_path = folder / f".__tweaknook_temp_{number}{old_path.suffix}"
+    if temp_path.exists():
+        raise FileExistsError(f"Temporary file already exists: {temp_path}")
+    old_path.rename(temp_path)
+    temporary_plan.append((temp_path, new_path))
 
-<pre><code>import os
+for temp_path, new_path in temporary_plan:
+    if new_path.exists():
+        raise FileExistsError(f"Target file already exists: {new_path}")
+    temp_path.rename(new_path)
 
-folder_path = r"C:\Users\YourName\Desktop\ProductPhotos"
-prefix = "SUMMER_COLLECTION_"
+print(f"Renamed {len(files)} files.")</code></pre>
+<h2>Step 3: Run the Script</h2>
+<p>Open Command Prompt, move to the folder containing the script, and run:</p>
+<pre><code>python safe_renamer.py</code></pre>
+<p>The script first prints every planned change. Files are renamed only after you type <code>YES</code>.</p>
+<h2>What the Script Does Safely</h2>
+<ul>
+<li><strong>Files only:</strong> Subfolders are ignored.</li>
+<li><strong>Extensions preserved:</strong> A PNG remains PNG and a PDF remains PDF.</li>
+<li><strong>Predictable order:</strong> Files are sorted by their current names.</li>
+<li><strong>Preview first:</strong> You can stop before any change is made.</li>
+<li><strong>Two-stage rename:</strong> Temporary names reduce collisions when old and new names overlap.</li>
+</ul>
+<h2>Important Limitations</h2>
+<p>The script does not understand which photo or document should receive a specific business identifier. It only assigns numbers according to filename order. Review the preview carefully and keep a backup until you confirm the result.</p>
+<p>If the process stops during the temporary rename stage, some files may keep names beginning with <code>.__tweaknook_temp_</code>. Do not delete them; rename them manually or restore from your test copy.</p>
+<h2>Customizing the Name</h2>
+<p>Change the prefix:</p>
+<pre><code>prefix = "CLIENT_DOCUMENT"</code></pre>
+<p>Change the number width from <code>001</code> to <code>0001</code>:</p>
+<pre><code>new_name = f"{prefix}_{number:04d}{old_path.suffix}"</code></pre>
 
-for index, filename in enumerate(os.listdir(folder_path)):
-    old_file = os.path.join(folder_path, filename)
-    new_file = os.path.join(folder_path, f"{prefix}{index+1}.jpg")
-    os.rename(old_file, new_file)</code></pre>
-
-            <p>Save this file to your desktop and name it <code>renamer.py</code>. Make sure it ends in <code>.py</code> and not <code>.txt</code>.</p>
-
-            <h2>Step 3: Translating the Code into Plain English</h2>
-            <p>I never want you to run code you do not understand. Let me break down exactly what these five lines are doing behind the scenes so you can customize them for your own projects.</p>
-            <ul>
-                <li><strong>Line 1 (import os):</strong> This simply wakes up Python's internal file manager. It gives the script permission to look at your computer's folders.</li>
-                <li><strong>Line 3 (folder_path):</strong> This is where you tell the script where your messy files are living. You just replace my example path with the actual location of your folder. The <code>r</code> before the quote just tells Python to read the path exactly as it is written.</li>
-                <li><strong>Line 4 (prefix):</strong> This is the new name you want to give everything. In my case, it was "SUMMER_COLLECTION_".</li>
-                <li><strong>Line 6 (for loop):</strong> The <code>os.listdir</code> command grabs every single file in your folder. The <code>enumerate</code> command is the secret sauce—it automatically assigns a number (1, 2, 3...) to each file as it goes down the list.</li>
-                <li><strong>Line 9 (os.rename):</strong> The script takes the old ugly filename, attaches your new prefix to the new number, slaps a ".jpg" at the end, and hits save. It does this 500 times in the blink of an eye.</li>
-            </ul>
-
-            <h2>How to Avoid the "Double Extension" Error</h2>
-            <p>There is one common mistake beginners make when using this script. If your original files already have their extensions showing (like <code>image.jpg</code>) and you accidentally tell the script to add another <code>.jpg</code>, you will end up with files named <code>SUMMER_COLLECTION_1.jpg.jpg</code>. This will break the file.</p>
-            <p>To prevent this, always run the script on a small batch of 5 test files first. Create a dummy folder, copy 5 files into it, and point your <code>folder_path</code> to that dummy folder. If the result looks perfect, point it to the main folder with the 500 files and let it rip.</p>
-
-            <h2>Buy Back Your Time</h2>
-            <p>Your brain is highly paid to solve complex business problems, analyze trends, and communicate with clients. You are not being paid to act like a robot pressing the F2 key for three hours straight. The next time you face a massive list of files, data rows, or folders that need organizing, do not reach for your mouse. Reach for a Python script. It might take you ten minutes to set up the first time, but it will save you hundreds of hours over the rest of your career.</p>
-
-            <!-- 💡 [본문 내부 링크] 자연스러운 유도 -->
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> Automating file names saves hours, but a sluggish PC can still ruin your workflow. If your computer is freezing during heavy scripts, take two minutes to learn <a href="/posts/06-laptop-speed-fix" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to clear 20GB of hidden junk using native Windows tools</a>.
-            </p>
-
-            <!-- ======================================================= -->
-            <!-- 💡 [V4.0 프리미엄 모듈] Read Next + Author Bio + Back Button -->
-            <!-- ======================================================= -->
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/06-laptop-speed-fix" style="text-decoration: none; color: #007bff;">My Work Laptop Froze Mid-Presentation. Here is the 2-Minute Fix</a>
-                </h3>
-            </div>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
-                </p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
-            </div>
-            <!-- ======================================================= -->
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<h2>Use a Small Test Before the Real Folder</h2>
+<p>Create a temporary folder containing copies of several file types, including names that already resemble the planned output. Run the script, inspect the preview, and open the renamed files afterward. This confirms that the folder path, sort order, prefix, and extensions behave as expected before you use the script on a larger collection.</p>
+<p>Keep the original folder unchanged until the renamed set has been checked. The script is designed to reduce common naming mistakes, but it cannot decide which file should receive a particular business label.</p>
+<p><strong>Official reference:</strong> <a href="https://docs.python.org/3/library/pathlib.html" rel="noopener noreferrer" target="_blank">Python pathlib documentation</a></p>
+<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/24-powershell-duplicate-finder"><strong>How to Find Duplicate Files with PowerShell and Export a Report</strong></a> — Review duplicate files before reorganizing a large folder.</li><li><a href="/posts/25-excel-power-query-folder-merge"><strong>How to Combine Files from a Folder with Excel Power Query</strong></a> — Turn consistently named source files into a refreshable dataset.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI tools, and everyday technology.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+</div></article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/about">About Us</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact Us</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>

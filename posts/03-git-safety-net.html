@@ -80,8 +80,13 @@ e5f6a7b HEAD@{1}: commit: Add checkout layout
 <li>Push important branches to a remote repository as an additional copy.</li>
 </ul>
 <p>Reflog is a useful recovery tool, but it is not a substitute for commits and remote backups. The safest approach is to inspect the reflog, verify the target commit, and recover it into a new branch.</p>
+
+<h2>If the Commit Does Not Appear</h2>
+<p>First confirm that the terminal is open in the correct repository. Then check references from all local branches with:</p>
+<pre><code>git reflog --all</code></pre>
+<p>A reflog entry may be missing if the work was never committed or stashed, the recovery is being attempted on a different computer, or the entry has expired. Avoid running cleanup commands while you are still investigating because unreachable Git objects can eventually be removed.</p>
 <p><strong>Official reference:</strong> <a href="https://git-scm.com/docs/git-reflog" rel="noopener noreferrer" target="_blank">Git reflog documentation</a></p>
-<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/15-windows-robocopy-backup"><strong>How to Create a Safer One-Way Backup with Robocopy</strong></a> — Create a simple Windows file copy before making risky changes.</li><li><a href="/posts/24-powershell-duplicate-finder"><strong>How to Find Duplicate Files with PowerShell and Export a Report</strong></a> — Audit matching files without automatically deleting them.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI tools, and everyday technology.</p>
 </div>
