@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Provide table and column definitions to improve AI-generated SQL, then validate every query in a safe test or read-only environment.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    
-    <title>How to Draft SQL Queries with AI Using a Database Schema | Tweaknook</title>
+    <meta name="description" content="Use a sanitized database schema, read-only access, query limits, and execution-plan review when drafting SQL with AI.">
+
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
+
+    <title>How to Draft SQL with AI Without Exposing Production Data | Tweaknook</title>
+    <link rel="canonical" href="https://tweaknook.com/posts/20-ai-sql-queries">
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
-    
+
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,12 +22,11 @@
       gtag('config', 'G-21E5Z191ZY');
     </script>
 
-<!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense site verification and ad delivery -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+         crossorigin="anonymous"></script>
 </head>
 <body>
-
     <header class="container">
         <div class="header-top">
             <a href="/" style="text-decoration: none;">
@@ -42,102 +44,198 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">AI Guides</span>
-                <h1>How to Draft SQL Queries with AI Using a Database Schema</h1>
+                <h1>How to Draft SQL with AI Without Exposing Production Data</h1>
                 <div class="post-meta">Published on July 17, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <p>In modern corporate environments, data is the ultimate currency. Whether you are a product manager trying to understand user retention, a digital marketer analyzing campaign conversion rates, or an executive tracking quarterly revenue, you need raw data to make informed strategic decisions. However, in most mid-to-large-sized companies, that valuable data is securely locked inside a massive relational database like PostgreSQL, Snowflake, or Amazon Redshift. To extract anything meaningful from these systems, you must speak the database's native, highly structured language: Structured Query Language (SQL). For years, my complete inability to write complex SQL meant I was entirely dependent on our internal data engineering team.</p>
-            
-            <p>Whenever I needed a specific custom report—for instance, "How many premium users in the European sector downgraded their accounts in the last thirty days?"—I had to submit a formal Jira ticket. The workflow was agonizingly slow. I would submit the ticket on Monday morning, but the data team was always buried under a massive backlog of executive requests and broken server pipelines. My simple reporting ticket would sit completely ignored in the queue until Thursday. By the time I finally received the CSV file containing the data I requested, the market opportunity had often passed, or the weekly strategy meeting was already over. I tried to learn SQL on my own using online bootcamps, and while I could easily master basic SELECT commands, I quickly hit a brick wall. Real-world business data requires multi-layered JOINs, complex GROUP BY aggregations, nested subqueries, and advanced Window functions. It is a full-time engineering discipline. I realized that my professional value was not in writing syntax, but in knowing what business questions to ask. That was the day I stopped writing SQL and built an ironclad AI prompting framework to write it for me.</p>
+            <p>AI can help draft a SQL query, explain a join, or suggest test cases. It cannot know whether a query is safe for a specific production database unless the schema, permissions, data volume, business definitions, and database engine are reviewed by a qualified person.</p>
 
-            <h2>The Danger of Generic Database Prompts</h2>
-            <p>The concept of using artificial intelligence to write code is not new. Most office workers have already tried pasting a desperate request into ChatGPT, Claude, or Gemini, saying something generic like, <em>"Write a SQL query that gives me last month's European sales figures."</em> However, a generic request often produces SQL that does not match the actual database schema. The AI will instantly generate a beautifully formatted block of SQL code, but when you copy and paste it into your company's database client, it will immediately throw a fatal syntax error.</p>
-            
-            <p>Why does this happen? Because the AI is operating completely blind. It does not know how your specific corporate database is architecturally structured. It does not know that your company named the sales table <code>tbl_eu_revenue_2026</code> instead of just <code>sales</code>. It does not know that geographic region codes are stored as integers instead of text strings. When the AI lacks this critical underlying context, it confidently hallucinates table names, invents non-existent columns, and applies incorrect mathematical data types. Blindly running hallucinated SQL code is not just frustrating; it is highly dangerous. If the AI writes a mathematically flawed JOIN statement that accidentally duplicates transaction rows, you might end up presenting a report that overstates corporate revenue by millions of dollars. To use AI effectively, you must completely eliminate its ability to guess.</p>
+            <p>The safest workflow keeps secrets and production data out of the prompt, requests a read-only draft, validates the SQL in a controlled environment, and checks the execution plan before a query is used on important data.</p>
 
-            <h2>The Solution: Architectural Schema Injection</h2>
-            <p>To transform a Large Language Model from a guessing machine into a senior database administrator, you must utilize a strict technique called "Schema Injection." A database schema is essentially the blueprint or architectural map of your database. It lists every table name, every column header, and the specific data type (like Integer, VARCHAR, Date, or Boolean) stored within those columns.</p>
+            <h2>Do Not Paste a Production Database Dump</h2>
+
+            <p>A useful SQL prompt usually needs table names, column names, data types, relationships, and business definitions. It usually does not need real customer rows, passwords, connection strings, private hostnames, access tokens, or confidential values.</p>
+
+            <p>Create a sanitized schema description:</p>
+
+            <pre><code>Database engine: PostgreSQL 18
+
+Table: customers
+- customer_id: bigint, primary key
+- created_at: timestamp with time zone
+- country_code: text
+- status: text
+
+Table: orders
+- order_id: bigint, primary key
+- customer_id: bigint, foreign key to customers.customer_id
+- ordered_at: timestamp with time zone
+- total_amount: numeric(12,2)
+- order_status: text
+
+Business definitions:
+- Completed order: order_status = 'completed'
+- New customer: first completed order occurred in the requested period
+
+Indexes:
+- orders(customer_id)
+- orders(ordered_at)
+- orders(order_status)</code></pre>
+
+            <p>Use fictional values when an example row is necessary. Keep sensitive column names out of the prompt when they do not affect the query.</p>
+
+            <h2>State the Database Engine and Version</h2>
+
+            <p>SQL syntax and behavior differ across PostgreSQL, MySQL, SQL Server, SQLite, BigQuery, Snowflake, and other systems. Specify the engine and, when relevant, the version. Ask the model not to mix dialects.</p>
+
+            <h2>Define the Result Before Asking for SQL</h2>
+
+            <p>Write the business question in testable terms:</p>
+
+            <ul>
+                <li>Which date range applies?</li>
+                <li>Which timezone is used?</li>
+                <li>Are canceled or refunded records excluded?</li>
+                <li>What makes a row unique?</li>
+                <li>Should missing values be excluded or grouped?</li>
+                <li>What is the maximum acceptable result size?</li>
+            </ul>
+
+            <p>“Show monthly sales” is incomplete. “Return completed-order revenue by calendar month in UTC for 2026, excluding refunded orders” is easier to verify.</p>
+
+            <h2>Use a Safety-Constrained Prompt</h2>
+
+            <pre><code>You are drafting PostgreSQL 18 SQL for review.
+
+Use only the sanitized schema and business definitions below.
+
+Task:
+Return completed-order revenue by calendar month in UTC for 2026.
+
+Requirements:
+- Produce one SELECT statement or a read-only WITH query.
+- Do not use INSERT, UPDATE, DELETE, MERGE, TRUNCATE, DROP, ALTER, CREATE, GRANT, or REVOKE.
+- Do not use SELECT *.
+- Use explicit table aliases and qualified column names.
+- Include a deterministic ORDER BY.
+- Explain the join keys, filters, grouping, and null handling.
+- State assumptions separately.
+- Provide three test cases with expected behavior.
+- Provide an EXPLAIN command, but do not use EXPLAIN ANALYZE.
+- Do not invent tables, columns, indexes, or business rules.
+
+Sanitized schema:
+[PASTE APPROVED SCHEMA]
+
+Business definitions:
+[PASTE APPROVED DEFINITIONS]</code></pre>
+
+            <p>Requesting read-only syntax reduces risk, but it does not make the query automatically safe. A SELECT can still be expensive, expose restricted data, create locks in some workflows, or return more rows than intended.</p>
+
+            <h2>Review the Draft Before Running It</h2>
 
             <table>
-                <thead>
-                    <tr>
-                        <th>AI Prompt Strategy</th>
-                        <th>AI Operational Behavior</th>
-                        <th>Execution Success Rate</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Check</th><th>Question</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Generic Natural Language</strong></td>
-                        <td>Guesses table names and hallucinates variables.</td>
-                        <td>0% (Fatal Syntax Errors)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Providing One Table Name</strong></td>
-                        <td>Writes basic queries but fails at complex joins.</td>
-                        <td>30% (Data Inaccuracy)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Full Schema Injection</strong></td>
-                        <td>Functions as a Senior DBA. Uses exact corporate variables.</td>
-                        <td><strong>Improved, but requires testing</strong></td>
-                    </tr>
+                    <tr><td>Objects</td><td>Do every table and column exist in the target environment?</td></tr>
+                    <tr><td>Join cardinality</td><td>Could the join multiply rows unexpectedly?</td></tr>
+                    <tr><td>Filters</td><td>Are date boundaries, statuses, tenants, and permissions correct?</td></tr>
+                    <tr><td>Null behavior</td><td>Will NULL values be excluded or grouped as intended?</td></tr>
+                    <tr><td>Aggregation</td><td>Is the metric calculated at the correct grain?</td></tr>
+                    <tr><td>Output</td><td>Does the query have a limit during testing?</td></tr>
+                    <tr><td>Dialect</td><td>Does every function belong to the stated database engine?</td></tr>
                 </tbody>
             </table>
-            
-            <p>You only need to ask your data engineering team for this blueprint once. Ask them to securely export the Data Definition Language (DDL) or simply provide a text-based list of the core tables you frequently use for reporting. Once you possess this architectural map, you inject it directly into the AI's system prompt. Providing this boundary gives the AI better context about your data structure. It knows exactly which columns to join, which tables to query, and which data types to filter against.</p>
 
-            <h2>A Structured SQL Generation Prompt</h2>
-            <p>This is the exact operational framework I use multiple times a day to bypass the engineering queue and pull my own data in seconds. Save this master prompt to your digital notes application. You will replace the bracketed schema section with your actual company's table structures.</p>
+            <h2>Test with a Small, Non-Production Dataset</h2>
 
-<pre><code>[ROLE]
-You are a Senior Database Administrator specializing in highly optimized PostgreSQL queries. Your objective is to draft SQL that follows the schema and constraints provided below.
+            <p>Create representative test rows that cover normal and edge cases:</p>
 
-[DATABASE SCHEMA]
-Table 1: 'users' (Columns: user_id INT, signup_date DATE, region_code VARCHAR, subscription_tier VARCHAR)
-Table 2: 'transactions' (Columns: transaction_id INT, user_id INT, payment_amount DECIMAL, transaction_date DATE, status VARCHAR)
+            <ul>
+                <li>A customer with one completed order</li>
+                <li>A customer with several orders</li>
+                <li>A canceled or refunded order</li>
+                <li>A row exactly on each date boundary</li>
+                <li>A missing optional value</li>
+                <li>Two rows that could be duplicated by an incorrect join</li>
+            </ul>
 
-[STRICT CONSTRAINTS]
-1. ANTI-HALLUCINATION: You must ONLY use the exact tables and columns provided in the schema above. Do not invent, guess, or assume any column names.
-2. JOINS: Always use explicit JOINs with proper ON clauses when combining data.
-3. DOCUMENTATION: Add clear, inline SQL comments (--) explaining the logic behind your aggregations and joins.
-4. OUTPUT: Return ONLY the raw SQL code block. Do not include conversational filler, greetings, or post-generation explanations.
+            <p>Compare the result with a manually calculated expectation. A query that runs without a syntax error can still return the wrong business answer.</p>
 
-[BUSINESS QUESTION]
-Write a query to find the total sum of successful payments generated from the 'EU' region_code in Q3 of 2026, grouped by the user's subscription_tier. Sort the results in descending order by revenue.</code></pre>
+            <h2>Use Read-Only Access</h2>
 
-            <h2>Deconstructing the Engineering Logic</h2>
-            <p>These constraints reduce the chance of invented tables and columns. They do not guarantee correct joins, filters, permissions, or business logic, so the query must be reviewed and tested before use. It can no longer invent a generic <code>revenue</code> column; it is forced to locate and utilize your highly specific <code>payment_amount</code> column.</p>
-            
-            <p>Constraint #3 is equally critical for corporate accountability. By forcing the AI to add inline SQL comments explaining its mathematical logic, you can easily review and audit the code before executing it. If the AI utilizes a <code>LEFT JOIN</code> instead of an <code>INNER JOIN</code>, the inline comment will explain exactly why it made that specific architectural decision. This technical transparency ensures that you can confidently explain the data methodology if a senior executive questions your final revenue report.</p>
+            <p>Run review queries with the narrowest database role available. In PostgreSQL, a read-only transaction restricts commands that modify non-temporary tables, but permissions and platform behavior still need administrator review.</p>
 
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> Once a reviewed SQL query extracts the raw data, you will often need to clean and standardize the resulting CSV file before presenting it to external stakeholders. Instead of wasting hours manually deleting formatting errors, read my guide on <a href="/posts/19-google-sheets-regex" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to clean repeated spreadsheet patterns using Google Sheets Regular Expressions (Regex)</a>.
-            </p>
+            <pre><code>BEGIN READ ONLY;
 
-            <h2>The Workflow Revolution</h2>
-            <p>Deploying this AI framework will fundamentally alter your professional operational velocity. When your department director asks for a highly complex, multi-variable customer churn report, you no longer have to apologize and say, "I will submit an IT ticket and hopefully get back to you next week." You simply open your AI terminal, paste your master schema prompt, type your business question in plain English, and review the SQL in a read-only or test environment before running it against production data.</p>
+-- Run the reviewed SELECT query here.
 
-            <p>You can execute complex data extraction in five seconds without knowing a single line of actual SQL syntax. By automating the technical translation layer, you completely eliminate administrative bottlenecks and empower yourself to become a truly data-driven, independent strategic leader. Stop waiting for other people to pull your data. Take permanent ownership of your analytics, feed your schema to the AI, and start making high-impact decisions today.</p>
+ROLLBACK;</code></pre>
 
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/19-google-sheets-regex" style="text-decoration: none; color: #007bff;">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a>
-                </h3>
-            </div>
+            <p>Do not assume that adding a transaction makes every query harmless. Long-running reads can still consume resources, and database-specific commands may behave differently.</p>
+
+            <h2>Inspect the Execution Plan</h2>
+
+            <p>Use the database's plan tool before running a large query. For PostgreSQL:</p>
+
+            <pre><code>EXPLAIN
+SELECT ...;</code></pre>
+
+            <p><code>EXPLAIN</code> shows the planned operations without executing the query. <code>EXPLAIN ANALYZE</code> executes the statement, so do not use it casually on an unreviewed or expensive query.</p>
+
+            <p>Look for unexpected full-table scans, very large row estimates, repeated nested loops, and joins that do not use the expected keys. A database specialist should review high-impact plans.</p>
+
+            <h2>Apply a Test Limit Deliberately</h2>
+
+            <p>A LIMIT can reduce returned rows during development, but it does not necessarily reduce all work performed before the limit. Keep the date range narrow, filter early where logically correct, and test against a staging dataset that resembles production scale.</p>
+
+            <h2>Protect Tenant and Row-Level Boundaries</h2>
+
+            <p>For multi-tenant or restricted systems, include the approved tenant, organization, region, or access filter. Do not rely on the AI tool to infer security boundaries from table names. Confirm row-level security and permissions in the actual database.</p>
+
+            <h2>Do Not Use AI Output as a Migration Script</h2>
+
+            <p>Schema changes, data corrections, deletes, and migrations require backups, change review, rollback planning, testing, and authorization. Generate destructive or write-capable SQL only inside an established engineering process, not as a direct copy-and-run instruction from a chat response.</p>
+
+            <h2>Official PostgreSQL References</h2>
+
+            <p>PostgreSQL documents <a href="https://www.postgresql.org/docs/current/sql-set-transaction.html" target="_blank" rel="noopener">read-only transaction behavior</a>, <a href="https://www.postgresql.org/docs/current/using-explain.html" target="_blank" rel="noopener">using EXPLAIN</a>, and <a href="https://www.postgresql.org/docs/current/tutorial-transactions.html" target="_blank" rel="noopener">transaction concepts</a>. Use the official documentation for the database engine and version you actually run.</p>
+
+            <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Never paste credentials, connection strings, private customer rows, production dumps, or restricted schema details into an unapproved AI service. Do not run generated SQL on production until it has been reviewed and tested under appropriate permissions.</p>
+
+            <h2>A Controlled Workflow</h2>
+
+            <ol>
+                <li>Write the business definition.</li>
+                <li>Prepare a sanitized schema.</li>
+                <li>Request read-only SQL and assumptions.</li>
+                <li>Review objects, joins, filters, and null behavior.</li>
+                <li>Test on representative non-production data.</li>
+                <li>Inspect the execution plan.</li>
+                <li>Run with least-privilege access.</li>
+                <li>Compare the output with an independent check.</li>
+            </ol>
+
+            <p>AI is most useful here as a drafting and explanation aid. Database safety still comes from controlled access, explicit definitions, testing, and accountable review.</p>
+
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
+                    <li><a href="/posts/23-excel-power-pivot-dax">How to Analyze Large Excel Data with Power Pivot and DAX</a></li>
+                    <li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
+                </ul>
+            </section>
 
             <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
                 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
-                </p>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
             </div>
 
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
             </div>
-            </article>
+        </article>
     </main>
 
     <footer>

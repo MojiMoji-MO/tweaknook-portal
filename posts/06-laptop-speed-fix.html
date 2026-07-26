@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use temporary-file cleanup and Storage Sense to recover disk space with built-in Windows tools. The amount of space recovered varies by device.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>How to Free Up Disk Space with Built-In Windows Tools | Tweaknook</title>
+    <meta name="description" content="Free up disk space in Windows with Storage settings, Cleanup recommendations, Storage Sense, and a review process that avoids deleting important files.">
+
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
+
+    <title>How to Free Up Disk Space Safely in Windows | Tweaknook</title>
+    <link rel="canonical" href="https://tweaknook.com/posts/06-laptop-speed-fix">
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
-    
+
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,12 +22,11 @@
       gtag('config', 'G-21E5Z191ZY');
     </script>
 
-<!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense site verification and ad delivery -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+         crossorigin="anonymous"></script>
 </head>
 <body>
-
     <header class="container">
         <div class="header-top">
             <a href="/" style="text-decoration: none;">
@@ -41,98 +44,160 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">Tech Tips</span>
-                <h1>How to Free Up Disk Space with Built-In Windows Tools</h1>
+                <h1>How to Free Up Disk Space Safely in Windows</h1>
                 <div class="post-meta">Published on July 3, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <p>Two months ago, I was leading a critical quarterly review meeting with the executive team. I had my screen shared on the conference room projector, ready to walk them through a massive data model. I clicked to open the Excel file, and my mouse cursor turned into that dreaded spinning blue circle. Then, a highly embarrassing notification popped up in the bottom right corner of my screen: <em>"Your disk is almost full. Save your work to avoid losing data."</em></p>
-            <p>The entire laptop completely locked up. I had to force-reboot the machine while five directors stared at me in awkward silence. When I finally got back to my desk, I frantically started deleting old PDF reports and heavy images, but it barely made a dent. My C: drive was bleeding red. That is when I discovered the harsh truth: the real storage killers are not your work files. They are the invisible system cache files that Windows secretly hoards over time.</p>
+            <p>Low disk space can interrupt Windows updates, prevent applications from saving files, and make everyday work less predictable. The safest cleanup process begins with Windows storage tools, shows what each category contains, and gives you a chance to review files before deletion.</p>
 
-            <h2>The Trap of Third-Party "PC Cleaners"</h2>
-            <p>When most office workers experience a slow computer, they immediately go to Google and download a free "PC Optimizer" or "Junk Cleaner" software. I used to do this too. I highly advise you to stop doing this immediately.</p>
-            <p>Some third-party cleanup tools add background processes, advertising, or aggressive cleanup options. Windows already includes tools that can remove temporary files and manage storage without installing additional software.</p>
+            <p>Avoid starting with random “PC cleaner” applications or manually deleting folders inside Windows, Program Files, or AppData. Those methods can remove files that applications or the operating system still need. The amount of space recovered varies by device, so measure the result rather than expecting a fixed number.</p>
 
-            <h2>Method 1: Nuking the Hidden Temp Folder</h2>
-            <p>Every time you open an application, browse the web, or extract a ZIP file, Windows creates temporary files. The problem is that Windows is terrible at cleaning up after itself. These files pile up for years, eating away at your precious SSD space and slowing down file indexing.</p>
-            <p>The steps below remove temporary files. Review the selection before deleting, and skip any file that Windows reports as currently in use.</p>
+            <h2>Check Which Drive Is Actually Full</h2>
+
             <ol>
-                <li>Hold down the <strong>Windows Key</strong> and press <strong>R</strong> to open the Run dialog box.</li>
-                <li>Type exactly <code>%temp%</code> into the box and hit Enter.</li>
-                <li>A folder will open containing hundreds or thousands of weirdly named files.</li>
-                <li>Press <strong>Ctrl + A</strong> to select every single file in that folder.</li>
-                <li>Press <strong>Shift + Delete</strong> to permanently bypass the recycle bin and obliterate them.</li>
+                <li>Open <strong>File Explorer</strong>.</li>
+                <li>Select <strong>This PC</strong>.</li>
+                <li>Review the free space shown for each drive.</li>
+                <li>Note whether the Windows system drive, usually C:, is the one running low.</li>
             </ol>
-            <p>If a warning pops up saying "The action can't be completed because the file is open in another program," just check the box that says "Do this for all current items" and click <strong>Skip</strong>. The amount of space recovered depends on update files, browser caches, and how long the device has been in use.</p>
 
-            <h2>Method 2: Automating with Storage Sense</h2>
-            <p>Manually deleting temp files is great for emergencies, but I hate doing manual maintenance. Thankfully, Windows 10 and 11 have a brilliant, hidden feature called Storage Sense that does this automatically in the background. Most IT departments forget to turn this on when they issue new laptops.</p>
+            <p>Storage Sense operates on the system drive. If another internal or external drive is full, review that drive separately through Windows Storage settings or File Explorer.</p>
+
+            <h2>Protect Important Files Before Cleanup</h2>
+
+            <p>Before removing anything, confirm that current documents, photos, project folders, and browser downloads are backed up or stored where intended. If a cloud-sync application is moving or deleting files, allow it to finish before starting a large cleanup.</p>
+
+            <p>Create a restore point if you plan to uninstall drivers or make system changes. A restore point is not a backup of personal files, so it should not replace a separate copy of important data.</p>
+
+            <h2>Step 1: Review Windows Storage Categories</h2>
+
+            <ol>
+                <li>Open <strong>Start</strong> → <strong>Settings</strong>.</li>
+                <li>Select <strong>System</strong> → <strong>Storage</strong>.</li>
+                <li>Wait for Windows to calculate storage usage.</li>
+                <li>Open the largest categories to understand what is using space.</li>
+            </ol>
+
+            <p>Common categories include Installed apps, Temporary files, Documents, Pictures, Other, and cloud-synced content. A large “Other” category is a signal to inspect folders, not permission to delete unfamiliar files.</p>
+
+            <h2>Step 2: Use Cleanup Recommendations</h2>
+
+            <p>On supported versions of Windows, open <strong>Settings</strong> → <strong>System</strong> → <strong>Storage</strong> → <strong>Cleanup recommendations</strong>. Windows may suggest temporary files, large or unused files, cloud-synced files, and unused applications.</p>
+
+            <p>Review each item individually. Pay special attention to these categories:</p>
 
             <table>
-                <thead>
-                    <tr>
-                        <th>Maintenance Type</th>
-                        <th>Third-Party Cleaners (Avoid)</th>
-                        <th>Windows Storage Sense (Use)</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Category</th><th>What to check before removal</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Cost</strong></td>
-                        <td>Usually requires a paid subscription.</td>
-                        <td>Included with Windows.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Resource Usage</strong></td>
-                        <td>Heavy. Drains laptop battery life.</td>
-                        <td>Zero. Runs silently during idle time.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Safety Risk</strong></td>
-                        <td>High. Known to break registry keys.</td>
-                        <td>Completely safe and officially supported.</td>
-                    </tr>
+                    <tr><td>Downloads</td><td>Confirm installers, invoices, exports, and attachments are no longer needed</td></tr>
+                    <tr><td>Recycle Bin</td><td>Open it and restore anything deleted accidentally</td></tr>
+                    <tr><td>Previous Windows installation</td><td>Removing it may prevent returning to the previous Windows version</td></tr>
+                    <tr><td>Large or unused files</td><td>Check ownership, backup status, and whether another application references them</td></tr>
+                    <tr><td>Cloud-synced files</td><td>Confirm they remain available online and that offline access is not required</td></tr>
                 </tbody>
             </table>
 
-            <p>To activate it, hit the Windows key, type "Storage Settings," and hit Enter. Toggle the switch for <strong>Storage Sense</strong> to the "On" position. Click on "Configure Storage Sense" right below it. I set mine to run <em>Every Week</em>, and I command it to automatically delete files in my Recycle Bin and Downloads folder if they have been sitting there for over 30 days. It can reduce repeated low-disk warnings, but it does not replace regular storage checks or backups.</p>
+            <p>Do not select every checkbox automatically. The space estimate is useful, but the value of the files matters more than the number shown.</p>
 
-            <h2>Method 3: The Advanced Command Prompt Cleanup</h2>
-            <p>If you have run major Windows Updates recently, your system is likely holding onto massive gigabytes of old installation files just in case you want to downgrade. To wipe these out safely, we use a slightly more advanced trick. You will feel like a hacker doing this, but it is incredibly easy.</p>
-            <p>Click your Start menu, type <code>cmd</code>, right-click on "Command Prompt," and select "Run as administrator." Once the black screen appears, type this exact command and hit Enter:</p>
-            <pre><code>cleanmgr /sageset:1</code></pre>
-            <p>This opens a special, hidden version of the Disk Cleanup tool with advanced options. Check every single box in the list (especially "Windows Update Cleanup") and click OK. Then, go back to your black command prompt screen and type:</p>
-            <pre><code>cleanmgr /sagerun:1</code></pre>
-            <p>Sit back and let it run. It might take about ten minutes, but this specific command digs deep into the system architecture and safely removes massive update remnants that standard disk cleanup cannot touch.</p>
+            <h2>Step 3: Configure Storage Sense Carefully</h2>
 
-            <h2>Final Thoughts</h2>
-            <p>Since implementing this quick three-step routine, my laptop boots up faster, Excel stops freezing during large data merges, and I never have to worry about crashing during a presentation. Take ten minutes this Friday afternoon to run these native tools. Your machine will thank you, and you will never need to install questionable cleaning software ever again.</p>
+            <p>Storage Sense can remove temporary files and manage items in the Recycle Bin. Open <strong>Settings</strong> → <strong>System</strong> → <strong>Storage</strong> → <strong>Storage Sense</strong>.</p>
 
-            <!-- 💡 [본문 내부 링크] 자연스러운 유도 -->
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> Cleaning up your PC is great, but what if you accidentally delete critical work code during a manual cleanup? If you use version control, you need to know <a href="/posts/03-git-safety-net" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to recover "permanently" deleted Git commits</a> before panic sets in.
-            </p>
+            <p>Review these settings:</p>
 
-            <!-- ======================================================= -->
-            <!-- 💡 [V4.0 프리미엄 모듈] Read Next + Author Bio + Back Button -->
-            <!-- ======================================================= -->
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/03-git-safety-net" style="text-decoration: none; color: #007bff;">Don't Panic: How to Recover "Permanently" Deleted Git Commits</a>
-                </h3>
-            </div>
+            <ul>
+                <li>How often Storage Sense runs</li>
+                <li>When Recycle Bin items are removed</li>
+                <li>Whether the Downloads folder is included</li>
+                <li>Whether cloud content can become online-only after a period of inactivity</li>
+            </ul>
+
+            <p>Leave Downloads set to “Never” unless the folder is already used as temporary storage and important files are moved elsewhere. If you travel or work without reliable internet, be cautious about making cloud files online-only.</p>
+
+            <h2>Step 4: Uninstall Applications You No Longer Use</h2>
+
+            <ol>
+                <li>Open <strong>Settings</strong> → <strong>Apps</strong> → <strong>Installed apps</strong>.</li>
+                <li>Sort by size if that option is available.</li>
+                <li>Identify applications you recognize and no longer need.</li>
+                <li>Check whether the application stores local projects, plugins, or license data.</li>
+                <li>Use the application's uninstall option.</li>
+            </ol>
+
+            <p>Do not uninstall hardware drivers, security software, system components, or workplace applications simply because their names are unfamiliar. Search the publisher and purpose first, or ask the device administrator.</p>
+
+            <h2>Step 5: Find Large Personal Files</h2>
+
+            <p>Videos, virtual-machine images, game installers, phone backups, archives, and repeated exports often use more space than temporary files. Use Windows Storage categories or File Explorer to review large personal folders.</p>
+
+            <p>For each large file, choose one action:</p>
+
+            <ul>
+                <li>Keep it on the device because it is actively used</li>
+                <li>Move it to a verified external drive</li>
+                <li>Keep it in approved cloud storage and make the local copy online-only</li>
+                <li>Delete it after confirming that no other copy or workflow depends on it</li>
+            </ul>
+
+            <p>Moving files to an external drive creates storage space, but it is not automatically a backup if the external drive is the only remaining copy.</p>
+
+            <h2>Step 6: Use Disk Cleanup on Older Systems</h2>
+
+            <p>If Cleanup recommendations are unavailable, search Windows for <strong>Disk Cleanup</strong>. Select the system drive, review each category, and use <strong>Clean up system files</strong> only after reading the descriptions.</p>
+
+            <p>The same caution applies to previous Windows installations and Downloads. A cleanup tool can identify removable categories, but it cannot know whether a personal file is valuable to you.</p>
+
+            <h2>Folders You Should Not Delete Manually</h2>
+
+            <p>Do not remove files directly from these locations as a general cleanup method:</p>
+
+            <pre><code>C:\Windows
+C:\Program Files
+C:\Program Files (x86)
+C:\ProgramData
+C:\Users\YourName\AppData</code></pre>
+
+            <p>Do not manually delete <code>pagefile.sys</code>, <code>hiberfil.sys</code>, driver folders, component stores, or recovery partitions. Use Windows settings and documented system tools when a feature such as hibernation must be changed.</p>
+
+            <h2>Verify the Result</h2>
+
+            <ol>
+                <li>Restart Windows after a substantial cleanup.</li>
+                <li>Open the applications used for current work.</li>
+                <li>Confirm cloud files and external-drive files are accessible.</li>
+                <li>Check the Recycle Bin before emptying it.</li>
+                <li>Return to <strong>This PC</strong> and record the new free-space value.</li>
+            </ol>
+
+            <p>If free space drops again quickly, investigate the growth source. Browser downloads, video editing caches, cloud sync conflicts, Windows update files, and application logs can refill a drive. Repeatedly deleting files without identifying the source is not a sustainable fix.</p>
+
+            <h2>Official Microsoft References</h2>
+
+            <p>Microsoft provides current instructions for <a href="https://support.microsoft.com/en-us/windows/free-up-drive-space-in-windows-85529ccb-c365-490d-b548-831022bc9b32" target="_blank" rel="noopener">freeing drive space in Windows</a> and <a href="https://support.microsoft.com/en-us/windows/manage-drive-space-with-storage-sense-654f6ada-7bfc-45e5-966b-e24aded96ad5" target="_blank" rel="noopener">managing drive space with Storage Sense</a>.</p>
+
+            <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Do not permanently delete a file because Windows labels it large or old. Confirm what it is, who owns it, where its backup is stored, and whether another person or application still uses it.</p>
+
+            <h2>A Safer Maintenance Routine</h2>
+
+            <p>Review Storage once a month, keep the Downloads folder intentional, configure Recycle Bin retention conservatively, and archive large completed projects to verified storage. Regular review is safer than an emergency cleanup performed when the drive is completely full.</p>
+
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/27-chrome-notification-spam">How to Stop Website Notification Spam in Chrome</a></li>
+                    <li><a href="/posts/09-chrome-memory-saver">How to Find What Is Using Memory in Chrome and Reduce It</a></li>
+                    <li><a href="/posts/28-google-drive-organization">How to Organize Google Drive Without Disrupting Shared Files</a></li>
+                </ul>
+            </section>
 
             <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
                 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
-                </p>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
             </div>
 
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
             </div>
-            <!-- ======================================================= -->
         </article>
     </main>
 

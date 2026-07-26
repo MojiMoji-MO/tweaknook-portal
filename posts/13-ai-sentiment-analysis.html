@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use a consistent schema to classify sentiment, category, urgency, and action items from customer feedback.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>How to Analyze Customer Feedback with a Structured AI Prompt | Tweaknook</title>
+    <meta name="description" content="Create a customer-feedback classification scheme, test it on a reviewed sample, and use AI to draft sentiment, category, urgency, and action fields.">
+
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
+
+    <title>How to Classify Customer Feedback with AI and Check the Results | Tweaknook</title>
+    <link rel="canonical" href="https://tweaknook.com/posts/13-ai-sentiment-analysis">
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
-    
+
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,12 +22,11 @@
       gtag('config', 'G-21E5Z191ZY');
     </script>
 
-<!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense site verification and ad delivery -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+         crossorigin="anonymous"></script>
 </head>
 <body>
-
     <header class="container">
         <div class="header-top">
             <a href="/" style="text-decoration: none;">
@@ -41,107 +44,196 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">AI Guides</span>
-                <h1>How to Analyze Customer Feedback with a Structured AI Prompt</h1>
+                <h1>How to Classify Customer Feedback with AI and Check the Results</h1>
                 <div class="post-meta">Published on July 10, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <p>Every Monday morning, our customer success team used to face a massive, exhausting task. They had to export the previous week's customer feedback logs—usually consisting of 800 to 1,200 raw comments, support tickets, and App Store reviews—into a giant spreadsheet. Two junior analysts would then spend the next six hours reading every single comment manually. Their job was to label each review as "Positive," "Neutral," or "Negative" and categorize the core complaint, such as "Pricing," "Bug Report," or "UI Confusion."</p>
-            <p>By Monday afternoon, the analysts were completely drained, and the resulting report was often riddled with human errors due to sheer mental fatigue. Worse, because the manual reading took so long, our development team didn't find out about critical server bugs until hours after they were reported. I realized that using expensive human brains to read and tag repetitive rows of text is a massive waste of organizational talent. Today, we process thousands of feedback rows in under ten seconds using one beautifully structured AI framework. Here is exactly how to set it up.</p>
+            <p>AI can help organize a large feedback queue, but a polished label is not proof that the classification is correct. Useful feedback analysis begins with a defined category scheme, a reviewed sample, and a process for routing uncertain or high-impact cases to a person.</p>
 
-            <h2>The Limitation of Human Coding vs. AI</h2>
-            <p>In data analytics, sorting qualitative text data into buckets is known as "sentiment classification." Historically, companies had to choose between paying a human team to do it slowly, or hiring a data scientist to write a complex Python script using natural language processing (NLP) libraries like NLTK or SpaCy.</p>
-            <p>While Python scripts are fast, they struggle with human nuance. For example, if a customer leaves a sarcastic review like, <em>"Oh great, another update that breaks my layout. Fantastic job guys,"</em> a traditional keyword-matching script will see the words "great" and "fantastic" and mistakenly label the review as highly positive. Large Language Models (LLMs), however, possess an advanced semantic understanding of tone, sarcasm, and human emotion, making them useful for reviewing tone and organizing large text collections.</p>
+            <p>This guide treats AI output as a draft classification. It does not claim a fixed accuracy rate because results vary with the model, language, product vocabulary, class balance, prompt, and quality of the source text.</p>
 
-            <h2>The Workflow Efficiency Breakdown</h2>
-            <p>Let's look at how utilizing a structured prompt fundamentally transforms the speed and accuracy of operational feedback loops:</p>
+            <h2>Define the Decision the Labels Will Support</h2>
+
+            <p>Do not classify feedback merely because a model can produce labels. Decide what action each field will support.</p>
 
             <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Manual Human Sorting</th>
-                        <th>Keyword Python Script</th>
-                        <th>Structured LLM Prompt</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Field</th><th>Purpose</th><th>Example action</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Processing Speed</strong></td>
-                        <td>6 Hours per 1,000 rows</td>
-                        <td>3 Seconds</td>
-                        <td>Varies by model and batch size</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Sarcasm & Nuance</strong></td>
-                        <td>95% Accurate</td>
-                        <td>40% Accurate (Fails)</td>
-                        <td>93% Accurate</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Setup Complexity</strong></td>
-                        <td>None (High ongoing labor cost)</td>
-                        <td>High (Requires a developer)</td>
-                        <td>Zero (Requires 1 good prompt)</td>
-                    </tr>
+                    <tr><td>Sentiment</td><td>Describe expressed tone</td><td>Monitor changes across a release</td></tr>
+                    <tr><td>Category</td><td>Identify the subject</td><td>Route to billing, product, or support</td></tr>
+                    <tr><td>Urgency</td><td>Estimate time sensitivity</td><td>Place service outages above general suggestions</td></tr>
+                    <tr><td>Action</td><td>Suggest the next review step</td><td>Request logs, issue refund review, or add to research</td></tr>
                 </tbody>
             </table>
 
-            <h2>The Bulk Classification Prompt Template</h2>
-            <p>To analyze customer text without getting back a wall of useless conversational fluff, you must force the AI to act as a strict data parser. The secret trick is demanding the output in a clean, structured table format that you can immediately copy and paste straight back into your master Excel sheet or Google Sheets database.</p>
-            <p>Copy this exact system instruction block into your workflow:</p>
+            <p>Sentiment and urgency are not the same. A calm message can describe a serious account-access problem, while an angry message may concern a minor preference.</p>
 
-<pre><code>[ROLE]
-You are an advanced B2B Sentiment Analysis Assistant. Your sole purpose is to process raw customer feedback text and output a strictly structured evaluation table.
+            <h2>Create a Small, Clear Taxonomy</h2>
 
-[CONSTRAINTS]
-1. Do not include any introductory sentences, polite greetings, or explanations.
-2. Evaluate each review through two exact metrics: Sentiment (Positive, Neutral, Negative) and Primary Category (Bug, Feature Request, Pricing, Customer Service, General UI).
-3. If a review contains deep sarcasm, evaluate the true underlying intent, not the literal words.
+            <p>Start with categories that are distinct and connected to real owners. Example:</p>
 
-[OUTPUT FORMAT]
-You must return a raw Markdown table with exactly four columns: ID, Sentiment, Primary Category, and 1-Sentence Action Item.
+            <pre><code>Account access
+Billing and payment
+Bug report
+Feature request
+Performance
+Documentation
+Usability
+Other / unclear</code></pre>
 
-| ID | Sentiment | Primary Category | 1-Sentence Action Item |
-|---|---|---|---|
+            <p>For each category, write a one-sentence definition and at least one boundary example. If reviewers cannot consistently distinguish two categories, the AI tool will not fix the taxonomy.</p>
 
-[DATA TO EVALUATE]
-ID 1: "The new checkout screen is so confusing, it took me three tries to enter my card. Fix this!"
-ID 2: "Amazing app, saved my team 5 hours this week. Love the clean design."
-ID 3: "Wow, wonderful job updating the app. Now it crashes every time I open the dashboard. Brilliant."</code></pre>
+            <h2>Define Urgency with Observable Rules</h2>
 
-            <h2>Deconstructing the Prompt's Success</h2>
-            <p>Let's break down why this prompt is highly effective. First, the <strong>Constraints</strong> explicitly wipe out the AI's tendency to write fluff like "Sure, here is the analysis you requested." This allows you to process thousands of words without cluttering your token bandwidth. </p>
-            <p>Second, the predefined categories (Bug, Pricing, etc.) prevent the AI from creating fifty different random labels, which would ruin your sorting columns. Finally, by forcing the AI to create a "1-Sentence Action Item," it converts raw feedback into draft action items that can be reviewed before sharing with product or support teams.</p>
+            <p>A simple urgency scheme can be:</p>
 
-            <h2>Scaling Up with API and CSV Uploads</h2>
-            <p>If you are processing 20 reviews, copying and pasting them directly into a standard chat window is perfectly fine. But what if you have 1,000 rows? If you paste too much text at once, you run the risk of exceeding the model's single-turn generation capacity.</p>
-            <p>To scale this efficiently, utilize the Advanced Data Analysis features in premium AI tiers. Convert your feedback Excel sheet into a standard <code>.csv</code> file, upload the file directly, and command the AI to: <em>"Read the column labeled 'Feedback Text', apply the sentiment analysis prompt rules, append the results as three new columns to the original data, and provide a download link to the updated CSV file."</em> The AI will execute the logic behind the scenes and give you back a completed, fully coded spreadsheet in seconds.</p>
+            <ul>
+                <li><strong>Critical:</strong> Widespread outage, active security concern, or inability to access essential service</li>
+                <li><strong>High:</strong> A blocked workflow with no practical workaround</li>
+                <li><strong>Normal:</strong> A problem with a workaround or a non-blocking defect</li>
+                <li><strong>Low:</strong> General suggestion, preference, or long-term request</li>
+            </ul>
 
-            <h2>Turn Data into Fuel</h2>
-            <p>Customer feedback is the single most valuable asset your company possesses, but it is completely useless if it sits rotting in a massive, unread spreadsheet log. Automating the first-pass categorization can shorten the time between customer feedback and internal review. Stop wasting valuable analyst hours reading text one row at a time. Deploy a structured sentiment prompt this week, clear out your feedback queues, and spend your energy actually building a better product.</p>
+            <p>Adjust these definitions to the actual service-level policy. Do not allow the AI output to trigger refunds, account suspension, disciplinary action, or another consequential decision without authorized human review.</p>
 
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> When analyzing thousands of customer feedback lines, ensuring your AI doesn't hallucinate non-existent issues is vital. See my full guide on <a href="/posts/05-chatgpt-hallucination-fix" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to use constraints and verification steps to reduce unsupported AI claims</a>.
-            </p>
+            <h2>Prepare a Reviewed Test Set</h2>
 
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/11-ai-pdf-data-extraction" style="text-decoration: none; color: #007bff;">Stop Reading 50-Page PDFs: The Exact AI Prompt to Extract Critical Work Data</a>
-                </h3>
-            </div>
+            <p>Select a representative sample that includes short comments, long comments, mixed sentiment, multiple issues, misspellings, and messages that do not fit the taxonomy. Remove personal information that is not needed.</p>
+
+            <p>Have an authorized reviewer assign the expected labels and record disagreements. The test set becomes the reference for comparing prompt versions. It should not be built only from easy examples.</p>
+
+            <h2>Use a Structured Classification Prompt</h2>
+
+            <pre><code>Classify each customer feedback item using only the definitions below.
+
+CATEGORY DEFINITIONS
+- Account access: Login, password reset, verification, or locked account
+- Billing and payment: Charges, invoices, refunds, payment methods
+- Bug report: Existing feature behaves incorrectly
+- Feature request: User asks for a new capability
+- Performance: Speed, timeout, resource use, or reliability
+- Documentation: Help content is missing, unclear, or incorrect
+- Usability: Workflow is confusing but not technically broken
+- Other / unclear: No category fits or information is insufficient
+
+URGENCY DEFINITIONS
+- Critical: Widespread outage, active security concern, or essential access failure
+- High: Workflow blocked with no practical workaround
+- Normal: Problem has a workaround or limited impact
+- Low: General suggestion or preference
+
+OUTPUT COLUMNS
+1. Item ID
+2. Sentiment: Positive, Neutral, Negative, or Mixed
+3. Primary category
+4. Secondary category or None
+5. Urgency
+6. Evidence from the feedback
+7. Suggested review queue
+8. Confidence: High, Medium, or Low
+9. Reason for low confidence
+
+RULES
+- Do not infer identity, intent, or emotion beyond the text.
+- Preserve mixed feedback as Mixed.
+- Use Other / unclear when definitions are insufficient.
+- Do not invent product behavior or account status.
+- Flag security, legal, medical, or payment issues for human review.
+
+FEEDBACK ITEMS
+[PASTE REDACTED ITEMS WITH UNIQUE IDS]</code></pre>
+
+            <h2>Require Evidence, Not Only a Label</h2>
+
+            <p>The evidence column should contain a short phrase from the feedback or a concise paraphrase tied to the source. It lets a reviewer see why the label was selected.</p>
+
+            <p>Confidence labels are not calibrated probabilities unless the system has been tested and calibrated for that meaning. Use them as routing signals: low-confidence items go to review, not directly into automated action.</p>
+
+            <h2>Evaluate the Result by Category</h2>
+
+            <p>Overall accuracy can hide poor performance on a small but important class. Review a confusion table for each category:</p>
+
+            <table>
+                <thead><tr><th>Expected</th><th>Predicted</th><th>Count</th><th>Review note</th></tr></thead>
+                <tbody>
+                    <tr><td>Bug report</td><td>Feature request</td><td>Example count</td><td>Clarify the boundary between broken and requested behavior</td></tr>
+                    <tr><td>Critical</td><td>Normal</td><td>Example count</td><td>Add stronger outage and access examples</td></tr>
+                </tbody>
+            </table>
+
+            <p>Precision and recall can be more informative than one accuracy number, especially when classes are imbalanced. For an urgent queue, missing a true urgent case and incorrectly escalating a normal case have different costs.</p>
+
+            <h2>Review High-Impact Cases First</h2>
+
+            <p>Require human review when feedback involves:</p>
+
+            <ul>
+                <li>Security incidents or suspected fraud</li>
+                <li>Payment disputes and refunds</li>
+                <li>Legal threats or regulatory requests</li>
+                <li>Medical or safety information</li>
+                <li>Employee or customer personal data</li>
+                <li>Account suspension or access removal</li>
+                <li>Low-confidence or multi-issue feedback</li>
+            </ul>
+
+            <p>Classification can prioritize a queue. It should not replace the authorized decision-maker.</p>
+
+            <h2>Protect Customer Information</h2>
+
+            <p>Remove names, email addresses, phone numbers, order numbers, account identifiers, payment details, and private links unless the approved workflow requires them. Use a vendor and account type approved for the data. Define retention, access, and deletion rules for input files and outputs.</p>
+
+            <h2>Monitor Changes Over Time</h2>
+
+            <p>Product releases, new terminology, promotions, and policy changes can shift the meaning of feedback. Recheck the test set after changing the taxonomy, prompt, model, language mix, or data source.</p>
+
+            <p>Keep a version record:</p>
+
+            <pre><code>Taxonomy version: 2.1
+Prompt version: 1.4
+Model/service: [APPROVED TOOL]
+Test-set date: 2026-07-26
+Reviewer: [ROLE]
+Known weak categories: Usability vs. Bug report</code></pre>
+
+            <h2>Official Evaluation References</h2>
+
+            <p>Google's Machine Learning guidance explains that the usefulness of <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall" target="_blank" rel="noopener">accuracy, precision, and recall</a> depends on the task, class balance, and cost of different errors. Its <a href="https://developers.google.com/machine-learning/guides/text-classification" target="_blank" rel="noopener">text classification guide</a> describes a broader workflow that includes data preparation and evaluation.</p>
+
+            <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Do not use an unreviewed sentiment or urgency label as the sole basis for a consequential customer, employee, financial, legal, medical, or security decision.</p>
+
+            <h2>A Practical Deployment Sequence</h2>
+
+            <ol>
+                <li>Define labels tied to real actions.</li>
+                <li>Create a reviewed test set.</li>
+                <li>Run the structured prompt.</li>
+                <li>Inspect errors by category and urgency.</li>
+                <li>Route uncertain and high-impact cases to a person.</li>
+                <li>Pilot on a limited queue.</li>
+                <li>Monitor drift and update the taxonomy deliberately.</li>
+            </ol>
+
+            <p>This sequence turns AI classification into a controlled triage tool rather than an unsupported accuracy claim.</p>
+
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/05-chatgpt-hallucination-fix">A Verification Prompt That Helps Reduce AI Hallucinations</a></li>
+                    <li><a href="/posts/17-ai-competitor-feature-mapping">How to Build a Competitor Feature Map with AI</a></li>
+                    <li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
+                </ul>
+            </section>
 
             <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
                 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
-                </p>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
             </div>
 
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
             </div>
-            </article>
+        </article>
     </main>
 
     <footer>

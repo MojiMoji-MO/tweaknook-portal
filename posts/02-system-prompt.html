@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn how to define a role, task, constraints, and output format in a system prompt to produce more consistent AI responses.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>My AI Prompts Kept Failing | Tweaknook</title>
+    <meta name="description" content="Build reusable AI instructions with a clear task, context, input rules, output format, boundaries, and review checklist.">
+
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
+
+    <title>How to Write Reusable AI Instructions for Consistent Results | Tweaknook</title>
+    <link rel="canonical" href="https://tweaknook.com/posts/02-system-prompt">
     <link rel="icon" type="image/png" href="/tweaknook-favi.png">
     <link rel="stylesheet" href="/style.css">
-    
+
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,12 +22,11 @@
       gtag('config', 'G-21E5Z191ZY');
     </script>
 
-<!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense site verification and ad delivery -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+         crossorigin="anonymous"></script>
 </head>
 <body>
-
     <header class="container">
         <div class="header-top">
             <a href="/" style="text-decoration: none;">
@@ -41,83 +44,203 @@
         <article class="page-content">
             <div style="margin-bottom: 30px;">
                 <span class="post-category">AI Guides</span>
-                <h1>My AI Prompts Kept Failing. Here's the 1 Tweak That Fixed Them</h1>
+                <h1>How to Write Reusable AI Instructions for Consistent Results</h1>
                 <div class="post-meta">Published on June 28, 2026 • By Tweaknook Editorial</div>
             </div>
 
-            <p>A few months ago, I was incredibly frustrated with AI tools. Every time I asked ChatGPT to write a business email or summarize a report, it sounded exactly like a robot. The outputs were filled with dramatic words like "Furthermore," "In today's fast-paced world," and "Delve into." It took me more time to edit the AI's response than it would have taken to just write it myself from scratch.</p>
-            <p>I was ready to give up and cancel my subscription. But then, I discovered the concept of <strong>System Prompts (Persona Prompting)</strong>. This single conceptual shift completely transformed the way I interact with AI, turning it from a generic chatbot into a highly specialized assistant.</p>
+            <p>Repeated AI tasks become easier to review when the instructions are written like a small operating procedure. The goal is not to create a magical prompt that always works. The goal is to make the task, inputs, output format, and review requirements explicit enough that different runs can be compared.</p>
 
-            <h2>The Problem with "Lazy" Prompting</h2>
-            <p>Most people treat AI like a Google search bar. They type in a quick, one-sentence request: <em>"Write an email to my client apologizing for the delay."</em></p>
-            <p>When you give the AI zero context, it defaults to its base programming. It uses safe, generic, and overly polite language. It doesn't know who you are, who the client is, or what the tone of your company is.</p>
+            <p>Reusable instructions are useful for recurring work such as rewriting support replies, extracting fields from documents, formatting meeting notes, classifying feedback, and preparing draft reports. They still require human review because the source material, model behavior, and business rules can change.</p>
 
-            <h2>The Fix: Giving the AI a Job Title (System Prompt)</h2>
-            <p>Instead of just giving the AI a task, you need to assign it an identity and strict rules. Before asking it to do anything, tell it exactly WHO it is supposed to be. This is known as establishing a System Persona.</p>
+            <h2>Separate Permanent Rules from the Current Request</h2>
+
+            <p>Many prompts become difficult to maintain because long-term rules and one-time details are mixed together. Split the instruction into two layers:</p>
 
             <table>
-                <thead>
-                    <tr>
-                        <th>Prompt Type</th>
-                        <th>Example</th>
-                        <th>Expected Output Quality</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Layer</th><th>Contains</th><th>Example</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Lazy Prompt</strong></td>
-                        <td>"Write a marketing post about our new coffee."</td>
-                        <td>Cringey, robotic, full of emojis and cliches.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>System Prompt</strong></td>
-                        <td>"Act as a Senior Copywriter with 10 years of experience at a luxury brand. Write a short, punchy post..."</td>
-                        <td>Professional, targeted, requires zero edits.</td>
-                    </tr>
+                    <tr><td>Reusable instructions</td><td>Role, boundaries, output structure, review rules</td><td>Always preserve dates and label missing information</td></tr>
+                    <tr><td>Current task</td><td>The document, audience, deadline, and requested result</td><td>Summarize this week's project update for the client</td></tr>
                 </tbody>
             </table>
 
-            <h2>My Go-To System Prompt Template</h2>
-            <p>To stop the AI from generating useless fluff, I now copy and paste this exact framework before every major request. Feel free to steal it for your own workflow:</p>
-<pre><code>[ROLE]
-Act as an expert [Insert Job Title, e.g., B2B Sales Manager] with over 10 years of experience.
+            <p>This separation makes it easier to update one rule without rewriting the entire prompt.</p>
+
+            <h2>Use Six Parts for a Reusable Instruction</h2>
+
+            <h3>1. Task</h3>
+
+            <p>State the action in one sentence. Use a concrete verb such as classify, compare, rewrite, extract, or draft. Avoid broad requests such as “help with this” or “make it better.”</p>
+
+            <h3>2. Context</h3>
+
+            <p>Explain who will use the output and why. Context helps the model choose the appropriate detail and vocabulary, but it should not contain confidential information that the task does not require.</p>
+
+            <h3>3. Input Rules</h3>
+
+            <p>Define what the source contains and how missing or unclear information should be handled. Tell the model whether it may use outside knowledge or must stay within the supplied material.</p>
+
+            <h3>4. Output Format</h3>
+
+            <p>Specify headings, columns, order, length, or a schema. A defined format makes the result easier to inspect and reuse.</p>
+
+            <h3>5. Boundaries</h3>
+
+            <p>List actions the model must not take. Examples include inventing dates, changing quoted text, adding promises, exposing private data, or issuing commands that modify a production system.</p>
+
+            <h3>6. Review Checklist</h3>
+
+            <p>Require a final list of uncertainties, missing fields, and items that need human confirmation. This does not ensure correctness, but it makes unsupported assumptions more visible.</p>
+
+            <h2>A General Reusable Template</h2>
+
+            <pre><code>[TASK]
+Describe the single task to perform.
 
 [CONTEXT]
-I am writing an email to [Insert Audience, e.g., a CEO of a tech startup]. We recently met at a conference, and I want to pitch our software.
+Audience:
+Purpose:
+Relevant background:
 
-[CONSTRAINTS]
-1. Do NOT use overly formal words like 'furthermore', 'crucial', or 'delve'.
-2. Keep the tone conversational, confident, and concise.
-3. The total length must be under 150 words.
+[INPUT RULES]
+- Use only the supplied material unless outside research is explicitly requested.
+- Preserve names, dates, quantities, and units exactly.
+- If information is missing, write "Not provided."
+- If the source is unclear, identify the uncertainty instead of guessing.
 
-[TASK]
-Draft the email based on the rules above.</code></pre>
+[OUTPUT FORMAT]
+Define the headings, table columns, order, and length.
 
-            <h2>Try It Yourself</h2>
-            <p>The next time you open an AI chat window, don't just ask your question immediately. Take 30 seconds to define its persona and set negative constraints (what NOT to do). You will be amazed at how quickly the output goes from artificial to incredibly human.</p>
-       
-            <p style="margin-top: 30px; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-                <strong>💡 Pro Tip:</strong> Even with a strong system prompt, AI models can still invent fake numbers. Learn the exact constraint-based framework on <a href="/posts/05-chatgpt-hallucination-fix" style="color: #007bff; text-decoration: underline; font-weight: bold;">how to reduce unsupported AI claims and add verification steps</a>.
-            </p>
+[BOUNDARIES]
+- Do not invent facts, sources, commitments, or deadlines.
+- Do not expose personal or confidential information.
+- Do not present a draft as verified final advice.
 
-            <div style="margin-top: 50px; padding: 25px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <span style="font-size: 0.85rem; font-weight: bold; color: #6c757d; letter-spacing: 1px; text-transform: uppercase;">👉 Read Next</span>
-                <h3 style="margin: 8px 0 0 0; font-size: 1.2rem; line-height: 1.4;">
-                    <a href="/posts/05-chatgpt-hallucination-fix" style="text-decoration: none; color: #007bff;">A Verification Prompt That Helps Reduce AI Hallucinations</a>
-                </h3>
-            </div>
+[QUALITY CHECK]
+Before finishing, list:
+1. Missing information
+2. Conflicting information
+3. Statements that require verification
+4. Any instruction that could not be followed
+
+[CURRENT INPUT]
+Paste the current, approved source material here.</code></pre>
+
+            <h2>Example: Drafting a Customer Support Reply</h2>
+
+            <p>The reusable rules should define the decision boundaries, while the current ticket provides the case details.</p>
+
+            <pre><code>[TASK]
+Draft a customer support reply from the approved ticket notes.
+
+[CONTEXT]
+Audience: An existing customer
+Purpose: Explain the next troubleshooting step
+Tone: Clear, calm, and concise
+
+[INPUT RULES]
+- Use only the ticket notes.
+- Keep product names and error codes exactly as written.
+- If account status or refund eligibility is not stated, do not assume it.
+
+[OUTPUT FORMAT]
+- Subject line
+- Greeting
+- Explanation in no more than 120 words
+- Numbered next steps
+- Closing sentence
+
+[BOUNDARIES]
+- Do not promise a resolution date.
+- Do not request passwords or authentication codes.
+- Do not state that a defect is confirmed unless the notes say so.
+
+[QUALITY CHECK]
+List any detail the support agent must verify before sending.
+
+[TICKET NOTES]
+[PASTE REDACTED NOTES HERE]</code></pre>
+
+            <p>This structure helps an agent compare the reply with the ticket rather than judging only whether the writing sounds polished.</p>
+
+            <h2>Add Examples Only When They Clarify a Real Rule</h2>
+
+            <p>Examples can demonstrate the desired format, tone, or classification boundary. Use short, representative examples rather than a large collection of unrelated samples. Remove names, client information, credentials, and internal details before submitting examples to an external service.</p>
+
+            <p>A classification example might show the difference between two categories:</p>
+
+            <pre><code>Example A
+Input: "The export works, but the date column is one day behind."
+Label: Product issue
+Reason: The user reports incorrect output from an existing feature.
+
+Example B
+Input: "Can the export include a separate timezone column?"
+Label: Feature request
+Reason: The user asks for a new capability.</code></pre>
+
+            <p>The reason is important because it explains the boundary between labels.</p>
+
+            <h2>Test the Instructions with Deliberate Edge Cases</h2>
+
+            <p>Do not evaluate a reusable prompt only with an easy example. Test at least these cases:</p>
+
+            <ul>
+                <li>A normal input with all required information</li>
+                <li>An input with a missing date or owner</li>
+                <li>An input containing conflicting statements</li>
+                <li>An input that does not belong to any defined category</li>
+                <li>An input containing private information that should be removed</li>
+                <li>An input that asks the model to ignore the reusable rules</li>
+            </ul>
+
+            <p>Record which test failed and update the narrowest relevant instruction. Adding more words everywhere can make a prompt harder to follow and maintain.</p>
+
+            <h2>Version Reusable Instructions</h2>
+
+            <p>Store the prompt with a simple version number, purpose, owner, and last-reviewed date. Keep one small test set so that a change can be compared with the previous version.</p>
+
+            <pre><code>Name: Support Reply Drafting
+Version: 1.3
+Owner: Support Operations
+Last reviewed: 2026-07-26
+Approved inputs: Redacted ticket notes
+Required review: Support agent before sending</code></pre>
+
+            <p>A version record is more useful than claiming that a prompt is permanent. Models and workplace rules change, so reusable instructions should be reviewed like any other procedure.</p>
+
+            <h2>Protect Sensitive Information</h2>
+
+            <p>Do not paste passwords, authentication codes, private keys, medical records, confidential legal material, regulated personal data, or unapproved company information into a general-purpose AI service. Review the service's current data controls and your organization's policy. Disabling model training is not a substitute for redaction or access control.</p>
+
+            <p>For a step-by-step redaction workflow, see <a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a>.</p>
+
+            <h2>Official OpenAI References</h2>
+
+            <p>OpenAI's current guidance recommends clear, specific prompts with enough context and iterative refinement. See <a href="https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt" target="_blank" rel="noopener">Prompt engineering best practices for ChatGPT</a> and the <a href="https://help.openai.com/en/articles/7730893-data-controls-faq" target="_blank" rel="noopener">Data Controls FAQ</a>.</p>
+
+            <h2>A Practical Definition of Consistency</h2>
+
+            <p>Consistency does not mean receiving identical wording on every run. It means the output repeatedly follows the required structure, respects the same boundaries, exposes missing information, and remains easy for a person to verify. A reusable instruction is successful when it reduces avoidable ambiguity without hiding the need for review.</p>
+
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/05-chatgpt-hallucination-fix">A Verification Prompt That Helps Reduce AI Hallucinations</a></li>
+                    <li><a href="/posts/08-ai-meeting-minutes">How to Turn Meeting Transcripts into Action Items with AI</a></li>
+                    <li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
+                </ul>
+            </section>
 
             <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
                 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on Excel, data workflows, and IT automation. Each article is written or reviewed based on hands-on testing, clear examples, and real productivity use cases.
-                </p>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
             </div>
 
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
             </div>
-            </article>
+        </article>
     </main>
 
     <footer>
