@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restore a missing Bluetooth option in Windows 11 by checking hardware detection, updates, drivers, services, and safe recovery choices.">
+
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
+
+    <title>How to Fix Bluetooth Missing from Windows 11 | Tweaknook</title>
+    <link rel="canonical" href="https://tweaknook.com/posts/36-bluetooth-missing-windows-11">
+    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21E5Z191ZY');
+    </script>
+
+    <!-- Google AdSense site verification and ad delivery -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="container">
+        <div class="header-top">
+            <a href="/" style="text-decoration: none;">
+                <span class="logo-text">tweaknook</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/#productivity">Productivity</a>
+            <a href="/#ai-guides">AI Guides</a>
+            <a href="/#tech-tips">Tech Tips</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="page-content">
+            <div style="margin-bottom: 30px;">
+                <span class="post-category">Tech Tips</span>
+                <h1>How to Fix Bluetooth Missing from Windows 11</h1>
+                <div class="post-meta">Published on August 2, 2026 • By Tweaknook Editorial</div>
+            </div>
+
+            <p>If Bluetooth is missing from Windows 11 Settings, Quick Settings, or Device Manager, begin by deciding whether the radio is merely hidden or Windows has stopped detecting the adapter. A missing Quick Settings tile alone is usually a layout issue. A missing Bluetooth switch under <strong>Settings &gt; Bluetooth &amp; devices</strong> points instead to a driver, service, update, or hardware-detection problem.</p>
+
+            <p>The safest repair order is to restart Windows, turn off Airplane mode, run the Bluetooth troubleshooter, install Windows and optional driver updates, and then inspect Device Manager. Reinstalling a driver or using System Restore should come later, after you have identified the adapter and saved the correct manufacturer driver.</p>
+
+            <h2>First Identify What Is Actually Missing</h2>
+
+            <p>Open <strong>Settings &gt; Bluetooth &amp; devices</strong>. If the Bluetooth switch is present there but the tile is absent when you press <strong>Windows + A</strong>, Windows is still detecting the adapter. Customize Quick Settings rather than removing drivers. Microsoft notes that the Bluetooth action may need to be added when it is not visible in Quick Settings.</p>
+
+            <p>If the switch is absent from Settings, open Device Manager by right-clicking Start and selecting <strong>Device Manager</strong>. Look for a <strong>Bluetooth</strong> category and for entries that include the adapter manufacturer's name or the word “radio.” The result determines the next step:</p>
+
+            <ul>
+                <li><strong>Bluetooth appears normally:</strong> the adapter is detected; update it and check the service before reinstalling anything.</li>
+                <li><strong>Bluetooth appears with a warning symbol:</strong> open the adapter's Properties window and read the device status before choosing a repair.</li>
+                <li><strong>The Bluetooth category is missing:</strong> scan for hardware changes, check hidden devices, and confirm that the PC actually includes Bluetooth hardware.</li>
+                <li><strong>A USB Bluetooth adapter is used:</strong> reconnect it directly to another USB port and check whether Windows detects the USB device.</li>
+            </ul>
+
+            <p>Do not confuse this symptom with a headset or mouse that will not pair. When the Bluetooth switch is visible and the adapter appears in Device Manager, use connection-specific troubleshooting instead of removing the adapter.</p>
+
+            <h2>Restart Windows and Check Airplane Mode</h2>
+
+            <p>Save your work and choose <strong>Start &gt; Power &gt; Restart</strong>. Use Restart rather than Shut down so Windows closes the current session and reloads drivers and services. After signing in, press <strong>Windows + A</strong> and make sure Airplane mode is off. Microsoft lists both actions among the first checks for Bluetooth that has disappeared.</p>
+
+            <p>Return to <strong>Settings &gt; Bluetooth &amp; devices</strong>. If the switch has returned, turn Bluetooth off and on once, then test with one known device. If the switch is still missing, continue without repeatedly restarting or changing unrelated network settings.</p>
+
+            <h2>Run the Windows 11 Bluetooth Troubleshooter</h2>
+
+            <p>Microsoft directs Windows 11 users to the automated Bluetooth troubleshooter in the Get Help app. Open Start, search for <strong>Get Help</strong>, and search inside the app for Bluetooth troubleshooting. Follow the prompts and note what the diagnostic reports.</p>
+
+            <p>The troubleshooter can check common configuration and service problems, but it cannot repair absent hardware or guarantee that a manufacturer driver is compatible. After it finishes, restart only if requested, then confirm whether the Bluetooth switch and the Device Manager category have returned.</p>
+
+            <h2>Install Windows Updates and Optional Driver Updates</h2>
+
+            <p>Open <strong>Settings &gt; Windows Update</strong>, select <strong>Check for updates</strong>, and install available updates. Restart when required. Some Bluetooth drivers arrive through Windows Update, so this step is more useful than downloading a driver from an unofficial driver site.</p>
+
+            <p>Next open <strong>Settings &gt; Windows Update &gt; Advanced options &gt; Optional updates</strong>. Expand Driver updates if it is available. Install a Bluetooth, wireless, or system-device driver only when it matches the hardware in your PC. Optional drivers are not installed automatically, and the page may be empty.</p>
+
+            <h2>Read the Adapter Status in Device Manager</h2>
+
+            <p>Open Device Manager again and expand Bluetooth. Right-click the main Bluetooth adapter, not each paired headset or mouse, and select <strong>Properties</strong>. The General tab shows whether Windows reports that the device is working or provides an error code.</p>
+
+            <p>If <strong>Enable device</strong> is available in the right-click menu, select it and restart the PC. If the adapter is already enabled, choose <strong>Update driver &gt; Search automatically for drivers</strong>. Windows may report that the best driver is already installed; that message only describes the drivers Windows found, not every driver published by the PC manufacturer.</p>
+
+            <p>When the Bluetooth category is absent, open Device Manager's <strong>View</strong> menu and select <strong>Show hidden devices</strong>, then use <strong>Action &gt; Scan for hardware changes</strong>. A faded entry can represent hardware that is not currently connected or detected. Do not uninstall every faded Bluetooth item. First identify the actual adapter from the PC manufacturer's specifications or support page.</p>
+
+            <h2>Install the Driver from the PC Manufacturer</h2>
+
+            <p>Use the support page for the exact laptop, motherboard, or prebuilt desktop model. Enter the serial number or model identifier when the manufacturer provides that option, select Windows 11, and download the current Bluetooth driver. A Wi-Fi/Bluetooth combination card may have separate wireless and Bluetooth packages.</p>
+
+            <p>Avoid generic “driver updater” programs and download sites. They can offer a package for a similar chipset that does not match the computer manufacturer's configuration. Keep the downloaded installer until Bluetooth is working so you can repeat the installation after a rollback or driver removal.</p>
+
+            <p>Install the manufacturer package, restart Windows, and check both Settings and Device Manager. If the manufacturer does not list a Windows 11 Bluetooth driver for the model, do not force a package intended for a different computer. Contact the manufacturer to confirm support.</p>
+
+            <h2>Restart the Bluetooth Support Service</h2>
+
+            <p>If Device Manager detects the adapter but the Settings switch remains unavailable, press <strong>Windows + R</strong>, enter <code>services.msc</code>, and select OK. Find <strong>Bluetooth Support Service</strong>, right-click it, and choose <strong>Restart</strong>. Then reopen Bluetooth settings.</p>
+
+            <p>Do not change several service startup types at random. Managed work or school computers may enforce service settings through policy, and changing them can create a separate support problem. If Restart is unavailable or access is denied, contact the device administrator.</p>
+
+            <h2>Reinstall the Bluetooth Adapter Only After Preparing the Driver</h2>
+
+            <p>Driver reinstallation is appropriate when the adapter appears in Device Manager but updating it does not restore Bluetooth. Before removing it, save the manufacturer driver installer, close open work, and create a backup of important local files. For a separate copy of critical folders, the cautious workflow in <a href="/posts/15-windows-robocopy-backup">How to Create a Safer One-Way Backup with Robocopy</a> explains how to preview a backup before running it.</p>
+
+            <ol>
+                <li>In Device Manager, expand Bluetooth and identify the main adapter.</li>
+                <li>Right-click the adapter and select <strong>Uninstall device</strong>.</li>
+                <li>Confirm the uninstall. Do not select an option to remove the driver package unless the manufacturer specifically instructs you to and you have the replacement installer.</li>
+                <li>Restart Windows. Windows will attempt to reinstall the device driver.</li>
+                <li>If the adapter does not return, open Device Manager and select <strong>Action &gt; Scan for hardware changes</strong>, then run the saved manufacturer installer.</li>
+            </ol>
+
+            <p>Check Settings after the restart. If the adapter now appears but a particular device will not connect, the missing-Bluetooth problem is resolved and the remaining issue is pairing, range, battery, or device compatibility.</p>
+
+            <h2>Decide Whether the Problem Is Hardware-Related</h2>
+
+            <p>Some desktops and older PCs do not include Bluetooth. Microsoft notes that a missing Bluetooth setting can mean there is no adapter, or that its driver is not installed. Check the manufacturer's original specifications rather than assuming every Windows 11 PC has Bluetooth. A compatible USB Bluetooth adapter can add the feature to a computer that never included it.</p>
+
+            <p>If Bluetooth worked before but remains absent after updates, a manufacturer driver, a restart, and a hardware scan, stop repeating software fixes. Check for a physical wireless switch, recent damage, or a USB adapter that fails in more than one port. The checks in <a href="/posts/33-usb-drive-not-showing-windows-11">How to Fix a USB Drive That Is Not Showing Up in Windows 11</a> can help distinguish a port problem from a device problem.</p>
+
+            <p>Contact the PC or adapter manufacturer when the device repeatedly reports a hardware error, disappears after every restart, is missing from the manufacturer's diagnostics, or is still under warranty. On a company or school computer, contact the administrator before installing drivers or changing services.</p>
+
+            <h2>Use System Restore Only for a Clear Recent Change</h2>
+
+            <p>If Bluetooth disappeared after a recent driver, app, or settings change and a restore point exists, System Restore can return system files and settings to an earlier state without targeting personal files. It can remove recent apps, drivers, or settings, so review affected programs and back up important work first.</p>
+
+            <p>Do not reset or reinstall Windows merely because the Bluetooth tile is missing. Microsoft treats reset and reinstallation as broader recovery options that can remove applications, settings, or data depending on the choice. Use them only when Windows has wider problems and after a verified backup, not as the next Bluetooth step.</p>
+
+            <h2>What Not to Do</h2>
+
+            <ul>
+                <li>Do not install drivers from an unrelated PC model or a third-party driver bundle.</li>
+                <li>Do not delete registry keys or system driver files from an unverified tutorial.</li>
+                <li>Do not uninstall every hidden Bluetooth device without identifying the adapter.</li>
+                <li>Do not reset Windows before checking hardware support, updates, drivers, and services.</li>
+                <li>Do not assume a missing Quick Settings tile means the Bluetooth hardware has failed.</li>
+            </ul>
+
+            <h2>Confirm That Bluetooth Is Restored</h2>
+
+            <p>The repair is complete when the Bluetooth switch appears under <strong>Settings &gt; Bluetooth &amp; devices</strong>, the adapter appears without an error in Device Manager, and Windows can discover or connect to a known Bluetooth device. Restart once more and confirm that the switch remains available after sign-in.</p>
+
+            <p>If the switch returns but audio cuts out or a device repeatedly disconnects, troubleshoot that connection separately. If the switch disappears again after a specific update, record the update date, adapter model, driver version, and Device Manager status before contacting Microsoft or the manufacturer. Those details make the next diagnosis more useful than repeating driver removal.</p>
+
+            <h2>Official Microsoft References</h2>
+
+            <ul>
+                <li><a href="https://support.microsoft.com/en-US/Windows/Hardware/Bluetooth/fix-bluetooth-disappeared-in-windows" target="_blank" rel="noopener">Fix Bluetooth Disappeared in Windows</a></li>
+                <li><a href="https://support.microsoft.com/en-us/windows/hardware/bluetooth/turn-bluetooth-on-or-off-in-windows" target="_blank" rel="noopener">Turn Bluetooth On or Off in Windows</a></li>
+                <li><a href="https://support.microsoft.com/en-us/windows/update-drivers-through-device-manager-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank" rel="noopener">Update Drivers Through Device Manager in Windows</a></li>
+                <li><a href="https://support.microsoft.com/en-us/windows/hardware/drivers/automatically-get-recommended-and-updated-hardware-drivers" target="_blank" rel="noopener">Get Recommended and Updated Hardware Drivers</a></li>
+                <li><a href="https://support.microsoft.com/en-us/windows/recovery-options-in-windows-31ce2444-7de3-818c-d626-e3b5a3024da5" target="_blank" rel="noopener">Recovery Options in Windows</a></li>
+            </ul>
+
+            <h2>Use the Symptom to Choose the Repair</h2>
+
+            <p>A missing tile, a missing Settings switch, and an adapter absent from Device Manager are different problems. Start with the least destructive check that matches what Windows can still detect. If the adapter remains absent after the correct updates and manufacturer driver, investigate hardware or policy rather than escalating to risky system changes.</p>
+
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/30-windows-wifi-disconnecting">How to Fix Wi-Fi That Keeps Disconnecting on Windows</a></li>
+                    <li><a href="/posts/33-usb-drive-not-showing-windows-11">How to Fix a USB Drive That Is Not Showing Up in Windows 11</a></li>
+                    <li><a href="/posts/15-windows-robocopy-backup">How to Create a Safer One-Way Backup with Robocopy</a></li>
+                </ul>
+            </section>
+
+            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
+                    Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.
+                </p>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="legal-links">
+                <a href="/about">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
