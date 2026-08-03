@@ -3,7 +3,7 @@
 
 <url>
 <loc>https://tweaknook.com/</loc>
-<lastmod>2026-08-03</lastmod>
+<lastmod>2026-08-04</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.0</priority>
 </url>
@@ -263,6 +263,13 @@
 <url>
 <loc>https://tweaknook.com/posts/37-stop-google-drive-folder-sync</loc>
 <lastmod>2026-08-03</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://tweaknook.com/posts/38-stop-chatgpt-using-old-information</loc>
+<lastmod>2026-08-04</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
