@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop Google Sheets from converting codes and number-like text into dates by using Plain text, checking locale, repairing cells, and protecting imports.">
+
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
+
+    <title>How to Stop Google Sheets from Changing Numbers to Dates | Tweaknook</title>
+    <link rel="canonical" href="https://tweaknook.com/posts/40-stop-google-sheets-changing-numbers-to-dates">
+    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21E5Z191ZY');
+    </script>
+
+    <!-- Google AdSense site verification and ad delivery -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="container">
+        <div class="header-top">
+            <a href="/" style="text-decoration: none;">
+                <span class="logo-text">tweaknook</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/#productivity">Productivity</a>
+            <a href="/#ai-guides">AI Guides</a>
+            <a href="/#tech-tips">Tech Tips</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="page-content">
+            <div style="margin-bottom: 30px;">
+                <span class="post-category">Productivity</span>
+                <h1>How to Stop Google Sheets from Changing Numbers to Dates</h1>
+                <div class="post-meta">Published on August 6, 2026 • By Tweaknook Editorial</div>
+            </div>
+
+            <p>If Google Sheets turns an entry such as <code>1-2</code>, <code>3/4</code>, or <code>10-11</code> into a date, format the destination column as <strong>Plain text before entering or pasting the values</strong>. On a computer, select the cells, open <strong>Format &gt; Number &gt; Plain text</strong>, and then enter the data again. For one value, a leading apostrophe such as <code>'1-2</code> also tells Sheets to keep the entry as text.</p>
+
+            <p>Changing the format after Sheets has already interpreted an entry as a date may not reconstruct the original characters. Use Undo immediately, re-enter the value from the source, or consult version history before replacing a large range. Also check the spreadsheet locale because it controls the default date and number formats for the entire file.</p>
+
+            <h2>Decide Whether the Entry Is Data or an Identifier</h2>
+
+            <p>The correct format depends on what the value means, not on whether it contains digits.</p>
+
+            <ul>
+                <li><strong>Use Plain text</strong> for product codes, case numbers, model names, version labels, tracking numbers, ZIP codes, fractions used as labels, and IDs that are never added or averaged.</li>
+                <li><strong>Use Number</strong> for values that should participate in arithmetic.</li>
+                <li><strong>Use Date</strong> only when the value represents an actual calendar date that should sort, filter, or calculate as a date.</li>
+            </ul>
+
+            <p>An entry such as <code>03-04</code> can be ambiguous. It could mean March 4, April 3, a product revision, or a size. Sheets cannot infer the business meaning, so the column format and spreadsheet locale guide how it interprets the entry.</p>
+
+            <h2>Prevent Conversion Before Typing or Pasting</h2>
+
+            <p>The most reliable fix is to prepare the column before adding data.</p>
+
+            <ol>
+                <li>Select the empty cells or the entire destination column.</li>
+                <li>Open <strong>Format &gt; Number &gt; Plain text</strong>.</li>
+                <li>Enter one test value that previously changed into a date.</li>
+                <li>Confirm that the displayed value and formula bar show the exact characters you entered.</li>
+                <li>Paste or type the remaining values only after the test succeeds.</li>
+            </ol>
+
+            <p>Applying Plain text to a full column is appropriate when every entry is an identifier. Avoid formatting an entire mixed-use sheet as text because formulas and numeric calculations can stop recognizing values as numbers.</p>
+
+            <h2>Use a Leading Apostrophe for a Single Entry</h2>
+
+            <p>When only one or two values need protection, type an apostrophe before the entry:</p>
+
+            <pre><code>'1-2
+'03/04
+'00123</code></pre>
+
+            <p>The apostrophe is an input marker and is not normally displayed in the cell. Google documents that converting a numeric value with <code>TO_TEXT</code> is equivalent to prefixing it with an apostrophe. Use this method for isolated entries; format the whole column as Plain text for recurring imports or regular data entry.</p>
+
+            <h2>Fix a Value That Was Just Converted</h2>
+
+            <p>If the conversion happened moments ago, use <strong>Edit &gt; Undo</strong> or the standard undo shortcut before making additional edits. Then format the destination as Plain text and enter the value again.</p>
+
+            <p>Do not rely on switching the converted cell from Date to Plain text and assume the original entry has returned. Sheets stores real dates as numeric values with a date display format. Reformatting can change how the stored value appears without recovering the exact ambiguous text that was originally typed.</p>
+
+            <h2>Recover a Large Range Without Overwriting Current Work</h2>
+
+            <p>If many cells were converted and the original file or copied source is still available, preserve the current spreadsheet before attempting a repair.</p>
+
+            <ol>
+                <li>Make a copy of the current spreadsheet or duplicate the affected sheet tab.</li>
+                <li>Keep the original source file, CSV, email, or exported report unchanged.</li>
+                <li>Format an empty repair column as Plain text.</li>
+                <li>Paste a small sample from the original source and verify it.</li>
+                <li>Replace the affected range only after the sample matches.</li>
+            </ol>
+
+            <p>If the source is no longer available, open <strong>File &gt; Version history &gt; See version history</strong>. Google Sheets lets editors inspect earlier versions and restore a previous version. Because restoring affects the file rather than one isolated cell, make a copy of the current spreadsheet first and use the earlier version as a reference unless a full rollback is acceptable.</p>
+
+            <p>For data that needs additional cleanup after recovery, <a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a> explains how to standardize text while keeping an original column for comparison.</p>
+
+            <h2>Check the Spreadsheet Locale</h2>
+
+            <p>Google states that a spreadsheet's locale changes its default currency, date, and number formatting. A value that looks unambiguous in one region can be interpreted differently in another.</p>
+
+            <p>To review the locale on a computer:</p>
+
+            <ol>
+                <li>Open the spreadsheet.</li>
+                <li>Select <strong>File &gt; Settings</strong>.</li>
+                <li>Under General, review <strong>Locale</strong> and <strong>Time zone</strong>.</li>
+                <li>Change the locale only when the entire spreadsheet should use a different regional convention.</li>
+                <li>Select <strong>Save settings</strong>, then recheck formulas and date columns.</li>
+            </ol>
+
+            <p>A locale change applies to the whole spreadsheet and is visible to collaborators regardless of their location. Do not change it merely to repair one ID column in a shared file. Plain text is the safer local fix when the values are identifiers.</p>
+
+            <p>After changing the locale, re-enter ambiguous test values. Existing converted cells may still contain date values and should be checked against the source rather than assumed to be repaired automatically.</p>
+
+            <h2>Protect Values When Pasting from Another Spreadsheet</h2>
+
+            <p>When copying codes from Excel, another Google Sheet, a website, or an internal system, prepare the target cells first.</p>
+
+            <ol>
+                <li>Format the target column as Plain text.</li>
+                <li>Paste a small sample.</li>
+                <li>Compare the first, middle, and last values with the source.</li>
+                <li>If source formulas or styling are unwanted, use <strong>Paste special &gt; Values only</strong>.</li>
+                <li>Confirm leading zeros, separators, and long identifiers before pasting the full range.</li>
+            </ol>
+
+            <p>Values only removes source formulas and formatting, but it does not replace the need to prepare the destination data type. Use Plain text first when the pasted content must remain exact.</p>
+
+            <p>If data arrives through <code>IMPORTRANGE</code>, keep the source and receiving columns consistent and test a small range before building a dashboard. <a href="/posts/04-importrange-dashboard">How to Build a Google Sheets Dashboard with IMPORTRANGE</a> covers access approval, refresh behavior, and source-range checks.</p>
+
+            <h2>Handle CSV Imports and Exports Carefully</h2>
+
+            <p>A CSV stores characters and separators, not Google Sheets cell formats. When a CSV is opened or imported, software may interpret date-like strings, long numbers, or leading zeros according to its own rules.</p>
+
+            <p>For important CSV data:</p>
+
+            <ul>
+                <li>Keep an untouched copy of the original CSV.</li>
+                <li>Import into a duplicate spreadsheet rather than the production file.</li>
+                <li>Check columns containing IDs, ZIP codes, SKUs, dates, and long numeric strings.</li>
+                <li>Compare record counts and several exact source values before replacing existing data.</li>
+                <li>Do not assume that a visually correct custom number format will preserve the same underlying value when exported again.</li>
+            </ul>
+
+            <p>If the workflow generates invoices or filenames from Sheets, verify the stored value rather than only its appearance. The automation in <a href="/posts/16-google-sheets-invoice-script">How to Generate and Email PDF Invoices from Google Sheets</a> depends on consistent source fields and should be tested with sample IDs before sending real documents.</p>
+
+            <h2>Choose Between Plain Text and a Custom Number Format</h2>
+
+            <p>Plain text preserves the exact characters. A custom number format changes how a numeric value is displayed while keeping it numeric.</p>
+
+            <ul>
+                <li>Use <strong>Plain text</strong> for <code>00123</code> when the leading zeros are part of an ID.</li>
+                <li>Use a <strong>custom number format</strong> such as <code>00000</code> when the underlying value is genuinely numeric but must display at a fixed width.</li>
+            </ul>
+
+            <p>The difference matters for formulas, lookups, sorting, and exports. A text value <code>00123</code> is not identical to the number <code>123</code>, even if a display format makes them look similar.</p>
+
+            <h2>Use TO_TEXT and VALUE for Controlled Conversions</h2>
+
+            <p>Google Sheets provides functions for explicit conversion:</p>
+
+            <pre><code>=TO_TEXT(A2)
+=VALUE(B2)</code></pre>
+
+            <p><code>TO_TEXT</code> converts a numeric value to text while retaining its existing display format. It is useful when a formula output must become a text label. It cannot recreate an original ambiguous entry that was already converted incorrectly.</p>
+
+            <p><code>VALUE</code> converts recognized text into a number. Google notes that date-like text can become a date serial number. Use it only when the destination should be numeric; do not use it to protect identifiers from date conversion.</p>
+
+            <h2>Find Data-Type Problems Before They Break Formulas</h2>
+
+            <p>A column can contain values that look identical but use different underlying types. That can cause lookups, filters, sorting, charts, and validation rules to behave inconsistently.</p>
+
+            <p>Check suspicious columns by comparing them with the original source and by testing a few cells in a separate area. For identifiers, standardize the entire column as text. For calculation fields, standardize the entire column as numbers or real dates. Avoid mixing types in the same operational column unless the design intentionally supports mixed data.</p>
+
+            <h2>What Not to Do</h2>
+
+            <ul>
+                <li>Do not reformat a converted date and assume the original text has been recovered.</li>
+                <li>Do not change the locale of a shared spreadsheet without checking the effect on dates, currencies, and collaborators.</li>
+                <li>Do not delete the source column before validating the repaired data.</li>
+                <li>Do not use a custom date format for product codes or identifiers.</li>
+                <li>Do not run cleanup formulas across the production range without a backup or comparison column.</li>
+            </ul>
+
+            <h2>Confirm That Automatic Date Conversion Is Stopped</h2>
+
+            <p>Use a temporary test row before importing real data. Enter several examples that match the actual pattern, such as <code>1-2</code>, <code>03/04</code>, <code>00123</code>, and a long identifier. Confirm that:</p>
+
+            <ul>
+                <li>Each cell displays the exact intended characters.</li>
+                <li>The formula bar shows the same value.</li>
+                <li>Leading zeros remain present.</li>
+                <li>Sorting and lookup behavior matches an identifier column rather than a date column.</li>
+                <li>Copying the value to a plain-text editor preserves the expected characters.</li>
+            </ul>
+
+            <p>Once the test passes, apply the same format to the full destination range and keep the original source until the final record count and sample values have been verified.</p>
+
+            <h2>Official Google References</h2>
+
+            <ul>
+                <li><a href="https://support.google.com/docs/answer/56470?hl=en" target="_blank" rel="noopener">Format numbers in a spreadsheet</a></li>
+                <li><a href="https://support.google.com/docs/answer/58515?hl=en" target="_blank" rel="noopener">Set a spreadsheet's location and calculation settings</a></li>
+                <li><a href="https://support.google.com/docs/answer/46973?hl=en" target="_blank" rel="noopener">Edit and format a spreadsheet</a></li>
+                <li><a href="https://support.google.com/docs/answer/190843?hl=en" target="_blank" rel="noopener">Find what's changed in a file</a></li>
+                <li><a href="https://support.google.com/docs/answer/3094285?hl=en" target="_blank" rel="noopener">TO_TEXT</a></li>
+                <li><a href="https://support.google.com/docs/answer/3094220?hl=en" target="_blank" rel="noopener">VALUE</a></li>
+                <li><a href="https://support.google.com/docs/answer/12236443?hl=en" target="_blank" rel="noopener">Learn how to optimize data ingestion</a></li>
+            </ul>
+
+            <h2>Set the Data Type Before the Data Arrives</h2>
+
+            <p>Plain text is the correct choice when digits and separators form an identifier rather than a calculation. Set the format before entry, use an apostrophe for isolated values, review the spreadsheet locale, and keep the source available until the repaired column has been verified. This prevents a display problem from becoming a permanent data-quality problem.</p>
+
+            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+                <h2 style="margin-top: 0;">Related Guides</h2>
+                <ul style="margin-bottom: 0;">
+                    <li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
+                    <li><a href="/posts/04-importrange-dashboard">How to Build a Google Sheets Dashboard with IMPORTRANGE</a></li>
+                    <li><a href="/posts/16-google-sheets-invoice-script">How to Generate and Email PDF Invoices from Google Sheets</a></li>
+                </ul>
+            </section>
+
+            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
+                    Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.
+                </p>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="legal-links">
+                <a href="/about">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
