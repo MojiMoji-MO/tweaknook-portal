@@ -1,142 +1,43 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use REGEXEXTRACT and REGEXREPLACE to standardize emails and phone numbers in Google Sheets, then review exceptions.">
-    
-    <!-- Google Search Console ownership verification -->
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    
-    <title>How to Clean Messy Spreadsheet Data with Google Sheets Regex | Tweaknook</title>
-    
-    <link rel="canonical" href="https://tweaknook.com/posts/19-google-sheets-regex">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-    
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." name="description"/>
+<!-- Google Search Console ownership verification -->
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Clean Messy Spreadsheet Data with Google Sheets Regex | Tweaknook</title>
+<link href="https://tweaknook.com/posts/19-google-sheets-regex" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
-</head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Clean Messy Spreadsheet Data with Google Sheets Regex" property="og:title"/><meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." property="og:description"/><meta content="https://tweaknook.com/posts/19-google-sheets-regex" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Clean Messy Spreadsheet Data with Google Sheets Regex" name="twitter:title"/><meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Clean Messy Spreadsheet Data with Google Sheets Regex", "description": "Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-16", "dateModified": "2026-08-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/19-google-sheets-regex"}, "url": "https://tweaknook.com/posts/19-google-sheets-regex", "inLanguage": "en"}</script></head>
 <body>
-
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">Productivity</span>
-                <h1>How to Clean Messy Spreadsheet Data with Google Sheets Regex</h1>
-                <div class="post-meta">Published on July 16, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>Google Sheets includes regular-expression functions that can extract or replace text based on a pattern. They are useful for repeated cleanup, but every pattern has limits. Test formulas on a sample before applying them to an entire dataset.</p>
-
-            <h2>Functions Used in This Guide</h2>
-            <ul>
-                <li><code>REGEXEXTRACT</code> returns the first part of a text value that matches a pattern.</li>
-                <li><code>REGEXREPLACE</code> replaces matching text with another value.</li>
-                <li><code>REGEXMATCH</code> returns TRUE or FALSE when text matches a pattern.</li>
-            </ul>
-            <p>Google Sheets uses the RE2 regular-expression engine, so some patterns from other programming languages may not work in the same way.</p>
-
-            <h2>Example 1: Extract an Email Address</h2>
-            <p>Assume cell A2 contains:</p>
-            <pre><code>Please contact John at john.doe@example.com about the order.</code></pre>
-            <p>Use:</p>
-            <pre><code>=IFERROR(REGEXEXTRACT(A2, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"), "Review")</code></pre>
-            <p>The formula returns the first matching address. <code>IFERROR</code> places <strong>Review</strong> in rows where no match is found.</p>
-
-            <h3>Limitations</h3>
-            <p>This practical pattern does not validate every address allowed by formal email standards, and it returns only the first match. Use it for cleanup and review, not as proof that an address exists or can receive mail.</p>
-
-            <h2>Example 2: Keep Only Phone Digits</h2>
-            <p>Assume A2 contains <code>(555) 123-4567</code>. Use:</p>
-            <pre><code>=REGEXREPLACE(A2, "[^0-9]", "")</code></pre>
-            <p>The result is <code>5551234567</code>. Before importing the value into another system, check country codes, extensions, leading zeros, and required number length.</p>
-
-            <h2>Example 3: Flag Rows for Review</h2>
-            <p>For a dataset where a valid local phone number should contain exactly ten digits after cleanup, place the cleaned number in B2 and use:</p>
-            <pre><code>=IF(REGEXMATCH(B2, "^[0-9]{10}$"), "OK", "Review")</code></pre>
-            <p>This checks only the chosen ten-digit rule. It is not suitable for international numbers unless the pattern is adjusted.</p>
-
-            <h2>Example 4: Trim Repeated Spaces</h2>
-            <p>To replace runs of spaces with a single space:</p>
-            <pre><code>=TRIM(REGEXREPLACE(A2, "[[:space:]]+", " "))</code></pre>
-            <p>Test this formula with line breaks and imported web text because whitespace can vary by source.</p>
-
-            <h2>A Safer Cleanup Workflow</h2>
-            <ol>
-                <li>Keep the original column unchanged.</li>
-                <li>Place the cleanup formula in a new column.</li>
-                <li>Add a status column that flags unmatched values.</li>
-                <li>Filter the status column and review exceptions.</li>
-                <li>Copy and paste values only after confirming the output.</li>
-            </ol>
-
-            <h2>Common Mistakes</h2>
-            <ul>
-                <li>Using one pattern for every country or data source.</li>
-                <li>Deleting punctuation before checking whether it separates an extension.</li>
-                <li>Overwriting the original data before reviewing results.</li>
-                <li>Assuming a matching email or phone number is valid.</li>
-                <li>Forgetting that <code>REGEXEXTRACT</code> returns the first match unless capture groups are used.</li>
-            </ul>
-
-            <p>See Google's official references for <a href="https://support.google.com/docs/answer/3098244?hl=en" target="_blank" rel="noopener">REGEXEXTRACT</a> and <a href="https://support.google.com/docs/answer/3098245?hl=en" target="_blank" rel="noopener">REGEXREPLACE</a>.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/10-excel-power-query">How to Automate Recurring CSV Cleanup with Excel Power Query</a></li>
-                    <li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.
-                </p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
-            </div>
-
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
+<main class="container">
+<article class="page-content"><div style="margin-bottom:30px"><a class="post-category" href="/blog/#productivity">Productivity</a><h1>How to Clean Messy Spreadsheet Data with Google Sheets Regex</h1><div class="post-meta">Published on July 16, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p>Use Google Sheets regex functions in a <strong>new helper column</strong>, not directly over the source data. Keep the original value, write a formula that extracts or normalizes one pattern, and create a review column for rows that do not match. Only replace the source after the cleaned results have been checked.</p>
+<h2>Know which regex function solves which problem</h2><ul><li><code>REGEXEXTRACT</code> returns the first matching substring. Capture groups can return multiple columns.</li><li><code>REGEXREPLACE</code> replaces all parts of the text that match the expression.</li><li><code>REGEXMATCH</code> returns TRUE or FALSE and is useful for a validation flag.</li></ul><p>Google Sheets uses the RE2 regular-expression engine, with documented limitations including Unicode character-class matching. A pattern copied from another regex engine may therefore need adjustment.</p>
+<h2>Example: extract a simple email-like value</h2><p>Suppose column A contains notes such as <code>Contact: alex@example.com (preferred)</code>. A helper-column formula can extract an email-shaped substring:</p><pre><code>=IFERROR(REGEXEXTRACT(A2,"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),"")</code></pre><p>This is a pattern-cleaning example, not a guarantee that the extracted address exists or can receive mail. Keep a review flag for blank results or rows containing multiple possible addresses.</p>
+<h2>Example: normalize phone text without claiming a country format</h2><p>If the goal is simply to retain digits from a phone field, use:</p><pre><code>=REGEXREPLACE(A2,"[^0-9]","")</code></pre><p>This removes punctuation, spaces, and symbols. It does <strong>not</strong> determine the correct country code, extension, or national numbering format. Do not add or remove a leading digit unless you have a separate rule for the dataset's region.</p>
+<h2>Example: detect rows that need manual review</h2><pre><code>=NOT(REGEXMATCH(A2,"^[A-Z]{3}-[0-9]{5}$"))</code></pre><p>For an identifier that is supposed to look like <code>ABC-00123</code>, TRUE from the formula above can mean “review this row.” A validation flag is often safer than trying to repair every unexpected value automatically.</p>
+<h2>Remember that REGEXEXTRACT returns the first match</h2><p>If a cell contains several numbers or addresses, <code>REGEXEXTRACT</code> does not automatically return every match. Google's documentation explicitly describes it as extracting the first matching substring. When multiple values matter, redesign the formula or workflow rather than assuming the first match is representative.</p>
+<h2>Use capture groups deliberately</h2><p>Capture groups can split a structured value into multiple outputs. For an identifier such as <code>INV-2026-00125</code>, a pattern can capture the year and sequence separately. Test the pattern on valid examples and on malformed examples before filling it down a production column.</p>
+<h2>Do not convert identifiers into numbers by accident</h2><p>Regex functions work with text. If a cleaned result is an identifier such as <code>00123</code>, keep it as text when the leading zeros are meaningful. <a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">How to Stop Google Sheets from Changing Numbers to Dates</a> explains how to protect identifier-like text before entry or paste.</p>
+<h2>A safer cleanup workflow</h2><ol><li>Duplicate the sheet or preserve the raw source column.</li><li>Write the regex formula in a helper column.</li><li>Test known valid, invalid, blank, and unusual values.</li><li>Add a review flag for errors or unexpected patterns.</li><li>Count blanks and exceptions before and after cleanup.</li><li>When the result is verified, paste values into a new final column if a static result is required.</li></ol>
+<h2>Completion check</h2><p>Sample records from across the dataset, not only the first few rows. Compare the cleaned value to the original and confirm that the transformation did not discard meaningful punctuation, leading zeros, non-English characters, extensions, or multiple values that the business process needs.</p>
+<h2>Official References</h2><ul><li><a href="https://support.google.com/docs/answer/3098244?hl=en" rel="noopener" target="_blank">REGEXEXTRACT — Google Docs Editors Help</a></li><li><a href="https://support.google.com/docs/answer/3098245?hl=en" rel="noopener" target="_blank">REGEXREPLACE — Google Docs Editors Help</a></li><li><a href="https://support.google.com/docs/answer/3098292?hl=en" rel="noopener" target="_blank">REGEXMATCH — Google Docs Editors Help</a></li></ul><section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">How to Stop Google Sheets from Changing Numbers to Dates</a></li><li><a href="/posts/04-importrange-dashboard">How to Build a Google Sheets Dashboard with IMPORTRANGE</a></li></ul></section><div class="author-box"><h4>About the author</h4><p>Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p></div><div style="margin-top:40px;padding-top:20px;border-top:1px solid #eee;text-align:center"><a href="/" style="text-decoration:none;font-weight:bold">← Back to Home</a></div></article>
+</main>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>

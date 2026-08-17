@@ -8,7 +8,7 @@
 <!-- Google Search Console ownership verification -->
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
 <title>Find Duplicate Files with PowerShell | Tweaknook</title>
-<link rel="canonical" href="https://tweaknook.com/posts/24-powershell-duplicate-finder">
+<link href="https://tweaknook.com/posts/24-powershell-duplicate-finder" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
 <!-- Google Analytics 4 -->
@@ -20,29 +20,16 @@
       gtag('config', 'G-21E5Z191ZY');
     </script>
 <!-- Google AdSense site verification and ad delivery -->
-
 <!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
-</head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Find Duplicate Files with PowerShell" property="og:title"/><meta content="Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review." property="og:description"/><meta content="https://tweaknook.com/posts/24-powershell-duplicate-finder" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Find Duplicate Files with PowerShell" name="twitter:title"/><meta content="Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Find Duplicate Files with PowerShell and Export a Report", "description": "Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-21", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/24-powershell-duplicate-finder"}, "url": "https://tweaknook.com/posts/24-powershell-duplicate-finder", "inLanguage": "en"}</script></head>
 <body>
-<header class="container">
-<div class="header-top">
-<a href="/" style="text-decoration: none;">
-<span class="logo-text">tweaknook</span>
-</a>
-</div>
-<nav>
-<a href="/#productivity">Productivity</a>
-<a href="/#ai-guides">AI Guides</a>
-<a href="/#tech-tips">Tech Tips</a>
-</nav>
-</header>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
-<span class="post-category">Tech Tips</span>
+<a class="post-category" href="/blog/#tech-tips">Tech Tips</a>
 <h1>How to Find Duplicate Files with PowerShell and Export a Report</h1>
-<div class="post-meta">Published on July 21, 2026 • Updated on July 23, 2026 • By Tweaknook Editorial</div>
+<div class="post-meta">Published on July 21, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
 <p>File names and file sizes are not enough to confirm that two files contain the same data. PowerShell can calculate a SHA-256 hash for likely duplicates and export matching groups to a CSV report.</p>
 <div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
@@ -123,7 +110,6 @@ else {
 </ul>
 <h2>Why the Script Does Not Auto-Delete</h2>
 <p>Identical content does not always mean one copy is unnecessary. A file may be intentionally duplicated across project folders, offline archives, or application directories. The report is designed to support a manual decision rather than make that decision automatically.</p>
-
 <h2>Practical Scan Tips</h2>
 <ul>
 <li>Start with one user folder instead of scanning an entire system drive.</li>
@@ -136,22 +122,12 @@ else {
 <p><strong>Official reference:</strong> <a href="https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash" rel="noopener noreferrer" target="_blank">Microsoft Get-FileHash documentation</a></p>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/15-windows-robocopy-backup"><strong>How to Create a Safer One-Way Backup with Robocopy</strong></a> — Back up important files before deleting suspected duplicates.</li><li><a href="/posts/07-python-file-renamer"><strong>How to Safely Bulk Rename Files with Python</strong></a> — Rename reviewed files in a predictable sequence while preserving extensions.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
 <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI tools, and everyday technology.</p>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
 </div>
 <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
 <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
 </div></article>
 </main>
-<footer>
-<div class="container">
-<div class="legal-links">
-<a href="/about">About Us</a>
-<a href="/privacy">Privacy Policy</a>
-<a href="/terms">Terms of Service</a>
-<a href="/contact">Contact Us</a>
-</div>
-<p>© 2026 tweaknook.com. All rights reserved.</p>
-</div>
-</footer>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>

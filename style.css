@@ -10,3 +10,16 @@
 footer{border-top:1px solid var(--line);text-align:center;padding:34px 0;margin-top:60px;font-size:.88rem;color:var(--muted)}footer .legal-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:12px}footer a{color:#3e4652;text-decoration:none;font-weight:750}footer a:hover{color:var(--accent-dark)}
 @media(max-width:860px){.header-inner{display:block}.site-header nav{margin-top:13px}.tool-grid,.guide-layout,.value-grid,.latest-guides,.trust-box{grid-template-columns:1fr}.home-hero{padding-top:52px}.tool-card{min-height:0}.process-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.container{width:min(100% - 28px,var(--max))}.site-header{padding:17px 0}.logo-text{font-size:1.72rem}.site-header nav{gap:13px}.site-header nav a{font-size:.82rem}.home-hero h1{font-size:2.55rem}.home-section{padding:42px 0}.section-heading{display:block}.section-heading .text-link{display:inline-block;margin-top:10px}.page-content{margin:38px auto}.page-content h1{font-size:2rem}.page-content h2{font-size:1.35rem}.page-content table{min-width:620px}.page-content>table{display:block;overflow-x:auto}.tool-logo-wrap img{max-width:210px}}
+
+/* Navigation/archive corrections — 2026-08-17 */
+.home-latest-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.home-latest-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;padding:22px;background:#fff;min-height:235px}
+.home-latest-card .article-title{font-size:1.2rem}.home-latest-card .article-excerpt{margin-bottom:16px}.home-latest-card .text-link{margin-top:auto;align-self:flex-start}
+.archive-hero{padding:58px 0 34px;background:linear-gradient(180deg,#fff 0,#f8fafc 100%);border-bottom:1px solid var(--line)}
+.archive-hero h1{font-size:clamp(2.4rem,5vw,4rem);margin:.4rem 0 .8rem;line-height:1.04;letter-spacing:-.055em}.archive-hero p{max-width:760px;color:var(--muted);font-size:1.05rem;margin:0}
+.archive-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.archive-nav a{padding:8px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:800;color:var(--ink);background:#fff}.archive-nav a:hover{border-color:var(--accent);color:var(--accent-dark)}
+.archive-section{padding:46px 0}.archive-section+.archive-section{border-top:1px solid var(--line)}.archive-section h2{font-size:clamp(1.8rem,3vw,2.5rem);margin:0 0 10px;letter-spacing:-.04em}.archive-intro{color:var(--muted);margin:0 0 20px}
+.archive-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}.archive-list .article-item{padding:20px 0}.archive-list .article-title{font-size:1.15rem}
+.back-home{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);text-align:center}.back-home a{font-weight:800;text-decoration:none}
+.not-found{min-height:55vh;display:grid;place-items:center;text-align:center}.not-found h1{font-size:clamp(3rem,10vw,7rem);margin:0;letter-spacing:-.06em}.not-found p{color:var(--muted);max-width:560px}.not-found .hero-actions{justify-content:center}
+@media(max-width:860px){.home-latest-grid,.archive-list{grid-template-columns:1fr}}

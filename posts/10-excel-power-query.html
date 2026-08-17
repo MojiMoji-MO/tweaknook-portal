@@ -21,22 +21,9 @@
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
 <meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Automate Recurring CSV Cleanup with Excel Power Query" property="og:title"/><meta content="Build a repeatable Excel Power Query cleanup for recurring CSV files, then diagnose schema, type, and refresh errors without editing the source blindly." property="og:description"/><meta content="https://tweaknook.com/posts/10-excel-power-query" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Automate Recurring CSV Cleanup with Excel Power Query" name="twitter:title"/><meta content="Build a repeatable Excel Power Query cleanup for recurring CSV files, then diagnose schema, type, and refresh errors without editing the source blindly." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Automate Recurring CSV Cleanup with Excel Power Query", "description": "Build a repeatable Excel Power Query cleanup for recurring CSV files, then diagnose schema, type, and refresh errors without editing the source blindly.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-07", "dateModified": "2026-08-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/10-excel-power-query"}, "url": "https://tweaknook.com/posts/10-excel-power-query", "inLanguage": "en"}</script></head>
 <body>
-<header class="container">
-<div class="header-top">
-<a href="/" style="text-decoration: none;">
-<span class="logo-text">tweaknook</span>
-</a>
-</div>
-<nav aria-label="Primary navigation">
-<a href="/tools/">Tools</a>
-<a href="/#productivity">Productivity</a>
-<a href="/#ai-guides">AI Guides</a>
-<a href="/#tech-tips">Tech Tips</a>
-<a href="/about">About</a>
-</nav>
-</header>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
-<article class="page-content"><div style="margin-bottom:30px"><span class="post-category">Productivity</span><h1>How to Automate Recurring CSV Cleanup with Excel Power Query</h1><div class="post-meta">Published on July 7, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<article class="page-content"><div style="margin-bottom:30px"><a class="post-category" href="/blog/#productivity">Productivity</a><h1>How to Automate Recurring CSV Cleanup with Excel Power Query</h1><div class="post-meta">Published on July 7, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
 <p>Power Query is useful when the same kind of CSV arrives repeatedly and the cleanup steps should be repeatable. Build the query against a representative copy, keep the source file unchanged, inspect the automatically created type steps, and validate the refreshed output before replacing a manual process.</p>
 <h2>Start with a stable source and a copy</h2><p>Keep one untouched CSV as the reference sample. In Excel, use <strong>Data &gt; Get Data &gt; From Text/CSV</strong>, preview the delimiter and encoding, and choose <strong>Transform Data</strong> when cleanup is needed. Avoid editing the original CSV to make the first import succeed; otherwise the query may depend on a one-off fix that will not exist in next week's file.</p>
 <h2>Build cleanup steps in an order you can explain</h2><ol><li>Confirm the header row and promote headers if needed.</li><li>Remove genuinely unused columns.</li><li>Rename fields only when the downstream workbook needs stable names.</li><li>Trim or clean text where the business meaning is unchanged.</li><li>Handle blanks and known sentinel values deliberately.</li><li>Set data types after you understand the values in each column.</li><li>Filter rows only when you can explain why they should be excluded.</li></ol><p>Give important steps descriptive names in the Applied Steps pane. A sequence called “Removed Columns2, Changed Type3, Filtered Rows4” is much harder to repair than steps named for the intended transformation.</p>
@@ -47,17 +34,6 @@
 <h2>Validate refresh before relying on it</h2><ul><li>Compare row counts with the source.</li><li>Check several records from the beginning, middle, and end.</li><li>Confirm totals or other reconciliation numbers that matter to the workflow.</li><li>Inspect any query errors before publishing the output.</li><li>Refresh using a second representative CSV before declaring the process reusable.</li></ul><p>If the recurring files live in one folder and share the same structure, <a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a> covers the folder-combine pattern. If the source contains text that needs pattern cleanup, see <a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a> for a separate Sheets workflow.</p>
 <h2>Official References</h2><ul><li><a href="https://learn.microsoft.com/en-us/power-query/dealing-with-errors" rel="noopener" target="_blank">Dealing with errors — Microsoft Learn</a></li><li><a href="https://learn.microsoft.com/en-us/power-query/common-issues" rel="noopener" target="_blank">Common authoring issues in Power Query — Microsoft Learn</a></li></ul><section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li><li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li></ul></section><div class="author-box"><h4>About the author</h4><p>Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p></div><div style="margin-top:40px;padding-top:20px;border-top:1px solid #eee;text-align:center"><a href="/" style="text-decoration:none;font-weight:bold">← Back to Home</a></div></article>
 </main>
-<footer>
-<div class="container">
-<div class="legal-links">
-<a href="/tools/">Tools</a>
-<a href="/about">About</a>
-<a href="/privacy">Privacy Policy</a>
-<a href="/terms">Terms of Service</a>
-<a href="/contact">Contact</a>
-</div>
-<p>© 2026 tweaknook.com. All rights reserved.</p>
-</div>
-</footer>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>

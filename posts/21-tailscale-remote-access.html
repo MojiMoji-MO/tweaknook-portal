@@ -6,9 +6,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Set up Tailscale and Windows Remote Desktop without exposing RDP directly to the public internet. Includes prerequisites and connection checks." name="description"/>
 <!-- Google Search Console ownership verification -->
-<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification">
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
 <title>How to Access Your PC Remotely with Tailscale | Tweaknook</title>
-<link rel="canonical" href="https://tweaknook.com/posts/21-tailscale-remote-access">
+<link href="https://tweaknook.com/posts/21-tailscale-remote-access" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
 <!-- Google Analytics 4 -->
@@ -19,112 +19,71 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
-</head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Access Your PC Remotely with Tailscale" property="og:title"/><meta content="Set up Tailscale and Windows Remote Desktop without exposing RDP directly to the public internet. Includes prerequisites and connection checks." property="og:description"/><meta content="https://tweaknook.com/posts/21-tailscale-remote-access" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Access Your PC Remotely with Tailscale" name="twitter:title"/><meta content="Set up Tailscale and Windows Remote Desktop without exposing RDP directly to the public internet. Includes prerequisites and connection checks." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Access Your PC Remotely with Tailscale", "description": "Set up Tailscale and Windows Remote Desktop without exposing RDP directly to the public internet. Includes prerequisites and connection checks.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-18", "dateModified": "2026-07-18", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/21-tailscale-remote-access"}, "url": "https://tweaknook.com/posts/21-tailscale-remote-access", "inLanguage": "en"}</script></head>
 <body>
-<header class="container">
-<div class="header-top">
-<a href="/" style="text-decoration: none;">
-<span class="logo-text">tweaknook</span>
-</a>
-</div>
-<nav>
-<a href="/#productivity">Productivity</a>
-<a href="/#ai-guides">AI Guides</a>
-<a href="/#tech-tips">Tech Tips</a>
-</nav>
-</header>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">Tech Tips</span>
-                <h1>How to Access Your PC Remotely with Tailscale</h1>
-                <div class="post-meta">Published on July 18, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>Tailscale can connect approved devices through a private network so that Windows Remote Desktop does not need to be exposed directly through a public router port. The setup is straightforward, but Remote Desktop requirements and access controls still need to be configured correctly.</p>
-
-            <h2>What You Need</h2>
-            <ul>
-                <li>Tailscale installed on the remote PC and the device used to connect.</li>
-                <li>Both devices signed into the same tailnet or granted access through tailnet policy.</li>
-                <li>Remote Desktop enabled on the PC being controlled.</li>
-                <li>A supported Windows edition on the remote PC. Microsoft's built-in RDP host requires Windows Pro or another supported business edition; Windows Home can be used as a client but not as the built-in RDP host.</li>
-                <li>A Windows account with a password and permission to use Remote Desktop.</li>
-            </ul>
-
-            <h2>Step 1: Install Tailscale on Both Devices</h2>
-            <p>Install the official Tailscale client on the remote PC and the connecting device. Sign in through a supported identity provider and confirm that both devices appear in the Tailscale admin console.</p>
-            <p>Each device receives a private Tailscale IP address, usually in the <code>100.x.x.x</code> range, and may also receive a MagicDNS name. Access still depends on device authorization, account security, and tailnet access rules.</p>
-
-            <h2>Step 2: Enable Windows Remote Desktop</h2>
-            <p>On the remote PC, open <strong>Settings</strong> → <strong>System</strong> → <strong>Remote Desktop</strong> and enable the feature. Note the PC name and confirm which user accounts are allowed to connect.</p>
-            <p>Keep the Windows firewall enabled. Installing and enabling the required software should create the necessary local rules; do not open TCP port 3389 on the public router for this setup.</p>
-
-            <h2>Step 3: Test Tailscale Connectivity</h2>
-            <p>From the connecting device, confirm that the remote PC is online in Tailscale. You can test the path with:</p>
-            <pre><code>tailscale ping REMOTE_DEVICE_NAME</code></pre>
-            <p>Tailscale attempts direct peer-to-peer connections when possible. If network conditions prevent a direct path, traffic can use a relay. Relayed connections can be slower, so performance varies by firewall, NAT type, bandwidth, and latency.</p>
-
-            <h2>Step 4: Connect with Remote Desktop</h2>
-            <ol>
-                <li>Open Remote Desktop Connection or the current Microsoft remote desktop client.</li>
-                <li>Enter the remote PC's Tailscale IP address or MagicDNS name.</li>
-                <li>Sign in with an account that is allowed to use Remote Desktop.</li>
-                <li>Confirm the device identity and test the session before relying on it for urgent work.</li>
-            </ol>
-
-            <h2>Common Problems</h2>
-            <h3>The remote PC runs Windows Home</h3>
-            <p>Windows Home does not provide the built-in RDP host. Use a supported Windows edition or choose another remote-access application that can operate over the Tailscale network.</p>
-
-            <h3>A PIN works locally but not remotely</h3>
-            <p>Remote Desktop may require the actual Windows account password rather than a Windows Hello PIN.</p>
-
-            <h3>The device appears online but RDP fails</h3>
-            <p>Check that Remote Desktop is enabled, the account is permitted, the PC is awake, and the local firewall allows the service. Organization policies can also block remote sign-in.</p>
-
-            <h3>The connection is slow</h3>
-            <p>Check whether Tailscale is using a direct or relayed path. Large file transfers and high-resolution remote sessions depend on the upload speed of the remote network as well as the download speed of the local network.</p>
-
+<div style="margin-bottom: 30px;">
+<a class="post-category" href="/blog/#tech-tips">Tech Tips</a>
+<h1>How to Access Your PC Remotely with Tailscale</h1>
+<div class="post-meta">Published on July 18, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+</div>
+<p>Tailscale can connect approved devices through a private network so that Windows Remote Desktop does not need to be exposed directly through a public router port. The setup is straightforward, but Remote Desktop requirements and access controls still need to be configured correctly.</p>
+<h2>What You Need</h2>
+<ul>
+<li>Tailscale installed on the remote PC and the device used to connect.</li>
+<li>Both devices signed into the same tailnet or granted access through tailnet policy.</li>
+<li>Remote Desktop enabled on the PC being controlled.</li>
+<li>A supported Windows edition on the remote PC. Microsoft's built-in RDP host requires Windows Pro or another supported business edition; Windows Home can be used as a client but not as the built-in RDP host.</li>
+<li>A Windows account with a password and permission to use Remote Desktop.</li>
+</ul>
+<h2>Step 1: Install Tailscale on Both Devices</h2>
+<p>Install the official Tailscale client on the remote PC and the connecting device. Sign in through a supported identity provider and confirm that both devices appear in the Tailscale admin console.</p>
+<p>Each device receives a private Tailscale IP address, usually in the <code>100.x.x.x</code> range, and may also receive a MagicDNS name. Access still depends on device authorization, account security, and tailnet access rules.</p>
+<h2>Step 2: Enable Windows Remote Desktop</h2>
+<p>On the remote PC, open <strong>Settings</strong> → <strong>System</strong> → <strong>Remote Desktop</strong> and enable the feature. Note the PC name and confirm which user accounts are allowed to connect.</p>
+<p>Keep the Windows firewall enabled. Installing and enabling the required software should create the necessary local rules; do not open TCP port 3389 on the public router for this setup.</p>
+<h2>Step 3: Test Tailscale Connectivity</h2>
+<p>From the connecting device, confirm that the remote PC is online in Tailscale. You can test the path with:</p>
+<pre><code>tailscale ping REMOTE_DEVICE_NAME</code></pre>
+<p>Tailscale attempts direct peer-to-peer connections when possible. If network conditions prevent a direct path, traffic can use a relay. Relayed connections can be slower, so performance varies by firewall, NAT type, bandwidth, and latency.</p>
+<h2>Step 4: Connect with Remote Desktop</h2>
+<ol>
+<li>Open Remote Desktop Connection or the current Microsoft remote desktop client.</li>
+<li>Enter the remote PC's Tailscale IP address or MagicDNS name.</li>
+<li>Sign in with an account that is allowed to use Remote Desktop.</li>
+<li>Confirm the device identity and test the session before relying on it for urgent work.</li>
+</ol>
+<h2>Common Problems</h2>
+<h3>The remote PC runs Windows Home</h3>
+<p>Windows Home does not provide the built-in RDP host. Use a supported Windows edition or choose another remote-access application that can operate over the Tailscale network.</p>
+<h3>A PIN works locally but not remotely</h3>
+<p>Remote Desktop may require the actual Windows account password rather than a Windows Hello PIN.</p>
+<h3>The device appears online but RDP fails</h3>
+<p>Check that Remote Desktop is enabled, the account is permitted, the PC is awake, and the local firewall allows the service. Organization policies can also block remote sign-in.</p>
+<h3>The connection is slow</h3>
+<p>Check whether Tailscale is using a direct or relayed path. Large file transfers and high-resolution remote sessions depend on the upload speed of the remote network as well as the download speed of the local network.</p>
 <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Tailscale reduces the need to expose RDP publicly, but it does not remove the need for strong account security, device updates, access rules, and a tested recovery plan.</p>
-
-            <p>For current instructions, review Tailscale's <a href="https://tailscale.com/docs/solutions/access-remote-desktops-using-windows-rdp" target="_blank" rel="noopener">Windows RDP guide</a> and Microsoft's <a href="https://support.microsoft.com/en-us/windows/experience/connectivity-networking/how-to-use-remote-desktop" target="_blank" rel="noopener">Remote Desktop requirements</a>.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/15-windows-robocopy-backup">How to Create a Safer One-Way Backup with Robocopy</a></li>
-                    <li><a href="/posts/18-windows-winget-setup">How to Install Multiple Windows Apps with WinGet</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.
-                </p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
-            </div>
-
-        </article>
+<p>For current instructions, review Tailscale's <a href="https://tailscale.com/docs/solutions/access-remote-desktops-using-windows-rdp" rel="noopener" target="_blank">Windows RDP guide</a> and Microsoft's <a href="https://support.microsoft.com/en-us/windows/experience/connectivity-networking/how-to-use-remote-desktop" rel="noopener" target="_blank">Remote Desktop requirements</a>.</p>
+<section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+<h2 style="margin-top: 0;">Related Guides</h2>
+<ul style="margin-bottom: 0;">
+<li><a href="/posts/15-windows-robocopy-backup">How to Create a Safer One-Way Backup with Robocopy</a></li>
+<li><a href="/posts/18-windows-winget-setup">How to Install Multiple Windows Apps with WinGet</a></li>
+</ul>
+</section>
+<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
+</div>
+</article>
 </main>
-<footer>
-<div class="container">
-<div class="legal-links">
-<a href="/about">About Us</a>
-<a href="/privacy">Privacy Policy</a>
-<a href="/terms">Terms of Service</a>
-<a href="/contact">Contact Us</a>
-</div>
-<p>© 2026 tweaknook.com. All rights reserved.</p>
-</div>
-</footer>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>

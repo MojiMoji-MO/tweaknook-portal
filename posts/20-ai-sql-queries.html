@@ -1,64 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use a sanitized database schema, read-only access, query limits, and execution-plan review when drafting SQL with AI.">
-
-    <!-- Google Search Console ownership verification -->
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
-
-    <title>How to Draft SQL with AI Without Exposing Production Data | Tweaknook</title>
-    <link rel="canonical" href="https://tweaknook.com/posts/20-ai-sql-queries">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Use a sanitized database schema, read-only access, query limits, and execution-plan review when drafting SQL with AI." name="description"/>
+<!-- Google Search Console ownership verification -->
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Draft SQL with AI Without Exposing Production Data | Tweaknook</title>
+<link href="https://tweaknook.com/posts/20-ai-sql-queries" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
-    <!-- Google AdSense site verification and ad delivery -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-         crossorigin="anonymous"></script>
-</head>
+<!-- Google AdSense site verification and ad delivery -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Draft SQL with AI Without Exposing Production Data" property="og:title"/><meta content="Use a sanitized database schema, read-only access, query limits, and execution-plan review when drafting SQL with AI." property="og:description"/><meta content="https://tweaknook.com/posts/20-ai-sql-queries" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Draft SQL with AI Without Exposing Production Data" name="twitter:title"/><meta content="Use a sanitized database schema, read-only access, query limits, and execution-plan review when drafting SQL with AI." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Draft SQL with AI Without Exposing Production Data", "description": "Use a sanitized database schema, read-only access, query limits, and execution-plan review when drafting SQL with AI.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-17", "dateModified": "2026-07-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/20-ai-sql-queries"}, "url": "https://tweaknook.com/posts/20-ai-sql-queries", "inLanguage": "en"}</script></head>
 <body>
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">AI Guides</span>
-                <h1>How to Draft SQL with AI Without Exposing Production Data</h1>
-                <div class="post-meta">Published on July 17, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>AI can help draft a SQL query, explain a join, or suggest test cases. It cannot know whether a query is safe for a specific production database unless the schema, permissions, data volume, business definitions, and database engine are reviewed by a qualified person.</p>
-
-            <p>The safest workflow keeps secrets and production data out of the prompt, requests a read-only draft, validates the SQL in a controlled environment, and checks the execution plan before a query is used on important data.</p>
-
-            <h2>Do Not Paste a Production Database Dump</h2>
-
-            <p>A useful SQL prompt usually needs table names, column names, data types, relationships, and business definitions. It usually does not need real customer rows, passwords, connection strings, private hostnames, access tokens, or confidential values.</p>
-
-            <p>Create a sanitized schema description:</p>
-
-            <pre><code>Database engine: PostgreSQL 18
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
+<main class="container">
+<article class="page-content">
+<div style="margin-bottom: 30px;">
+<a class="post-category" href="/blog/#ai-guides">AI Guides</a>
+<h1>How to Draft SQL with AI Without Exposing Production Data</h1>
+<div class="post-meta">Published on July 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+</div>
+<p>AI can help draft a SQL query, explain a join, or suggest test cases. It cannot know whether a query is safe for a specific production database unless the schema, permissions, data volume, business definitions, and database engine are reviewed by a qualified person.</p>
+<p>The safest workflow keeps secrets and production data out of the prompt, requests a read-only draft, validates the SQL in a controlled environment, and checks the execution plan before a query is used on important data.</p>
+<h2>Do Not Paste a Production Database Dump</h2>
+<p>A useful SQL prompt usually needs table names, column names, data types, relationships, and business definitions. It usually does not need real customer rows, passwords, connection strings, private hostnames, access tokens, or confidential values.</p>
+<p>Create a sanitized schema description:</p>
+<pre><code>Database engine: PostgreSQL 18
 
 Table: customers
 - customer_id: bigint, primary key
@@ -81,31 +59,22 @@ Indexes:
 - orders(customer_id)
 - orders(ordered_at)
 - orders(order_status)</code></pre>
-
-            <p>Use fictional values when an example row is necessary. Keep sensitive column names out of the prompt when they do not affect the query.</p>
-
-            <h2>State the Database Engine and Version</h2>
-
-            <p>SQL syntax and behavior differ across PostgreSQL, MySQL, SQL Server, SQLite, BigQuery, Snowflake, and other systems. Specify the engine and, when relevant, the version. Ask the model not to mix dialects.</p>
-
-            <h2>Define the Result Before Asking for SQL</h2>
-
-            <p>Write the business question in testable terms:</p>
-
-            <ul>
-                <li>Which date range applies?</li>
-                <li>Which timezone is used?</li>
-                <li>Are canceled or refunded records excluded?</li>
-                <li>What makes a row unique?</li>
-                <li>Should missing values be excluded or grouped?</li>
-                <li>What is the maximum acceptable result size?</li>
-            </ul>
-
-            <p>“Show monthly sales” is incomplete. “Return completed-order revenue by calendar month in UTC for 2026, excluding refunded orders” is easier to verify.</p>
-
-            <h2>Use a Safety-Constrained Prompt</h2>
-
-            <pre><code>You are drafting PostgreSQL 18 SQL for review.
+<p>Use fictional values when an example row is necessary. Keep sensitive column names out of the prompt when they do not affect the query.</p>
+<h2>State the Database Engine and Version</h2>
+<p>SQL syntax and behavior differ across PostgreSQL, MySQL, SQL Server, SQLite, BigQuery, Snowflake, and other systems. Specify the engine and, when relevant, the version. Ask the model not to mix dialects.</p>
+<h2>Define the Result Before Asking for SQL</h2>
+<p>Write the business question in testable terms:</p>
+<ul>
+<li>Which date range applies?</li>
+<li>Which timezone is used?</li>
+<li>Are canceled or refunded records excluded?</li>
+<li>What makes a row unique?</li>
+<li>Should missing values be excluded or grouped?</li>
+<li>What is the maximum acceptable result size?</li>
+</ul>
+<p>“Show monthly sales” is incomplete. “Return completed-order revenue by calendar month in UTC for 2026, excluding refunded orders” is easier to verify.</p>
+<h2>Use a Safety-Constrained Prompt</h2>
+<pre><code>You are drafting PostgreSQL 18 SQL for review.
 
 Use only the sanitized schema and business definitions below.
 
@@ -129,125 +98,83 @@ Sanitized schema:
 
 Business definitions:
 [PASTE APPROVED DEFINITIONS]</code></pre>
-
-            <p>Requesting read-only syntax reduces risk, but it does not make the query automatically safe. A SELECT can still be expensive, expose restricted data, create locks in some workflows, or return more rows than intended.</p>
-
-            <h2>Review the Draft Before Running It</h2>
-
-            <table>
-                <thead><tr><th>Check</th><th>Question</th></tr></thead>
-                <tbody>
-                    <tr><td>Objects</td><td>Do every table and column exist in the target environment?</td></tr>
-                    <tr><td>Join cardinality</td><td>Could the join multiply rows unexpectedly?</td></tr>
-                    <tr><td>Filters</td><td>Are date boundaries, statuses, tenants, and permissions correct?</td></tr>
-                    <tr><td>Null behavior</td><td>Will NULL values be excluded or grouped as intended?</td></tr>
-                    <tr><td>Aggregation</td><td>Is the metric calculated at the correct grain?</td></tr>
-                    <tr><td>Output</td><td>Does the query have a limit during testing?</td></tr>
-                    <tr><td>Dialect</td><td>Does every function belong to the stated database engine?</td></tr>
-                </tbody>
-            </table>
-
-            <h2>Test with a Small, Non-Production Dataset</h2>
-
-            <p>Create representative test rows that cover normal and edge cases:</p>
-
-            <ul>
-                <li>A customer with one completed order</li>
-                <li>A customer with several orders</li>
-                <li>A canceled or refunded order</li>
-                <li>A row exactly on each date boundary</li>
-                <li>A missing optional value</li>
-                <li>Two rows that could be duplicated by an incorrect join</li>
-            </ul>
-
-            <p>Compare the result with a manually calculated expectation. A query that runs without a syntax error can still return the wrong business answer.</p>
-
-            <h2>Use Read-Only Access</h2>
-
-            <p>Run review queries with the narrowest database role available. In PostgreSQL, a read-only transaction restricts commands that modify non-temporary tables, but permissions and platform behavior still need administrator review.</p>
-
-            <pre><code>BEGIN READ ONLY;
+<p>Requesting read-only syntax reduces risk, but it does not make the query automatically safe. A SELECT can still be expensive, expose restricted data, create locks in some workflows, or return more rows than intended.</p>
+<h2>Review the Draft Before Running It</h2>
+<table>
+<thead><tr><th>Check</th><th>Question</th></tr></thead>
+<tbody>
+<tr><td>Objects</td><td>Do every table and column exist in the target environment?</td></tr>
+<tr><td>Join cardinality</td><td>Could the join multiply rows unexpectedly?</td></tr>
+<tr><td>Filters</td><td>Are date boundaries, statuses, tenants, and permissions correct?</td></tr>
+<tr><td>Null behavior</td><td>Will NULL values be excluded or grouped as intended?</td></tr>
+<tr><td>Aggregation</td><td>Is the metric calculated at the correct grain?</td></tr>
+<tr><td>Output</td><td>Does the query have a limit during testing?</td></tr>
+<tr><td>Dialect</td><td>Does every function belong to the stated database engine?</td></tr>
+</tbody>
+</table>
+<h2>Test with a Small, Non-Production Dataset</h2>
+<p>Create representative test rows that cover normal and edge cases:</p>
+<ul>
+<li>A customer with one completed order</li>
+<li>A customer with several orders</li>
+<li>A canceled or refunded order</li>
+<li>A row exactly on each date boundary</li>
+<li>A missing optional value</li>
+<li>Two rows that could be duplicated by an incorrect join</li>
+</ul>
+<p>Compare the result with a manually calculated expectation. A query that runs without a syntax error can still return the wrong business answer.</p>
+<h2>Use Read-Only Access</h2>
+<p>Run review queries with the narrowest database role available. In PostgreSQL, a read-only transaction restricts commands that modify non-temporary tables, but permissions and platform behavior still need administrator review.</p>
+<pre><code>BEGIN READ ONLY;
 
 -- Run the reviewed SELECT query here.
 
 ROLLBACK;</code></pre>
-
-            <p>Do not assume that adding a transaction makes every query harmless. Long-running reads can still consume resources, and database-specific commands may behave differently.</p>
-
-            <h2>Inspect the Execution Plan</h2>
-
-            <p>Use the database's plan tool before running a large query. For PostgreSQL:</p>
-
-            <pre><code>EXPLAIN
+<p>Do not assume that adding a transaction makes every query harmless. Long-running reads can still consume resources, and database-specific commands may behave differently.</p>
+<h2>Inspect the Execution Plan</h2>
+<p>Use the database's plan tool before running a large query. For PostgreSQL:</p>
+<pre><code>EXPLAIN
 SELECT ...;</code></pre>
-
-            <p><code>EXPLAIN</code> shows the planned operations without executing the query. <code>EXPLAIN ANALYZE</code> executes the statement, so do not use it casually on an unreviewed or expensive query.</p>
-
-            <p>Look for unexpected full-table scans, very large row estimates, repeated nested loops, and joins that do not use the expected keys. A database specialist should review high-impact plans.</p>
-
-            <h2>Apply a Test Limit Deliberately</h2>
-
-            <p>A LIMIT can reduce returned rows during development, but it does not necessarily reduce all work performed before the limit. Keep the date range narrow, filter early where logically correct, and test against a staging dataset that resembles production scale.</p>
-
-            <h2>Protect Tenant and Row-Level Boundaries</h2>
-
-            <p>For multi-tenant or restricted systems, include the approved tenant, organization, region, or access filter. Do not rely on the AI tool to infer security boundaries from table names. Confirm row-level security and permissions in the actual database.</p>
-
-            <h2>Do Not Use AI Output as a Migration Script</h2>
-
-            <p>Schema changes, data corrections, deletes, and migrations require backups, change review, rollback planning, testing, and authorization. Generate destructive or write-capable SQL only inside an established engineering process, not as a direct copy-and-run instruction from a chat response.</p>
-
-            <h2>Official PostgreSQL References</h2>
-
-            <p>PostgreSQL documents <a href="https://www.postgresql.org/docs/current/sql-set-transaction.html" target="_blank" rel="noopener">read-only transaction behavior</a>, <a href="https://www.postgresql.org/docs/current/using-explain.html" target="_blank" rel="noopener">using EXPLAIN</a>, and <a href="https://www.postgresql.org/docs/current/tutorial-transactions.html" target="_blank" rel="noopener">transaction concepts</a>. Use the official documentation for the database engine and version you actually run.</p>
-
-            <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Never paste credentials, connection strings, private customer rows, production dumps, or restricted schema details into an unapproved AI service. Do not run generated SQL on production until it has been reviewed and tested under appropriate permissions.</p>
-
-            <h2>A Controlled Workflow</h2>
-
-            <ol>
-                <li>Write the business definition.</li>
-                <li>Prepare a sanitized schema.</li>
-                <li>Request read-only SQL and assumptions.</li>
-                <li>Review objects, joins, filters, and null behavior.</li>
-                <li>Test on representative non-production data.</li>
-                <li>Inspect the execution plan.</li>
-                <li>Run with least-privilege access.</li>
-                <li>Compare the output with an independent check.</li>
-            </ol>
-
-            <p>AI is most useful here as a drafting and explanation aid. Database safety still comes from controlled access, explicit definitions, testing, and accountable review.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
-                    <li><a href="/posts/23-excel-power-pivot-dax">How to Analyze Large Excel Data with Power Pivot and DAX</a></li>
-                    <li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<p><code>EXPLAIN</code> shows the planned operations without executing the query. <code>EXPLAIN ANALYZE</code> executes the statement, so do not use it casually on an unreviewed or expensive query.</p>
+<p>Look for unexpected full-table scans, very large row estimates, repeated nested loops, and joins that do not use the expected keys. A database specialist should review high-impact plans.</p>
+<h2>Apply a Test Limit Deliberately</h2>
+<p>A LIMIT can reduce returned rows during development, but it does not necessarily reduce all work performed before the limit. Keep the date range narrow, filter early where logically correct, and test against a staging dataset that resembles production scale.</p>
+<h2>Protect Tenant and Row-Level Boundaries</h2>
+<p>For multi-tenant or restricted systems, include the approved tenant, organization, region, or access filter. Do not rely on the AI tool to infer security boundaries from table names. Confirm row-level security and permissions in the actual database.</p>
+<h2>Do Not Use AI Output as a Migration Script</h2>
+<p>Schema changes, data corrections, deletes, and migrations require backups, change review, rollback planning, testing, and authorization. Generate destructive or write-capable SQL only inside an established engineering process, not as a direct copy-and-run instruction from a chat response.</p>
+<h2>Official PostgreSQL References</h2>
+<p>PostgreSQL documents <a href="https://www.postgresql.org/docs/current/sql-set-transaction.html" rel="noopener" target="_blank">read-only transaction behavior</a>, <a href="https://www.postgresql.org/docs/current/using-explain.html" rel="noopener" target="_blank">using EXPLAIN</a>, and <a href="https://www.postgresql.org/docs/current/tutorial-transactions.html" rel="noopener" target="_blank">transaction concepts</a>. Use the official documentation for the database engine and version you actually run.</p>
+<p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Never paste credentials, connection strings, private customer rows, production dumps, or restricted schema details into an unapproved AI service. Do not run generated SQL on production until it has been reviewed and tested under appropriate permissions.</p>
+<h2>A Controlled Workflow</h2>
+<ol>
+<li>Write the business definition.</li>
+<li>Prepare a sanitized schema.</li>
+<li>Request read-only SQL and assumptions.</li>
+<li>Review objects, joins, filters, and null behavior.</li>
+<li>Test on representative non-production data.</li>
+<li>Inspect the execution plan.</li>
+<li>Run with least-privilege access.</li>
+<li>Compare the output with an independent check.</li>
+</ol>
+<p>AI is most useful here as a drafting and explanation aid. Database safety still comes from controlled access, explicit definitions, testing, and accountable review.</p>
+<section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+<h2 style="margin-top: 0;">Related Guides</h2>
+<ul style="margin-bottom: 0;">
+<li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
+<li><a href="/posts/23-excel-power-pivot-dax">How to Analyze Large Excel Data with Power Pivot and DAX</a></li>
+<li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
+</ul>
+</section>
+<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+</div>
+</article>
+</main>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>

@@ -21,22 +21,9 @@
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
 <meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Build a Google Sheets Dashboard with IMPORTRANGE" property="og:title"/><meta content="Build a Google Sheets IMPORTRANGE dashboard, fix access and loading errors, avoid slow chains, and reduce data exposure before sharing the result." property="og:description"/><meta content="https://tweaknook.com/posts/04-importrange-dashboard" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Build a Google Sheets Dashboard with IMPORTRANGE" name="twitter:title"/><meta content="Build a Google Sheets IMPORTRANGE dashboard, fix access and loading errors, avoid slow chains, and reduce data exposure before sharing the result." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Build a Google Sheets Dashboard with IMPORTRANGE", "description": "Build a Google Sheets IMPORTRANGE dashboard, fix access and loading errors, avoid slow chains, and reduce data exposure before sharing the result.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-01", "dateModified": "2026-08-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/04-importrange-dashboard"}, "url": "https://tweaknook.com/posts/04-importrange-dashboard", "inLanguage": "en"}</script></head>
 <body>
-<header class="container">
-<div class="header-top">
-<a href="/" style="text-decoration: none;">
-<span class="logo-text">tweaknook</span>
-</a>
-</div>
-<nav aria-label="Primary navigation">
-<a href="/tools/">Tools</a>
-<a href="/#productivity">Productivity</a>
-<a href="/#ai-guides">AI Guides</a>
-<a href="/#tech-tips">Tech Tips</a>
-<a href="/about">About</a>
-</nav>
-</header>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
-<article class="page-content"><div style="margin-bottom:30px"><span class="post-category">Productivity</span><h1>How to Build a Google Sheets Dashboard with IMPORTRANGE</h1><div class="post-meta">Published on July 1, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<article class="page-content"><div style="margin-bottom:30px"><a class="post-category" href="/blog/#productivity">Productivity</a><h1>How to Build a Google Sheets Dashboard with IMPORTRANGE</h1><div class="post-meta">Published on July 1, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
 <p><code>IMPORTRANGE</code> is useful when a dashboard needs data from a separate Google Sheets file, but the safest design is usually <strong>one source, one narrow imported range, and a separate summary tab</strong>. Start by importing only the fields the dashboard needs, grant access deliberately, and verify that the destination does not expose source data to people who should not have it.</p>
 <p>If the dashboard shows <code>#REF!</code>, stays on Loading, or updates slowly, do not rebuild the whole spreadsheet first. The message usually points to one of four problems: the files have not been connected, the import is too large or too active, the design contains a chain or cycle, or the source is still calculating.</p>
 <h2>Choose a simple source-to-dashboard structure</h2><p>Keep raw or operational data in the source spreadsheet. In the destination, create one tab such as <code>Imported_Data</code> for the imported range and separate tabs for charts, pivots, and summary formulas. This makes it easier to tell whether a problem is in the external connection or in the dashboard logic.</p><pre><code>=IMPORTRANGE("https://docs.google.com/spreadsheets/d/EXAMPLE_ID/edit", "Sales!A1:F500")</code></pre><p>The two arguments are the source spreadsheet and the range to import. A named range or table reference can also be used when it makes the source structure easier to maintain.</p>
@@ -47,17 +34,6 @@
 <h2>Verify the dashboard before sharing it</h2><ul><li>Compare several imported rows with the source, including the first and last rows of the expected range.</li><li>Confirm that a source change reaches the destination after the expected refresh behavior.</li><li>Check that formulas and charts reference the imported tab, not an old copied range.</li><li>Review destination editors and the sensitivity of the source data.</li><li>Keep source calculations and imported ranges as small as practical.</li></ul><p>If the job needs scheduled refresh, much larger datasets, or a more controlled data pipeline, evaluate a different mechanism instead of adding more <code>IMPORTRANGE</code> layers.</p>
 <h2>Official References</h2><ul><li><a href="https://support.google.com/docs/answer/3093340?hl=en" rel="noopener" target="_blank">IMPORTRANGE — Google Docs Editors Help</a></li><li><a href="https://support.google.com/docs/answer/12236443?hl=en" rel="noopener" target="_blank">Learn how to optimize data ingestion — Google Docs Editors Help</a></li></ul><section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">How to Stop Google Sheets from Changing Numbers to Dates</a></li><li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li></ul></section><div class="author-box"><h4>About the author</h4><p>Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p></div><div style="margin-top:40px;padding-top:20px;border-top:1px solid #eee;text-align:center"><a href="/" style="text-decoration:none;font-weight:bold">← Back to Home</a></div></article>
 </main>
-<footer>
-<div class="container">
-<div class="legal-links">
-<a href="/tools/">Tools</a>
-<a href="/about">About</a>
-<a href="/privacy">Privacy Policy</a>
-<a href="/terms">Terms of Service</a>
-<a href="/contact">Contact</a>
-</div>
-<p>© 2026 tweaknook.com. All rights reserved.</p>
-</div>
-</footer>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>
