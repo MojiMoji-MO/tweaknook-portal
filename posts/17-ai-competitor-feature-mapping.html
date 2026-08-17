@@ -1,156 +1,72 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use public source material and a structured prompt to organize competitor features, evidence, and gaps for manual review.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    
-    <title>How to Build a Competitor Feature Map with AI | Tweaknook</title>
-    
-    <link rel="canonical" href="https://tweaknook.com/posts/17-ai-competitor-feature-mapping">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Build an AI-assisted competitor feature map from dated primary sources, separate confirmed facts from unknowns, and keep evidence separate from interpretation." name="description"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Build a Competitor Feature Map with AI | Tweaknook</title>
+<link href="https://tweaknook.com/posts/17-ai-competitor-feature-mapping" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
-</head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Build a Competitor Feature Map with AI" property="og:title"/><meta content="Build an AI-assisted competitor feature map from dated primary sources, separate confirmed facts from unknowns, and keep evidence separate from interpretation." property="og:description"/><meta content="https://tweaknook.com/posts/17-ai-competitor-feature-mapping" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Build a Competitor Feature Map with AI" name="twitter:title"/><meta content="Build an AI-assisted competitor feature map from dated primary sources, separate confirmed facts from unknowns, and keep evidence separate from interpretation." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Build a Competitor Feature Map with AI", "description": "Build an AI-assisted competitor feature map from dated primary sources, separate confirmed facts from unknowns, and keep evidence separate from interpretation.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-14", "dateModified": "2026-08-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/17-ai-competitor-feature-mapping"}, "url": "https://tweaknook.com/posts/17-ai-competitor-feature-mapping", "inLanguage": "en"}</script></head>
 <body>
-
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">AI Guides</span>
-                <h1>How to Build a Competitor Feature Map with AI</h1>
-                <div class="post-meta">Published on July 14, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>A competitor feature map is a table that compares products against a consistent set of criteria. AI can help organize public source material, but it should not be asked to guess whether a feature exists. Every important entry should link back to evidence.</p>
-
-            <h2>Step 1: Define the Comparison Categories</h2>
-            <p>Create the columns before collecting data. This prevents each competitor's marketing language from changing the structure of the comparison. Example categories include:</p>
-            <ul>
-                <li>Data import and export</li>
-                <li>API and webhook support</li>
-                <li>User roles and permissions</li>
-                <li>Single sign-on</li>
-                <li>Audit logs</li>
-                <li>Automation rules</li>
-                <li>Published pricing</li>
-            </ul>
-
-            <h2>Step 2: Collect Public Evidence</h2>
-            <p>Use current product documentation, pricing pages, release notes, and help-center articles. Save the page title, URL, and access date. A feature shown only in an old blog post may no longer be available.</p>
-            <p>Respect site terms, robots rules, and access restrictions. Do not collect private customer data or attempt to bypass login controls.</p>
-
-            <h2>Step 3: Use a Structured Extraction Prompt</h2>
-            <pre><code>[ROLE]
-Act as a research assistant organizing supplied source text.
-
-[OUTPUT COLUMNS]
-- Competitor
-- Feature category
-- Status: Confirmed, Not found, or Unclear
-- Evidence
-- Source title
-- Source URL
-- Access date
-- Review note
-
-[RULES]
-1. Use only the supplied source material.
-2. Do not infer a feature from marketing adjectives.
-3. Mark the status as Confirmed only when the source explicitly describes the capability.
-4. Use Unclear when wording is ambiguous or plan availability is missing.
-5. Keep direct quotations short and preserve technical terms.
-6. Do not treat "Not found" as proof that the feature does not exist.</code></pre>
-
-            <h2>Step 4: Review the First-Pass Table</h2>
-            <p>Check every row marked Confirmed. Open the source and verify that the evidence refers to the correct product, plan, and date. Pricing and enterprise features often vary by region or contract, so keep those qualifications in the table.</p>
-
-            <h2>Step 5: Separate Facts from Analysis</h2>
-            <p>The feature table should contain source-backed observations. Strategic conclusions belong in a separate section. For example, “Competitor A documents SAML support” is a factual entry. “Competitor A is better for enterprises” is an interpretation that requires additional evidence.</p>
-
-            <h2>Recommended Spreadsheet Columns</h2>
-            <table>
-                <thead>
-                    <tr><th>Column</th><th>Purpose</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Feature</td><td>The consistent comparison criterion.</td></tr>
-                    <tr><td>Status</td><td>Confirmed, Not found, or Unclear.</td></tr>
-                    <tr><td>Evidence</td><td>A short source-backed statement.</td></tr>
-                    <tr><td>Source</td><td>Page title and link.</td></tr>
-                    <tr><td>Checked date</td><td>Shows when the information was reviewed.</td></tr>
-                    <tr><td>Reviewer note</td><td>Records plan limits or unresolved questions.</td></tr>
-                </tbody>
-            </table>
-
-            <h2>What AI Should Not Decide</h2>
-            <ul>
-                <li>Whether missing information means a feature does not exist.</li>
-                <li>Whether one product is legally compliant for a specific organization.</li>
-                <li>Whether published pricing applies to a negotiated enterprise contract.</li>
-                <li>Whether an old source still describes the current product.</li>
-            </ul>
-
-            <p>A useful feature map is not the table with the most rows. It is the table where each important claim can be traced to a current source and reviewed by another person.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/02-system-prompt">How to Write More Consistent System Prompts</a></li>
-                    <li><a href="/posts/13-ai-sentiment-analysis">How to Analyze Customer Feedback with a Structured AI Prompt</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.
-                </p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
-            </div>
-
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav aria-label="Primary navigation">
+<a href="/tools/">Tools</a>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+<a href="/about">About</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content"><div style="margin-bottom:30px"><span class="post-category">AI Guides</span><h1>How to Build a Competitor Feature Map with AI</h1><div class="post-meta">Published on July 14, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p>AI can help organize a competitor feature map, but it should not decide that a feature exists merely because a product sounds likely to have it. Build the map from dated primary sources, keep the evidence next to each claim, and distinguish <strong>Confirmed</strong>, <strong>Unclear</strong>, and <strong>Not found in reviewed sources</strong>. “Not found” is not the same as “does not exist.”</p>
+<h2>Define scope before collecting features</h2><p>Write down the comparison date, products, plan tiers, platforms, and audience. A feature on an enterprise plan should not be compared with a competitor's free tier as though they were equivalent. Likewise, a mobile-only capability and a desktop capability may need separate rows.</p>
+<h2>Use an evidence table, not a feature checklist</h2><p>A useful working table includes:</p><div class="table-scroll"><table><thead><tr><th>Feature</th><th>Product / plan</th><th>Status</th><th>Evidence</th><th>Checked</th><th>Notes</th></tr></thead><tbody><tr><td>Example capability</td><td>Product A / Standard</td><td>Confirmed</td><td>Official documentation URL</td><td>2026-08-17</td><td>Documented for web app</td></tr><tr><td>Example capability</td><td>Product B / Standard</td><td>Not found in reviewed sources</td><td>Pricing + help center reviewed</td><td>2026-08-17</td><td>Do not mark “No” without stronger evidence</td></tr></tbody></table></div><p>The rows above are illustrative, not claims about real products.</p>
+<h2>Prefer primary product sources</h2><p>Use official pricing pages, product documentation, release notes, and support pages. A marketing page can confirm that a capability is promoted, but technical documentation may be needed for limits or plan-specific behavior. Record the URL and date because competitor products change.</p>
+<h2>Use AI for extraction and normalization</h2><pre><code>From the sources I provide, create rows with:
+- feature name
+- product and plan
+- Confirmed / Unclear / Not found in reviewed sources
+- source URL
+- exact limitation or condition
+- checked date
+Do not infer that a feature exists from general product knowledge.
+Do not convert “not found” into “not supported.”</code></pre><p>Ask AI to normalize wording after the evidence is collected. For example, “scheduled export,” “recurring export,” and “automated report delivery” may describe related but not identical functions. Keep the vendor's actual wording in the evidence column so the normalized label does not erase the difference.</p>
+<h2>Separate facts from your decision layer</h2><p>Do not put “better,” “worse,” or “winner” in the evidence column. First record what each product actually documents. Then create a separate decision layer that weights the features relevant to your use case. A capability can be objectively present yet unimportant to your team.</p>
+<h2>Handle conflicting sources openly</h2><p>If a pricing page says a feature is included but an older help article says it is unavailable, record both and mark the row <strong>Unclear</strong>. Check update dates and, if necessary, use the vendor's support channel. Do not silently choose the answer that makes the comparison cleaner.</p>
+<h2>Watch for plan, region, and platform differences</h2><ul><li>Separate free, individual, business, and enterprise plans when availability differs.</li><li>Record whether a feature is web, desktop, mobile, API, or admin-console specific.</li><li>Do not assume a feature announced in release notes has reached every account.</li><li>Record limits such as usage caps or required add-ons when they materially affect the comparison.</li></ul>
+<h2>Review the map before publishing or deciding</h2><p>Take the rows that would most influence a purchase or strategic decision and reopen their sources. Verify that the source still says what the map claims, that the plan is correct, and that the evidence is current enough for the decision date.</p><p>For reusable extraction instructions, <a href="/posts/02-system-prompt">How to Write Reusable AI Instructions for Consistent Results</a> shows how to keep task rules separate from source data.</p>
+<h2>Official References</h2><ul><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener" target="_blank">Creating helpful, reliable, people-first content — Google Search Central (example of documenting primary purpose and evidence quality, not a competitor-data source)</a></li></ul><section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/02-system-prompt">How to Write Reusable AI Instructions for Consistent Results</a></li><li><a href="/posts/32-ai-document-comparison">How to Compare Two Documents with AI and Verify the Differences</a></li></ul></section><div class="author-box"><h4>About the author</h4><p>Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p></div><div style="margin-top:40px;padding-top:20px;border-top:1px solid #eee;text-align:center"><a href="/" style="text-decoration:none;font-weight:bold">← Back to Home</a></div></article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/tools/">Tools</a>
+<a href="/about">About</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>

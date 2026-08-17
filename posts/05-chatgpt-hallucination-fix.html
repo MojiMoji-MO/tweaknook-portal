@@ -1,137 +1,71 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use source requirements, uncertainty labels, and a verification checklist to reduce unsupported claims in AI-generated work.">
-    
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" />
-    <title>A Verification Prompt That Helps Reduce AI Hallucinations | Tweaknook</title>
-    <link rel="canonical" href="https://tweaknook.com/posts/05-chatgpt-hallucination-fix">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Use a verification-oriented AI prompt to surface uncertainty, require source checks, separate facts from inference, and review important claims before using them." name="description"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>A Verification Prompt That Helps Reduce AI Hallucinations | Tweaknook</title>
+<link href="https://tweaknook.com/posts/05-chatgpt-hallucination-fix" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <!-- Google AdSense site verification and ad delivery -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-     crossorigin="anonymous"></script>
-</head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="A Verification Prompt That Helps Reduce AI Hallucinations" property="og:title"/><meta content="Use a verification-oriented AI prompt to surface uncertainty, require source checks, separate facts from inference, and review important claims before using them." property="og:description"/><meta content="https://tweaknook.com/posts/05-chatgpt-hallucination-fix" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="A Verification Prompt That Helps Reduce AI Hallucinations" name="twitter:title"/><meta content="Use a verification-oriented AI prompt to surface uncertainty, require source checks, separate facts from inference, and review important claims before using them." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A Verification Prompt That Helps Reduce AI Hallucinations", "description": "Use a verification-oriented AI prompt to surface uncertainty, require source checks, separate facts from inference, and review important claims before using them.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-02", "dateModified": "2026-08-17", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/05-chatgpt-hallucination-fix"}, "url": "https://tweaknook.com/posts/05-chatgpt-hallucination-fix", "inLanguage": "en"}</script></head>
 <body>
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav aria-label="Primary navigation">
+<a href="/tools/">Tools</a>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+<a href="/about">About</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content"><div style="margin-bottom:30px"><span class="post-category">AI Guides</span><h1>A Verification Prompt That Helps Reduce AI Hallucinations</h1><div class="post-meta">Published on July 2, 2026 • Updated on August 17, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p>No prompt can guarantee that an AI answer is true. A more useful goal is to make unsupported claims easier to spot: require the model to identify what is known, what is inferred, what needs a current source, and what it cannot verify. OpenAI's research describes hallucinations as a persistent problem in which a model can produce plausible but false statements, and it argues that systems should be rewarded for appropriate uncertainty rather than guessing.</p>
+<h2>Use this prompt when accuracy matters more than fluency</h2><pre><code>Answer the task, but do not guess to fill missing information.
 
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">AI Guides</span>
-                <h1>A Verification Prompt That Helps Reduce AI Hallucinations</h1>
-                <div class="post-meta">Published on July 2, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>No prompt can guarantee that an AI response is completely accurate. A better goal is to make unsupported claims easier to detect before the output is used in an email, report, spreadsheet, or client document.</p>
-
-            <h2>Why Simple Prompts Produce Confident Errors</h2>
-            <p>A request such as “summarize this topic and give me the facts” does not define what counts as evidence. The model may combine correct information with assumptions, outdated details, or invented citations. A verification prompt adds clear rules for sources, uncertainty, and review.</p>
-
-            <h2>A Practical Verification Prompt</h2>
-            <p>Copy the following prompt and replace the bracketed sections:</p>
-            <pre><code>[TASK]
-Answer this question: [INSERT QUESTION]
-
-[SOURCE RULE]
-Use only the information contained in the material I provide below.
-Do not use outside knowledge unless I explicitly ask for it.
-
-[ACCURACY RULES]
-1. Do not guess missing facts.
-2. Label uncertain statements as "Unverified."
-3. For every important claim, identify the supporting page, section, or quoted phrase.
-4. If two sources conflict, show both statements instead of choosing one silently.
-5. If the source does not contain the answer, say: "The provided material does not answer this question."
-
-[OUTPUT]
-A. Direct answer
-B. Evidence used
-C. Unverified or missing information
-D. Final verification checklist
-
-[SOURCE MATERIAL]
-[PASTE TEXT OR ATTACH DOCUMENT]</code></pre>
-
-            <h2>How to Use the Prompt</h2>
-            <ol>
-                <li><strong>Define the source boundary.</strong> Tell the model whether it may use only an attached file or whether outside research is allowed.</li>
-                <li><strong>Ask for evidence locations.</strong> Page numbers, headings, or short supporting excerpts make manual checking faster.</li>
-                <li><strong>Separate facts from suggestions.</strong> Ask the model to label recommendations and inferences instead of presenting them as source facts.</li>
-                <li><strong>Review the highest-risk claims first.</strong> Check names, dates, prices, legal rules, medical statements, calculations, and technical commands.</li>
-            </ol>
-
-            <h2>Example</h2>
-            <p>Suppose a policy PDF is attached and you ask when a requirement begins. A weak response may provide a date without showing where it came from. With the verification prompt, the response should include the date, the relevant page or heading, and a warning when the document is ambiguous.</p>
-
-            <h2>What This Prompt Cannot Do</h2>
-            <ul>
-                <li>It cannot make an incorrect source accurate.</li>
-                <li>It cannot guarantee that every citation is matched correctly.</li>
-                <li>It cannot replace testing of code, formulas, or configuration changes.</li>
-                <li>It should not be the only review step for legal, financial, medical, or security decisions.</li>
-            </ul>
-
-<p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Treat AI output as a draft. Open the original source and confirm important claims before publishing or acting on them.</p>
-
-            <h2>A Simple Final Check</h2>
-            <p>Before using the answer, ask three questions: Is the claim present in the source? Does the cited location actually support it? Is any conclusion stronger than the evidence? This short review catches more problems than adding dramatic instructions such as “be 100% accurate.”</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/11-ai-pdf-data-extraction">How to Extract Key Information from Long PDFs with AI</a></li>
-                    <li><a href="/posts/22-ai-pdf-extraction">How to Extract PDF Tables into CSV with AI</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">
-                    Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.
-                </p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem; transition: color 0.2s;">← Back to Home</a>
-            </div>
-
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+For each important factual claim:
+1. Mark it as Confirmed, Inference, or Unverified.
+2. If the fact can change over time, say what current source should be checked.
+3. If a source is provided, use only information that source actually supports.
+4. If sources disagree, describe the disagreement instead of choosing silently.
+5. At the end, list the claims I should verify before acting.</code></pre><p>This prompt does not “turn off hallucinations.” It changes the requested output so uncertainty and verification work are visible to the reader.</p>
+<h2>Separate three kinds of statements</h2><ul><li><strong>Confirmed:</strong> directly supported by a source available in the task.</li><li><strong>Inference:</strong> a conclusion drawn from supported facts, but not stated directly by the source.</li><li><strong>Unverified:</strong> plausible information for which the model does not currently have sufficient evidence.</li></ul><p>The labels are useful only if you still inspect the evidence. A model can mislabel its own claim, invent a citation, or misunderstand a source.</p>
+<h2>Use a source-first workflow for current facts</h2><ol><li>Define the question narrowly.</li><li>Find the primary source for facts that can change, such as product limits, policies, prices, schedules, or account settings.</li><li>Give the model the source or require links to the source.</li><li>Ask for the answer and the specific evidence supporting each important claim.</li><li>Open the source and verify the claims that affect a decision.</li></ol><p>If you are comparing versions of a document, <a href="/posts/32-ai-document-comparison">How to Compare Two Documents with AI and Verify the Differences</a> shows how to keep findings tied to the originals.</p>
+<h2>An illustrative before-and-after example</h2><p>Suppose the question is: “Does Product X support feature Y on every plan?” A weak answer might confidently say yes because the feature appears in a general product page. A better verification output would say that the general page confirms the feature exists, but the plan-level availability is <em>unverified</em> until the current pricing or plan documentation is checked. This is a constructed example, not a report of a real product test.</p>
+<h2>Ask for evidence at the right granularity</h2><p>“Provide sources” is too vague when the answer contains ten claims. Ask the model to pair each decision-relevant claim with the source section, page, or URL that supports it. For an uploaded document, ask for page numbers or section headings and compare those locations with the original.</p>
+<h2>Do not use confidence wording as proof</h2><p>A model saying it is “90% confident” does not establish a fact. Confidence language can help prioritize review, but the evidence still matters. For high-impact medical, legal, financial, safety, or contractual decisions, use qualified professional review and authoritative sources instead of relying on this prompt as a safeguard.</p>
+<h2>When the prompt is not enough</h2><ul><li>The source itself may be outdated.</li><li>The model may cite a source that does not support the sentence.</li><li>A scanned or poorly extracted document may omit text.</li><li>A question may depend on account, region, plan, or software version.</li><li>The correct answer may genuinely be unknown.</li></ul><p>For long PDFs, use a structured extraction workflow with page-level verification rather than asking for a single broad summary. See <a href="/posts/11-ai-pdf-data-extraction">How to Extract Key Information from Long PDFs with AI</a>.</p>
+<h2>A practical completion check</h2><p>Before using the output, choose the three claims that would cause the most damage if wrong. Verify those directly in the primary source. If the source does not support them, revise the answer rather than trying to persuade the model to defend its first response.</p>
+<h2>Official References</h2><ul><li><a href="https://openai.com/index/why-language-models-hallucinate/" rel="noopener" target="_blank">Why language models hallucinate — OpenAI</a></li></ul><section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/32-ai-document-comparison">How to Compare Two Documents with AI and Verify the Differences</a></li><li><a href="/posts/11-ai-pdf-data-extraction">How to Extract Key Information from Long PDFs with AI</a></li></ul></section><div class="author-box"><h4>About the author</h4><p>Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p></div><div style="margin-top:40px;padding-top:20px;border-top:1px solid #eee;text-align:center"><a href="/" style="text-decoration:none;font-weight:bold">← Back to Home</a></div></article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/tools/">Tools</a>
+<a href="/about">About</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>

@@ -1,196 +1,150 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use Chrome Task Manager, Memory Saver, extension review, and tab checks to reduce browser memory pressure without guessing which process is responsible.">
-
-    <!-- Google Search Console ownership verification -->
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
-
-    <title>How to Find What Is Using Memory in Chrome and Reduce It | Tweaknook</title>
-    <link rel="canonical" href="https://tweaknook.com/posts/09-chrome-memory-saver">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Use Chrome Task Manager, Memory Saver, extension review, and tab checks to reduce browser memory pressure without guessing which process is responsible." name="description"/>
+<!-- Google Search Console ownership verification -->
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Find What Is Using Memory in Chrome and Reduce It | Tweaknook</title>
+<link href="https://tweaknook.com/posts/09-chrome-memory-saver" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
-    <!-- Google AdSense site verification and ad delivery -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-         crossorigin="anonymous"></script>
-</head>
+<!-- Google AdSense site verification and ad delivery -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Find What Is Using Memory in Chrome and Reduce It" property="og:title"/><meta content="Use Chrome Task Manager, Memory Saver, extension review, and tab checks to reduce browser memory pressure without guessing which process is responsible." property="og:description"/><meta content="https://tweaknook.com/posts/09-chrome-memory-saver" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Find What Is Using Memory in Chrome and Reduce It" name="twitter:title"/><meta content="Use Chrome Task Manager, Memory Saver, extension review, and tab checks to reduce browser memory pressure without guessing which process is responsible." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Find What Is Using Memory in Chrome and Reduce It", "description": "Use Chrome Task Manager, Memory Saver, extension review, and tab checks to reduce browser memory pressure without guessing which process is responsible.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-06", "dateModified": "2026-07-06", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/09-chrome-memory-saver"}, "url": "https://tweaknook.com/posts/09-chrome-memory-saver", "inLanguage": "en"}</script></head>
 <body>
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">Tech Tips</span>
-                <h1>How to Find What Is Using Memory in Chrome and Reduce It</h1>
-                <div class="post-meta">Published on July 6, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>Chrome uses separate processes for tabs, extensions, graphics, and browser services. That design can improve stability and security, but it also means the operating system may show many Chrome processes at once. A high number of processes is not automatically a fault, and an inactive tab does not necessarily use zero memory.</p>
-
-            <p>The useful question is whether Chrome is creating memory pressure: slow switching, discarded tabs reloading repeatedly, other applications becoming unresponsive, or the system using storage as virtual memory. The safest troubleshooting process identifies the largest browser task before changing settings.</p>
-
-            <h2>Confirm That Memory Is the Bottleneck</h2>
-
-            <p>Open the operating system's task manager and compare memory, CPU, and disk usage while the slowdown is happening. A browser problem can look similar to a full system drive, a busy antivirus scan, a video call, or an application update.</p>
-
-            <p>Record three details:</p>
-
-            <ul>
-                <li>Total system memory and the percentage currently in use</li>
-                <li>Whether Chrome usage grows over time or only on one site</li>
-                <li>Whether the problem stops after closing a specific tab or extension</li>
-            </ul>
-
-            <h2>Use Chrome Task Manager</h2>
-
-            <ol>
-                <li>Open Chrome.</li>
-                <li>Select the three-dot menu.</li>
-                <li>Open <strong>More tools</strong> → <strong>Task manager</strong>.</li>
-                <li>Select the memory column to sort tasks by usage.</li>
-                <li>Observe which tab, extension, or process remains near the top.</li>
-            </ol>
-
-            <p>Do not end every unfamiliar process. First identify whether the task is a webpage, extension, subframe, service worker, GPU process, or browser component. Ending a page process can lose unsaved form data.</p>
-
-            <h2>Interpret the Result</h2>
-
-            <table>
-                <thead><tr><th>Pattern</th><th>Likely next step</th></tr></thead>
-                <tbody>
-                    <tr><td>One tab is consistently much larger</td><td>Reload it, test the site without extensions, or close it when not needed</td></tr>
-                    <tr><td>One extension grows while browsing unrelated sites</td><td>Review its permissions and temporarily disable it</td></tr>
-                    <tr><td>Many inactive tabs use moderate memory</td><td>Enable Memory Saver and organize or close stale sessions</td></tr>
-                    <tr><td>Memory rises only during video calls or web apps</td><td>Keep those sites active and reduce other workload</td></tr>
-                    <tr><td>Usage stays high in a new profile with no extensions</td><td>Update Chrome and investigate the specific site or system</td></tr>
-                </tbody>
-            </table>
-
-            <h2>Enable Memory Saver</h2>
-
-            <p>Open <strong>Chrome Settings</strong> → <strong>Performance</strong> and enable Memory Saver. Depending on the current Chrome version, the page may offer different memory-saving levels.</p>
-
-            <p>Memory Saver can deactivate eligible background tabs and restore them when you return. Savings vary by website, extension, active media, browser version, and available system memory. Tabs playing audio, sharing the screen, downloading files, or running certain background activity may remain active.</p>
-
-            <h2>Keep Essential Sites Active Selectively</h2>
-
-            <p>If a web application must maintain a live session, add only that site to the list of sites that should always stay active. Examples can include an active call center, monitoring dashboard, or time-sensitive collaboration tool.</p>
-
-            <p>Do not exempt every frequently visited site. A long exception list reduces the benefit of Memory Saver and makes troubleshooting harder.</p>
-
-            <h2>Review Extensions by Permission and Use</h2>
-
-            <p>Open <code>chrome://extensions</code> and inspect installed extensions. Remove extensions you no longer use. For the remaining ones, check the publisher, update status, and permission to read or change data on websites.</p>
-
-            <p>To test an extension:</p>
-
-            <ol>
-                <li>Save current work.</li>
-                <li>Disable one nonessential extension.</li>
-                <li>Restart Chrome.</li>
-                <li>Repeat the same browsing task.</li>
-                <li>Compare Chrome Task Manager results.</li>
-            </ol>
-
-            <p>Change one extension at a time so the result has a clear cause. Workplace-managed extensions may be required and should not be removed without administrator approval.</p>
-
-            <h2>Check the Website in Guest Mode or a Clean Profile</h2>
-
-            <p>A separate Chrome profile helps distinguish a site problem from a profile, extension, or stored-data problem. Open the same site in Guest mode or a clean test profile and repeat the activity.</p>
-
-            <p>If the site behaves normally in the clean profile, review extensions and profile settings. If the problem follows the site, check the site's status, reduce open documents or dashboards inside the web app, and contact its support team with reproducible steps.</p>
-
-            <h2>Use Tab Groups for Organization, Not Memory Claims</h2>
-
-            <p>Tab groups can make a long session easier to navigate, but grouping tabs does not by itself ensure lower memory use. Close completed groups, bookmark reference pages, or save a reading list rather than keeping every task open indefinitely.</p>
-
-            <p>A useful routine is to keep one group for the current task, one for communication, and one temporary research group that is closed when the work is complete.</p>
-
-            <h2>Update Chrome and Restart the Browser</h2>
-
-            <p>Open the three-dot menu → <strong>Help</strong> → <strong>About Google Chrome</strong>. Allow Chrome to check for an update, then relaunch after saving work.</p>
-
-            <p>A restart clears the current browser session, but repeated memory growth after the same steps should still be investigated. Do not treat restarting as proof that the underlying issue is fixed.</p>
-
-            <h2>When to Reset Chrome Settings</h2>
-
-            <p>Resetting settings can help when the default search engine, startup pages, permissions, or other browser behavior has changed unexpectedly. It is not the first step for normal memory use.</p>
-
-            <p>Before resetting, record important settings and confirm browser sync. Review Google's description of what reset changes and what it leaves untouched.</p>
-
-            <h2>Official Google References</h2>
-
-            <p>Google provides current guidance for <a href="https://support.google.com/chrome/answer/12929150?hl=en" target="_blank" rel="noopener">personalizing Chrome performance</a>, <a href="https://support.google.com/chrome/answer/1385029?hl=en" target="_blank" rel="noopener">speeding up Chrome and using Chrome Task Manager</a>, and <a href="https://support.google.com/chrome/answer/3296214?hl=en" target="_blank" rel="noopener">resetting Chrome settings</a>.</p>
-
-            <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Save unsaved forms, uploads, documents, and web-app work before ending a Chrome task, disabling an extension, restarting the browser, or resetting settings.</p>
-
-            <h2>A Practical Diagnostic Order</h2>
-
-            <ol>
-                <li>Confirm system memory pressure.</li>
-                <li>Sort Chrome Task Manager by memory.</li>
-                <li>Test the largest tab or extension.</li>
-                <li>Enable Memory Saver.</li>
-                <li>Keep only essential sites always active.</li>
-                <li>Update and relaunch Chrome.</li>
-                <li>Use a clean profile to isolate the cause.</li>
-            </ol>
-
-            <p>This order reduces guesswork and avoids installing unverified “memory optimizer” extensions that may add permissions, advertising, or another background process.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/27-chrome-notification-spam">How to Stop Website Notification Spam in Chrome</a></li>
-                    <li><a href="/posts/06-laptop-speed-fix">How to Free Up Disk Space Safely in Windows</a></li>
-                    <li><a href="/posts/12-windows-clipboard-history">How to Use Windows Clipboard History to Paste Multiple Items</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav aria-label="Primary navigation">
+<a href="/tools/">Tools</a>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+<a href="/about">About</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content">
+<div style="margin-bottom: 30px;">
+<span class="post-category">Tech Tips</span>
+<h1>How to Find What Is Using Memory in Chrome and Reduce It</h1>
+<div class="post-meta">Published on July 6, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+</div>
+<p>Chrome uses separate processes for tabs, extensions, graphics, and browser services. That design can improve stability and security, but it also means the operating system may show many Chrome processes at once. A high number of processes is not automatically a fault, and an inactive tab does not necessarily use zero memory.</p>
+<p>The useful question is whether Chrome is creating memory pressure: slow switching, discarded tabs reloading repeatedly, other applications becoming unresponsive, or the system using storage as virtual memory. The safest troubleshooting process identifies the largest browser task before changing settings.</p>
+<h2>Confirm That Memory Is the Bottleneck</h2>
+<p>Open the operating system's task manager and compare memory, CPU, and disk usage while the slowdown is happening. A browser problem can look similar to a full system drive, a busy antivirus scan, a video call, or an application update.</p>
+<p>Record three details:</p>
+<ul>
+<li>Total system memory and the percentage currently in use</li>
+<li>Whether Chrome usage grows over time or only on one site</li>
+<li>Whether the problem stops after closing a specific tab or extension</li>
+</ul>
+<h2>Use Chrome Task Manager</h2>
+<ol>
+<li>Open Chrome.</li>
+<li>Select the three-dot menu.</li>
+<li>Open <strong>More tools</strong> → <strong>Task manager</strong>.</li>
+<li>Select the memory column to sort tasks by usage.</li>
+<li>Observe which tab, extension, or process remains near the top.</li>
+</ol>
+<p>Do not end every unfamiliar process. First identify whether the task is a webpage, extension, subframe, service worker, GPU process, or browser component. Ending a page process can lose unsaved form data.</p>
+<h2>Interpret the Result</h2>
+<table>
+<thead><tr><th>Pattern</th><th>Likely next step</th></tr></thead>
+<tbody>
+<tr><td>One tab is consistently much larger</td><td>Reload it, test the site without extensions, or close it when not needed</td></tr>
+<tr><td>One extension grows while browsing unrelated sites</td><td>Review its permissions and temporarily disable it</td></tr>
+<tr><td>Many inactive tabs use moderate memory</td><td>Enable Memory Saver and organize or close stale sessions</td></tr>
+<tr><td>Memory rises only during video calls or web apps</td><td>Keep those sites active and reduce other workload</td></tr>
+<tr><td>Usage stays high in a new profile with no extensions</td><td>Update Chrome and investigate the specific site or system</td></tr>
+</tbody>
+</table>
+<h2>Enable Memory Saver</h2>
+<p>Open <strong>Chrome Settings</strong> → <strong>Performance</strong> and enable Memory Saver. Depending on the current Chrome version, the page may offer different memory-saving levels.</p>
+<p>Memory Saver can deactivate eligible background tabs and restore them when you return. Savings vary by website, extension, active media, browser version, and available system memory. Tabs playing audio, sharing the screen, downloading files, or running certain background activity may remain active.</p>
+<h2>Keep Essential Sites Active Selectively</h2>
+<p>If a web application must maintain a live session, add only that site to the list of sites that should always stay active. Examples can include an active call center, monitoring dashboard, or time-sensitive collaboration tool.</p>
+<p>Do not exempt every frequently visited site. A long exception list reduces the benefit of Memory Saver and makes troubleshooting harder.</p>
+<h2>Review Extensions by Permission and Use</h2>
+<p>Open <code>chrome://extensions</code> and inspect installed extensions. Remove extensions you no longer use. For the remaining ones, check the publisher, update status, and permission to read or change data on websites.</p>
+<p>To test an extension:</p>
+<ol>
+<li>Save current work.</li>
+<li>Disable one nonessential extension.</li>
+<li>Restart Chrome.</li>
+<li>Repeat the same browsing task.</li>
+<li>Compare Chrome Task Manager results.</li>
+</ol>
+<p>Change one extension at a time so the result has a clear cause. Workplace-managed extensions may be required and should not be removed without administrator approval.</p>
+<h2>Check the Website in Guest Mode or a Clean Profile</h2>
+<p>A separate Chrome profile helps distinguish a site problem from a profile, extension, or stored-data problem. Open the same site in Guest mode or a clean test profile and repeat the activity.</p>
+<p>If the site behaves normally in the clean profile, review extensions and profile settings. If the problem follows the site, check the site's status, reduce open documents or dashboards inside the web app, and contact its support team with reproducible steps.</p>
+<h2>Use Tab Groups for Organization, Not Memory Claims</h2>
+<p>Tab groups can make a long session easier to navigate, but grouping tabs does not by itself ensure lower memory use. Close completed groups, bookmark reference pages, or save a reading list rather than keeping every task open indefinitely.</p>
+<p>A useful routine is to keep one group for the current task, one for communication, and one temporary research group that is closed when the work is complete.</p>
+<h2>Update Chrome and Restart the Browser</h2>
+<p>Open the three-dot menu → <strong>Help</strong> → <strong>About Google Chrome</strong>. Allow Chrome to check for an update, then relaunch after saving work.</p>
+<p>A restart clears the current browser session, but repeated memory growth after the same steps should still be investigated. Do not treat restarting as proof that the underlying issue is fixed.</p>
+<h2>When to Reset Chrome Settings</h2>
+<p>Resetting settings can help when the default search engine, startup pages, permissions, or other browser behavior has changed unexpectedly. It is not the first step for normal memory use.</p>
+<p>Before resetting, record important settings and confirm browser sync. Review Google's description of what reset changes and what it leaves untouched.</p>
+<h2>Official Google References</h2>
+<p>Google provides current guidance for <a href="https://support.google.com/chrome/answer/12929150?hl=en" rel="noopener" target="_blank">personalizing Chrome performance</a>, <a href="https://support.google.com/chrome/answer/1385029?hl=en" rel="noopener" target="_blank">speeding up Chrome and using Chrome Task Manager</a>, and <a href="https://support.google.com/chrome/answer/3296214?hl=en" rel="noopener" target="_blank">resetting Chrome settings</a>.</p>
+<p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Save unsaved forms, uploads, documents, and web-app work before ending a Chrome task, disabling an extension, restarting the browser, or resetting settings.</p>
+<h2>A Practical Diagnostic Order</h2>
+<ol>
+<li>Confirm system memory pressure.</li>
+<li>Sort Chrome Task Manager by memory.</li>
+<li>Test the largest tab or extension.</li>
+<li>Enable Memory Saver.</li>
+<li>Keep only essential sites always active.</li>
+<li>Update and relaunch Chrome.</li>
+<li>Use a clean profile to isolate the cause.</li>
+</ol>
+<p>This order reduces guesswork and avoids installing unverified “memory optimizer” extensions that may add permissions, advertising, or another background process.</p>
+<section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+<h2 style="margin-top: 0;">Related Guides</h2>
+<ul style="margin-bottom: 0;">
+<li><a href="/posts/27-chrome-notification-spam">How to Stop Website Notification Spam in Chrome</a></li>
+<li><a href="/posts/06-laptop-speed-fix">How to Free Up Disk Space Safely in Windows</a></li>
+<li><a href="/posts/12-windows-clipboard-history">How to Use Windows Clipboard History to Paste Multiple Items</a></li>
+</ul>
+</section>
+<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+</div>
+</article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/tools/">Tools</a>
+<a href="/about">About</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>

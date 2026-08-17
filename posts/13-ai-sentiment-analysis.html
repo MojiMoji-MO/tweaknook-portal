@@ -1,78 +1,66 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Create a customer-feedback classification scheme, test it on a reviewed sample, and use AI to draft sentiment, category, urgency, and action fields.">
-
-    <!-- Google Search Console ownership verification -->
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
-
-    <title>How to Classify Customer Feedback with AI and Check the Results | Tweaknook</title>
-    <link rel="canonical" href="https://tweaknook.com/posts/13-ai-sentiment-analysis">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Create a customer-feedback classification scheme, test it on a reviewed sample, and use AI to draft sentiment, category, urgency, and action fields." name="description"/>
+<!-- Google Search Console ownership verification -->
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Classify Customer Feedback with AI and Check the Results | Tweaknook</title>
+<link href="https://tweaknook.com/posts/13-ai-sentiment-analysis" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
-    <!-- Google AdSense site verification and ad delivery -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-         crossorigin="anonymous"></script>
-</head>
+<!-- Google AdSense site verification and ad delivery -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Classify Customer Feedback with AI and Check the Results" property="og:title"/><meta content="Create a customer-feedback classification scheme, test it on a reviewed sample, and use AI to draft sentiment, category, urgency, and action fields." property="og:description"/><meta content="https://tweaknook.com/posts/13-ai-sentiment-analysis" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Classify Customer Feedback with AI and Check the Results" name="twitter:title"/><meta content="Create a customer-feedback classification scheme, test it on a reviewed sample, and use AI to draft sentiment, category, urgency, and action fields." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Classify Customer Feedback with AI and Check the Results", "description": "Create a customer-feedback classification scheme, test it on a reviewed sample, and use AI to draft sentiment, category, urgency, and action fields.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-10", "dateModified": "2026-07-10", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/13-ai-sentiment-analysis"}, "url": "https://tweaknook.com/posts/13-ai-sentiment-analysis", "inLanguage": "en"}</script></head>
 <body>
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">AI Guides</span>
-                <h1>How to Classify Customer Feedback with AI and Check the Results</h1>
-                <div class="post-meta">Published on July 10, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>AI can help organize a large feedback queue, but a polished label is not proof that the classification is correct. Useful feedback analysis begins with a defined category scheme, a reviewed sample, and a process for routing uncertain or high-impact cases to a person.</p>
-
-            <p>This guide treats AI output as a draft classification. It does not claim a fixed accuracy rate because results vary with the model, language, product vocabulary, class balance, prompt, and quality of the source text.</p>
-
-            <h2>Define the Decision the Labels Will Support</h2>
-
-            <p>Do not classify feedback merely because a model can produce labels. Decide what action each field will support.</p>
-
-            <table>
-                <thead><tr><th>Field</th><th>Purpose</th><th>Example action</th></tr></thead>
-                <tbody>
-                    <tr><td>Sentiment</td><td>Describe expressed tone</td><td>Monitor changes across a release</td></tr>
-                    <tr><td>Category</td><td>Identify the subject</td><td>Route to billing, product, or support</td></tr>
-                    <tr><td>Urgency</td><td>Estimate time sensitivity</td><td>Place service outages above general suggestions</td></tr>
-                    <tr><td>Action</td><td>Suggest the next review step</td><td>Request logs, issue refund review, or add to research</td></tr>
-                </tbody>
-            </table>
-
-            <p>Sentiment and urgency are not the same. A calm message can describe a serious account-access problem, while an angry message may concern a minor preference.</p>
-
-            <h2>Create a Small, Clear Taxonomy</h2>
-
-            <p>Start with categories that are distinct and connected to real owners. Example:</p>
-
-            <pre><code>Account access
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav aria-label="Primary navigation">
+<a href="/tools/">Tools</a>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+<a href="/about">About</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content">
+<div style="margin-bottom: 30px;">
+<span class="post-category">AI Guides</span>
+<h1>How to Classify Customer Feedback with AI and Check the Results</h1>
+<div class="post-meta">Published on July 10, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+</div>
+<p>AI can help organize a large feedback queue, but a polished label is not proof that the classification is correct. Useful feedback analysis begins with a defined category scheme, a reviewed sample, and a process for routing uncertain or high-impact cases to a person.</p>
+<p>This guide treats AI output as a draft classification. It does not claim a fixed accuracy rate because results vary with the model, language, product vocabulary, class balance, prompt, and quality of the source text.</p>
+<h2>Define the Decision the Labels Will Support</h2>
+<p>Do not classify feedback merely because a model can produce labels. Decide what action each field will support.</p>
+<table>
+<thead><tr><th>Field</th><th>Purpose</th><th>Example action</th></tr></thead>
+<tbody>
+<tr><td>Sentiment</td><td>Describe expressed tone</td><td>Monitor changes across a release</td></tr>
+<tr><td>Category</td><td>Identify the subject</td><td>Route to billing, product, or support</td></tr>
+<tr><td>Urgency</td><td>Estimate time sensitivity</td><td>Place service outages above general suggestions</td></tr>
+<tr><td>Action</td><td>Suggest the next review step</td><td>Request logs, issue refund review, or add to research</td></tr>
+</tbody>
+</table>
+<p>Sentiment and urgency are not the same. A calm message can describe a serious account-access problem, while an angry message may concern a minor preference.</p>
+<h2>Create a Small, Clear Taxonomy</h2>
+<p>Start with categories that are distinct and connected to real owners. Example:</p>
+<pre><code>Account access
 Billing and payment
 Bug report
 Feature request
@@ -80,31 +68,21 @@ Performance
 Documentation
 Usability
 Other / unclear</code></pre>
-
-            <p>For each category, write a one-sentence definition and at least one boundary example. If reviewers cannot consistently distinguish two categories, the AI tool will not fix the taxonomy.</p>
-
-            <h2>Define Urgency with Observable Rules</h2>
-
-            <p>A simple urgency scheme can be:</p>
-
-            <ul>
-                <li><strong>Critical:</strong> Widespread outage, active security concern, or inability to access essential service</li>
-                <li><strong>High:</strong> A blocked workflow with no practical workaround</li>
-                <li><strong>Normal:</strong> A problem with a workaround or a non-blocking defect</li>
-                <li><strong>Low:</strong> General suggestion, preference, or long-term request</li>
-            </ul>
-
-            <p>Adjust these definitions to the actual service-level policy. Do not allow the AI output to trigger refunds, account suspension, disciplinary action, or another consequential decision without authorized human review.</p>
-
-            <h2>Prepare a Reviewed Test Set</h2>
-
-            <p>Select a representative sample that includes short comments, long comments, mixed sentiment, multiple issues, misspellings, and messages that do not fit the taxonomy. Remove personal information that is not needed.</p>
-
-            <p>Have an authorized reviewer assign the expected labels and record disagreements. The test set becomes the reference for comparing prompt versions. It should not be built only from easy examples.</p>
-
-            <h2>Use a Structured Classification Prompt</h2>
-
-            <pre><code>Classify each customer feedback item using only the definitions below.
+<p>For each category, write a one-sentence definition and at least one boundary example. If reviewers cannot consistently distinguish two categories, the AI tool will not fix the taxonomy.</p>
+<h2>Define Urgency with Observable Rules</h2>
+<p>A simple urgency scheme can be:</p>
+<ul>
+<li><strong>Critical:</strong> Widespread outage, active security concern, or inability to access essential service</li>
+<li><strong>High:</strong> A blocked workflow with no practical workaround</li>
+<li><strong>Normal:</strong> A problem with a workaround or a non-blocking defect</li>
+<li><strong>Low:</strong> General suggestion, preference, or long-term request</li>
+</ul>
+<p>Adjust these definitions to the actual service-level policy. Do not allow the AI output to trigger refunds, account suspension, disciplinary action, or another consequential decision without authorized human review.</p>
+<h2>Prepare a Reviewed Test Set</h2>
+<p>Select a representative sample that includes short comments, long comments, mixed sentiment, multiple issues, misspellings, and messages that do not fit the taxonomy. Remove personal information that is not needed.</p>
+<p>Have an authorized reviewer assign the expected labels and record disagreements. The test set becomes the reference for comparing prompt versions. It should not be built only from easy examples.</p>
+<h2>Use a Structured Classification Prompt</h2>
+<pre><code>Classify each customer feedback item using only the definitions below.
 
 CATEGORY DEFINITIONS
 - Account access: Login, password reset, verification, or locked account
@@ -142,110 +120,84 @@ RULES
 
 FEEDBACK ITEMS
 [PASTE REDACTED ITEMS WITH UNIQUE IDS]</code></pre>
-
-            <h2>Require Evidence, Not Only a Label</h2>
-
-            <p>The evidence column should contain a short phrase from the feedback or a concise paraphrase tied to the source. It lets a reviewer see why the label was selected.</p>
-
-            <p>Confidence labels are not calibrated probabilities unless the system has been tested and calibrated for that meaning. Use them as routing signals: low-confidence items go to review, not directly into automated action.</p>
-
-            <h2>Evaluate the Result by Category</h2>
-
-            <p>Overall accuracy can hide poor performance on a small but important class. Review a confusion table for each category:</p>
-
-            <table>
-                <thead><tr><th>Expected</th><th>Predicted</th><th>Count</th><th>Review note</th></tr></thead>
-                <tbody>
-                    <tr><td>Bug report</td><td>Feature request</td><td>Example count</td><td>Clarify the boundary between broken and requested behavior</td></tr>
-                    <tr><td>Critical</td><td>Normal</td><td>Example count</td><td>Add stronger outage and access examples</td></tr>
-                </tbody>
-            </table>
-
-            <p>Precision and recall can be more informative than one accuracy number, especially when classes are imbalanced. For an urgent queue, missing a true urgent case and incorrectly escalating a normal case have different costs.</p>
-
-            <h2>Review High-Impact Cases First</h2>
-
-            <p>Require human review when feedback involves:</p>
-
-            <ul>
-                <li>Security incidents or suspected fraud</li>
-                <li>Payment disputes and refunds</li>
-                <li>Legal threats or regulatory requests</li>
-                <li>Medical or safety information</li>
-                <li>Employee or customer personal data</li>
-                <li>Account suspension or access removal</li>
-                <li>Low-confidence or multi-issue feedback</li>
-            </ul>
-
-            <p>Classification can prioritize a queue. It should not replace the authorized decision-maker.</p>
-
-            <h2>Protect Customer Information</h2>
-
-            <p>Remove names, email addresses, phone numbers, order numbers, account identifiers, payment details, and private links unless the approved workflow requires them. Use a vendor and account type approved for the data. Define retention, access, and deletion rules for input files and outputs.</p>
-
-            <h2>Monitor Changes Over Time</h2>
-
-            <p>Product releases, new terminology, promotions, and policy changes can shift the meaning of feedback. Recheck the test set after changing the taxonomy, prompt, model, language mix, or data source.</p>
-
-            <p>Keep a version record:</p>
-
-            <pre><code>Taxonomy version: 2.1
+<h2>Require Evidence, Not Only a Label</h2>
+<p>The evidence column should contain a short phrase from the feedback or a concise paraphrase tied to the source. It lets a reviewer see why the label was selected.</p>
+<p>Confidence labels are not calibrated probabilities unless the system has been tested and calibrated for that meaning. Use them as routing signals: low-confidence items go to review, not directly into automated action.</p>
+<h2>Evaluate the Result by Category</h2>
+<p>Overall accuracy can hide poor performance on a small but important class. Review a confusion table for each category:</p>
+<table>
+<thead><tr><th>Expected</th><th>Predicted</th><th>Count</th><th>Review note</th></tr></thead>
+<tbody>
+<tr><td>Bug report</td><td>Feature request</td><td>Example count</td><td>Clarify the boundary between broken and requested behavior</td></tr>
+<tr><td>Critical</td><td>Normal</td><td>Example count</td><td>Add stronger outage and access examples</td></tr>
+</tbody>
+</table>
+<p>Precision and recall can be more informative than one accuracy number, especially when classes are imbalanced. For an urgent queue, missing a true urgent case and incorrectly escalating a normal case have different costs.</p>
+<h2>Review High-Impact Cases First</h2>
+<p>Require human review when feedback involves:</p>
+<ul>
+<li>Security incidents or suspected fraud</li>
+<li>Payment disputes and refunds</li>
+<li>Legal threats or regulatory requests</li>
+<li>Medical or safety information</li>
+<li>Employee or customer personal data</li>
+<li>Account suspension or access removal</li>
+<li>Low-confidence or multi-issue feedback</li>
+</ul>
+<p>Classification can prioritize a queue. It should not replace the authorized decision-maker.</p>
+<h2>Protect Customer Information</h2>
+<p>Remove names, email addresses, phone numbers, order numbers, account identifiers, payment details, and private links unless the approved workflow requires them. Use a vendor and account type approved for the data. Define retention, access, and deletion rules for input files and outputs.</p>
+<h2>Monitor Changes Over Time</h2>
+<p>Product releases, new terminology, promotions, and policy changes can shift the meaning of feedback. Recheck the test set after changing the taxonomy, prompt, model, language mix, or data source.</p>
+<p>Keep a version record:</p>
+<pre><code>Taxonomy version: 2.1
 Prompt version: 1.4
 Model/service: [APPROVED TOOL]
 Test-set date: 2026-07-26
 Reviewer: [ROLE]
 Known weak categories: Usability vs. Bug report</code></pre>
-
-            <h2>Official Evaluation References</h2>
-
-            <p>Google's Machine Learning guidance explains that the usefulness of <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall" target="_blank" rel="noopener">accuracy, precision, and recall</a> depends on the task, class balance, and cost of different errors. Its <a href="https://developers.google.com/machine-learning/guides/text-classification" target="_blank" rel="noopener">text classification guide</a> describes a broader workflow that includes data preparation and evaluation.</p>
-
-            <p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Do not use an unreviewed sentiment or urgency label as the sole basis for a consequential customer, employee, financial, legal, medical, or security decision.</p>
-
-            <h2>A Practical Deployment Sequence</h2>
-
-            <ol>
-                <li>Define labels tied to real actions.</li>
-                <li>Create a reviewed test set.</li>
-                <li>Run the structured prompt.</li>
-                <li>Inspect errors by category and urgency.</li>
-                <li>Route uncertain and high-impact cases to a person.</li>
-                <li>Pilot on a limited queue.</li>
-                <li>Monitor drift and update the taxonomy deliberately.</li>
-            </ol>
-
-            <p>This sequence turns AI classification into a controlled triage tool rather than an unsupported accuracy claim.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/05-chatgpt-hallucination-fix">A Verification Prompt That Helps Reduce AI Hallucinations</a></li>
-                    <li><a href="/posts/17-ai-competitor-feature-mapping">How to Build a Competitor Feature Map with AI</a></li>
-                    <li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<h2>Official Evaluation References</h2>
+<p>Google's Machine Learning guidance explains that the usefulness of <a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall" rel="noopener" target="_blank">accuracy, precision, and recall</a> depends on the task, class balance, and cost of different errors. Its <a href="https://developers.google.com/machine-learning/guides/text-classification" rel="noopener" target="_blank">text classification guide</a> describes a broader workflow that includes data preparation and evaluation.</p>
+<p style="padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;"><strong>Important:</strong> Do not use an unreviewed sentiment or urgency label as the sole basis for a consequential customer, employee, financial, legal, medical, or security decision.</p>
+<h2>A Practical Deployment Sequence</h2>
+<ol>
+<li>Define labels tied to real actions.</li>
+<li>Create a reviewed test set.</li>
+<li>Run the structured prompt.</li>
+<li>Inspect errors by category and urgency.</li>
+<li>Route uncertain and high-impact cases to a person.</li>
+<li>Pilot on a limited queue.</li>
+<li>Monitor drift and update the taxonomy deliberately.</li>
+</ol>
+<p>This sequence turns AI classification into a controlled triage tool rather than an unsupported accuracy claim.</p>
+<section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+<h2 style="margin-top: 0;">Related Guides</h2>
+<ul style="margin-bottom: 0;">
+<li><a href="/posts/05-chatgpt-hallucination-fix">A Verification Prompt That Helps Reduce AI Hallucinations</a></li>
+<li><a href="/posts/17-ai-competitor-feature-mapping">How to Build a Competitor Feature Map with AI</a></li>
+<li><a href="/posts/26-ai-email-rewrite-privacy">How to Rewrite an Email with AI Without Sharing Private Information</a></li>
+</ul>
+</section>
+<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+</div>
+</article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/tools/">Tools</a>
+<a href="/about">About</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>

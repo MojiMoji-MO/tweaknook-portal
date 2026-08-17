@@ -1,63 +1,12 @@
-/* style.css - 사이트 전체 공통 디자인 */
-:root { --primary-color: #0056b3; --text-color: #111; --meta-color: #666; --border-color: #eee; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; margin: 0; padding: 0; color: var(--text-color); background-color: #fff; scroll-behavior: smooth; }
-.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-
-header { border-bottom: 2px solid #000; padding: 40px 0 20px 0; }
-.header-top { display: flex; justify-content: space-between; align-items: center; }
-.logo-text { color: #fa6910; font-size: 2.4rem; font-weight: 900; letter-spacing: -1.5px; }
-
-/* 메뉴 부활! */
-nav { display: flex; gap: 25px; margin-top: 15px; }
-nav a { font-size: 0.95rem; font-weight: bold; text-decoration: none; color: #444; transition: color 0.2s; }
-nav a:hover { color: var(--primary-color); text-decoration: underline; }
-
-.site-intro { background: #f9f9f9; border-left: 4px solid #000; padding: 25px 30px; margin: 40px 0 50px 0; border-radius: 0 4px 4px 0; }
-.site-intro h1 { margin: 0 0 10px 0; font-size: 1.35rem; font-weight: 800; }
-.site-intro p { margin: 0; font-size: 1rem; color: #555; }
-
-.section-title { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; padding-bottom: 5px; margin: 40px 0 25px 0; color: #000; }
-
-.article-list { list-style: none; padding: 0; margin: 0; }
-.article-item { border-bottom: 1px solid var(--border-color); padding: 22px 0; }
-.article-meta { font-size: 0.85rem; color: var(--meta-color); margin-bottom: 8px; font-family: monospace; }
-.article-category { font-weight: bold; color: var(--primary-color); margin-right: 8px; }
-.article-author { font-style: italic; color: #333; }
-.article-title { font-size: 1.45rem; font-weight: 700; margin: 0 0 10px 0; }
-.article-title a { text-decoration: none; color: var(--text-color); }
-.article-title a:hover { color: var(--primary-color); text-decoration: underline; }
-.article-excerpt { font-size: 1rem; color: #444; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-/* 포스팅 및 필수 페이지 전용 CSS */
-.page-content { margin: 60px 0; }
-.page-content h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 30px; color: #000; line-height: 1.3; }
-.page-content h2 { font-size: 1.5rem; margin: 40px 0 15px 0; color: #000; border-left: 4px solid #fa6910; padding-left: 10px; }
-.page-content p { font-size: 1.05rem; color: #333; margin-bottom: 20px; line-height: 1.8; }
-.page-content ul { font-size: 1.05rem; color: #333; line-height: 1.8; margin-bottom: 20px; }
-.page-content code { background-color: #f1f3f5; color: #d63384; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; }
-.page-content pre { background-color: #212529; color: #f8f9fa; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: monospace; line-height: 1.5; margin-bottom: 20px; }
-.page-content table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 0.95rem; }
-.page-content th, .page-content td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
-.page-content th { background-color: #f8f9fa; color: #000; font-weight: bold; }
-.post-category { font-weight: bold; color: var(--primary-color); text-transform: uppercase; font-size: 0.9rem; }
-.post-meta { font-size: 0.9rem; color: var(--meta-color); font-family: monospace; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-.contact-box { background: #f9f9f9; border: 1px solid #ddd; padding: 30px; border-radius: 8px; margin-top: 30px; text-align: center; }
-.contact-email { font-size: 1.25rem; font-weight: bold; color: #0056b3; text-decoration: none; }
-
-footer { border-top: 2px solid #000; text-align: center; padding: 35px 0; margin-top: 60px; font-size: 0.9rem; color: var(--meta-color); }
-footer .legal-links { margin-bottom: 15px; }
-footer a { color: #444; text-decoration: none; margin: 0 12px; font-weight: bold; }
-footer a:hover { text-decoration: underline; color: #000; }
-
-/* 완벽한 모바일 반응형 최적화 */
-@media (max-width: 600px) {
-    .logo-text { font-size: 1.8rem; }
-    nav { gap: 12px; flex-wrap: wrap; margin-top: 10px; }
-    nav a { font-size: 0.85rem; }
-    .site-intro, .page-content { margin: 30px 0; padding: 15px 0; }
-    .site-intro h1, .section-title { font-size: 1.3rem; }
-    .article-title { font-size: 1.25rem; }
-    .page-content h1 { font-size: 1.8rem; }
-    .page-content h2 { font-size: 1.35rem; }
-    footer a { display: inline-block; margin: 5px 10px; }
-}
+/* Tweaknook shared styles — portal, guides, and trust pages */
+:root{--accent:#fa5a0a;--accent-dark:#c83f00;--ink:#121720;--muted:#616b78;--line:#e4e7eb;--soft:#f7f8fa;--blue:#175cd3;--max:1120px;--article:820px;--radius:18px;--shadow:0 18px 50px rgba(18,23,32,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7;margin:0;color:var(--ink);background:#fff}a{color:var(--blue)}.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+.site-header{border-bottom:1px solid var(--line);padding:22px 0 18px;background:rgba(255,255,255,.96)}.header-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.header-top{display:flex;align-items:center}.brand-link{text-decoration:none}.logo-text{color:var(--accent);font-size:2rem;font-weight:900;letter-spacing:-1.5px}.site-header nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:0}.site-header nav a{font-size:.94rem;font-weight:750;text-decoration:none;color:#313946}.site-header nav a:hover{color:var(--accent-dark)}
+.home-hero{padding:76px 0 48px;background:linear-gradient(180deg,#fff 0,#fff8f3 100%);border-bottom:1px solid #f1e6df}.eyebrow{color:var(--accent-dark);font-size:.78rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.home-hero h1{max-width:850px;margin:.55rem 0 1rem;font-size:clamp(2.6rem,6vw,5rem);line-height:1.02;letter-spacing:-.06em}.home-hero p{max-width:760px;margin:0;color:var(--muted);font-size:1.13rem}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.button-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--ink);font-weight:800;text-decoration:none;color:var(--ink);background:#fff}.button-link.primary{background:var(--ink);color:#fff}.button-link:hover{transform:translateY(-1px)}
+.home-section{padding:58px 0}.home-section.alt{background:var(--soft);border-block:1px solid var(--line)}.section-heading{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}.section-heading h2{margin:0;font-size:clamp(1.8rem,3vw,2.7rem);letter-spacing:-.045em}.section-heading p{max-width:650px;margin:7px 0 0;color:var(--muted)}.text-link{font-weight:800;text-decoration:none;white-space:nowrap}.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.tool-card{display:flex;flex-direction:column;min-height:360px;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}.tool-logo-wrap{height:82px;display:flex;align-items:center;margin-bottom:18px}.tool-logo-wrap img{display:block;max-width:250px;max-height:76px;object-fit:contain;object-position:left center}.tool-card h3{font-size:1.55rem;margin:0 0 8px}.tool-card p{color:var(--muted);margin:0 0 16px}.tool-points{padding-left:20px;margin:0 0 20px;color:#353e4b}.tool-card .button-link{margin-top:auto;align-self:flex-start}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.value-card{padding:22px;border:1px solid var(--line);border-radius:14px;background:#fff}.value-card h3{margin:0 0 8px}.value-card p{margin:0;color:var(--muted)}
+.guide-layout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.guide-column{min-width:0}.guide-column h2{font-size:1.25rem;border-bottom:2px solid var(--ink);padding-bottom:9px;margin:0 0 8px}.article-list{list-style:none;padding:0;margin:0}.article-item{border-bottom:1px solid var(--line);padding:18px 0}.article-meta{font-size:.77rem;color:var(--muted);margin-bottom:5px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.article-category{font-weight:800;color:var(--accent-dark)}.article-author{font-style:normal}.article-title{font-size:1.08rem;line-height:1.35;margin:0 0 7px}.article-title a{text-decoration:none;color:var(--ink)}.article-title a:hover{color:var(--accent-dark)}.article-excerpt{font-size:.9rem;color:var(--muted);margin:0;line-height:1.55}.older-guides{margin-top:10px}.older-guides summary{cursor:pointer;font-weight:800;color:#303846;padding:10px 0}.older-guides .article-item{padding:15px 0}.latest-guides{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.latest-card{border:1px solid var(--line);border-radius:14px;padding:20px}.latest-card .article-title{font-size:1.15rem}
+.trust-box{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;padding:30px;border-radius:var(--radius);background:#151b24;color:#fff}.trust-box p{color:#c8d0db}.trust-box a{color:#fff}.trust-list{margin:0;padding-left:20px;color:#dbe1e8}
+.page-content{max-width:var(--article);margin:58px auto}.page-content h1{font-size:clamp(2rem,5vw,3rem);font-weight:850;margin:0 0 24px;line-height:1.15;letter-spacing:-.045em}.page-content h2{font-size:1.55rem;margin:42px 0 14px;border-left:4px solid var(--accent);padding-left:12px;line-height:1.25}.page-content h3{font-size:1.18rem;margin:28px 0 9px}.page-content p,.page-content ul,.page-content ol{font-size:1.03rem;color:#333b46;line-height:1.82}.page-content li{margin:.32rem 0}.page-content code{background:#f1f3f5;color:#b4235a;padding:2px 6px;border-radius:5px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.94em}.page-content pre{background:#161b22;color:#f4f6f8;padding:20px;border-radius:10px;overflow:auto;line-height:1.5}.table-scroll{overflow-x:auto;margin:24px 0}.page-content table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.94rem}.page-content th,.page-content td{border:1px solid #d9dde3;padding:11px 13px;text-align:left;vertical-align:top}.page-content th{background:#f6f7f9;color:#151a22}.post-category{font-weight:850;color:var(--accent-dark);text-transform:uppercase;font-size:.82rem;letter-spacing:.06em}.post-meta{font-size:.84rem;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;border-bottom:1px solid var(--line);padding-bottom:18px}.post-meta a{color:inherit}.author-box{margin-top:34px;padding:22px;background:#f7f8fa;border:1px solid var(--line);border-radius:12px}.author-box h2,.author-box h4{border:0;padding:0;margin:0 0 8px;font-size:1rem}.author-box p{margin:0;font-size:.94rem;color:#535d6b}.contact-box{background:#f7f8fa;border:1px solid var(--line);padding:26px;border-radius:14px;margin-top:28px}.contact-box h2{margin-top:0}.contact-email{font-size:1.2rem;font-weight:800}.notice-box{padding:18px 20px;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px}.process-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.process-card{border:1px solid var(--line);border-radius:12px;padding:18px}.process-card h3{margin-top:0}
+footer{border-top:1px solid var(--line);text-align:center;padding:34px 0;margin-top:60px;font-size:.88rem;color:var(--muted)}footer .legal-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:12px}footer a{color:#3e4652;text-decoration:none;font-weight:750}footer a:hover{color:var(--accent-dark)}
+@media(max-width:860px){.header-inner{display:block}.site-header nav{margin-top:13px}.tool-grid,.guide-layout,.value-grid,.latest-guides,.trust-box{grid-template-columns:1fr}.home-hero{padding-top:52px}.tool-card{min-height:0}.process-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.container{width:min(100% - 28px,var(--max))}.site-header{padding:17px 0}.logo-text{font-size:1.72rem}.site-header nav{gap:13px}.site-header nav a{font-size:.82rem}.home-hero h1{font-size:2.55rem}.home-section{padding:42px 0}.section-heading{display:block}.section-heading .text-link{display:inline-block;margin-top:10px}.page-content{margin:38px auto}.page-content h1{font-size:2rem}.page-content h2{font-size:1.35rem}.page-content table{min-width:620px}.page-content>table{display:block;overflow-x:auto}.tool-logo-wrap img{max-width:210px}}

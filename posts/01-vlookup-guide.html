@@ -1,191 +1,142 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design.">
-
-    <!-- Google Search Console ownership verification -->
-    <meta name="google-site-verification" content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM">
-
-    <title>How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel | Tweaknook</title>
-    <link rel="canonical" href="https://tweaknook.com/posts/01-vlookup-guide">
-    <link rel="icon" type="image/png" href="/tweaknook-favi.png">
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." name="description"/>
+<!-- Google Search Console ownership verification -->
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel | Tweaknook</title>
+<link href="https://tweaknook.com/posts/01-vlookup-guide" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
-    <!-- Google AdSense site verification and ad delivery -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"
-         crossorigin="anonymous"></script>
-</head>
+<!-- Google AdSense site verification and ad delivery -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel" property="og:title"/><meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." property="og:description"/><meta content="https://tweaknook.com/posts/01-vlookup-guide" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel" name="twitter:title"/><meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel", "description": "Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-06-29", "dateModified": "2026-06-29", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/01-vlookup-guide"}, "url": "https://tweaknook.com/posts/01-vlookup-guide", "inLanguage": "en"}</script></head>
 <body>
-    <header class="container">
-        <div class="header-top">
-            <a href="/" style="text-decoration: none;">
-                <span class="logo-text">tweaknook</span>
-            </a>
-        </div>
-        <nav>
-            <a href="/#productivity">Productivity</a>
-            <a href="/#ai-guides">AI Guides</a>
-            <a href="/#tech-tips">Tech Tips</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <article class="page-content">
-            <div style="margin-bottom: 30px;">
-                <span class="post-category">Productivity</span>
-                <h1>How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel</h1>
-                <div class="post-meta">Published on June 29, 2026 • By Tweaknook Editorial</div>
-            </div>
-
-            <p>Lookup formulas are easier to maintain when the formula matches the workbook rather than following a rule that one function is always better. VLOOKUP remains useful in older workbooks, XLOOKUP is usually the clearest choice in current versions of Excel, and INDEX with MATCH is still valuable when compatibility or flexible references matter.</p>
-
-            <p>None of these functions prevents Excel crashes by itself. Workbook stability depends on factors such as file size, volatile formulas, external connections, formatting, add-ins, hardware, and the number of calculations Excel must perform. The practical goal is to choose a lookup that is correct, readable, and compatible with the people who will open the file.</p>
-
-            <h2>Start with the Workbook's Compatibility Requirements</h2>
-
-            <p>Before changing a formula, confirm which Excel versions are used by colleagues, clients, or automated systems. XLOOKUP is available in Microsoft 365 and newer perpetual versions, but it is not available in Excel 2016 or Excel 2019. A workbook that depends on XLOOKUP may therefore display an unsupported-function error on an older installation.</p>
-
-            <table>
-                <thead><tr><th>Function</th><th>Best fit</th><th>Main limitation</th></tr></thead>
-                <tbody>
-                    <tr><td>XLOOKUP</td><td>Current Excel versions and readable formulas</td><td>Not available in some older versions</td></tr>
-                    <tr><td>VLOOKUP</td><td>Simple left-to-right lookups and legacy workbooks</td><td>The lookup column must be the first column in the table array</td></tr>
-                    <tr><td>INDEX + MATCH</td><td>Older-version compatibility and flexible return columns</td><td>Longer formula with two functions to audit</td></tr>
-                </tbody>
-            </table>
-
-            <h2>Use Exact Matching for IDs and Codes</h2>
-
-            <p>Consider a worksheet where column A contains a product ID, column B contains a name, column C contains a price, and column D contains stock. Cell F2 contains the ID to find.</p>
-
-            <p>An XLOOKUP formula that returns the price is:</p>
-
-            <pre><code>=XLOOKUP(F2,$A$2:$A$100,$C$2:$C$100,"Not found")</code></pre>
-
-            <p>XLOOKUP uses exact matching by default. The lookup array and return array are separate, which makes the intended result visible in the formula.</p>
-
-            <p>The equivalent VLOOKUP formula is:</p>
-
-            <pre><code>=VLOOKUP(F2,$A$2:$D$100,3,FALSE)</code></pre>
-
-            <p>The final <code>FALSE</code> requests an exact match. Omitting that argument can lead to an approximate match, which is usually inappropriate for product IDs, invoice numbers, employee codes, and similar identifiers.</p>
-
-            <p>The INDEX and MATCH version is:</p>
-
-            <pre><code>=INDEX($C$2:$C$100,MATCH(F2,$A$2:$A$100,0))</code></pre>
-
-            <p>The <code>0</code> in MATCH requests an exact match. MATCH finds the relative row, and INDEX returns the value from the corresponding row in column C.</p>
-
-            <h2>Choose XLOOKUP When Readability Is the Priority</h2>
-
-            <p>XLOOKUP is often the most readable option for a workbook that will stay in supported versions of Excel. It can return a value from a column to the left or right of the lookup column, and it includes a dedicated result for missing matches.</p>
-
-            <p>For example, this formula looks up a product name in column B and returns the ID from column A:</p>
-
-            <pre><code>=XLOOKUP(F2,$B$2:$B$100,$A$2:$A$100,"Not found")</code></pre>
-
-            <p>VLOOKUP cannot perform that leftward lookup without rearranging the source range or using another approach.</p>
-
-            <h2>Keep VLOOKUP When the Existing Formula Is Clear and Stable</h2>
-
-            <p>A correct VLOOKUP does not need to be replaced merely because another function exists. Keep it when the workbook must support older Excel versions, the lookup column is already first, the return column is unlikely to move, and the formula is understood by the people maintaining the workbook.</p>
-
-            <p>Review the column index whenever columns are inserted or deleted inside the table array. In <code>VLOOKUP(F2,A:D,3,FALSE)</code>, the number 3 means the third column of that selected range. A structural change can cause the formula to return a different field even though the formula itself does not show an error.</p>
-
-            <h2>Use INDEX and MATCH for Flexible Legacy Workbooks</h2>
-
-            <p>INDEX and MATCH is useful when XLOOKUP is unavailable but the lookup must return data from either side of the key column. It also separates the lookup range from the return range, so moving an unrelated column does not change a numeric column index.</p>
-
-            <p>For two-way lookups, a second MATCH can identify the return column. Suppose row 1 contains month names and column A contains product IDs:</p>
-
-            <pre><code>=INDEX($B$2:$M$100,
+<header class="container">
+<div class="header-top">
+<a href="/" style="text-decoration: none;">
+<span class="logo-text">tweaknook</span>
+</a>
+</div>
+<nav aria-label="Primary navigation">
+<a href="/tools/">Tools</a>
+<a href="/#productivity">Productivity</a>
+<a href="/#ai-guides">AI Guides</a>
+<a href="/#tech-tips">Tech Tips</a>
+<a href="/about">About</a>
+</nav>
+</header>
+<main class="container">
+<article class="page-content">
+<div style="margin-bottom: 30px;">
+<span class="post-category">Productivity</span>
+<h1>How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel</h1>
+<div class="post-meta">Published on June 29, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+</div>
+<p>Lookup formulas are easier to maintain when the formula matches the workbook rather than following a rule that one function is always better. VLOOKUP remains useful in older workbooks, XLOOKUP is usually the clearest choice in current versions of Excel, and INDEX with MATCH is still valuable when compatibility or flexible references matter.</p>
+<p>None of these functions prevents Excel crashes by itself. Workbook stability depends on factors such as file size, volatile formulas, external connections, formatting, add-ins, hardware, and the number of calculations Excel must perform. The practical goal is to choose a lookup that is correct, readable, and compatible with the people who will open the file.</p>
+<h2>Start with the Workbook's Compatibility Requirements</h2>
+<p>Before changing a formula, confirm which Excel versions are used by colleagues, clients, or automated systems. XLOOKUP is available in Microsoft 365 and newer perpetual versions, but it is not available in Excel 2016 or Excel 2019. A workbook that depends on XLOOKUP may therefore display an unsupported-function error on an older installation.</p>
+<table>
+<thead><tr><th>Function</th><th>Best fit</th><th>Main limitation</th></tr></thead>
+<tbody>
+<tr><td>XLOOKUP</td><td>Current Excel versions and readable formulas</td><td>Not available in some older versions</td></tr>
+<tr><td>VLOOKUP</td><td>Simple left-to-right lookups and legacy workbooks</td><td>The lookup column must be the first column in the table array</td></tr>
+<tr><td>INDEX + MATCH</td><td>Older-version compatibility and flexible return columns</td><td>Longer formula with two functions to audit</td></tr>
+</tbody>
+</table>
+<h2>Use Exact Matching for IDs and Codes</h2>
+<p>Consider a worksheet where column A contains a product ID, column B contains a name, column C contains a price, and column D contains stock. Cell F2 contains the ID to find.</p>
+<p>An XLOOKUP formula that returns the price is:</p>
+<pre><code>=XLOOKUP(F2,$A$2:$A$100,$C$2:$C$100,"Not found")</code></pre>
+<p>XLOOKUP uses exact matching by default. The lookup array and return array are separate, which makes the intended result visible in the formula.</p>
+<p>The equivalent VLOOKUP formula is:</p>
+<pre><code>=VLOOKUP(F2,$A$2:$D$100,3,FALSE)</code></pre>
+<p>The final <code>FALSE</code> requests an exact match. Omitting that argument can lead to an approximate match, which is usually inappropriate for product IDs, invoice numbers, employee codes, and similar identifiers.</p>
+<p>The INDEX and MATCH version is:</p>
+<pre><code>=INDEX($C$2:$C$100,MATCH(F2,$A$2:$A$100,0))</code></pre>
+<p>The <code>0</code> in MATCH requests an exact match. MATCH finds the relative row, and INDEX returns the value from the corresponding row in column C.</p>
+<h2>Choose XLOOKUP When Readability Is the Priority</h2>
+<p>XLOOKUP is often the most readable option for a workbook that will stay in supported versions of Excel. It can return a value from a column to the left or right of the lookup column, and it includes a dedicated result for missing matches.</p>
+<p>For example, this formula looks up a product name in column B and returns the ID from column A:</p>
+<pre><code>=XLOOKUP(F2,$B$2:$B$100,$A$2:$A$100,"Not found")</code></pre>
+<p>VLOOKUP cannot perform that leftward lookup without rearranging the source range or using another approach.</p>
+<h2>Keep VLOOKUP When the Existing Formula Is Clear and Stable</h2>
+<p>A correct VLOOKUP does not need to be replaced merely because another function exists. Keep it when the workbook must support older Excel versions, the lookup column is already first, the return column is unlikely to move, and the formula is understood by the people maintaining the workbook.</p>
+<p>Review the column index whenever columns are inserted or deleted inside the table array. In <code>VLOOKUP(F2,A:D,3,FALSE)</code>, the number 3 means the third column of that selected range. A structural change can cause the formula to return a different field even though the formula itself does not show an error.</p>
+<h2>Use INDEX and MATCH for Flexible Legacy Workbooks</h2>
+<p>INDEX and MATCH is useful when XLOOKUP is unavailable but the lookup must return data from either side of the key column. It also separates the lookup range from the return range, so moving an unrelated column does not change a numeric column index.</p>
+<p>For two-way lookups, a second MATCH can identify the return column. Suppose row 1 contains month names and column A contains product IDs:</p>
+<pre><code>=INDEX($B$2:$M$100,
        MATCH($P2,$A$2:$A$100,0),
        MATCH(Q$1,$B$1:$M$1,0))</code></pre>
-
-            <p>The first MATCH finds the product row. The second MATCH finds the month column. This is useful in structured reports, but the row and column labels still need consistent spelling and data types.</p>
-
-            <h2>Convert Source Data to an Excel Table</h2>
-
-            <p>Absolute ranges such as <code>$A$2:$A$100</code> are easy to understand in a small example, but they require maintenance when rows are added. Converting the source range to an Excel Table allows formulas to use column names and expand with new rows.</p>
-
-            <pre><code>=XLOOKUP([@ProductID],Products[ProductID],Products[Price],"Not found")</code></pre>
-
-            <p>Structured references also make it easier to inspect whether the lookup and return fields are correct. Give tables and columns clear names rather than leaving default labels such as Table1 or Column3.</p>
-
-            <h2>Check the Data Before Blaming the Formula</h2>
-
-            <p>Many lookup failures are caused by inconsistent source data rather than the function itself. Check these conditions before rewriting the formula:</p>
-
-            <ul>
-                <li>A number stored as text will not always match a numeric value.</li>
-                <li>Leading or trailing spaces can create visually identical but different text.</li>
-                <li>Duplicate keys can return the first matching record rather than the intended one.</li>
-                <li>Blank cells may be different from cells containing an empty string returned by another formula.</li>
-                <li>Dates must be stored as valid Excel dates, not only displayed in a date-like format.</li>
-            </ul>
-
-            <p>Do not wrap every lookup in IFERROR before understanding the error. A friendly “Not found” result is helpful for expected missing records, but broad error handling can also hide a broken range, misspelled table name, or incompatible function.</p>
-
-            <h2>Test a Lookup Before Filling It Down</h2>
-
-            <ol>
-                <li>Test a key that appears once and should return a known value.</li>
-                <li>Test a missing key and confirm the intended message appears.</li>
-                <li>Test a duplicate key and decide which record should win.</li>
-                <li>Add a new source row and confirm the lookup range expands.</li>
-                <li>Insert a column and confirm the result remains correct.</li>
-                <li>Open the workbook in the oldest Excel version that must support it.</li>
-            </ol>
-
-            <h2>Official Microsoft References</h2>
-
-            <p>Microsoft provides current documentation for the <a href="https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929" target="_blank" rel="noopener">XLOOKUP function</a>, the <a href="https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1" target="_blank" rel="noopener">VLOOKUP function</a>, and <a href="https://support.microsoft.com/en-us/office/look-up-values-with-vlookup-index-or-match-68297403-7c3c-4150-9e3c-4d348188976b" target="_blank" rel="noopener">lookup examples using VLOOKUP, INDEX, and MATCH</a>.</p>
-
-            <h2>A Practical Selection Rule</h2>
-
-            <p>Use XLOOKUP for new workbooks when every required Excel version supports it. Keep a correct VLOOKUP when compatibility and simplicity matter. Use INDEX and MATCH when an older workbook needs flexible lookup and return ranges. The best formula is the one that returns the correct result, survives expected worksheet changes, and can be understood by the next person who maintains the file.</p>
-
-            <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-                <h2 style="margin-top: 0;">Related Guides</h2>
-                <ul style="margin-bottom: 0;">
-                    <li><a href="/posts/10-excel-power-query">How to Automate Recurring CSV Cleanup with Excel Power Query</a></li>
-                    <li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
-                    <li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li>
-                </ul>
-            </section>
-
-            <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial Team publishes practical guides on productivity, AI-assisted workflows, and everyday technology. Each guide focuses on clear procedures, documented limitations, and checks readers can apply in their own environment.</p>
-            </div>
-
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-                <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="legal-links">
-                <a href="/about">About Us</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact Us</a>
-            </div>
-            <p>&copy; 2026 tweaknook.com. All rights reserved.</p>
-        </div>
-    </footer>
+<p>The first MATCH finds the product row. The second MATCH finds the month column. This is useful in structured reports, but the row and column labels still need consistent spelling and data types.</p>
+<h2>Convert Source Data to an Excel Table</h2>
+<p>Absolute ranges such as <code>$A$2:$A$100</code> are easy to understand in a small example, but they require maintenance when rows are added. Converting the source range to an Excel Table allows formulas to use column names and expand with new rows.</p>
+<pre><code>=XLOOKUP([@ProductID],Products[ProductID],Products[Price],"Not found")</code></pre>
+<p>Structured references also make it easier to inspect whether the lookup and return fields are correct. Give tables and columns clear names rather than leaving default labels such as Table1 or Column3.</p>
+<h2>Check the Data Before Blaming the Formula</h2>
+<p>Many lookup failures are caused by inconsistent source data rather than the function itself. Check these conditions before rewriting the formula:</p>
+<ul>
+<li>A number stored as text will not always match a numeric value.</li>
+<li>Leading or trailing spaces can create visually identical but different text.</li>
+<li>Duplicate keys can return the first matching record rather than the intended one.</li>
+<li>Blank cells may be different from cells containing an empty string returned by another formula.</li>
+<li>Dates must be stored as valid Excel dates, not only displayed in a date-like format.</li>
+</ul>
+<p>Do not wrap every lookup in IFERROR before understanding the error. A friendly “Not found” result is helpful for expected missing records, but broad error handling can also hide a broken range, misspelled table name, or incompatible function.</p>
+<h2>Test a Lookup Before Filling It Down</h2>
+<ol>
+<li>Test a key that appears once and should return a known value.</li>
+<li>Test a missing key and confirm the intended message appears.</li>
+<li>Test a duplicate key and decide which record should win.</li>
+<li>Add a new source row and confirm the lookup range expands.</li>
+<li>Insert a column and confirm the result remains correct.</li>
+<li>Open the workbook in the oldest Excel version that must support it.</li>
+</ol>
+<h2>Official Microsoft References</h2>
+<p>Microsoft provides current documentation for the <a href="https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929" rel="noopener" target="_blank">XLOOKUP function</a>, the <a href="https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1" rel="noopener" target="_blank">VLOOKUP function</a>, and <a href="https://support.microsoft.com/en-us/office/look-up-values-with-vlookup-index-or-match-68297403-7c3c-4150-9e3c-4d348188976b" rel="noopener" target="_blank">lookup examples using VLOOKUP, INDEX, and MATCH</a>.</p>
+<h2>A Practical Selection Rule</h2>
+<p>Use XLOOKUP for new workbooks when every required Excel version supports it. Keep a correct VLOOKUP when compatibility and simplicity matter. Use INDEX and MATCH when an older workbook needs flexible lookup and return ranges. The best formula is the one that returns the correct result, survives expected worksheet changes, and can be understood by the next person who maintains the file.</p>
+<section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+<h2 style="margin-top: 0;">Related Guides</h2>
+<ul style="margin-bottom: 0;">
+<li><a href="/posts/10-excel-power-query">How to Automate Recurring CSV Cleanup with Excel Power Query</a></li>
+<li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
+<li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li>
+</ul>
+</section>
+<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
+<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
+</div>
+<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+<a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.1rem;">← Back to Home</a>
+</div>
+</article>
+</main>
+<footer>
+<div class="container">
+<div class="legal-links">
+<a href="/tools/">Tools</a>
+<a href="/about">About</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/contact">Contact</a>
+</div>
+<p>© 2026 tweaknook.com. All rights reserved.</p>
+</div>
+</footer>
 </body>
 </html>
