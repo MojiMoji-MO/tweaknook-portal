@@ -19,35 +19,22 @@
     </script>
 <!-- Google AdSense site verification and ad delivery -->
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Email PDF Invoices from Google Sheets" property="og:title"/><meta content="Create PDF invoices from Google Sheets using a Google Docs template and email them as attachments with Apps Script." property="og:description"/><meta content="https://tweaknook.com/posts/16-google-sheets-invoice-script" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Email PDF Invoices from Google Sheets" name="twitter:title"/><meta content="Create PDF invoices from Google Sheets using a Google Docs template and email them as attachments with Apps Script." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Generate and Email PDF Invoices from Google Sheets", "description": "Create PDF invoices from Google Sheets using a Google Docs template and email them as attachments with Apps Script.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-13", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/16-google-sheets-invoice-script"}, "url": "https://tweaknook.com/posts/16-google-sheets-invoice-script", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Email PDF Invoices from Google Sheets" property="og:title"/><meta content="Create PDF invoices from Google Sheets using a Google Docs template and email them as attachments with Apps Script." property="og:description"/><meta content="https://tweaknook.com/posts/16-google-sheets-invoice-script" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Email PDF Invoices from Google Sheets" name="twitter:title"/><meta content="Create PDF invoices from Google Sheets using a Google Docs template and email them as attachments with Apps Script." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Generate and Email PDF Invoices from Google Sheets", "description": "Create PDF invoices from Google Sheets using a Google Docs template and email them as attachments with Apps Script.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-13", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/16-google-sheets-invoice-script"}, "url": "https://tweaknook.com/posts/16-google-sheets-invoice-script", "inLanguage": "en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#productivity">Productivity</a>
 <h1>How to Generate and Email PDF Invoices from Google Sheets</h1>
-<div class="post-meta">Published on July 13, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on July 13, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
-<p>Google Apps Script can read invoice rows from Google Sheets, fill a Google Docs template, convert the result to PDF, and send it as an email attachment. The script below marks a row as sent only after the email command completes.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
-<strong>Test first:</strong> Use your own email address and a sample invoice before sending anything to a client. Google account sending limits also apply.
-</div>
-<h2>Step 1: Prepare the Sheet</h2>
-<p>Create a sheet named <code>Invoices</code> with these headers in row 1:</p>
-<table>
-<thead><tr><th>Column</th><th>Header</th></tr></thead>
-<tbody>
-<tr><td>A</td><td>Client</td></tr>
-<tr><td>B</td><td>Email</td></tr>
-<tr><td>C</td><td>Invoice Number</td></tr>
-<tr><td>D</td><td>Description</td></tr>
-<tr><td>E</td><td>Quantity</td></tr>
-<tr><td>F</td><td>Unit Price</td></tr>
-<tr><td>G</td><td>Status</td></tr>
-</tbody>
-</table>
-<h2>Step 2: Create a Google Docs Template</h2>
-<p>Create a Google Doc and add placeholders such as:</p>
+<p>Google Apps Script can read invoice rows from Google Sheets, fill a Google Docs template, create a PDF, and send it with <code>MailApp</code>. A safe workflow needs preview mode, validation, duplicate-invoice checks, a sent timestamp, an error column, and a rule that marks a row as sent only after the email call completes.</p>
+<div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Start in preview mode:</strong> use your own address and fabricated invoice data. Do not connect a time trigger or process real client rows until the generated PDF, recipient, currency, and totals have been checked.</div>
+<h2>Prepare a sheet with audit columns</h2>
+<div class="table-scroll"><table><thead><tr><th>Column</th><th>Header</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>A</td><td>Client</td><td>Name shown in the document</td></tr><tr><td>B</td><td>Email</td><td>Recipient</td></tr><tr><td>C</td><td>Invoice Number</td><td>Unique business identifier</td></tr><tr><td>D</td><td>Description</td><td>Invoice line description</td></tr><tr><td>E</td><td>Quantity</td><td>Numeric quantity</td></tr><tr><td>F</td><td>Unit Price</td><td>Numeric unit price</td></tr><tr><td>G</td><td>Status</td><td>Preview OK, Sent, or Needs review</td></tr><tr><td>H</td><td>Sent At</td><td>Timestamp written after send</td></tr><tr><td>I</td><td>Error</td><td>Most recent validation or execution error</td></tr>
+</tbody></table></div>
+<h2>Create a Google Docs template</h2>
 <pre><code>INVOICE
 
 Invoice Number: {{INVOICE_NUMBER}}
@@ -57,65 +44,90 @@ Description: {{DESCRIPTION}}
 Quantity: {{QUANTITY}}
 Unit Price: {{UNIT_PRICE}}
 Total: {{TOTAL}}</code></pre>
-<p>Copy the document ID from the address bar. It is the long value between <code>/d/</code> and <code>/edit</code>.</p>
-<h2>Step 3: Add the Apps Script</h2>
-<p>In Google Sheets, open <strong>Extensions → Apps Script</strong>. Replace the template ID in the first line and paste:</p>
+<p>Use exact placeholder names and copy the document ID from the template URL. Keep the template in a Drive location the script account can access.</p>
+<h2>Add a preview-first Apps Script</h2>
 <pre><code>const TEMPLATE_DOC_ID = "PASTE_YOUR_GOOGLE_DOC_ID_HERE";
+const SEND_EMAILS = false; // Keep false until preview rows are verified.
 
 function generateAndEmailInvoices() {
   const sheet = SpreadsheetApp.getActive().getSheetByName("Invoices");
-  if (!sheet) {
-    throw new Error('Sheet named "Invoices" was not found.');
-  }
+  if (!sheet) throw new Error('Sheet named "Invoices" was not found.');
 
   const values = sheet.getDataRange().getValues();
+  if (values.length &lt; 2) return;
+
+  const invoiceCounts = new Map();
+  values.slice(1).forEach(row =&gt; {
+    const key = String(row[2] || "").trim();
+    if (key) invoiceCounts.set(key, (invoiceCounts.get(key) || 0) + 1);
+  });
 
   for (let rowIndex = 1; rowIndex &lt; values.length; rowIndex++) {
+    const rowNumber = rowIndex + 1;
     const [client, email, invoiceNumber, description, quantity, unitPrice, status] = values[rowIndex];
 
-    if (!client || !email || !invoiceNumber || status === "Sent") {
+    if (String(status).trim() === "Sent") continue;
+
+    const errors = [];
+    const invoiceId = String(invoiceNumber || "").trim();
+    const recipient = String(email || "").trim();
+    const numericQuantity = Number(quantity);
+    const numericUnitPrice = Number(unitPrice);
+
+    if (!client) errors.push("Client is missing");
+    if (!recipient || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(recipient)) errors.push("Email needs review");
+    if (!invoiceId) errors.push("Invoice number is missing");
+    if (invoiceCounts.get(invoiceId) &gt; 1) errors.push("Duplicate invoice number");
+    if (!Number.isFinite(numericQuantity) || numericQuantity &lt;= 0) errors.push("Quantity must be positive");
+    if (!Number.isFinite(numericUnitPrice) || numericUnitPrice &lt; 0) errors.push("Unit price must be zero or greater");
+
+    if (errors.length) {
+      sheet.getRange(rowNumber, 7).setValue("Needs review");
+      sheet.getRange(rowNumber, 9).setValue(errors.join("; "));
       continue;
     }
 
-    const numericQuantity = Number(quantity);
-    const numericUnitPrice = Number(unitPrice);
-    if (!Number.isFinite(numericQuantity) || !Number.isFinite(numericUnitPrice)) {
-      sheet.getRange(rowIndex + 1, 7).setValue("Check quantity or price");
-      continue;
+    if (SEND_EMAILS &amp;&amp; MailApp.getRemainingDailyQuota() &lt; 1) {
+      throw new Error("No remaining MailApp recipient quota for this account today.");
     }
 
     const total = numericQuantity * numericUnitPrice;
-    const templateFile = DriveApp.getFileById(TEMPLATE_DOC_ID);
-    const temporaryFile = templateFile.makeCopy(`Invoice-${invoiceNumber}`);
+    const temporaryFile = DriveApp.getFileById(TEMPLATE_DOC_ID)
+      .makeCopy(`Invoice-${invoiceId}-TEMP`);
 
     try {
       const document = DocumentApp.openById(temporaryFile.getId());
       const body = document.getBody();
 
-      replacePlaceholder(body, "INVOICE_NUMBER", invoiceNumber);
+      replacePlaceholder(body, "INVOICE_NUMBER", invoiceId);
       replacePlaceholder(body, "DATE", Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd"));
       replacePlaceholder(body, "CLIENT", client);
       replacePlaceholder(body, "DESCRIPTION", description || "");
       replacePlaceholder(body, "QUANTITY", numericQuantity);
       replacePlaceholder(body, "UNIT_PRICE", numericUnitPrice.toFixed(2));
       replacePlaceholder(body, "TOTAL", total.toFixed(2));
-
       document.saveAndClose();
 
-      const pdf = temporaryFile
-        .getAs(MimeType.PDF)
-        .setName(`Invoice-${invoiceNumber}.pdf`);
+      const pdf = temporaryFile.getAs(MimeType.PDF)
+        .setName(`Invoice-${invoiceId}.pdf`);
 
-      GmailApp.sendEmail(
-        email,
-        `Invoice ${invoiceNumber}`,
-        `Hello ${client},\n\nPlease find your invoice attached.\n\nThank you.`,
-        { attachments: [pdf] }
-      );
+      if (SEND_EMAILS) {
+        MailApp.sendEmail({
+          to: recipient,
+          subject: `Invoice ${invoiceId}`,
+          body: `Hello ${client},\n\nPlease find your invoice attached.\n\nThank you.`,
+          attachments: [pdf]
+        });
+        sheet.getRange(rowNumber, 7).setValue("Sent");
+        sheet.getRange(rowNumber, 8).setValue(new Date());
+      } else {
+        sheet.getRange(rowNumber, 7).setValue("Preview OK");
+      }
 
-      sheet.getRange(rowIndex + 1, 7).setValue("Sent");
+      sheet.getRange(rowNumber, 9).clearContent();
     } catch (error) {
-      sheet.getRange(rowIndex + 1, 7).setValue(`Error: ${error.message}`);
+      sheet.getRange(rowNumber, 7).setValue("Needs review");
+      sheet.getRange(rowNumber, 9).setValue(String(error.message || error));
     } finally {
       temporaryFile.setTrashed(true);
     }
@@ -126,38 +138,24 @@ function replacePlaceholder(body, name, value) {
   const safeValue = String(value).replace(/\\/g, "\\\\").replace(/\$/g, "\\$");
   body.replaceText(`\\{\\{${name}\\}\\}`, safeValue);
 }</code></pre>
-<h2>Step 4: Run a Test</h2>
-<ol>
-<li>Add one test row using your own email.</li>
-<li>Click <strong>Run</strong> and choose <code>generateAndEmailInvoices</code>.</li>
-<li>Approve the requested Google permissions.</li>
-<li>Confirm that the email contains a PDF attachment.</li>
-<li>Confirm that column G changes to <code>Sent</code>.</li>
-</ol>
-<h2>Important Notes</h2>
-<ul>
-<li>The script uses the spreadsheet's time-zone setting for the invoice date.</li>
-<li>Rows already marked <code>Sent</code> are skipped.</li>
-<li>Incorrect quantity or price values are not sent.</li>
-<li>A temporary Google Doc is moved to Trash after the PDF is created.</li>
-<li>Review taxes, invoice numbering, currency formatting, and legal requirements for your location.</li>
-</ul>
-<h2>Common Setup Problems</h2>
-<table>
-<thead><tr><th>Problem</th><th>What to check</th></tr></thead>
-<tbody>
-<tr><td>Template file cannot be opened</td><td>Confirm that <code>TEMPLATE_DOC_ID</code> contains only the Google Doc ID and that your account can access the file.</td></tr>
-<tr><td>Placeholders remain in the PDF</td><td>Make sure the template uses the exact names shown in the script, including both braces.</td></tr>
-<tr><td>Email is not sent</td><td>Review the Apps Script execution log, recipient address, account permissions, and daily sending quota.</td></tr>
-<tr><td>Incorrect totals</td><td>Check that Quantity and Unit Price are stored as numbers rather than formatted text.</td></tr>
-</tbody>
-</table>
-<p><strong>Official reference:</strong> <a href="https://developers.google.com/apps-script/samples/automations/generate-pdfs" rel="noopener noreferrer" target="_blank">Google's PDF generation sample</a></p>
+<h2>Authorize and run one fabricated row</h2>
+<ol><li>Set the spreadsheet time zone and confirm the template ID.</li><li>Keep <code>SEND_EMAILS = false</code>.</li><li>Run the function manually and review the permission request.</li><li>Confirm the test row becomes <code>Preview OK</code> and no recipient received mail.</li><li>Temporarily keep the generated file instead of trashing it if you need to inspect layout during development, then restore cleanup before normal use.</li></ol>
+<h2>Verify the PDF before enabling email</h2>
+<p>Check invoice number, client, description, quantity, unit price, total, date, page breaks, currency wording, and template branding. The example performs arithmetic but does not define tax, discounts, legal invoice requirements, or a currency conversion rule.</p>
+<h2>Enable sending cautiously</h2>
+<p>Change <code>SEND_EMAILS</code> to <code>true</code> only after preview rows are correct. Use your own email as the first recipient. <code>MailApp</code> sends on behalf of the authorized account and is subject to account quotas. A successful script execution does not prove that a message avoided spam filtering or reached the intended human.</p>
+<h2>Prevent duplicate sends</h2>
+<p>The script skips rows marked <code>Sent</code> and rejects duplicate invoice numbers in the current sheet. Do not clear status cells merely to rerun the script. If a client needs a corrected invoice, use a documented revision process and a unique identifier rather than silently reusing the original row.</p>
+<h2>Do not schedule a trigger too early</h2>
+<p>Time-driven triggers can send unattended email. Add one only after manual runs are stable, errors are visible, and the account owner understands quotas and recipient data. On a shared or managed Workspace account, obtain the required approval.</p>
+<h2>Completion checklist</h2>
+<ul><li>Fabricated data produces a correctly formatted PDF.</li><li>Invalid rows are marked <code>Needs review</code> with a useful error.</li><li>Duplicate invoice numbers are blocked.</li><li>The first real send goes only to a controlled recipient.</li><li>Status and sent timestamp are written only after sending.</li><li>Temporary Drive copies are cleaned up.</li></ul>
+<h2>Official Google references</h2>
+<ul><li><a href="https://developers.google.com/apps-script/reference/mail/" rel="noopener" target="_blank">Apps Script Mail service</a></li><li><a href="https://developers.google.com/apps-script/samples/automations/generate-pdfs" rel="noopener" target="_blank">Generate and send PDFs from Google Sheets sample</a></li></ul>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/04-importrange-dashboard"><strong>How to Build a Live Google Sheets Dashboard with IMPORTRANGE</strong></a> — Bring data from separate spreadsheets into one reporting view.</li><li><a href="/posts/10-excel-power-query"><strong>How to Automate Recurring CSV Reports with Excel Power Query</strong></a> — Refresh repeated file-based reports without manual formatting.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
-</div>
-<nav class="post-return-nav" aria-label="Article navigation">
+</div><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Blog</a>
 <a href="/">Home</a>
 </nav></article>

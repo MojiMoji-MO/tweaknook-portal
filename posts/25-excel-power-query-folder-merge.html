@@ -22,39 +22,27 @@
 <!-- Google AdSense site verification and ad delivery -->
 <!-- Google AdSense site verification and ad delivery -->
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Combine Folder Files with Power Query" property="og:title"/><meta content="Combine similarly structured Excel or CSV files from one folder and refresh the result later with Excel Power Query." property="og:description"/><meta content="https://tweaknook.com/posts/25-excel-power-query-folder-merge" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Combine Folder Files with Power Query" name="twitter:title"/><meta content="Combine similarly structured Excel or CSV files from one folder and refresh the result later with Excel Power Query." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Combine Files from a Folder with Excel Power Query", "description": "Combine similarly structured Excel or CSV files from one folder and refresh the result later with Excel Power Query.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-22", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/25-excel-power-query-folder-merge"}, "url": "https://tweaknook.com/posts/25-excel-power-query-folder-merge", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Combine Folder Files with Power Query" property="og:title"/><meta content="Combine similarly structured Excel or CSV files from one folder and refresh the result later with Excel Power Query." property="og:description"/><meta content="https://tweaknook.com/posts/25-excel-power-query-folder-merge" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Combine Folder Files with Power Query" name="twitter:title"/><meta content="Combine similarly structured Excel or CSV files from one folder and refresh the result later with Excel Power Query." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Combine Files from a Folder with Excel Power Query", "description": "Combine similarly structured Excel or CSV files from one folder and refresh the result later with Excel Power Query.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-22", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/25-excel-power-query-folder-merge"}, "url": "https://tweaknook.com/posts/25-excel-power-query-folder-merge", "inLanguage": "en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#productivity">Productivity</a>
 <h1>How to Combine Files from a Folder with Excel Power Query</h1>
-<div class="post-meta">Published on July 22, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on July 22, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
-<p>Power Query can combine files from a folder when the files use a consistent structure. After the query is created, adding another matching file and refreshing the workbook can update the combined result without manual copy-and-paste.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
-<strong>Before combining:</strong> Use copies of your source files and confirm that the expected sheet, table, or CSV columns are consistent.
-</div>
-<h2>Step 1: Prepare the Folder</h2>
-<p>Create a dedicated folder such as <code>Raw_Ingestion_Zone</code>. Place only the files that belong in the combined dataset inside it.</p>
-<p>For the most predictable result, each file should use:</p>
-<ul>
-<li>The same file type where possible</li>
-<li>The same column headers</li>
-<li>The same table or worksheet structure</li>
-<li>Consistent date and number formats</li>
-</ul>
-<h2>Step 2: Connect Excel to the Folder</h2>
-<ol>
-<li>Open a blank Excel workbook.</li>
-<li>Select <strong>Data → Get Data → From File → From Folder</strong>.</li>
-<li>Choose the source folder.</li>
-<li>Select <strong>Combine &amp; Transform Data</strong>.</li>
-<li>Choose the sample sheet, table, or file object that contains the data.</li>
-</ol>
-<p>Power Query creates the main query and several helper queries used to transform each file.</p>
-<h2>Step 3: Review the Generated Query</h2>
-<p>The exact M code varies by file type and Excel version. A generated pattern may include code similar to this:</p>
+<p>Power Query can combine files from a folder when those files follow a stable schema. The reliable workflow is to isolate the input folder, use the Combine Files interface, preserve the source filename, test schema changes, and validate row counts and totals after every refresh.</p>
+<div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Use source copies:</strong> the combined query should read controlled inputs. Keep original exports separately until the refresh and validation process is trusted.</div>
+<h2>Define the expected schema</h2>
+<p>Write down the required file type, table or sheet name, column headers, key columns, date/number conventions, and whether subfolders are allowed. A folder is not a schema; one inconsistent file can break or silently distort the combined result.</p>
+<h2>Prepare a dedicated input folder</h2>
+<ul><li>Place only files intended for the dataset inside it.</li><li>Remove temporary lock files and manually edited copies.</li><li>Prefer the same file type and structure.</li><li>Use a separate quarantine folder for files that fail validation.</li></ul>
+<h2>Connect Excel to the folder</h2>
+<ol><li>Open a blank workbook.</li><li>Select <strong>Data &gt; Get Data &gt; From File &gt; From Folder</strong>.</li><li>Select the input folder.</li><li>Choose <strong>Combine &amp; Transform Data</strong>.</li><li>Select the sample sheet, table, or object that represents the intended data.</li></ol>
+<p>Excel creates a main query plus helper queries and a transform function. Those helpers are dependencies, not clutter to delete without review.</p>
+<h2>Keep traceability in the main query</h2>
+<p>Retain <code>Source.Name</code> and, when needed, folder path information until the workflow is stable. Traceability makes it possible to identify which file introduced an unexpected row, type error, or new column.</p>
+<h2>Understand the generated M pattern</h2>
 <pre><code>let
     Source = Folder.Files("C:\Corporate\Raw_Ingestion_Zone"),
     FilteredHiddenFiles = Table.SelectRows(
@@ -81,46 +69,27 @@
     )
 in
     ExpandedData</code></pre>
-<p>The nested braces in <code>{{"Name", "Source.Name"}}</code> are required because <code>Table.RenameColumns</code> expects a list of rename pairs.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #f1f8ff; border-left: 3px solid #007bff; border-radius: 4px;">
-<strong>Dependency note:</strong> This example assumes that Excel already created the <code>Transform File</code> function and <code>Sample File</code> helper query through the Combine Files interface. It is not intended as a standalone script for a blank query.
-</div>
-<h2>Step 4: Clean and Validate the Data</h2>
-<ul>
-<li>Set each column's data type.</li>
-<li>Filter out temporary or unwanted files.</li>
-<li>Check for missing or renamed columns.</li>
-<li>Keep <code>Source.Name</code> when you need to trace a row back to its file.</li>
-<li>Compare row counts and totals against the original files.</li>
-</ul>
-<h2>Step 5: Load and Refresh</h2>
-<p>Select <strong>Close &amp; Load</strong> to place the result in a worksheet, or choose <strong>Close &amp; Load To</strong> to create a connection or add the result to the Data Model.</p>
-<p>When a new matching file is added to the folder, open the workbook and select <strong>Data → Refresh All</strong>. Refresh time depends on the number, size, location, and complexity of the source files.</p>
-<h2>Common Problems</h2>
-<table>
-<thead><tr><th>Problem</th><th>What to check</th></tr></thead>
-<tbody>
-<tr><td>New columns do not appear</td><td>Review the sample-file transformation and expansion step</td></tr>
-<tr><td>Errors after a file is added</td><td>Check whether that file uses different headers or data types</td></tr>
-<tr><td>Unexpected subfolder files appear</td><td><code>Folder.Files</code> also returns files from subfolders; add a folder-path filter if needed</td></tr>
-<tr><td>Workbook becomes large</td><td>Remove unused columns or load to the Data Model instead of a worksheet</td></tr>
-</tbody>
-</table>
-<h2>Refresh Checklist</h2>
-<ul>
-<li>Add one new test file and confirm that its rows appear after refresh.</li>
-<li>Compare the combined row count with the source files.</li>
-<li>Check that dates, decimals, and leading zeros were not changed unexpectedly.</li>
-<li>Keep the source filename column until the workflow is stable.</li>
-<li>Review query errors before sharing the workbook with other users.</li>
-</ul>
-<p>Once the checks are reliable, the folder can become a controlled input location for recurring reports.</p>
-<p><strong>Official references:</strong> <a href="https://learn.microsoft.com/powerquery-m/folder-files" rel="noopener noreferrer" target="_blank">Folder.Files</a> and <a href="https://learn.microsoft.com/powerquery-m/table-renamecolumns" rel="noopener noreferrer" target="_blank">Table.RenameColumns</a></p>
+<p>This pattern depends on the <code>Transform File</code> function and <code>Sample File</code> query generated by the interface. It is not a standalone query for a blank workbook.</p>
+<h2>Apply data types after structural steps</h2>
+<p>Automatic type detection can misread dates, leading zeros, and mixed numeric/text identifiers. Review the Changed Type step, preserve an original text column during risky conversions, and define locale explicitly when imported dates or decimals depend on regional conventions.</p>
+<h2>Plan for schema drift</h2>
+<div class="table-scroll"><table><thead><tr><th>Change</th><th>Possible result</th><th>Safe response</th></tr></thead><tbody><tr><td>New column added</td><td>It may not appear if expansion uses the old sample schema</td><td>Review the transform and expansion step before updating</td></tr><tr><td>Required column renamed</td><td>Errors or missing data</td><td>Quarantine the file and confirm whether the source contract changed</td></tr><tr><td>Column type changes</td><td>Conversion errors or nulls</td><td>Inspect the source row and type step</td></tr><tr><td>Extra header rows</td><td>Headers become data</td><td>Fix the source export or adjust the sample transformation deliberately</td></tr><tr><td>Different sheet/table name</td><td>Transform function fails</td><td>Standardize the source or create an explicit exception path</td></tr></tbody></table></div>
+<h2>Control subfolders and file types</h2>
+<p><code>Folder.Files</code> can include files from subfolders. Filter <code>Folder Path</code> when only the selected directory should count. Filter extensions before invoking the transform so a PDF, temporary file, or old workbook is not treated as input accidentally.</p>
+<h2>Validate every refresh</h2>
+<ol><li>Add one known test file.</li><li>Refresh and confirm its rows appear once.</li><li>Compare combined row counts with the input files.</li><li>Reconcile a known total and several key records.</li><li>Review query errors and blank keys.</li><li>Confirm dates, decimals, and leading zeros.</li><li>Remove the test file and refresh again.</li></ol>
+<h2>Make the folder path maintainable</h2>
+<p>A hard-coded local path may fail for another user or device. For shared workbooks, document the required folder, consider a parameter, and confirm that all users have access to the same source location. Privacy-level or credential prompts can also differ by environment.</p>
+<h2>Choose the load destination</h2>
+<p>Use <strong>Close &amp; Load</strong> for a worksheet result or <strong>Close &amp; Load To</strong> for a connection or Data Model. Remove unused columns before loading, but retain enough traceability to investigate refresh problems.</p>
+<h2>Completion checklist</h2>
+<ul><li>The input folder contains only intended files.</li><li>The expected schema is documented.</li><li>Source filename traceability remains.</li><li>New and missing columns are handled deliberately.</li><li>Row counts, totals, types, and errors are reviewed after refresh.</li><li>The path and credentials work for the intended users.</li></ul>
+<h2>Official Microsoft references</h2>
+<ul><li><a href="https://learn.microsoft.com/en-us/powerquery-m/folder-files" rel="noopener" target="_blank">Folder.Files</a></li><li><a href="https://learn.microsoft.com/en-us/powerquery-m/table-renamecolumns" rel="noopener" target="_blank">Table.RenameColumns</a></li><li><a href="https://learn.microsoft.com/en-us/power-query/dealing-with-errors" rel="noopener" target="_blank">Dealing with errors in Power Query</a></li></ul>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/10-excel-power-query"><strong>How to Automate Recurring CSV Reports with Excel Power Query</strong></a> — Build a repeatable cleanup workflow for recurring CSV files.</li><li><a href="/posts/23-excel-power-pivot-dax"><strong>How to Analyze Large Excel Data with Power Pivot and DAX</strong></a> — Load the combined result into the Data Model for larger analysis.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
-</div>
-<nav class="post-return-nav" aria-label="Article navigation">
+</div><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Blog</a>
 <a href="/">Home</a>
 </nav></article>

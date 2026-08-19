@@ -22,42 +22,36 @@
 <!-- Google AdSense site verification and ad delivery -->
 <!-- Google AdSense site verification and ad delivery -->
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Find Duplicate Files with PowerShell" property="og:title"/><meta content="Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review." property="og:description"/><meta content="https://tweaknook.com/posts/24-powershell-duplicate-finder" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Find Duplicate Files with PowerShell" name="twitter:title"/><meta content="Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Find Duplicate Files with PowerShell and Export a Report", "description": "Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-21", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/24-powershell-duplicate-finder"}, "url": "https://tweaknook.com/posts/24-powershell-duplicate-finder", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Find Duplicate Files with PowerShell" property="og:title"/><meta content="Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review." property="og:description"/><meta content="https://tweaknook.com/posts/24-powershell-duplicate-finder" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Find Duplicate Files with PowerShell" name="twitter:title"/><meta content="Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Find Duplicate Files with PowerShell and Export a Report", "description": "Use PowerShell and SHA-256 hashes to find files with matching content and export a CSV report for manual review.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-21", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/24-powershell-duplicate-finder"}, "url": "https://tweaknook.com/posts/24-powershell-duplicate-finder", "inLanguage": "en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#tech-tips">Tech Tips</a>
 <h1>How to Find Duplicate Files with PowerShell and Export a Report</h1>
-<div class="post-meta">Published on July 21, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on July 21, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
-<p>File names and file sizes are not enough to confirm that two files contain the same data. PowerShell can calculate a SHA-256 hash for likely duplicates and export matching groups to a CSV report.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
-<strong>This script does not delete files.</strong> Matching content can still be required in more than one folder, so review every path before removing anything.
-</div>
-<h2>How the Scan Works</h2>
-<ol>
-<li>List files recursively.</li>
-<li>Group them by file size.</li>
-<li>Hash only size groups containing more than one file.</li>
-<li>Group matching SHA-256 hashes.</li>
-<li>Export all matching paths for review.</li>
-</ol>
-<h2>PowerShell Script</h2>
-<p>Change <code>$RootPath</code> to the folder you want to scan:</p>
-<pre><code>$RootPath = "C:\Users\YourName\Documents"
+<p>PowerShell can narrow a duplicate-file audit by grouping files with the same size and then calculating SHA-256 hashes only for those candidates. The script below exports matching-content groups and a separate scan-error report. It never deletes or moves a file.</p>
+<div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Start with a narrow folder:</strong> do not scan an entire system drive first. Exclude backup folders when duplicate copies there are intentional, and keep another backup before any later cleanup.</div>
+<h2>Set the scan folder and report paths</h2>
+<pre><code>$RootPath = "$env:USERPROFILE\Documents"
 $ReportPath = "$env:USERPROFILE\Desktop\Duplicate_Audit_Report.csv"
+$ErrorPath = "$env:USERPROFILE\Desktop\Duplicate_Scan_Errors.csv"</code></pre>
+<h2>Use size grouping before hashing</h2>
+<pre><code>$ScanErrors = @()
 
-$files = Get-ChildItem -Path $RootPath -File -Recurse -ErrorAction SilentlyContinue
+$allFiles = Get-ChildItem -LiteralPath $RootPath -File -Recurse -Force `
+    -ErrorAction SilentlyContinue -ErrorVariable +ScanErrors
 
-$sizeCandidates = $files |
+$sizeCandidates = $allFiles |
     Group-Object -Property Length |
     Where-Object { $_.Count -gt 1 } |
     ForEach-Object { $_.Group }
 
 $hashedFiles = foreach ($file in $sizeCandidates) {
     try {
-        $hash = Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256 -ErrorAction Stop
+        $hash = Get-FileHash -LiteralPath $file.FullName `
+            -Algorithm SHA256 -ErrorAction Stop
 
         [PSCustomObject]@{
             Hash          = $hash.Hash
@@ -67,64 +61,64 @@ $hashedFiles = foreach ($file in $sizeCandidates) {
         }
     }
     catch {
-        Write-Warning "Could not hash: $($file.FullName)"
+        $ScanErrors += [PSCustomObject]@{
+            Path  = $file.FullName
+            Stage = "Hash"
+            Error = $_.Exception.Message
+        }
     }
 }
 
-$report = foreach ($group in ($hashedFiles | Group-Object -Property Hash | Where-Object { $_.Count -gt 1 })) {
+$report = foreach ($group in (
+    $hashedFiles |
+    Group-Object -Property Hash |
+    Where-Object { $_.Count -gt 1 }
+)) {
     $ordered = $group.Group | Sort-Object -Property Path
 
     for ($index = 0; $index -lt $ordered.Count; $index++) {
         [PSCustomObject]@{
             GroupHash     = $group.Name
+            GroupCount    = $ordered.Count
+            CandidateRank = $index + 1
             Path          = $ordered[$index].Path
             SizeMB        = [math]::Round($ordered[$index].SizeBytes / 1MB, 2)
             LastWriteTime = $ordered[$index].LastWriteTime
-            ReviewNote    = if ($index -eq 0) { "First path in sorted group" } else { "Matching content - review manually" }
+            ReviewNote    = "Matching SHA-256 content; review purpose and path"
         }
     }
 }
 
 if ($report) {
     $report | Export-Csv -Path $ReportPath -NoTypeInformation -Encoding UTF8
-    Write-Host "Report created: $ReportPath"
+    Write-Host "Duplicate candidate report: $ReportPath"
 }
 else {
-    Write-Host "No matching file hashes were found."
+    Write-Host "No matching SHA-256 groups were found in the files that were scanned."
+}
+
+if ($ScanErrors) {
+    $ScanErrors | Export-Csv -Path $ErrorPath -NoTypeInformation -Encoding UTF8
+    Write-Warning "Some paths could not be scanned. Review: $ErrorPath"
 }</code></pre>
-<h2>Run the Script</h2>
-<ol>
-<li>Save it as <code>find-duplicates.ps1</code>.</li>
-<li>Open PowerShell.</li>
-<li>Run the script from its saved location.</li>
-<li>Open <code>Duplicate_Audit_Report.csv</code> in Excel.</li>
-</ol>
-<p>Large drives can take a long time because hashing reads file contents. Files that are locked or inaccessible may be skipped with a warning.</p>
-<h2>How to Review the Report</h2>
-<ul>
-<li>Confirm the files open correctly.</li>
-<li>Check whether software, shortcuts, or projects depend on a specific path.</li>
-<li>Keep backups before deleting anything.</li>
-<li>Move suspected duplicates to a temporary review folder before permanent deletion.</li>
-<li>Do not assume the first listed path is the authoritative original.</li>
-</ul>
-<h2>Why the Script Does Not Auto-Delete</h2>
-<p>Identical content does not always mean one copy is unnecessary. A file may be intentionally duplicated across project folders, offline archives, or application directories. The report is designed to support a manual decision rather than make that decision automatically.</p>
-<h2>Practical Scan Tips</h2>
-<ul>
-<li>Start with one user folder instead of scanning an entire system drive.</li>
-<li>Exclude backup folders when you already expect intentional duplicate copies.</li>
-<li>Close applications that may lock active documents.</li>
-<li>Keep the CSV report until the cleanup has been reviewed.</li>
-<li>Move files to a temporary holding folder before emptying the Recycle Bin.</li>
-</ul>
-<p>Hash comparison is useful for identifying identical content, but the final decision still depends on the purpose and location of each file.</p>
-<p><strong>Official reference:</strong> <a href="https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash" rel="noopener noreferrer" target="_blank">Microsoft Get-FileHash documentation</a></p>
+<h2>Understand what the report proves</h2>
+<p>A matching SHA-256 hash is a strong indication that the scanned file contents are identical. It does not show which path is the authoritative copy, whether both copies are required, or whether an application depends on a particular location. Scan errors also mean the audit was incomplete.</p>
+<h2>Run the script</h2>
+<ol><li>Save it as <code>find-duplicates.ps1</code>.</li><li>Set <code>$RootPath</code> to a folder you own and understand.</li><li>Run it in PowerShell.</li><li>Open both CSV files if they were created.</li><li>Do not proceed to cleanup until scan errors and intentional backup locations are reviewed.</li></ol>
+<h2>Review each duplicate group</h2>
+<ul><li>Open files from more than one path.</li><li>Check project, shortcut, sync, and application dependencies.</li><li>Identify intentional archive, backup, sidecar, or distribution copies.</li><li>Do not treat CandidateRank 1 as “the original”; it is only sorted first.</li><li>Use the Recycle Bin or a separate holding folder before permanent deletion.</li></ul>
+<h2>Why automatic deletion is excluded</h2>
+<p>Identical content can be intentional. A project may require a local copy, an archive may preserve a release, or software may reference a fixed path. The decision requires context the hash cannot provide.</p>
+<h2>Reduce incomplete or misleading scans</h2>
+<ul><li>Close applications that lock active files.</li><li>Avoid scanning system and package directories without a specific reason.</li><li>Exclude known backup trees if you are auditing only working folders.</li><li>Keep the error CSV with the duplicate report.</li><li>Repeat the scan after moving candidates to confirm no unexpected group remains.</li></ul>
+<h2>Completion checklist</h2>
+<ul><li>The root path was intentional.</li><li>Any scan or hash errors were reviewed.</li><li>Each planned deletion has another verified copy.</li><li>Dependent projects and applications were checked.</li><li>Files were held temporarily before permanent removal.</li><li>A post-cleanup scan and backup verification were completed.</li></ul>
+<h2>Official Microsoft reference</h2>
+<ul><li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash" rel="noopener" target="_blank">Get-FileHash</a></li></ul>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/15-windows-robocopy-backup"><strong>How to Create a Safer One-Way Backup with Robocopy</strong></a> — Back up important files before deleting suspected duplicates.</li><li><a href="/posts/07-python-file-renamer"><strong>How to Safely Bulk Rename Files with Python</strong></a> — Rename reviewed files in a predictable sequence while preserving extensions.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
-</div>
-<nav class="post-return-nav" aria-label="Article navigation">
+</div><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Blog</a>
 <a href="/">Home</a>
 </nav></article>

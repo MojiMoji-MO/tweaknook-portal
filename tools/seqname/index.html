@@ -10,7 +10,7 @@
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
 <meta content="no-referrer" name="referrer"/>
-<meta content="SeqName finds missing, repeated, and inconsistent numbered filenames—even when names contain dates or several numbers. Checked privately in your browser; nothing is uploaded." name="description"/>
+<meta content="SeqName finds missing, repeated, and inconsistent numbered filenames—even when names contain dates or several numbers. The checker reads names and relative paths in your browser; selected files are not uploaded by the tool." name="description"/>
 <meta content="SeqName" name="application-name"/>
 <meta content="SeqName — Filename Sequence Checker" property="og:title"/>
 <meta content="SeqName checks numbered filenames for missing numbers, duplicates, zero-padding differences, extension changes, and naming-pattern issues — privately in your browser." property="og:description"/>
@@ -95,7 +95,7 @@
 <p id="dropHelp">Select at least two related files to compare their numbers.</p>
 <div class="button-row"><button class="btn primary" id="chooseFiles" type="button">Choose files</button><button class="btn" id="chooseFolder" type="button">Choose folder</button><button class="btn subtle" id="sample" type="button">Try sample</button></div>
 <p class="drop-status" id="dropStatus">Ready for files.</p>
-<input class="sr-only" id="fileInput" multiple="" type="file"/><input class="sr-only" id="folderInput" multiple="" type="file" webkitdirectory=""/>
+<input aria-label="Select files to analyze" class="sr-only" id="fileInput" multiple="" type="file"/><input aria-label="Select a folder to analyze" class="sr-only" id="folderInput" multiple="" type="file" webkitdirectory=""/>
 </div>
 </div>
 <div class="privacy-inline"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2m-9 0h8a2 2 0 0 1 2 2v7H6v-7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M12 14v2" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg><span><b>Private by design:</b> only file names and relative folder paths are checked. File contents are never opened or uploaded.</span></div>
@@ -536,11 +536,11 @@
       add('large integers',()=>{const a=analyzeItems(names(['x_9007199254740992.dat','x_9007199254740993.dat','x_9007199254740995.dat']),base);assert(a.issues.some(x=>x.title.includes('9007199254740994')))});
       add('natural 9 to 10 is not padding error',()=>{const a=analyzeItems(names(['image (8).png','image (9).png','image (10).png','image (11).png']),base);assert(a.counts.padding===0);assert(a.counts.naming===0)});
       add('zero-padding mismatch is detected',()=>{const a=analyzeItems(names(['p_0001.jpg','p_0002.jpg','p_0003.jpg','p_006.jpg']),base);assert(a.counts.padding===1)});
-      add('actual ChatGPT-style names use final parentheses',()=>{const a=analyzeItems(names(['ChatGPT Image 2026년 8월 16일 오전 12_22_49 (3).png','ChatGPT Image 2026년 8월 15일 오전 12_22_49 (10).png','ChatGPT Image 2026년 8월 16일 오전 12_22_49 (5).png','ChatGPT Image 2026년 8월 16일 오전 12_22_49 (6).png','ChatGPT mage 2026년 8월 18일 오전 49    (1).png','ChatGPT Image 2026년 8월 16일 오전 12_22_49 (8).png']),base);assert(a.items.length===6);assert(a.groups.length===1,`groups=${a.groups.length}`);assert(a.groups[0].tokenDescription==='Final number in parentheses',a.groups[0].tokenDescription);assert(a.groups[0].step===1n);assert(a.counts.missing===4,`missing=${a.counts.missing}`);assert(a.counts.padding===0);assert(a.counts.patterns===1,`patterns=${a.counts.patterns}`)});
+      add('actual ChatGPT-style names use final parentheses',()=>{const a=analyzeItems(names(['Rendered Image 2026-08-16 12_22_49 (3).png','Rendered Image 2026-08-15 12_22_49 (10).png','Rendered Image 2026-08-16 12_22_49 (5).png','Rendered Image 2026-08-16 12_22_49 (6).png','Rendered mage 2026-08-18 49    (1).png','Rendered Image 2026-08-16 12_22_49 (8).png']),base);assert(a.items.length===6);assert(a.groups.length===1,`groups=${a.groups.length}`);assert(a.groups[0].tokenDescription==='Final number in parentheses',a.groups[0].tokenDescription);assert(a.groups[0].step===1n);assert(a.counts.missing===4,`missing=${a.counts.missing}`);assert(a.counts.padding===0);assert(a.counts.patterns===1,`patterns=${a.counts.patterns}`)});
       add('balanced product families stay separate',()=>{const a=analyzeItems(names(['product_A_001.jpg','product_A_002.jpg','product_B_001.jpg','product_B_003.jpg']),base);assert(a.groups.length===2,`groups=${a.groups.length}`);assert(a.counts.reviews>=1)});
       add('sidecar pair is not duplicate',()=>{const a=analyzeItems(names(['photo_0001.jpg','photo_0001.xmp','photo_0002.jpg','photo_0002.xmp']),base);assert(a.counts.duplicates===0)});
       add('extension case stays consistent',()=>{const a=analyzeItems(names(['x_0001.JPG','x_0002.jpg','x_0003.JPG']),base);assert(a.counts.extensions===0)});
-      add('ignored no-number file is counted',()=>{const a=analyzeItems(names(['SnapGleam-1.10.2-RELEASE-RECORD-KO.md','SnapGleam-DEVELOPMENT-HISTORY-KO.md','SnapGleam-DEVELOPMENT-HISTORY-KO(1).md','SnapGleam-1.10.3-RELEASE-RECORD-KO.md']),base);assert(a.selectedCount===4);assert(a.items.length===3);assert(a.ignoredCount===1);assert(a.ignored.noNumbers===1)});
+      add('ignored no-number file is counted',()=>{const a=analyzeItems(names(['ExampleTool-1.10.2-RELEASE-RECORD.md','ExampleTool-DEVELOPMENT-HISTORY.md','ExampleTool-DEVELOPMENT-HISTORY (1).md','ExampleTool-1.10.3-RELEASE-RECORD.md']),base);assert(a.selectedCount===4);assert(a.items.length===3);assert(a.ignoredCount===1);assert(a.ignored.noNumbers===1)});
       add('all no-number files report zero analyzed',()=>{const a=analyzeItems(names(['README.md','cover.png']),base);assert(a.selectedCount===2);assert(a.items.length===0);assert(a.ignoredCount===2)});
       add('CSV formula protection',()=>assert(csvCell('=CMD')==="'=CMD"));
       add('range compression',()=>assert(compress([1n,2n,3n,6n],4,1n)==='0001–0003, 0006'));

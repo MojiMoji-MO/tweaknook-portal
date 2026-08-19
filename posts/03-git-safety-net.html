@@ -19,69 +19,89 @@
     </script>
 <!-- Google AdSense site verification and ad delivery -->
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Recover Deleted Git Commits with Reflog" property="og:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." property="og:description"/><meta content="https://tweaknook.com/posts/03-git-safety-net" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Recover Deleted Git Commits with Reflog" name="twitter:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Recover a Deleted Git Commit or Branch with Reflog", "description": "Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-06-30", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/03-git-safety-net"}, "url": "https://tweaknook.com/posts/03-git-safety-net", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Recover Deleted Git Commits with Reflog" property="og:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." property="og:description"/><meta content="https://tweaknook.com/posts/03-git-safety-net" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Recover Deleted Git Commits with Reflog" name="twitter:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Recover a Deleted Git Commit or Branch with Reflog", "description": "Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-06-30", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/03-git-safety-net"}, "url": "https://tweaknook.com/posts/03-git-safety-net", "inLanguage": "en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#tech-tips">Tech Tips</a>
 <h1>How to Recover a Deleted Git Commit or Branch with Reflog</h1>
-<div class="post-meta">Published on June 30, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on June 30, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
-<p>A deleted local branch or an accidental <code>git reset --hard</code> does not always mean the commit is gone. Git usually records recent movements of <code>HEAD</code> in the local reflog, which can help you find the previous commit and create a rescue branch.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
-<strong>Important:</strong> Reflog is local to your repository. It cannot recover an untracked file that was never committed or stashed, and old entries may eventually expire.
-</div>
-<h2>Step 1: Check the Recent Reference History</h2>
+<p>A deleted local branch or an accidental <code>git reset --hard</code> does not always mean the commit is gone. Git normally records recent movements of local references in the reflog. The safest recovery is to locate the correct commit, inspect it, and create a new rescue branch before changing the branch you are currently using.</p>
+<div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Stop before cleanup:</strong> do not run <code>git gc</code>, aggressive prune commands, or another destructive reset while you are still searching. Reflog recovery is local and time-limited.</div>
+<h2>Identify what was lost</h2>
+<div class="table-scroll"><table><thead><tr><th>Situation</th><th>What reflog may contain</th><th>First action</th></tr></thead><tbody>
+<tr><td>Local branch deleted</td><td>The branch tip may still appear in HEAD or branch reflogs</td><td>Find the last known commit and recreate a branch</td></tr>
+<tr><td><code>reset --hard</code> moved a branch</td><td>The previous HEAD position usually appears before the reset entry</td><td>Inspect that earlier commit</td></tr>
+<tr><td>Commit amended or rebased away</td><td>Earlier commit positions may remain in the local reflog</td><td>Recover into a separate branch before comparing</td></tr>
+<tr><td>Uncommitted file changes lost</td><td>Reflog does not record ordinary uncommitted file contents</td><td>Check editor history, backups, or filesystem recovery instead</td></tr>
+<tr><td>Work existed only on another computer</td><td>Your current repository may have no record of it</td><td>Check that computer or the remote repository</td></tr>
+</tbody></table></div>
+<h2>Confirm the repository and working state</h2>
 <p>Open a terminal inside the affected repository and run:</p>
-<pre><code>git reflog</code></pre>
-<p>A simplified result may look like this:</p>
+<pre><code>git status
+git rev-parse --show-toplevel</code></pre>
+<p>Confirm that the displayed repository is the one where the branch or commit existed. If the working tree currently contains valuable uncommitted changes, copy the repository folder or create a separate backup before continuing.</p>
+<h2>Read the reflog with dates and all local references</h2>
+<pre><code>git reflog --date=local --all</code></pre>
+<p>A simplified result can look like this:</p>
 <pre><code>a1b2c3d HEAD@{0}: reset: moving to HEAD~1
 e5f6a7b HEAD@{1}: commit: Add checkout layout
 9a8b7c6 HEAD@{2}: checkout: moving from main to dev</code></pre>
-<p>The values at the left are abbreviated commit hashes. In this example, <code>e5f6a7b</code> is the commit immediately before the reset.</p>
-<h2>Step 2: Inspect the Commit Before Restoring It</h2>
-<p>Confirm that the commit contains the work you expect:</p>
-<pre><code>git show e5f6a7b</code></pre>
-<p>Review the author, date, message, and changed files before continuing.</p>
-<h2>Step 3: Create a Rescue Branch</h2>
-<p>Create a new branch at the recovered commit instead of moving your current branch immediately:</p>
-<pre><code>git switch -c rescue-branch e5f6a7b</code></pre>
-<p>On older Git versions, use:</p>
-<pre><code>git checkout -b rescue-branch e5f6a7b</code></pre>
-<p>Your recovered work is now attached to <code>rescue-branch</code>. You can test it and then merge or cherry-pick the commit into the correct branch.</p>
-<h2>Recover a Deleted Local Branch</h2>
-<p>If a branch was deleted but its commit still appears in reflog, recreate it with:</p>
+<p>The commit on the line before a destructive move is often the candidate, but do not recover it based only on position. Reflogs can contain checkouts, rebases, merges, pulls, amendments, and branch updates.</p>
+<h2>Inspect the candidate commit</h2>
+<pre><code>git show --stat --summary e5f6a7b
+git show e5f6a7b</code></pre>
+<p>Check the author, date, commit message, parents, and changed files. When the repository is large, compare more than one candidate. A familiar commit message is not enough if several commits used similar wording.</p>
+<h2>Create a rescue branch instead of moving the current branch</h2>
+<pre><code>git switch -c rescue-checkout-layout e5f6a7b</code></pre>
+<p>For older Git versions:</p>
+<pre><code>git checkout -b rescue-checkout-layout e5f6a7b</code></pre>
+<p>This attaches the recovered commit to a named branch. Run the project’s normal tests or open the affected files before merging or cherry-picking anything into the intended branch.</p>
+<h2>Recover a deleted branch without switching to it</h2>
 <pre><code>git branch recovered-work e5f6a7b</code></pre>
-<p>This creates the branch without changing your current working branch.</p>
-<h2>What Reflog Can and Cannot Recover</h2>
-<table>
-<thead><tr><th>Situation</th><th>Typical result</th></tr></thead>
-<tbody>
-<tr><td>Committed work removed by a reset</td><td>Often recoverable while the reflog entry and Git object still exist</td></tr>
-<tr><td>Deleted local branch</td><td>Often recoverable if its commit can be found</td></tr>
-<tr><td>Untracked file never committed or stashed</td><td>Not recoverable through Git reflog</td></tr>
-<tr><td>Repository copied to another computer</td><td>The original computer's reflog is not transferred by a normal clone</td></tr>
-</tbody>
-</table>
-<h2>Safer Habits for Future Work</h2>
+<p>Then confirm where the recovered branch points:</p>
+<pre><code>git log -1 --oneline --decorate recovered-work
+git branch --contains e5f6a7b</code></pre>
+<h2>Choose how to restore the work</h2>
 <ul>
-<li>Create a temporary branch before destructive resets.</li>
-<li>Use <code>git status</code> before deleting or resetting.</li>
-<li>Commit or stash important work before major changes.</li>
-<li>Push important branches to a remote repository as an additional copy.</li>
+<li><strong>Keep the rescue branch:</strong> useful when several commits or an entire line of work must be reviewed.</li>
+<li><strong>Cherry-pick one commit:</strong> use after switching to the correct destination branch and confirming the commit is self-contained.</li>
+<li><strong>Merge the rescue branch:</strong> appropriate when the recovered branch history should remain intact.</li>
+<li><strong>Move an existing branch:</strong> do this only after backup and review; it is not the first recovery step.</li>
 </ul>
-<p>Reflog is a useful recovery tool, but it is not a substitute for commits and remote backups. The safest approach is to inspect the reflog, verify the target commit, and recover it into a new branch.</p>
-<h2>If the Commit Does Not Appear</h2>
-<p>First confirm that the terminal is open in the correct repository. Then check references from all local branches with:</p>
-<pre><code>git reflog --all</code></pre>
-<p>A reflog entry may be missing if the work was never committed or stashed, the recovery is being attempted on a different computer, or the entry has expired. Avoid running cleanup commands while you are still investigating because unreachable Git objects can eventually be removed.</p>
-<p><strong>Official reference:</strong> <a href="https://git-scm.com/docs/git-reflog" rel="noopener noreferrer" target="_blank">Git reflog documentation</a></p>
+<h2>Check the remote before assuming the commit is lost</h2>
+<p>If the branch was pushed earlier, fetch remote references and inspect them:</p>
+<pre><code>git fetch --all --prune
+git branch -a --contains e5f6a7b</code></pre>
+<p>A remote branch, pull request, or teammate’s clone may contain the work even when your local reflog does not. Reflogs themselves are normally local and are not transferred by push or fetch.</p>
+<h2>Understand the recovery window</h2>
+<p>Git’s official documentation describes reflog expiration settings and notes that reachable entries commonly expire later than unreachable entries. Defaults can be changed by repository or global configuration, so do not assume every entry remains available indefinitely. The longer you wait—and the more cleanup that occurs—the less reliable reflog recovery becomes.</p>
+<h2>If the commit is not in the reflog</h2>
+<ul>
+<li>Run <code>git reflog --all</code> and inspect branch-specific reflogs.</li>
+<li>Check local stashes with <code>git stash list</code>.</li>
+<li>Check remote branches, pull requests, CI artifacts, release tags, and another clone.</li>
+<li>Use editor local history or backups for work that was never committed.</li>
+<li>Do not copy random object files from <code>.git/objects</code> without understanding the repository state.</li>
+</ul>
+<h2>Confirm the recovery before deleting anything</h2>
+<ol>
+<li>Open the recovered files and run the project’s normal tests.</li>
+<li>Confirm the branch contains the expected commits and no unrelated history.</li>
+<li>Push the rescue branch if the remote is an appropriate additional copy.</li>
+<li>Only then clean up temporary branches or continue the interrupted rewrite.</li>
+</ol>
+<h2>Official Git references</h2>
+<ul>
+<li><a href="https://git-scm.com/docs/git-reflog" rel="noopener" target="_blank">git-reflog documentation</a></li>
+<li><a href="https://git-scm.com/docs/git-gc" rel="noopener" target="_blank">git-gc documentation</a></li>
+</ul>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/15-windows-robocopy-backup"><strong>How to Create a Safer One-Way Backup with Robocopy</strong></a> — Create a simple Windows file copy before making risky changes.</li><li><a href="/posts/24-powershell-duplicate-finder"><strong>How to Find Duplicate Files with PowerShell and Export a Report</strong></a> — Audit matching files without automatically deleting them.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
-</div>
-<nav class="post-return-nav" aria-label="Article navigation">
+</div><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Blog</a>
 <a href="/">Home</a>
 </nav></article>

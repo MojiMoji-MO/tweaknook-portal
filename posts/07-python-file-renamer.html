@@ -19,32 +19,40 @@
     </script>
 <!-- Google AdSense site verification and ad delivery -->
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Safely Bulk Rename Files with Python" property="og:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." property="og:description"/><meta content="https://tweaknook.com/posts/07-python-file-renamer" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Safely Bulk Rename Files with Python" name="twitter:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Safely Bulk Rename Files with Python", "description": "Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-04", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/07-python-file-renamer"}, "url": "https://tweaknook.com/posts/07-python-file-renamer", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Safely Bulk Rename Files with Python" property="og:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." property="og:description"/><meta content="https://tweaknook.com/posts/07-python-file-renamer" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Safely Bulk Rename Files with Python" name="twitter:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Safely Bulk Rename Files with Python", "description": "Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-04", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/07-python-file-renamer"}, "url": "https://tweaknook.com/posts/07-python-file-renamer", "inLanguage": "en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#productivity">Productivity</a>
 <h1>How to Safely Bulk Rename Files with Python</h1>
-<div class="post-meta">Published on July 4, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on July 4, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
-<p>Python can rename a large group of files in sequence, but a safe script should do more than attach a new name. It should ignore folders, preserve each file extension, preview the changes, and reduce the chance of filename collisions.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
-<strong>Before starting:</strong> Copy a few sample files into a test folder. Do not run a new renaming script on your only copy of important files.
-</div>
-<h2>Step 1: Install Python</h2>
-<p>Download Python from the official Python website. On Windows, enable the option to add Python to <code>PATH</code> during installation. Then open Command Prompt and verify the installation:</p>
-<pre><code>python --version</code></pre>
-<h2>Step 2: Save This Script Outside the Target Folder</h2>
-<p>Create a file named <code>safe_renamer.py</code> on your Desktop. Replace the example folder path and prefix, then paste this code:</p>
+<p>Python can rename many files consistently, but the safe part is the planning and rollback—not the <code>rename()</code> call itself. The script below builds a complete plan, detects duplicate and pre-existing target names before touching a file, writes a CSV manifest, requires an exact confirmation, and uses temporary names so source and destination names can overlap.</p>
+<div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Use copies first:</strong> run any bulk rename on a small duplicate folder before using it on irreplaceable files. A power loss, permission failure, cloud-sync conflict, or incorrect sort order can still interrupt a well-designed script.</div>
+<h2>Decide the naming rule before writing code</h2>
+<p>Write down the exact source folder, sort order, prefix, starting number, number width, and extension behavior. A script cannot know which photograph should receive a business-specific identifier; it can only apply the rule you define.</p>
+<h2>Save the script outside the target folder</h2>
+<p>Create <code>safe_renamer.py</code> somewhere outside the folder being renamed. Replace the example path and prefix:</p>
 <pre><code>from pathlib import Path
+from uuid import uuid4
+import csv
 
 folder = Path(r"C:\Users\YourName\Desktop\ProductPhotos")
 prefix = "SUMMER_COLLECTION"
+manifest_path = folder / "rename-manifest.csv"
+
+if not folder.is_dir():
+    raise SystemExit(f"Folder not found: {folder}")
 
 files = sorted(
-    (item for item in folder.iterdir() if item.is_file()),
-    key=lambda item: item.name.lower()
+    (
+        item for item in folder.iterdir()
+        if item.is_file()
+        and item.name != manifest_path.name
+        and not item.name.startswith(".__rename_stage_")
+    ),
+    key=lambda item: item.name.casefold()
 )
 
 if not files:
@@ -55,58 +63,106 @@ for number, old_path in enumerate(files, start=1):
     new_name = f"{prefix}_{number:03d}{old_path.suffix}"
     plan.append((old_path, folder / new_name))
 
+# Case-insensitive checks also catch common Windows collisions.
+target_keys = [str(target).casefold() for _, target in plan]
+if len(target_keys) != len(set(target_keys)):
+    raise SystemExit("Two source files would receive the same target name.")
+
+source_keys = {str(source.resolve()).casefold() for source, _ in plan}
+conflicts = []
+for _, target in plan:
+    if target.exists() and str(target.resolve()).casefold() not in source_keys:
+        conflicts.append(target.name)
+
+if conflicts:
+    raise SystemExit(
+        "Unrelated target files already exist: " + ", ".join(conflicts)
+    )
+
+if manifest_path.exists():
+    raise SystemExit(
+        f"Manifest already exists: {manifest_path}. Move or review it first."
+    )
+
+with manifest_path.open("w", newline="", encoding="utf-8-sig") as handle:
+    writer = csv.writer(handle)
+    writer.writerow(["OriginalName", "NewName"])
+    writer.writerows((source.name, target.name) for source, target in plan)
+
 print("Planned changes:")
-for old_path, new_path in plan:
-    print(f"{old_path.name}  -&gt;  {new_path.name}")
+for source, target in plan:
+    print(f"{source.name}  -&gt;  {target.name}")
 
-answer = input("Type YES to rename these files: ")
-if answer != "YES":
-    raise SystemExit("No files were changed.")
+answer = input("Type RENAME to apply this exact plan: ")
+if answer != "RENAME":
+    raise SystemExit(f"No files changed. Review: {manifest_path}")
 
-# Temporary names prevent source and destination names from colliding.
-temporary_plan = []
-for number, (old_path, new_path) in enumerate(plan, start=1):
-    temp_path = folder / f".__tweaknook_temp_{number}{old_path.suffix}"
-    if temp_path.exists():
-        raise FileExistsError(f"Temporary file already exists: {temp_path}")
-    old_path.rename(temp_path)
-    temporary_plan.append((temp_path, new_path))
+staged = []
+completed = []
 
-for temp_path, new_path in temporary_plan:
-    if new_path.exists():
-        raise FileExistsError(f"Target file already exists: {new_path}")
-    temp_path.rename(new_path)
+try:
+    for source, target in plan:
+        temp = folder / f".__rename_stage_{uuid4().hex}{source.suffix}"
+        source.rename(temp)
+        staged.append((source, temp, target))
 
-print(f"Renamed {len(files)} files.")</code></pre>
-<h2>Step 3: Run the Script</h2>
-<p>Open Command Prompt, move to the folder containing the script, and run:</p>
-<pre><code>python safe_renamer.py</code></pre>
-<p>The script first prints every planned change. Files are renamed only after you type <code>YES</code>.</p>
-<h2>What the Script Does Safely</h2>
+    for source, temp, target in staged:
+        temp.rename(target)
+        completed.append((source, target))
+
+except Exception:
+    # Best-effort rollback. Keep the manifest for manual recovery.
+    for source, target in reversed(completed):
+        if target.exists() and not source.exists():
+            target.rename(source)
+
+    for source, temp, _ in reversed(staged):
+        if temp.exists() and not source.exists():
+            temp.rename(source)
+
+    raise
+
+print(f"Renamed {len(completed)} files.")
+print(f"Manifest: {manifest_path}")</code></pre>
+<h2>Preview what the script will include</h2>
+<p>The script processes files directly inside the selected folder and ignores subfolders. It also excludes its own manifest and temporary staging names. Hidden files are still files, so inspect the printed plan and remove any item that should not be renamed.</p>
+<h2>Understand extension handling</h2>
+<p><code>old_path.suffix</code> preserves only the final suffix. For example, <code>archive.tar.gz</code> is treated as having the suffix <code>.gz</code>. If compound extensions matter, define a separate rule instead of assuming every dot belongs to the extension.</p>
+<h2>Why the preflight checks matter</h2>
 <ul>
-<li><strong>Files only:</strong> Subfolders are ignored.</li>
-<li><strong>Extensions preserved:</strong> A PNG remains PNG and a PDF remains PDF.</li>
-<li><strong>Predictable order:</strong> Files are sorted by their current names.</li>
-<li><strong>Preview first:</strong> You can stop before any change is made.</li>
-<li><strong>Two-stage rename:</strong> Temporary names reduce collisions when old and new names overlap.</li>
+<li><strong>Duplicate target detection:</strong> stops two source files from receiving the same name.</li>
+<li><strong>Existing-file detection:</strong> stops before an unrelated file would be replaced or block the operation.</li>
+<li><strong>Case-insensitive comparison:</strong> catches names that Windows commonly treats as the same.</li>
+<li><strong>CSV manifest:</strong> preserves the intended original-to-new mapping before the first rename.</li>
+<li><strong>Two-stage rename:</strong> allows names to overlap, such as swapping an existing numbered sequence.</li>
 </ul>
-<h2>Important Limitations</h2>
-<p>The script does not understand which photo or document should receive a specific business identifier. It only assigns numbers according to filename order. Review the preview carefully and keep a backup until you confirm the result.</p>
-<p>If the process stops during the temporary rename stage, some files may keep names beginning with <code>.__tweaknook_temp_</code>. Do not delete them; rename them manually or restore from your test copy.</p>
-<h2>Customizing the Name</h2>
-<p>Change the prefix:</p>
-<pre><code>prefix = "CLIENT_DOCUMENT"</code></pre>
-<p>Change the number width from <code>001</code> to <code>0001</code>:</p>
-<pre><code>new_name = f"{prefix}_{number:04d}{old_path.suffix}"</code></pre>
-<h2>Use a Small Test Before the Real Folder</h2>
-<p>Create a temporary folder containing copies of several file types, including names that already resemble the planned output. Run the script, inspect the preview, and open the renamed files afterward. This confirms that the folder path, sort order, prefix, and extensions behave as expected before you use the script on a larger collection.</p>
-<p>Keep the original folder unchanged until the renamed set has been checked. The script is designed to reduce common naming mistakes, but it cannot decide which file should receive a particular business label.</p>
-<p><strong>Official reference:</strong> <a href="https://docs.python.org/3/library/pathlib.html" rel="noopener noreferrer" target="_blank">Python pathlib documentation</a></p>
+<h2>Run a controlled test</h2>
+<ol>
+<li>Create a temporary folder containing copies of several real file types.</li>
+<li>Include names that already resemble the target pattern.</li>
+<li>Run the script and stop at the preview the first time.</li>
+<li>Open the CSV manifest and confirm the sort order.</li>
+<li>Run again, type <code>RENAME</code>, and open several renamed files.</li>
+<li>Confirm that the expected count, extensions, and file contents are unchanged.</li>
+</ol>
+<h2>Recover from an interrupted run</h2>
+<p>If the script raises an exception, it attempts a best-effort rollback. A computer crash can still leave staging names beginning with <code>.__rename_stage_</code>. Do not delete them. Use the manifest and a backup to restore the mapping. If the folder is synchronized by OneDrive, Google Drive, or another service, pause and review sync activity before retrying.</p>
+<h2>When not to use sequential renaming</h2>
+<p>Do not use this approach when filenames contain required case numbers, legal identifiers, dates, or references used by another application unless you have verified every dependency. A database, digital-asset manager, or application-specific export may be the correct place to change those names.</p>
+<h2>Completion checklist</h2>
+<ul>
+<li>The number of renamed files matches the plan.</li>
+<li>No staging names remain.</li>
+<li>Several files open correctly.</li>
+<li>Compound extensions and leading zeros are correct.</li>
+<li>The manifest and original backup are retained until downstream workflows are checked.</li>
+</ul>
+<h2>Official Python reference</h2>
+<ul><li><a href="https://docs.python.org/3/library/pathlib.html" rel="noopener" target="_blank">pathlib — object-oriented filesystem paths</a></li></ul>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/24-powershell-duplicate-finder"><strong>How to Find Duplicate Files with PowerShell and Export a Report</strong></a> — Review duplicate files before reorganizing a large folder.</li><li><a href="/posts/25-excel-power-query-folder-merge"><strong>How to Combine Files from a Folder with Excel Power Query</strong></a> — Turn consistently named source files into a refreshable dataset.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
-</div>
-<nav class="post-return-nav" aria-label="Article navigation">
+</div><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Blog</a>
 <a href="/">Home</a>
 </nav></article>

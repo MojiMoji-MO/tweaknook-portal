@@ -279,7 +279,7 @@
 </header>
 <main id="main">
 <section aria-labelledby="page-title" class="hero">
-<p class="hero-kicker">Local-first · No account · No uploads</p>
+<p class="hero-kicker">Shortcut data stays in this browser · No account required</p>
 <h1 id="page-title">Keyboard Shortcut Conflict Checker</h1>
 <p class="lede">Check browser, system, shortcut-set, and saved-shortcut conflicts before assigning a hotkey.</p>
 </section>
@@ -313,7 +313,7 @@
 </div>
 <label for="manual-key">Primary key</label>
 <input autocomplete="off" id="manual-key" list="common-keys" maxlength="24" placeholder="For example: K, Enter, Arrow Up"/>
-<datalist id="common-keys"><option value="K"><option value="P"><option value="Enter"><option value="Space"><option value="Escape"><option value="Arrow Up"><option value="Arrow Down"><option value="Page Up"><option value="Tab"><option value="F1"><option value="F12"><option value="Plus"><option value="Minus"></option></option></option></option></option></option></option></option></option></option></option></option></option></datalist>
+<datalist id="common-keys"><option value="K"></option><option value="P"></option><option value="Enter"></option><option value="Space"></option><option value="Escape"></option><option value="Arrow Up"></option><option value="Arrow Down"></option><option value="Page Up"></option><option value="Tab"></option><option value="F1"></option><option value="F12"></option><option value="Plus"></option><option value="Minus"></option></datalist>
 <p>Preview: <span class="preview" id="manual-preview">No shortcut yet</span></p>
 <button id="clear-shortcut" type="button">Clear input</button>
 </details>
@@ -952,7 +952,7 @@
       const canonical=C.CANONICAL_URL || (isWeb?new URL(C.BASE_PATH,location.origin).href:C.BASE_PATH);
       $("canonical-link").setAttribute("href",canonical);
       const home=$("home-link"); home.setAttribute("href",location.protocol==="file:"?location.href.split("#")[0].split("?")[0]:canonical);
-      $("software-schema").textContent=JSON.stringify({"@context":"https://schema.org","@type":"SoftwareApplication",name:C.SITE_NAME,alternateName:C.TOOL_NAME,brand:{"@type":"Brand",name:C.SITE_NAME},applicationCategory:"UtilitiesApplication",operatingSystem:"Windows, macOS, Linux",isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"},description:"HotkeyRadar is a browser-based tool for checking known keyboard shortcut conflicts, finding shortcut-set duplicates, organizing saved shortcuts, and exporting reference guides.",url:canonical,browserRequirements:"Requires a modern browser with JavaScript enabled. Site-level analytics and advertising services are separate from the tool's local shortcut-data processing."});
+      $("software-schema").textContent=JSON.stringify({"@context":"https://schema.org","@type":"SoftwareApplication",name:C.SITE_NAME,alternateName:C.TOOL_NAME,brand:{"@type":"Brand",name:C.SITE_NAME},applicationCategory:"UtilitiesApplication",operatingSystem:"Windows, macOS, Linux",isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"},description:"HotkeyRadar is a browser-based tool for checking known keyboard shortcut conflicts, finding shortcut-set duplicates, organizing saved shortcuts, and exporting reference guides.",url:canonical,browserRequirements:"Requires a modern browser with JavaScript enabled."});
       const homeUrl=isWeb?new URL(C.HOME_URL,location.origin).href:C.HOME_URL;
       const toolsUrl=isWeb?new URL("/tools/",location.origin).href:"/tools/";
       $("breadcrumb-schema").textContent=JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:homeUrl},{"@type":"ListItem",position:2,name:"Tools",item:toolsUrl},{"@type":"ListItem",position:3,name:"HotkeyRadar",item:canonical}]});

@@ -19,30 +19,28 @@
     </script>
 <!-- Google AdSense site verification and ad delivery -->
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Install Multiple Windows Apps with WinGet" property="og:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." property="og:description"/><meta content="https://tweaknook.com/posts/18-windows-winget-setup" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Install Multiple Windows Apps with WinGet" name="twitter:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Install Multiple Windows Apps with WinGet", "description": "Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-15", "dateModified": "2026-07-23", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/18-windows-winget-setup"}, "url": "https://tweaknook.com/posts/18-windows-winget-setup", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Install Multiple Windows Apps with WinGet" property="og:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." property="og:description"/><meta content="https://tweaknook.com/posts/18-windows-winget-setup" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Install Multiple Windows Apps with WinGet" name="twitter:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Install Multiple Windows Apps with WinGet", "description": "Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-15", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/18-windows-winget-setup"}, "url": "https://tweaknook.com/posts/18-windows-winget-setup", "inLanguage": "en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#tech-tips">Tech Tips</a>
 <h1>How to Install Multiple Windows Apps with WinGet</h1>
-<div class="post-meta">Published on July 15, 2026 • Updated on July 23, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on July 15, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
-<p>WinGet is Microsoft's Windows package manager. It can search for, install, upgrade, export, and import supported application packages. A short PowerShell loop can install several apps without relying on the <code>&amp;&amp;</code> operator.</p>
-<div style="margin: 25px 0; padding: 15px; background-color: #fff8e1; border-left: 3px solid #f0ad4e; border-radius: 4px;">
-<strong>Note:</strong> Installation time varies by internet speed, installer size, administrator requirements, and whether an app requires user input or a restart.
-</div>
-<h2>Step 1: Confirm WinGet Is Available</h2>
-<p>Open PowerShell or Windows Terminal and run:</p>
-<pre><code>winget --version</code></pre>
-<p>If the command is not found, update or install <strong>App Installer</strong> through Microsoft Store.</p>
-<h2>Step 2: Confirm Each Package ID</h2>
-<p>Search before installing because package IDs can differ from product names:</p>
-<pre><code>winget search Chrome
-winget search Slack
-winget search Zoom</code></pre>
-<h2>Step 3: Install Several Apps</h2>
-<p>This PowerShell script runs one installation at a time and works without PowerShell 7 pipeline-chain syntax:</p>
+<p>WinGet can search for, inspect, install, upgrade, export, and import supported Windows packages. For a multi-app setup, verify each exact package ID and publisher first, install one package manually, then use a PowerShell loop that records failures instead of assuming the whole batch succeeded.</p>
+<h2>Confirm WinGet and its sources</h2>
+<pre><code>winget --version
+winget source list</code></pre>
+<p>WinGet is delivered through Microsoft’s App Installer on supported Windows versions. If the command is unavailable, update App Installer and allow Windows time to register it for the signed-in user before using unofficial installers.</p>
+<h2>Search and inspect every package ID</h2>
+<pre><code>winget search --name "PowerToys"
+winget show --id Microsoft.PowerToys --exact --source winget</code></pre>
+<p>Read the displayed name, publisher, source, installer type, and available version. Product names are not reliable package IDs, and similarly named packages can exist.</p>
+<h2>Install one package before creating a batch</h2>
+<pre><code>winget install --id Microsoft.PowerToys --exact --source winget</code></pre>
+<p>Review any agreement, administrator prompt, installer UI, or restart requirement. Do not add silent flags until you know the package supports unattended installation safely.</p>
+<h2>Install a verified list with a result log</h2>
 <pre><code>$apps = @(
     "Google.Chrome",
     "SlackTechnologies.Slack",
@@ -51,7 +49,7 @@ winget search Zoom</code></pre>
     "Microsoft.PowerToys"
 )
 
-foreach ($app in $apps) {
+$results = foreach ($app in $apps) {
     Write-Host "Installing $app..."
 
     winget install `
@@ -61,46 +59,47 @@ foreach ($app in $apps) {
         --accept-source-agreements `
         --accept-package-agreements
 
-    if ($LASTEXITCODE -ne 0) {
-        Write-Warning "$app may not have installed correctly."
+    [PSCustomObject]@{
+        PackageId = $app
+        ExitCode  = $LASTEXITCODE
+        Reviewed  = $false
     }
-}</code></pre>
-<p>Remove any app you do not need. Some installers may still request administrator permission or additional input.</p>
-<h2>Upgrade Installed Packages</h2>
-<p>First review available upgrades:</p>
+}
+
+$results | Export-Csv "$env:USERPROFILE\Desktop\winget-install-results.csv" -NoTypeInformation
+$results | Format-Table</code></pre>
+<p>Remove apps you do not need. Some packages still require administrator approval or user interaction. An exit code in the CSV is a prompt to review the console output and package individually, not a universal diagnosis.</p>
+<h2>Verify what actually installed</h2>
+<pre><code>winget list --id Microsoft.PowerToys --exact
+winget list</code></pre>
+<p>Open required applications and confirm their version. WinGet can report packages it recognizes, but it does not confirm application sign-in, configuration, licensing, or restored user data.</p>
+<h2>Upgrade with review</h2>
 <pre><code>winget upgrade</code></pre>
-<p>Then upgrade supported packages:</p>
-<pre><code>winget upgrade --all --accept-source-agreements --accept-package-agreements</code></pre>
-<p>Not every installed program is managed by WinGet, so some applications may not appear.</p>
-<h2>Export an App List</h2>
-<p>Save a list of packages that WinGet can match:</p>
+<p>Review the list before running a broad upgrade. For a controlled update:</p>
+<pre><code>winget upgrade --id Microsoft.PowerToys --exact --source winget</code></pre>
+<p>Use <code>winget upgrade --all</code> only when you are prepared for several installers and possible restarts.</p>
+<h2>Export a package list</h2>
 <pre><code>winget export -o "$env:USERPROFILE\Desktop\MyApps.json" --accept-source-agreements</code></pre>
-<p>WinGet may display warnings for applications it cannot match to an available package.</p>
-<h2>Import the List on Another PC</h2>
+<p>The export contains packages WinGet can match. Warnings about unmatched applications are important; the file is not a complete machine inventory or backup.</p>
+<h2>Review before importing on another PC</h2>
 <pre><code>winget import -i "$env:USERPROFILE\Desktop\MyApps.json" --accept-source-agreements --accept-package-agreements</code></pre>
-<p>Importing is a batch installation method, not a complete machine clone. It does not restore application settings, sign-ins, documents, or every program.</p>
-<h2>Safer Setup Checklist</h2>
-<ul>
-<li>Review the package ID and source before installing.</li>
-<li>Run PowerShell as administrator only when a package requires it.</li>
-<li>Keep important documents backed up separately.</li>
-<li>Restart the computer if an installer requests it.</li>
-<li>Check failed packages individually instead of repeatedly running the whole list.</li>
-</ul>
-<h2>Troubleshooting Failed Installs</h2>
-<p>If one package fails, search for it again and install it separately. This makes the error easier to read:</p>
-<pre><code>winget search "Application Name"
+<p>An import does not restore application settings, accounts, documents, license activation, browser profiles, or every program. Open the JSON first and remove software that does not belong on the destination device.</p>
+<h2>Troubleshoot one failed package at a time</h2>
+<pre><code>winget source update
+winget search "Application Name"
 winget show --id Publisher.PackageName --exact
-winget install --id Publisher.PackageName --exact</code></pre>
-<p>Common causes include an outdated package ID, a source that needs refreshing, an installer that requires administrator approval, or an existing installation that WinGet cannot match. You can refresh the sources with:</p>
-<pre><code>winget source update</code></pre>
-<p>Do not assume that a completed batch installed every application. Review the output and open each required app before treating the setup as finished.</p>
-<p><strong>Official references:</strong> <a href="https://learn.microsoft.com/windows/package-manager/winget/install" rel="noopener noreferrer" target="_blank">WinGet install</a> and <a href="https://learn.microsoft.com/windows/package-manager/winget/export" rel="noopener noreferrer" target="_blank">WinGet export</a></p>
+winget install --id Publisher.PackageName --exact --verbose-logs</code></pre>
+<p>Common causes include a changed ID, stale source metadata, an existing install that cannot be matched, an installer requiring elevation, architecture or OS incompatibility, and a publisher installer returning its own error.</p>
+<h2>Managed-device limits</h2>
+<p>Work or school policies may restrict package sources, installations, elevation, or Store components. Do not bypass those controls. Ask the administrator which packages and sources are approved.</p>
+<h2>Completion checklist</h2>
+<ul><li>Each package ID and publisher was reviewed.</li><li>One package installed successfully before the batch.</li><li>The batch results CSV contains no unreviewed failure.</li><li>Required apps appear in <code>winget list</code> and open correctly.</li><li>Restarts, licensing, and account sign-ins were handled separately.</li></ul>
+<h2>Official Microsoft references</h2>
+<ul><li><a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/" rel="noopener" target="_blank">Use WinGet to install and manage applications</a></li><li><a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/search" rel="noopener" target="_blank">WinGet search command</a></li><li><a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/export" rel="noopener" target="_blank">WinGet export command</a></li></ul>
 <section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/06-laptop-speed-fix"><strong>How to Free Up Storage on a Windows Laptop</strong></a> — Use built-in Windows tools to review and remove unnecessary files.</li><li><a href="/posts/12-windows-clipboard-history"><strong>How to Use Windows Clipboard History</strong></a> — Enable a small Windows feature that speeds up repeated copy-and-paste work.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h4 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h4>
+<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
 <p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
-</div>
-<nav class="post-return-nav" aria-label="Article navigation">
+</div><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Blog</a>
 <a href="/">Home</a>
 </nav></article>
