@@ -5,11 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script>
-    /* Final data audit: 2026-08-16. Official vendor sources re-reviewed.
-       HotkeyRadar brand integration: 2026-08-17. Supplied logo artwork embedded for header and favicon.
-       ================================================================
-       APPLICATION CONFIGURATION
-       ================================================================ */
+    /* Application configuration */
     window.APP_CONFIG = Object.freeze({
       SITE_NAME: "HotkeyRadar",
       TOOL_NAME: "Keyboard Shortcut Conflict Checker & Planner",
@@ -23,8 +19,7 @@
       COOKIE_SETTINGS_URL: "/privacy",
       DATA_VERIFICATION_DATE: "2026-08-16",
       STORAGE_KEY: "shortcut-conflict-checker-data",
-      SCHEMA_VERSION: 1,
-      OPEN_READY_REVISION: "2026-08-17-hotkeyradar-brand"
+      SCHEMA_VERSION: 1
     });
     (function applyThemeBeforePaint() {
       let theme = "system";
@@ -50,6 +45,10 @@
 <meta content="HotkeyRadar" property="og:site_name"/>
 <meta content="HotkeyRadar – Keyboard Shortcut Conflict Checker &amp; Planner" property="og:title"/>
 <meta content="Use HotkeyRadar to check known browser and system shortcut conflicts, catch duplicates, and organize shortcut sets locally in your browser." property="og:description"/>
+<meta content="https://tweaknook.com/tools/hotkeyradar/" property="og:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="HotkeyRadar – Keyboard Shortcut Conflict Checker &amp; Planner" name="twitter:title"/>
+<meta content="Check known browser and system shortcut conflicts, find duplicates, and organize shortcut sets locally in your browser." name="twitter:description"/>
 <meta content="#faf9f7" media="(prefers-color-scheme: light)" name="theme-color"/>
 <meta content="#0f1115" media="(prefers-color-scheme: dark)" name="theme-color"/>
 <script id="software-schema" type="application/ld+json">{}</script>
@@ -228,7 +227,6 @@
     .error-banner { border:1px solid var(--bad); background:var(--bad-bg); padding:.8rem; border-radius:10px; margin-bottom:1rem; }
     [hidden] { display:none!important; }
     .sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
-    #selftest-report { margin:1rem auto; width:min(1160px,calc(100% - 2rem)); border:2px solid var(--accent); border-radius:12px; padding:1rem; background:var(--surface); }
     @media (max-width:800px) {
       .checker-grid { grid-template-columns:1fr; }
       .fields, .form-grid { grid-template-columns:1fr; }
@@ -263,7 +261,7 @@
 .tn-context{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;border-bottom:1px solid #dce1e7;background:#fff;color:#172033}.tn-context-inner{width:min(1120px,calc(100% - 32px));margin:auto;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:16px}.tn-wordmark{font-weight:900;color:#fa5a0a;text-decoration:none;letter-spacing:-.04em}.tn-nav{display:flex;gap:14px;flex-wrap:wrap}.tn-nav a{font-size:.82rem;font-weight:750;text-decoration:none;color:inherit}.tn-nav a:hover{text-decoration:underline}.tn-legal{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line,#dce4ee);display:flex;gap:12px;flex-wrap:wrap;font-size:.8rem}.tn-legal a{color:inherit}.tn-note{font-size:.84rem;color:var(--muted,#667085)}@media(max-width:600px){.tn-context-inner{display:block;padding:10px 0}.tn-nav{margin-top:6px}}</style>
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-21E5Z191ZY');</script><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script></head>
 <body>
-<a class="skip" href="#main">Skip to main content</a><div class="tn-context"><div class="tn-context-inner"><a class="tn-wordmark" href="/">tweaknook</a><nav aria-label="Tweaknook navigation" class="tn-nav"><a href="/">Home</a><a href="/tools/">All tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></div>
+<a class="skip" href="#main">Skip to main content</a><div class="tn-context"><div class="tn-context-inner"><a class="tn-wordmark" href="/">tweaknook</a><nav aria-label="Primary navigation" class="tn-nav"><a href="/">Home</a><a href="/tools/">All tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></div>
 <header class="site-header">
 <div class="header-inner">
 <a aria-label="HotkeyRadar home" class="brand" href="/tools/hotkeyradar/" id="home-link">
@@ -411,7 +409,7 @@
 <section><h2>Privacy and local storage</h2><p>Your shortcut projects and saved shortcut list are processed locally in your browser and are not uploaded by this tool. They are stored in browser local storage. Clearing site data may delete them, so JSON backup export is recommended. You can delete all application data from My Shortcuts.</p><p>Site-level analytics and advertising services may make separate network requests under the Tweaknook Privacy Policy. They do not receive your shortcut project records from the tool logic.</p></section>
 <section><h2>Data coverage and methodology</h2><p>Built-in records are exact shortcut matches from current official vendor documentation, reviewed on <strong>August 16, 2026</strong>. The internal validator checks IDs, required source fields, dates, severities, environments, and normalized combinations.</p><ul class="coverage-list"><li>Chrome: Windows, macOS, Linux</li><li>Edge: Windows, macOS</li><li>Firefox: Windows, macOS, Linux</li><li>Safari: macOS</li><li>Windows system + accessibility</li><li>macOS system</li></ul><p class="meta">Sources reviewed: Google Chrome Help, Microsoft Edge Support, Mozilla Support, Apple Safari Support, Microsoft Windows Support, Microsoft Windows Accessibility, and Apple Mac Support. Last data review: August 16, 2026.</p></section>
 <section><h2>Limitations</h2><p>This does not include every installed application, browser extension, custom system setting, keyboard remapper, input method, or keyboard layout. Websites cannot inspect all of those sources. Browsers may also intercept a shortcut before the recorder receives it. Vendor shortcuts can change after the review date. Firefox 147+ can customize many defaults, Safari shortcuts can vary by keyboard layout, and Linux desktop/window-manager shortcuts are not exhaustively modeled because they vary by environment.</p></section>
-<section><h2>Related guide</h2><p>Planning a new shortcut set? Read <a href="/posts/42-check-keyboard-shortcut-conflicts">How to Check for Keyboard Shortcut Conflicts Before Assigning a Hotkey</a> for a step-by-step workflow that combines official shortcut references, HotkeyRadar checks, and real-context testing.</p></section><section class="faq"><h2>Frequently asked questions</h2>
+<section><h2>Related guides</h2><ul><li><a href="/posts/42-check-keyboard-shortcut-conflicts">How to Check for Keyboard Shortcut Conflicts Before Assigning a Hotkey</a> — check one proposed combination against documented browser and system shortcuts.</li><li><a href="/posts/44-organize-keyboard-shortcuts-across-apps">How to Organize Keyboard Shortcuts Across Apps Without Duplicates</a> — inventory and review an entire shortcut set across scopes and platforms.</li></ul></section><section class="faq"><h2>Frequently asked questions</h2>
 <details><summary>Can this website detect every shortcut on my computer?</summary><p>No. A website cannot inspect every installed program, extension, remapper, custom setting, input method, or layout.</p></details>
 <details><summary>Does this tool scan my installed applications?</summary><p>No. It checks built-in source data and information you choose to save locally.</p></details>
 <details><summary>Where are my saved shortcuts stored?</summary><p>Shortcut Sets, My Shortcuts items, and settings are stored in local storage for this site in your browser.</p></details>
@@ -859,41 +857,6 @@
     function sanitizeProject(p){return{id:safeText(p.id,100)||makeId(),name:safeText(p.name,100),description:safeText(p.description,500),targetOS:(p.targetOS||[]).filter(x=>VALID_OS.includes(x)),targetBrowsers:(p.targetBrowsers||[]).filter(x=>VALID_BROWSERS.includes(x)&&x!=="system"),status:p.status==="archived"?"archived":"active",created:safeText(p.created,40)||nowISO(),updated:safeText(p.updated,40)||nowISO(),shortcuts:(p.shortcuts||[]).slice(0,2000).map(s=>({id:safeText(s.id,100)||makeId(),action:safeText(s.action,100),canonical:normalizeShortcut(s.canonical||s.display||""),display:safeText(s.display,100)||displayShortcut(normalizeShortcut(s.canonical||s.display||"")),category:safeText(s.category,60),note:safeText(s.note,300),enabled:s.enabled!==false})).filter(s=>s.action&&s.canonical)};}
     function sanitizeLibrary(l){return{id:safeText(l.id,100)||makeId(),app:safeText(l.app,100),action:safeText(l.action,100),canonical:normalizeShortcut(l.canonical||l.display||"",l.os),display:safeText(l.display,100)||displayShortcut(normalizeShortcut(l.canonical||"",l.os),l.os),os:VALID_OS.includes(l.os)?l.os:"all",scope:VALID_SCOPES.includes(l.scope)?l.scope:"application-specific",active:l.active!==false,note:safeText(l.note,300),created:safeText(l.created,40)||nowISO(),updated:safeText(l.updated,40)||nowISO()};}
 
-    function runSelfTests(){
-      const tests=[];const test=(name,fn)=>{try{const ok=fn();tests.push({name,ok:!!ok});}catch(e){tests.push({name,ok:false,detail:e.message});}};
-      test("Normalization variants",()=>["Ctrl+K","control + k","K + Ctrl","CTRL-K","ctrl k"].every(x=>normalizeShortcut(x)==="Ctrl+K"));
-      test("Alias handling",()=>normalizeShortcut("Cmd+Return","macos")==="Command+Enter"&&normalizeShortcut("⌘ + 1","macos")==="Command+1"&&normalizeShortcut("Meta+1","macos")==="Command+1"&&normalizeShortcut("Option+Esc","macos")==="Alt+Escape");
-      test("Multiword keys",()=>normalizeShortcut("Ctrl + Arrow Up")==="Ctrl+Arrow Up"&&normalizeShortcut("Ctrl Page Down")==="Ctrl+Page Down");
-      test("Modifier order",()=>normalizeShortcut("K + Shift + Ctrl")==="Ctrl+Shift+K");
-      test("Modifier-only rejected",()=>normalizeShortcut("Ctrl+Shift")==="");
-      test("Multiple primary keys rejected",()=>normalizeShortcut("Ctrl+K+L")===""&&parseShortcut("Ctrl+K+L").error.includes("one primary key"));
-      test("Platform display remains separate",()=>normalizeShortcut("Command+K","macos")==="Command+K"&&normalizeShortcut("Ctrl+K","macos")==="Ctrl+K"&&displayShortcut("Alt+Command+K","macos")==="Option + Command + K");
-      test("Environment browser filter",()=>environmentRules("all","safari").every(r=>r.scope==="safari"||r.scope==="system")&&!environmentRules("all","safari").some(r=>["chrome","edge","firefox"].includes(r.scope)));
-      test("Hard reload is known",()=>analyzeShortcut("Ctrl+Shift+R","windows","chrome").rules.length>0&&analyzeShortcut("Ctrl+Shift+R","windows","firefox").rules.length>0);
-      const old=appData;appData=blankData();const p=sanitizeProject({id:"p",name:"P",targetOS:["windows"],targetBrowsers:["chrome"],shortcuts:[{id:"s",action:"One",canonical:"Ctrl+K"}]});appData.projects=[p];appData.settings.activeProjectId="p";
-      test("Duplicate detection",()=>duplicateMatches("Ctrl+K").length===1);
-      appData.library=[sanitizeLibrary({id:"l1",app:"System",action:"Thing",canonical:"Ctrl+K",os:"windows",scope:"system-wide",active:true}),sanitizeLibrary({id:"l2",app:"App",action:"Other",canonical:"Alt+K",os:"windows",scope:"application-specific",active:true})];
-      test("Scope classification",()=>libraryStrength(appData.library[0])==="strong"&&libraryStrength(appData.library[1])==="elsewhere");
-      test("Alternative filtering",()=>{const a=generateCandidates("R","windows","chrome");return a.every(x=>x.canonical!=="Ctrl+Shift+R"&&!x.analysis.rules.length&&!x.analysis.duplicates.length)});
-      test("All-environment candidates disabled",()=>generateCandidates("R","all","all").length===0);
-      test("Storage parsing validation",()=>!validateDataShape({schemaVersion:1,projects:"bad",library:[]}).valid);
-      test("Import validation",()=>validateDataShape(blankData()).valid);
-      test("CSV escaping and formula protection",()=>csvCell("=1+1").startsWith("\"'=")&&csvCell("a,\"b\"\n").includes("\"\"b\"\""));
-      test("User content export escaping",()=>htmlEscape("<img src=x onerror=1>")==="&lt;img src=x onerror=1&gt;");
-      test("Chrome macOS Downloads corrected",()=>analyzeShortcut(normalizeShortcut("Command+Shift+J","macos"),"macos","chrome").rules.some(r=>r.scope==="chrome"&&/Downloads/i.test(r.action))&&!analyzeShortcut(normalizeShortcut("Command+J","macos"),"macos","chrome").rules.some(r=>r.scope==="chrome"&&/Downloads/i.test(r.action)));
-      test("Edge macOS bracket navigation",()=>analyzeShortcut("Command+Left Bracket","macos","edge").rules.some(r=>r.scope==="edge"&&/backward/i.test(r.action)));
-      test("Windows accessibility candidate conflict",()=>analyzeShortcut("Ctrl+Alt+R","windows","chrome").rules.some(r=>r.scope==="system"&&/Magnifier/i.test(r.action)));
-      test("Chrome new reading-mode shortcut",()=>analyzeShortcut("Alt+Shift+R","windows","chrome").rules.some(r=>r.scope==="chrome"&&/Reading mode/i.test(r.action)));
-      test("Safari all-OS filter excludes Windows system",()=>environmentRules("all","safari").every(r=>r.os==="macos"&&(r.scope==="safari"||r.scope==="system")));
-      test("Platform modifier mapping",()=>platformModifierForOS("windows").token==="Meta"&&platformModifierForOS("macos").token==="Command"&&platformModifierForOS("linux").label.includes("Super"));
-      test("Project library respects target OS",()=>{const tp=sanitizeProject({id:"tp",name:"Target",targetOS:["windows"],targetBrowsers:["chrome"],shortcuts:[]});appData.library=[sanitizeLibrary({id:"mac-only",app:"Mac App",action:"Thing",canonical:"Ctrl+Alt+K",os:"macos",scope:"system-wide",active:true}),sanitizeLibrary({id:"win-only",app:"Win App",action:"Thing",canonical:"Ctrl+Alt+K",os:"windows",scope:"application-specific",active:true})];const m=projectLibraryMatches("Ctrl+Alt+K",tp);return m.length===1&&m[0].id==="win-only";});
-      test("Firefox Linux platform-specific defaults",()=>analyzeShortcut("Alt+1","linux","firefox").rules.some(r=>r.scope==="firefox"&&/tab 1/i.test(r.action))&&analyzeShortcut("Ctrl+J","linux","firefox").rules.some(r=>r.scope==="firefox"&&/search/i.test(r.action))&&analyzeShortcut("Ctrl+Shift+Y","linux","firefox").rules.some(r=>r.scope==="firefox"&&/Downloads/i.test(r.action)));
-      test("Firefox Windows Downloads default",()=>analyzeShortcut("Ctrl+J","windows","firefox").rules.some(r=>r.scope==="firefox"&&/Downloads/i.test(r.action)));
-      test("Built-in data validation",()=>validateBuiltinData().valid&&validateBuiltinData().count>300);
-      appData=old;
-      const report=node("section","","");report.id="selftest-report";report.append(node("h2","","Developer self-test"),node("p","",`${tests.filter(t=>t.ok).length} of ${tests.length} tests passed.`));const ul=document.createElement("ul");tests.forEach(t=>ul.append(node("li","",`${t.ok?"PASS":"FAIL"}: ${t.name}${t.detail?` — ${t.detail}`:""}`)));report.append(ul);document.body.prepend(report);return tests;
-    }
-
     function bindEvents(){
       $("theme-select").addEventListener("change",e=>{appData.settings.theme=e.target.value;document.documentElement.dataset.theme=e.target.value;const dark=e.target.value==="dark"||(e.target.value==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.style.colorScheme=dark?"dark":"light";saveData();});
       matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change",e=>{if(appData.settings.theme==="system")document.documentElement.style.colorScheme=e.matches?"dark":"light";});
@@ -958,9 +921,8 @@
       $("breadcrumb-schema").textContent=JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:homeUrl},{"@type":"ListItem",position:2,name:"Tools",item:toolsUrl},{"@type":"ListItem",position:3,name:"HotkeyRadar",item:canonical}]});
     }
 
-    function init(){ configureDocumentLinks(); loadData(); const dataCheck=validateBuiltinData(); if(!dataCheck.valid)showPersistentError(`Built-in data validation failed: ${dataCheck.errors.join(" ")}`); $("theme-select").value=appData.settings.theme||"system";bindEvents();applyPreferredEnvironment();updateBrowserOptions();renderProjects();renderLibrary();const initial=["quick","project","library"].includes(location.hash.slice(1))?location.hash.slice(1):"quick";switchView(initial,false);if(new URLSearchParams(location.search).get("selftest")==="1")runSelfTests(); }
+    function init(){ configureDocumentLinks(); loadData(); const dataCheck=validateBuiltinData(); if(!dataCheck.valid)showPersistentError(`Built-in data validation failed: ${dataCheck.errors.join(" ")}`); $("theme-select").value=appData.settings.theme||"system";bindEvents();applyPreferredEnvironment();updateBrowserOptions();renderProjects();renderLibrary();const initial=["quick","project","library"].includes(location.hash.slice(1))?location.hash.slice(1):"quick";switchView(initial,false); }
     init();
-    window.ShortcutCheckerTestAPI=Object.freeze({parseShortcut,normalizeShortcut,displayShortcut,environmentRules,analyzeShortcut,generateCandidates,validateBuiltinData,validateDataShape,csvCell,runSelfTests,resetQuickCheck,getData:()=>structuredClone(appData)});
   })();
   </script>
 </body>
