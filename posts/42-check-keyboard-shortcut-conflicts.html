@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -18,12 +16,11 @@
 <meta content="Check keyboard shortcut conflicts before assigning a hotkey by comparing browser and system shortcuts, testing context, and using HotkeyRadar safely." property="og:description"/>
 <meta content="https://tweaknook.com/posts/42-check-keyboard-shortcut-conflicts" property="og:url"/>
 <meta content="2026-08-17" property="article:published_time"/>
-<meta content="2026-08-17" property="article:modified_time"/>
+<meta content="2026-09-27" property="article:modified_time"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="How to Check for Keyboard Shortcut Conflicts Before Assigning a Hotkey" name="twitter:title"/>
 <meta content="Check keyboard shortcut conflicts before assigning a hotkey by comparing browser and system shortcuts, testing context, and using HotkeyRadar safely." name="twitter:description"/>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "How to Check for Keyboard Shortcut Conflicts Before Assigning a Hotkey",
@@ -39,15 +36,14 @@
     "url": "https://tweaknook.com/"
   },
   "datePublished": "2026-08-17",
-  "dateModified": "2026-08-22",
+  "dateModified": "2026-09-27",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://tweaknook.com/posts/42-check-keyboard-shortcut-conflicts"
   },
   "url": "https://tweaknook.com/posts/42-check-keyboard-shortcut-conflicts",
   "inLanguage": "en"
-}
-    </script>
+}</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -58,13 +54,13 @@ gtag('config', 'G-21E5Z191ZY');
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
 </head>
 <body>
-<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a></nav></div></header>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content">
 <div style="margin-bottom: 30px;">
-<a class="post-category" href="/blog/#tech-tips">Tech Tips</a>
+<a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a>
 <h1>How to Check for Keyboard Shortcut Conflicts Before Assigning a Hotkey</h1>
-<div class="post-meta">Published on August 17, 2026 • Updated on August 22, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<div class="post-meta">Published on August 17, 2026 • Updated on September 27, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
 <p>Before assigning a keyboard shortcut, check the combination at three levels: the operating system, the browser or application, and the shortcuts already used in your own project. A combination that looks unused in one layer can still be intercepted by another. The safest workflow is to identify the intended context first, compare known defaults, then test the shortcut in the exact environment where it will be used.</p>
 <p>Tweaknook's <strong>HotkeyRadar</strong> can speed up that comparison. It checks an exact normalized shortcut against its source-linked browser and operating-system records, the active Shortcut Set, and entries you save in My Shortcuts. It does not scan every installed application, extension, keyboard remapper, or custom setting, so a clean result should be treated as a useful screening result rather than a guarantee.</p>
@@ -123,6 +119,16 @@ gtag('config', 'G-21E5Z191ZY');
 <h2>Do Not Ignore Single-Character Shortcut Risks</h2>
 <p>A shortcut does not need to conflict with a browser or operating system to create a usability problem. W3C guidance for character-key shortcuts explains that shortcuts made only from printable characters can be triggered accidentally, particularly with speech input. For web content that implements such shortcuts, the guidance describes three approaches: allow the shortcut to be turned off, allow it to be remapped to include a non-character key such as Ctrl or Alt, or make it active only when the relevant component has focus.</p>
 <p>If you are designing a web interface, treat a single letter such as <code>K</code> differently from a modified combination such as <code>Ctrl + K</code>. This is an accessibility design consideration, not a claim that every single-letter shortcut is always prohibited in every software context.</p>
+
+<h2>Reproducible checks from the current HotkeyRadar data</h2>
+<p>The examples below are not user anecdotes. They are deterministic checks against the shortcut records shipped in the current HotkeyRadar page. The examples were re-run against the current checker logic on <strong>September 27, 2026</strong>; the underlying vendor shortcut dataset still carries its own last-review date of August 16, 2026.</p>
+<div class="table-scroll"><table><thead><tr><th>Environment</th><th>Shortcut</th><th>Current match</th><th>Primary source used by the tool</th></tr></thead><tbody>
+<tr><td>Windows + Chrome</td><td><code>Ctrl + K</code></td><td>Search from the address bar</td><td><a href="https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&amp;hl=en" rel="noopener" target="_blank">Google Chrome Help</a></td></tr>
+<tr><td>Windows system</td><td><code>Windows + V</code></td><td>Open clipboard history</td><td><a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec" rel="noopener" target="_blank">Microsoft Support</a></td></tr>
+<tr><td>macOS system</td><td><code>Command + Space</code></td><td>Open Spotlight</td><td><a href="https://support.apple.com/en-us/102650" rel="noopener" target="_blank">Apple Support</a></td></tr>
+<tr><td>Windows + Firefox</td><td><code>Ctrl + Shift + P</code></td><td>Open a private window</td><td><a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly" rel="noopener" target="_blank">Mozilla Support</a></td></tr>
+</tbody></table></div>
+<p>These examples show why the operating system and target browser must be part of the check. They do not prove that a different combination is free on every computer; installed software and custom settings remain outside a website's complete visibility.</p>
 <h2>What HotkeyRadar Can and Cannot Confirm</h2>
 <p>HotkeyRadar's current built-in coverage includes source-linked records for Chrome, Edge, Firefox, Safari, Windows, macOS, and Windows accessibility shortcuts. The tool also compares against the active Shortcut Set and the shortcut library you create in the browser.</p>
 <p>It cannot inspect every source of keyboard behavior on your computer. In particular, do not assume it automatically knows about:</p>
@@ -179,14 +185,14 @@ gtag('config', 'G-21E5Z191ZY');
 </section>
 <div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
 <h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial publishes practical guides and browser-based tools for everyday digital work. Product-dependent facts are checked against current primary documentation, with limitations and safer verification steps stated where relevant.</p>
+<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p>
 </div>
 <nav aria-label="Article navigation" class="post-return-nav">
-<a href="/blog/">← Back to Blog</a>
+<a href="/blog/">← Back to Guides</a>
 <a href="/">Home</a>
 </nav>
 </article>
 </main>
-<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
 </body>
 </html>

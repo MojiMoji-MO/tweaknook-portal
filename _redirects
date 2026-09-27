@@ -5,4 +5,16 @@
 /tools/hotkeyradar /tools/hotkeyradar/ 301
 /tools/seqname /tools/seqname/ 301
 /blog /blog/ 301
+# Retired broad AI workflow guides — editorial scope narrowed 2026-09-27
+/posts/02-system-prompt /blog/ 301
+/posts/05-chatgpt-hallucination-fix /blog/ 301
+/posts/08-ai-meeting-minutes /blog/ 301
+/posts/11-ai-pdf-data-extraction /blog/ 301
+/posts/13-ai-sentiment-analysis /blog/ 301
+/posts/17-ai-competitor-feature-mapping /blog/ 301
+/posts/20-ai-sql-queries /blog/ 301
+/posts/22-ai-pdf-extraction /blog/ 301
+/posts/26-ai-email-rewrite-privacy /blog/ 301
+/posts/29-ai-youtube-video-summary /blog/ 301
+/posts/32-ai-document-comparison /blog/ 301
 /posts /blog/ 301
