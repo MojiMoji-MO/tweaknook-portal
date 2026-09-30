@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." name="description"/>
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
-<title>How to Install Multiple Windows Apps with WinGet | Tweaknook</title>
+<title>Batch-Install Windows Apps with WinGet | Tweaknook</title>
 <link href="https://tweaknook.com/posts/18-windows-winget-setup" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
@@ -16,16 +17,15 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Install Multiple Windows Apps with WinGet" property="og:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." property="og:description"/><meta content="https://tweaknook.com/posts/18-windows-winget-setup" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Install Multiple Windows Apps with WinGet" name="twitter:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Install Multiple Windows Apps with WinGet", "description": "Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-15", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/18-windows-winget-setup"}, "url": "https://tweaknook.com/posts/18-windows-winget-setup", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Batch-Install Windows Apps with WinGet" property="og:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." property="og:description"/><meta content="https://tweaknook.com/posts/18-windows-winget-setup" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Batch-Install Windows Apps with WinGet" name="twitter:title"/><meta content="Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list." name="twitter:description"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Batch-Install Windows Apps with WinGet","description":"Use a PowerShell loop with WinGet to install several Windows applications and learn how to export and import an app list.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-07-15","dateModified":"2026-09-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/18-windows-winget-setup"},"url":"https://tweaknook.com/posts/18-windows-winget-setup","inLanguage":"en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#troubleshooting">Technical troubleshooting</a>
-<h1>How to Install Multiple Windows Apps with WinGet</h1>
-<div class="post-meta">Published on July 15, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<h1>Batch-Install Windows Apps with WinGet</h1>
+<div class="post-meta">Published on July 15, 2026 • Updated on September 30, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
 <p>WinGet can search for, inspect, install, upgrade, export, and import supported Windows packages. For a multi-app setup, verify each exact package ID and publisher first, install one package manually, then use a PowerShell loop that records failures instead of assuming the whole batch succeeded.</p>
 <h2>Confirm WinGet and its sources</h2>
@@ -95,10 +95,7 @@ winget install --id Publisher.PackageName --exact --verbose-logs</code></pre>
 <ul><li>Each package ID and publisher was reviewed.</li><li>One package installed successfully before the batch.</li><li>The batch results CSV contains no unreviewed failure.</li><li>Required apps appear in <code>winget list</code> and open correctly.</li><li>Restarts, licensing, and account sign-ins were handled separately.</li></ul>
 <h2>Official Microsoft references</h2>
 <ul><li><a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/" rel="noopener" target="_blank">Use WinGet to install and manage applications</a></li><li><a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/search" rel="noopener" target="_blank">WinGet search command</a></li><li><a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/export" rel="noopener" target="_blank">WinGet export command</a></li></ul>
-<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/06-laptop-speed-fix"><strong>How to Free Up Storage on a Windows Laptop</strong></a> — Use built-in Windows tools to review and remove unnecessary files.</li><li><a href="/posts/12-windows-clipboard-history"><strong>How to Use Windows Clipboard History</strong></a> — Enable a small Windows feature that speeds up repeated copy-and-paste work.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p>
-</div><nav aria-label="Article navigation" class="post-return-nav">
+<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/06-laptop-speed-fix"><strong>How to Free Up Storage on a Windows Laptop</strong></a> — Use built-in Windows tools to review and remove unnecessary files.</li><li><a href="/posts/12-windows-clipboard-history"><strong>How to Use Windows Clipboard History</strong></a> — Enable a small Windows feature that speeds up repeated copy-and-paste work.</li></ul></section><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Guides</a>
 <a href="/">Home</a>
 </nav></article>

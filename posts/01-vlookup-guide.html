@@ -1,16 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." name="description"/>
-
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
-<title>How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel | Tweaknook</title>
+<title>Excel Lookup Functions: XLOOKUP vs VLOOKUP vs INDEX MATCH | Tweaknook</title>
 <link href="https://tweaknook.com/posts/01-vlookup-guide" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
-
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
 <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,17 +17,16 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel" property="og:title"/><meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." property="og:description"/><meta content="https://tweaknook.com/posts/01-vlookup-guide" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel" name="twitter:title"/><meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel", "description": "Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-06-29", "dateModified": "2026-07-26", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/01-vlookup-guide"}, "url": "https://tweaknook.com/posts/01-vlookup-guide", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Excel Lookup Functions: XLOOKUP vs VLOOKUP vs INDEX MATCH" property="og:title"/><meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." property="og:description"/><meta content="https://tweaknook.com/posts/01-vlookup-guide" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Excel Lookup Functions: XLOOKUP vs VLOOKUP vs INDEX MATCH" name="twitter:title"/><meta content="Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design." name="twitter:description"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Excel Lookup Functions: XLOOKUP vs VLOOKUP vs INDEX MATCH","description":"Compare XLOOKUP, VLOOKUP, and INDEX MATCH in Excel, then choose a lookup formula based on compatibility, direction, error handling, and worksheet design.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-06-29","dateModified":"2026-09-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/01-vlookup-guide"},"url":"https://tweaknook.com/posts/01-vlookup-guide","inLanguage":"en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content">
 <div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#workspace">Spreadsheets &amp; workspace</a>
-<h1>How to Choose Between XLOOKUP, VLOOKUP, and INDEX MATCH in Excel</h1>
-<div class="post-meta">Published on June 29, 2026 • Updated on July 26, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<h1>Excel Lookup Functions: XLOOKUP vs VLOOKUP vs INDEX MATCH</h1>
+<div class="post-meta">Published on June 29, 2026 • Updated on September 30, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
 <p>Lookup formulas are easier to maintain when the formula matches the workbook rather than following a rule that one function is always better. VLOOKUP remains useful in older workbooks, XLOOKUP is usually the clearest choice in current versions of Excel, and INDEX with MATCH is still valuable when compatibility or flexible references matter.</p>
 <p>None of these functions prevents Excel crashes by itself. Workbook stability depends on factors such as file size, volatile formulas, external connections, formatting, add-ins, hardware, and the number of calculations Excel must perform. The practical goal is to choose a lookup that is correct, readable, and compatible with the people who will open the file.</p>
@@ -98,15 +96,12 @@
 <section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
 <h2 style="margin-top: 0;">Related Guides</h2>
 <ul style="margin-bottom: 0;">
-<li><a href="/posts/10-excel-power-query">How to Automate Recurring CSV Cleanup with Excel Power Query</a></li>
-<li><a href="/posts/19-google-sheets-regex">How to Clean Messy Spreadsheet Data with Google Sheets Regex</a></li>
-<li><a href="/posts/25-excel-power-query-folder-merge">How to Combine Files from a Folder with Excel Power Query</a></li>
+<li><a href="/posts/10-excel-power-query">Repeatable CSV Cleanup in Excel Power Query</a></li>
+<li><a href="/posts/19-google-sheets-regex">Cleaning Messy Spreadsheet Data with Google Sheets Regex</a></li>
+<li><a href="/posts/25-excel-power-query-folder-merge">Combine Folder Files with Excel Power Query</a></li>
 </ul>
 </section>
-<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p>
-</div>
+
 <nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Guides</a>
 <a href="/">Home</a>

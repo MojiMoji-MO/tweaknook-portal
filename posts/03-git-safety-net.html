@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." name="description"/>
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
-<title>Recover Deleted Git Commits with Reflog | Tweaknook</title>
+<title>Recover Deleted Git Commits and Branches with Reflog | Tweaknook</title>
 <link href="https://tweaknook.com/posts/03-git-safety-net" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
@@ -16,16 +17,15 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Recover Deleted Git Commits with Reflog" property="og:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." property="og:description"/><meta content="https://tweaknook.com/posts/03-git-safety-net" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Recover Deleted Git Commits with Reflog" name="twitter:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Recover a Deleted Git Commit or Branch with Reflog", "description": "Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-06-30", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/03-git-safety-net"}, "url": "https://tweaknook.com/posts/03-git-safety-net", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Recover Deleted Git Commits and Branches with Reflog" property="og:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." property="og:description"/><meta content="https://tweaknook.com/posts/03-git-safety-net" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Recover Deleted Git Commits and Branches with Reflog" name="twitter:title"/><meta content="Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch." name="twitter:description"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Recover Deleted Git Commits and Branches with Reflog","description":"Learn how to inspect Git reflog and recover a deleted local branch or commit safely by creating a new rescue branch.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-06-30","dateModified":"2026-09-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/03-git-safety-net"},"url":"https://tweaknook.com/posts/03-git-safety-net","inLanguage":"en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#troubleshooting">Technical troubleshooting</a>
-<h1>How to Recover a Deleted Git Commit or Branch with Reflog</h1>
-<div class="post-meta">Published on June 30, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<h1>Recover Deleted Git Commits and Branches with Reflog</h1>
+<div class="post-meta">Published on June 30, 2026 • Updated on September 30, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
 <p>A deleted local branch or an accidental <code>git reset --hard</code> does not always mean the commit is gone. Git normally records recent movements of local references in the reflog. The safest recovery is to locate the correct commit, inspect it, and create a new rescue branch before changing the branch you are currently using.</p>
 <div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Stop before cleanup:</strong> do not run <code>git gc</code>, aggressive prune commands, or another destructive reset while you are still searching. Reflog recovery is local and time-limited.</div>
@@ -97,10 +97,7 @@ git branch -a --contains e5f6a7b</code></pre>
 <li><a href="https://git-scm.com/docs/git-reflog" rel="noopener" target="_blank">git-reflog documentation</a></li>
 <li><a href="https://git-scm.com/docs/git-gc" rel="noopener" target="_blank">git-gc documentation</a></li>
 </ul>
-<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/15-windows-robocopy-backup"><strong>How to Create a Safer One-Way Backup with Robocopy</strong></a> — Create a simple Windows file copy before making risky changes.</li><li><a href="/posts/24-powershell-duplicate-finder"><strong>How to Find Duplicate Files with PowerShell and Export a Report</strong></a> — Audit matching files without automatically deleting them.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p>
-</div><nav aria-label="Article navigation" class="post-return-nav">
+<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/15-windows-robocopy-backup">Safer Windows Backups with Robocopy</a> — Create a simple Windows file copy before making risky changes.</li><li><a href="/posts/24-powershell-duplicate-finder">Find Duplicate Files with PowerShell Before Deleting Anything</a> — Audit matching files without automatically deleting them.</li></ul></section><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Guides</a>
 <a href="/">Home</a>
 </nav></article>

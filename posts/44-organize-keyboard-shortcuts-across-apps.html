@@ -4,183 +4,88 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Create a keyboard shortcut inventory across apps and platforms, identify duplicate assignments, document scope and ownership, and keep a recoverable change log." name="description"/>
+<meta content="Create a maintainable keyboard shortcut inventory across apps with explicit scope, ownership, status, source, and change history so repeated key combinations can be reviewed in context." name="description"/>
 <meta content="index, follow" name="robots"/>
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
-<title>How to Organize Keyboard Shortcuts Across Apps Without Duplicates | Tweaknook</title>
+<title>Keyboard Shortcut Inventory: Scope, Ownership, and Change History Across Apps | Tweaknook</title>
 <link href="https://tweaknook.com/posts/44-organize-keyboard-shortcuts-across-apps" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
 <meta content="article" property="og:type"/>
 <meta content="Tweaknook" property="og:site_name"/>
-<meta content="How to Organize Keyboard Shortcuts Across Apps Without Duplicates" property="og:title"/>
-<meta content="Create a keyboard shortcut inventory across apps and platforms, identify duplicate assignments, document scope and ownership, and keep a recoverable change log." property="og:description"/>
+<meta content="Keyboard Shortcut Inventory: Scope, Ownership, and Change History Across Apps" property="og:title"/>
+<meta content="Create a maintainable keyboard shortcut inventory across apps with explicit scope, ownership, status, source, and change history so repeated key combinations can be reviewed in context." property="og:description"/>
 <meta content="https://tweaknook.com/posts/44-organize-keyboard-shortcuts-across-apps" property="og:url"/>
 <meta content="2026-08-22" property="article:published_time"/>
-<meta content="2026-09-27" property="article:modified_time"/>
+<meta content="2026-09-30" property="article:modified_time"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="How to Organize Keyboard Shortcuts Across Apps Without Duplicates" name="twitter:title"/>
-<meta content="Create a keyboard shortcut inventory across apps and platforms, identify duplicate assignments, document scope and ownership, and keep a recoverable change log." name="twitter:description"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How to Organize Keyboard Shortcuts Across Apps Without Duplicates",
-  "description": "Create a keyboard shortcut inventory across apps and platforms, identify duplicate assignments, document scope and ownership, and keep a recoverable change log.",
-  "author": {
-    "@type": "Organization",
-    "name": "Tweaknook Editorial",
-    "url": "https://tweaknook.com/about"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Tweaknook",
-    "url": "https://tweaknook.com/"
-  },
-  "datePublished": "2026-08-22",
-  "dateModified": "2026-09-27",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://tweaknook.com/posts/44-organize-keyboard-shortcuts-across-apps"
-  },
-  "url": "https://tweaknook.com/posts/44-organize-keyboard-shortcuts-across-apps",
-  "inLanguage": "en"
-}</script>
+<meta content="Keyboard Shortcut Inventory: Scope, Ownership, and Change History Across Apps" name="twitter:title"/>
+<meta content="Create a maintainable keyboard shortcut inventory across apps with explicit scope, ownership, status, source, and change history so repeated key combinations can be reviewed in context." name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Keyboard Shortcut Inventory: Scope, Ownership, and Change History Across Apps","description":"Create a maintainable keyboard shortcut inventory across apps with explicit scope, ownership, status, source, and change history so repeated key combinations can be reviewed in context.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-08-22","dateModified":"2026-09-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/44-organize-keyboard-shortcuts-across-apps"},"url":"https://tweaknook.com/posts/44-organize-keyboard-shortcuts-across-apps","inLanguage":"en"}</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-21E5Z191ZY');
-    </script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-21E5Z191ZY');</script>
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
 </head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
-<main class="container">
-<article class="page-content">
-<div style="margin-bottom: 30px;">
-<a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a>
-<h1>How to Organize Keyboard Shortcuts Across Apps Without Duplicates</h1>
-<div class="post-meta">Published on August 22, 2026 • Updated on September 27, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
-</div>
-<p>When shortcuts are spread across browsers, desktop apps, operating-system settings, and project tools, organize them in one inventory before changing any assignment. Record the application, action, normalized key combination, operating system, scope, owner, status, and source for each shortcut. Then separate true duplicates from combinations that are reused safely in different contexts.</p>
-<p>A shortcut inventory is different from checking one new hotkey. It creates a maintainable record for an entire workflow, so a future change does not silently overwrite an existing command. Tweaknook's <a href="/tools/hotkeyradar/">HotkeyRadar</a> can store project shortcut sets and a separate cross-application library in the browser, but the inventory still needs human decisions about scope, ownership, and which environments matter.</p>
-<h2>Start with the shortcuts that already exist</h2>
-<p>Do not design a new map from memory. Collect current assignments from the places where they are actually defined:</p>
+<main class="container"><article class="page-content">
+<div style="margin-bottom:30px"><a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a><h1>Keyboard Shortcut Inventory: Scope, Ownership, and Change History Across Apps</h1><div class="post-meta">Published on August 22, 2026 • Updated on September 30, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p>A cross-app shortcut inventory should answer three questions for every assignment: <strong>what action owns the keys, where the shortcut can trigger, and whether another active assignment can intercept the same combination</strong>. A list of key combinations alone is not enough. The useful record includes platform, scope, status, source, and ownership so that duplicate-looking shortcuts can be separated from safe reuse.</p>
+<p>This is a documentation problem before it is a remapping problem. Build the inventory first, then change keys only after the overlap has been classified. <a href="/tools/hotkeyradar/">HotkeyRadar</a> can store project shortcut sets and a separate library in the browser, but it cannot determine the business meaning of an assignment or inspect every installed application.</p>
+<h2>Define one record for each active assignment</h2>
+<p>Use one row per action. If the same action has different bindings on Windows and macOS, keep separate platform records rather than compressing them into one ambiguous value.</p>
+<table><thead><tr><th>Field</th><th>Question it answers</th><th>Example</th></tr></thead><tbody>
+<tr><td>Application or project</td><td>Who owns this shortcut?</td><td>Browser, editor, internal web app</td></tr>
+<tr><td>Action</td><td>What happens when it triggers?</td><td>Open command palette</td></tr>
+<tr><td>Shortcut</td><td>What exact normalized combination is used?</td><td><code>Ctrl + Shift + P</code></td></tr>
+<tr><td>Operating system</td><td>Which platform does this record describe?</td><td>Windows</td></tr>
+<tr><td>Scope</td><td>Where can it trigger?</td><td>System-wide, browser-wide, app-only, focused component</td></tr>
+<tr><td>Status</td><td>Is it active, proposed, or retired?</td><td>Active</td></tr>
+<tr><td>Source or owner</td><td>Where can the assignment be verified or changed?</td><td>Vendor help page, app settings, project owner</td></tr>
+<tr><td>Note</td><td>What exception matters later?</td><td>Different binding on macOS</td></tr>
+</tbody></table>
+<h2>Normalize notation before you compare anything</h2>
+<p><code>Control-K</code>, <code>Ctrl+K</code>, and <code>K + Ctrl</code> can describe the same Windows-style combination. Pick one internal notation and normalize modifier order, spacing, and key aliases before looking for duplicates. Keep platform-specific modifiers distinct: Command on macOS should not be silently converted to Ctrl, and keyboard-layout differences can change the physical keys required for some characters.</p>
+<p>A useful inventory can keep both a normalized comparison value and a display value. That lets the checker compare consistently while documentation still uses the notation familiar to each audience.</p>
+<h2>Classify an overlap before deciding it is a conflict</h2>
+<table><thead><tr><th>Overlap type</th><th>What it means</th><th>Decision</th></tr></thead><tbody>
+<tr><td>Same app, same active scope</td><td>Two actions compete for the same keys in the same context</td><td>Usually resolve one assignment</td></tr>
+<tr><td>Different focused apps</td><td>The same keys are reused, but only the focused app receives them</td><td>May be acceptable; document the reuse</td></tr>
+<tr><td>Browser or OS reservation</td><td>A browser or system action may intercept the combination</td><td>Check current vendor documentation and test the target environment</td></tr>
+<tr><td>Global remapper or utility</td><td>A system-wide tool can capture the keys before the app</td><td>Verify locally; a website cannot inspect every installed source</td></tr>
+<tr><td>Retired or proposed binding</td><td>The combination exists in migration history, not the active map</td><td>Keep status explicit instead of treating it as an active duplicate</td></tr>
+</tbody></table>
+<h2>Keep the project map separate from the outside world</h2>
+<p>HotkeyRadar uses two stores for a reason. <strong>Shortcut Sets</strong> are for the assignments inside one project or product. <strong>My Shortcuts</strong> is for combinations already used elsewhere. That separation avoids treating every external reuse as if it were an internal project duplicate.</p>
+<p>When a project grows, create one set per coherent scope rather than one giant list containing unrelated apps. A video editor, a browser extension, and an internal web app may all use <code>Ctrl + Shift + P</code> legitimately if their active contexts never overlap. The inventory should preserve that context instead of forcing a single global answer.</p>
+<h2>Add a change ledger, not just a final state</h2>
+<p>Shortcut maps drift when documentation is overwritten in place. Keep a small change record with the old assignment, new assignment, reason, date, and owner. A simple CSV-style record is enough:</p>
+<pre><code>action,old_shortcut,new_shortcut,scope,status,reason
+Open palette,Ctrl+P,Ctrl+Shift+P,app-wide,active,Avoid browser print command
+Quick search,Alt+K,,project-only,retired,Feature removed</code></pre>
+<p>Do not store passwords, API keys, customer data, or unrelated confidential notes in the shortcut inventory.</p>
+<h2>Use HotkeyRadar for repeatable checks, not as a universal scanner</h2>
+<p>For a candidate assignment, the checker can compare the normalized combination with its documented browser and operating-system records, the active Shortcut Set, and relevant items saved in My Shortcuts. It does not enumerate every installed desktop app, extension, keyboard remapper, input method, or custom system setting.</p>
+<p>The current tool also lets you export a full JSON backup and CSV/reference outputs. Export a backup before clearing browser site data or moving the inventory to another device. The JSON backup is the recovery format; a CSV is useful for review but does not replace the full structured backup.</p>
+<h2>Separate ownership from documentation</h2>
+<p>A vendor-controlled shortcut and a project-controlled shortcut should not be changed through the same process. Record the source of truth for each row:</p>
 <ul>
-<li>the shortcut or preferences screen inside each application;</li>
-<li>browser and operating-system shortcut documentation;</li>
-<li>project configuration files or team handbooks;</li>
-<li>keyboard remappers, accessibility tools, extensions, and automation utilities used by the team;</li>
-<li>older reference sheets that may still be followed by users.</li>
+<li><strong>Vendor-controlled:</strong> current official documentation or the product's own shortcut settings.</li>
+<li><strong>Project-controlled:</strong> the project configuration and named owner.</li>
+<li><strong>User-customized:</strong> local preference, extension setting, or remapper configuration.</li>
+<li><strong>Unknown:</strong> keep it flagged until the assignment can be reproduced or sourced.</li>
 </ul>
-<p>Copy the information into a working inventory without changing the source applications yet. When two records disagree, keep both and mark the item for verification instead of choosing the cleaner-looking version.</p>
-<h2>Use columns that explain context, not just the key combination</h2>
-<p>A useful inventory needs enough detail to answer where a shortcut is active and who controls it. At minimum, include:</p>
-<table>
-<thead><tr><th>Field</th><th>Why it matters</th><th>Example</th></tr></thead>
-<tbody>
-<tr><td>Application or project</td><td>Identifies the system that owns the assignment</td><td>Browser, editor, internal web app</td></tr>
-<tr><td>Action</td><td>States what the shortcut does</td><td>Open command palette</td></tr>
-<tr><td>Normalized shortcut</td><td>Makes comparisons consistent</td><td>Ctrl + Shift + P</td></tr>
-<tr><td>Operating system</td><td>Separates Windows, macOS, and Linux behavior</td><td>Windows</td></tr>
-<tr><td>Scope</td><td>Shows where the assignment can trigger</td><td>Application-wide</td></tr>
-<tr><td>Status</td><td>Keeps retired assignments visible</td><td>Active, proposed, archived</td></tr>
-<tr><td>Owner or source</td><td>Shows who can change it or where it was verified</td><td>Product team or vendor help page</td></tr>
-<tr><td>Notes</td><td>Records exceptions, migration plans, or layout limits</td><td>Reserved on macOS</td></tr>
-</tbody>
-</table>
-<p>The same combination can be harmless in two applications that are never active together, but dangerous when one application captures it globally. Scope is therefore part of the shortcut, not an optional note.</p>
-<h2>Normalize notation before comparing assignments</h2>
-<p>Equivalent shortcuts are often written differently. Standardize modifier names, order, spacing, and key aliases before looking for duplicates. For example, <code>Control-K</code>, <code>Ctrl + K</code>, and <code>K + Ctrl</code> should be reviewed as the same Windows-style combination.</p>
-<p>Keep platform-specific modifiers distinct. <strong>Command</strong> on macOS is not automatically interchangeable with <strong>Ctrl</strong>, and <strong>Option</strong> is not simply another spelling of the Windows Alt key in every workflow. Store a normalized value for comparison and a display value for the audience when both are needed.</p>
-<h2>Classify overlaps instead of calling every match a conflict</h2>
-<h3>Exact duplicate in one active scope</h3>
-<p>Two active actions in the same application or project use the same normalized combination. One assignment normally needs to change, or the two actions need mutually exclusive focus rules.</p>
-<h3>Operating-system or browser reservation</h3>
-<p>The combination is documented for a browser or operating-system action. The application may never receive it, or the result may depend on focus and platform. Verify the current official documentation and test in the supported environment.</p>
-<h3>Cross-application reuse</h3>
-<p>Different applications use the same keys. This can be acceptable when each application receives input only while focused. Record it anyway so users understand why the same combination performs different actions after switching apps.</p>
-<h3>Global or remapped overlap</h3>
-<p>A system-wide utility, accessibility feature, extension, or keyboard remapper can capture the combination before the intended app. A website cannot inspect every installed source, so these assignments require local testing.</p>
-<h3>Retired or proposed assignment</h3>
-<p>The combination is not currently active but appears in a migration plan or older document. Archive it rather than deleting the history; otherwise it can be reassigned before all users have moved away from it.</p>
-<h2>Build the inventory in HotkeyRadar</h2>
-<p>HotkeyRadar separates project-specific assignments from shortcuts used elsewhere:</p>
-<ul>
-<li><strong>Shortcut Sets</strong> group actions for one product, team, or workflow and can check enabled entries for duplicates.</li>
-<li><strong>My Shortcuts</strong> records existing assignments from other applications, together with operating system, scope, status, and notes.</li>
-<li><strong>The single-shortcut checker</strong> compares a proposed combination with the tool's documented browser and operating-system records, the current set, and relevant library items.</li>
-</ul>
-<p>Create one set for the project you are maintaining. Add only confirmed current assignments first, then add proposed replacements with clear notes. Store external or system-wide assignments in My Shortcuts so they remain separate from the project itself.</p>
-<p>The tool stores these records in local browser storage. Export a full JSON backup before clearing browser data, changing devices, or replacing the inventory. CSV and reference exports are useful for review, but the JSON backup preserves the structured data needed for restoration.</p>
-<h2>Use a controlled change process</h2>
-<ol>
-<li>Freeze the current inventory long enough to review it.</li>
-<li>Mark the duplicate or overlap that needs a decision.</li>
-<li>Identify which application or team owns each assignment.</li>
-<li>Choose a candidate that follows the project's modifier and platform rules.</li>
-<li>Check the candidate against documented browser and system shortcuts.</li>
-<li>Test it in the actual application with common extensions, remappers, and input methods when relevant.</li>
-<li>Update the application setting, inventory, user documentation, and release note together.</li>
-<li>Archive the old assignment with a migration date instead of erasing it immediately.</li>
-</ol>
-<p>This sequence keeps the inventory and the implemented product from drifting apart.</p>
-<h2>Document platform differences explicitly</h2>
-<p>Do not force one display string across every platform when the actual binding differs. Keep separate Windows, macOS, and Linux records when necessary. Browser shortcuts can also vary by operating system, keyboard layout, product version, or user customization.</p>
-<p>Official vendor lists are the starting point, not proof that a combination is free on every device. Firefox, for example, supports customization for many shortcuts in current releases, and Safari behavior can depend on macOS and keyboard layout. Record the source date and retest important assignments after major application changes.</p>
-<h2>Include accessibility rules in the inventory</h2>
-<p>Character-only shortcuts deserve a separate flag. W3C guidance explains that a shortcut made only from a printable letter, number, punctuation mark, or symbol can be triggered unintentionally by speech input. For web content, provide a way to turn it off, remap it with a non-character modifier, or limit it to the relevant component while that component has focus.</p>
-<p>Record the chosen control in the inventory. A note such as “active only in the focused canvas” is more useful than a generic “accessible” label.</p>
-<h2>Prepare the inventory for handoff and recovery</h2>
-<p>A shortcut map should survive a team change or a cleared browser profile. Keep a dated export with the project documentation and record:</p>
-<ul>
-<li>the inventory version and review date;</li>
-<li>the applications and operating systems included;</li>
-<li>the source of vendor-controlled shortcuts;</li>
-<li>the owner of custom assignments;</li>
-<li>open conflicts and proposed replacements;</li>
-<li>the date a retired shortcut can be removed from documentation.</li>
-</ul>
-<p>Do not place passwords, API keys, customer data, or unrelated confidential details in shortcut notes.</p>
-<h2>What not to do</h2>
-<ul>
-<li>Do not compare shortcuts without recording scope and operating system.</li>
-<li>Do not delete retired assignments before users and documentation have migrated.</li>
-<li>Do not describe a clean reference check as a universal guarantee.</li>
-<li>Do not assume a website can detect every installed application, remapper, extension, or keyboard layout.</li>
-<li>Do not replace a working shortcut map without exporting a recoverable backup.</li>
-<li>Do not use single-character shortcuts globally without an appropriate control.</li>
-</ul>
-<h2>Confirm the inventory is ready</h2>
-<p>The inventory is ready when every active action has a documented combination, platform and scope; unintended exact duplicates have been resolved; acceptable cross-application reuse is explained; vendor-controlled assignments have dated sources; proposed and archived entries are clearly separated; accessibility controls are recorded; and the final active set has been tested in the supported environments.</p>
-<p>For the narrower task of evaluating one proposed combination, use <a href="/posts/42-check-keyboard-shortcut-conflicts">How to Check for Keyboard Shortcut Conflicts Before Assigning a Hotkey</a>.</p>
-<h2>Official references</h2>
-<ul>
-<li><a href="https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&amp;hl=en" rel="noopener" target="_blank">Google Chrome keyboard shortcuts</a></li>
-<li><a href="https://support.microsoft.com/en-us/edge/keyboard-shortcuts-in-microsoft-edge" rel="noopener" target="_blank">Microsoft Edge keyboard shortcuts</a></li>
-<li><a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly" rel="noopener" target="_blank">Mozilla Firefox keyboard shortcuts</a></li>
-<li><a href="https://support.mozilla.org/en-US/kb/customize-keyboard-shortcuts-firefox" rel="noopener" target="_blank">Mozilla: Customize keyboard shortcuts in Firefox</a></li>
-<li><a href="https://support.apple.com/guide/safari/cpsh003/mac" rel="noopener" target="_blank">Apple Safari keyboard shortcuts and gestures</a></li>
-<li><a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec" rel="noopener" target="_blank">Microsoft Windows keyboard shortcuts</a></li>
-<li><a href="https://support.apple.com/en-us/102650" rel="noopener" target="_blank">Apple Mac keyboard shortcuts</a></li>
-<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html" rel="noopener" target="_blank">W3C: Understanding Character Key Shortcuts</a></li>
-</ul>
-<section style="margin-top: 45px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-<h2 style="margin-top: 0;">Related Guides</h2>
-<ul style="margin-bottom: 0;">
-<li><a href="/posts/12-windows-clipboard-history">How to Use Windows Clipboard History to Paste Multiple Items</a></li>
-</ul>
-</section>
-<div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p>
-</div>
-<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-<a href="/blog/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.05rem;">← Back to Guides</a><span aria-hidden="true" style="color: #b8c0ca;">|</span><a href="/" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.05rem;">Home</a>
-</div>
-</article>
-</main>
+<p>This makes later audits faster. A source date also matters because browser and application shortcuts can change, and Firefox now supports customization for many shortcuts in current releases.</p>
+<h2>Review character-only shortcuts separately</h2>
+<p>W3C guidance for web content treats character-only shortcuts as an accessibility risk because speech input or accidental key presses can trigger them. If a web interface uses a printable character by itself, provide a way to turn the shortcut off, remap it with a non-character modifier, or limit it to the component while that component has focus.</p>
+<p>The inventory should record which control applies. “Active only while the canvas has focus” is more useful than a generic accessibility checkbox.</p>
+<h2>A practical handoff package</h2>
+<p>A shortcut map is ready for handoff when another person can answer what is active, where it applies, who owns it, which source was checked, and how to restore the current state. Keep a dated backup with the project documentation and include unresolved overlaps instead of hiding them.</p>
+<p>For one proposed combination rather than a full inventory, use <a href="/posts/42-check-keyboard-shortcut-conflicts">Keyboard Shortcut Conflicts: What to Check Before Assigning a Hotkey</a>. For character-only commands that need a separate accessibility review, use <a href="/posts/45-single-key-shortcuts-speech-input">Single-Key Keyboard Shortcuts: Avoid Accidental Triggers from Speech Input</a>.</p>
+<h2>Reference points used in this guide</h2>
+<ul><li><a href="https://support.mozilla.org/en-US/kb/customize-keyboard-shortcuts-firefox" rel="noopener" target="_blank">Mozilla — Customize keyboard shortcuts in Firefox</a></li><li><a href="https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html" rel="noopener" target="_blank">W3C — Understanding Character Key Shortcuts</a></li></ul>
+<div style="margin-top:30px;padding:25px;background-color:#fff;border-left:4px solid #2c3e50;box-shadow:0 4px 12px rgba(0,0,0,.05);border-radius:4px"><p style="margin:0;font-size:.95rem;color:#555;line-height:1.6"><strong>Editorial note:</strong> Tweaknook verifies product-dependent claims against primary documentation and checks tool-specific claims against the current source and reproducible examples. Limits are stated where a browser tool cannot observe the full local environment.</p></div>
+<nav aria-label="Article navigation" class="post-return-nav"><a href="/blog/">← Back to Guides</a><a href="/">Home</a></nav>
+</article></main>
 <footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
-</body>
-</html>
+</body></html>

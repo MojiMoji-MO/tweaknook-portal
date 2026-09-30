@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." name="description"/>
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
-<title>How to Safely Bulk Rename Files with Python | Tweaknook</title>
+<title>Bulk Rename Files with Python: A Preview-First Workflow | Tweaknook</title>
 <link href="https://tweaknook.com/posts/07-python-file-renamer" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
@@ -16,16 +17,15 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Safely Bulk Rename Files with Python" property="og:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." property="og:description"/><meta content="https://tweaknook.com/posts/07-python-file-renamer" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Safely Bulk Rename Files with Python" name="twitter:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Safely Bulk Rename Files with Python", "description": "Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-04", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/07-python-file-renamer"}, "url": "https://tweaknook.com/posts/07-python-file-renamer", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Bulk Rename Files with Python: A Preview-First Workflow" property="og:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." property="og:description"/><meta content="https://tweaknook.com/posts/07-python-file-renamer" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Bulk Rename Files with Python: A Preview-First Workflow" name="twitter:title"/><meta content="Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions." name="twitter:description"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Bulk Rename Files with Python: A Preview-First Workflow","description":"Use a beginner-friendly Python script to preview and bulk rename files while preserving extensions and avoiding common name collisions.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-07-04","dateModified":"2026-09-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/07-python-file-renamer"},"url":"https://tweaknook.com/posts/07-python-file-renamer","inLanguage":"en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
 <main class="container">
 <article class="page-content"><div style="margin-bottom: 30px;">
 <a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a>
-<h1>How to Safely Bulk Rename Files with Python</h1>
-<div class="post-meta">Published on July 4, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
+<h1>Bulk Rename Files with Python: A Preview-First Workflow</h1>
+<div class="post-meta">Published on July 4, 2026 • Updated on September 30, 2026 • By <a href="/about">Tweaknook Editorial</a></div>
 </div>
 <p>Python can rename many files consistently, but the safe part is the planning and rollback—not the <code>rename()</code> call itself. The script below builds a complete plan, detects duplicate and pre-existing target names before touching a file, writes a CSV manifest, requires an exact confirmation, and uses temporary names so source and destination names can overlap.</p>
 <div style="margin:25px 0;padding:15px;background-color:#fff8e1;border-left:3px solid #f0ad4e;border-radius:4px"><strong>Use copies first:</strong> run any bulk rename on a small duplicate folder before using it on irreplaceable files. A power loss, permission failure, cloud-sync conflict, or incorrect sort order can still interrupt a well-designed script.</div>
@@ -158,10 +158,7 @@ print(f"Manifest: {manifest_path}")</code></pre>
 </ul>
 <h2>Official Python reference</h2>
 <ul><li><a href="https://docs.python.org/3/library/pathlib.html" rel="noopener" target="_blank">pathlib — object-oriented filesystem paths</a></li></ul>
-<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/24-powershell-duplicate-finder"><strong>How to Find Duplicate Files with PowerShell and Export a Report</strong></a> — Review duplicate files before reorganizing a large folder.</li><li><a href="/posts/25-excel-power-query-folder-merge"><strong>How to Combine Files from a Folder with Excel Power Query</strong></a> — Turn consistently named source files into a refreshable dataset.</li></ul></section><div style="margin-top: 30px; padding: 25px; background-color: #ffffff; border-left: 4px solid #2c3e50; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 4px;">
-<h2 style="margin-top: 0; margin-bottom: 8px; color: #222; font-size: 1.05rem; font-weight: bold;">About the author</h2>
-<p style="margin: 0; font-size: 0.95rem; color: #555; line-height: 1.6;">Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p>
-</div><nav aria-label="Article navigation" class="post-return-nav">
+<section aria-label="Related guides" style="margin-top: 40px; padding: 24px; background-color: #f8f9fa; border: 1px solid #e3e6e8; border-radius: 6px;"><h2 style="margin-top: 0;">Related Guides</h2><ul style="margin-bottom: 0;"><li><a href="/posts/24-powershell-duplicate-finder">Find Duplicate Files with PowerShell Before Deleting Anything</a> — Review duplicate files before reorganizing a large folder.</li><li><a href="/posts/25-excel-power-query-folder-merge">Combine Folder Files with Excel Power Query</a> — Turn consistently named source files into a refreshable dataset.</li></ul></section><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Guides</a>
 <a href="/">Home</a>
 </nav></article>

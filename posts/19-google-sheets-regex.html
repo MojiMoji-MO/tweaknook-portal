@@ -1,16 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." name="description"/>
-
 <meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
-<title>How to Clean Messy Spreadsheet Data with Google Sheets Regex | Tweaknook</title>
+<title>Cleaning Messy Spreadsheet Data with Google Sheets Regex | Tweaknook</title>
 <link href="https://tweaknook.com/posts/19-google-sheets-regex" rel="canonical"/>
 <link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
-
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
 <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,13 +17,12 @@
       gtag('js', new Date());
       gtag('config', 'G-21E5Z191ZY');
     </script>
-
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
-<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="How to Clean Messy Spreadsheet Data with Google Sheets Regex" property="og:title"/><meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." property="og:description"/><meta content="https://tweaknook.com/posts/19-google-sheets-regex" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="How to Clean Messy Spreadsheet Data with Google Sheets Regex" name="twitter:title"/><meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." name="twitter:description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Clean Messy Spreadsheet Data with Google Sheets Regex", "description": "Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions.", "author": {"@type": "Organization", "name": "Tweaknook Editorial", "url": "https://tweaknook.com/about"}, "publisher": {"@type": "Organization", "name": "Tweaknook", "url": "https://tweaknook.com/"}, "datePublished": "2026-07-16", "dateModified": "2026-08-19", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://tweaknook.com/posts/19-google-sheets-regex"}, "url": "https://tweaknook.com/posts/19-google-sheets-regex", "inLanguage": "en"}</script></head>
+<meta content="index, follow" name="robots"/><meta content="article" property="og:type"/><meta content="Tweaknook" property="og:site_name"/><meta content="Cleaning Messy Spreadsheet Data with Google Sheets Regex" property="og:title"/><meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." property="og:description"/><meta content="https://tweaknook.com/posts/19-google-sheets-regex" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Cleaning Messy Spreadsheet Data with Google Sheets Regex" name="twitter:title"/><meta content="Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions." name="twitter:description"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cleaning Messy Spreadsheet Data with Google Sheets Regex","description":"Clean spreadsheet text with Google Sheets REGEXEXTRACT, REGEXREPLACE, and REGEXMATCH while preserving original data and reviewing exceptions.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-07-16","dateModified":"2026-09-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/19-google-sheets-regex"},"url":"https://tweaknook.com/posts/19-google-sheets-regex","inLanguage":"en"}</script></head>
 <body>
 <header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
 <main class="container">
-<article class="page-content"><div style="margin-bottom:30px"><a class="post-category" href="/blog/#workspace">Spreadsheets &amp; workspace</a><h1>How to Clean Messy Spreadsheet Data with Google Sheets Regex</h1><div class="post-meta">Published on July 16, 2026 • Updated on August 19, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<article class="page-content"><div style="margin-bottom:30px"><a class="post-category" href="/blog/#workspace">Spreadsheets &amp; workspace</a><h1>Cleaning Messy Spreadsheet Data with Google Sheets Regex</h1><div class="post-meta">Published on July 16, 2026 • Updated on September 30, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
 <p>Use Google Sheets regex functions to create a separate cleaned or review column while keeping the original data unchanged. <code>REGEXEXTRACT</code> returns matching text, <code>REGEXREPLACE</code> transforms text, and <code>REGEXMATCH</code> flags whether a pattern exists. Test a representative sample before filling a formula down a production sheet.</p>
 <h2>Choose the function that matches the job</h2>
 <div class="table-scroll"><table><thead><tr><th>Function</th><th>Use it for</th><th>Common mistake</th></tr></thead><tbody><tr><td><code>REGEXEXTRACT</code></td><td>Return the first text matching a pattern</td><td>Assuming it returns every match</td></tr><tr><td><code>REGEXREPLACE</code></td><td>Remove or rewrite matching text</td><td>Overwriting the only copy of the source</td></tr><tr><td><code>REGEXMATCH</code></td><td>Flag rows for validation or review</td><td>Treating a match as proof that the whole value is valid</td></tr></tbody></table></div>
@@ -43,7 +41,7 @@
 <h2>Remember the engine limits</h2>
 <p>Google Sheets documents that its regex functions use the RE2 engine and do not support Unicode character-class matching. Patterns copied from another regex tool may use features that Sheets does not accept or may behave differently. Test the actual formula in Sheets rather than validating only in a separate website.</p>
 <h2>Do not convert identifiers by accident</h2>
-<p>Cleaned phone numbers, ZIP codes, case numbers, and product IDs are often text, not quantities. Format the destination column as <strong>Plain text</strong> before replacing values when leading zeros or long digit strings must remain exact. The guide <a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">How to Stop Google Sheets from Changing Numbers to Dates</a> explains the related data-type issue.</p>
+<p>Cleaned phone numbers, ZIP codes, case numbers, and product IDs are often text, not quantities. Format the destination column as <strong>Plain text</strong> before replacing values when leading zeros or long digit strings must remain exact. The guide <a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">Google Sheets Turning Numbers into Dates: Prevention and Recovery</a> explains the related data-type issue.</p>
 <h2>Use a safer cleanup layout</h2>
 <ol><li>Keep the original in column A.</li><li>Put the proposed cleaned value in column B.</li><li>Put an OK/REVIEW result in column C.</li><li>Filter REVIEW rows and inspect several edge cases.</li><li>Compare counts, blanks, and duplicates before replacing anything.</li><li>Paste values only after the result is accepted.</li></ol>
 <h2>Example before-and-after review</h2>
@@ -52,7 +50,7 @@
 <ul><li>The source column is unchanged.</li><li>Anchors and capture groups match the intended scope.</li><li>Blank and malformed rows are visible.</li><li>Leading zeros and identifiers remain text.</li><li>A representative sample and all REVIEW rows were checked.</li></ul>
 <h2>Official Google references</h2>
 <ul><li><a href="https://support.google.com/docs/answer/3098244?hl=en" rel="noopener" target="_blank">REGEXEXTRACT</a></li><li><a href="https://support.google.com/docs/answer/3098245?hl=en" rel="noopener" target="_blank">REGEXREPLACE</a></li><li><a href="https://support.google.com/docs/answer/3098292?hl=en" rel="noopener" target="_blank">REGEXMATCH</a></li></ul>
-<section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">How to Stop Google Sheets from Changing Numbers to Dates</a></li><li><a href="/posts/04-importrange-dashboard">How to Build a Google Sheets Dashboard with IMPORTRANGE</a></li></ul></section><div class="author-box"><h2>About the author</h2><p>Tweaknook Editorial maintains focused troubleshooting guides and browser tools for digital work. Product-dependent facts are checked against primary documentation; tool-specific claims are checked against the current source and reproducible examples, with limitations stated where relevant.</p></div><nav aria-label="Article navigation" class="post-return-nav">
+<section style="margin-top:45px;padding:24px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px"><h2 style="margin-top:0">Related Guides</h2><ul style="margin-bottom:0"><li><a href="/posts/40-stop-google-sheets-changing-numbers-to-dates">Google Sheets Turning Numbers into Dates: Prevention and Recovery</a></li><li><a href="/posts/04-importrange-dashboard">Google Sheets IMPORTRANGE Dashboards: Setup, Access, and Refresh Limits</a></li></ul></section><nav aria-label="Article navigation" class="post-return-nav">
 <a href="/blog/">← Back to Guides</a>
 <a href="/">Home</a>
 </nav></article>
