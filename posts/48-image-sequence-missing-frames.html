@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Diagnose missing frames in an image sequence before import. Check filename gaps, numbering steps, render passes, and After Effects or FFmpeg import behavior." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>Missing Frames in an Image Sequence: Check Numbered Files Before Import | Tweaknook</title>
+<link href="https://tweaknook.com/posts/48-image-sequence-missing-frames" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="Tweaknook" property="og:site_name"/>
+<meta content="Missing Frames in an Image Sequence: Check Numbered Files Before Import" property="og:title"/>
+<meta content="Diagnose missing frames in an image sequence before import. Check filename gaps, numbering steps, render passes, and After Effects or FFmpeg import behavior." property="og:description"/>
+<meta content="https://tweaknook.com/posts/48-image-sequence-missing-frames" property="og:url"/>
+<meta content="2026-10-24" property="article:published_time"/>
+<meta content="2026-10-24" property="article:modified_time"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Missing Frames in an Image Sequence: Check Numbered Files Before Import" name="twitter:title"/>
+<meta content="Diagnose missing frames in an image sequence before import. Check filename gaps, numbering steps, render passes, and After Effects or FFmpeg import behavior." name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Missing Frames in an Image Sequence: Check Numbered Files Before Import","description":"Diagnose missing frames in an image sequence before import. Check filename gaps, numbering steps, render passes, and After Effects or FFmpeg import behavior.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-10-24","dateModified":"2026-10-24","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/48-image-sequence-missing-frames"},"url":"https://tweaknook.com/posts/48-image-sequence-missing-frames","inLanguage":"en"}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-21E5Z191ZY');</script>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+</head>
+<body>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
+<main class="container"><article class="page-content">
+<div style="margin-bottom:30px"><a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a><h1>Missing Frames in an Image Sequence: Check Numbered Files Before Import</h1><div class="post-meta">Published on October 24, 2026 • Updated on October 24, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+
+
+<p>A numbered image sequence can fail during import even when a folder looks nearly complete. Start by separating <strong>missing filename numbers</strong> from <strong>files that exist but cannot be read</strong>, and from <strong>files that an editor groups into the wrong sequence</strong>. Those are different problems. A filename check can reveal missing-number candidates and inconsistent grouping patterns, but it cannot verify file readability, inspect image pixels, or repair a missing frame.</p>
+<p>Before you re-render or rename anything, make a copy of the folder and define the expected frame range. Then compare the actual filename list with that expectation. This is useful for animation frames, exported PNG sequences, VFX passes, and other numbered still-image deliveries.</p>
+
+<h2>Begin with the symptom, not the filename</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Import symptom</th><th>Likely area to inspect</th><th>What a filename-only check cannot decide</th></tr></thead><tbody>
+<tr><td>Editor reports a missing frame within a sequence</td><td>Numeric gap, path availability, import settings</td><td>Whether an existing image file is readable</td></tr>
+<tr><td>Files import as separate stills</td><td>Filename pattern and sequence option</td><td>Whether the editing app supports that image format</td></tr>
+<tr><td>A sequence stops sooner than expected</td><td>Expected end frame, source export range, numbering</td><td>Missing frames beyond the highest number present</td></tr>
+<tr><td>The wrong take or pass appears in one sequence</td><td>Prefix, folder, extension, multiple sequences</td><td>Whether two images depict different content</td></tr>
+<tr><td>All expected names exist, but import still fails</td><td>File integrity, storage access, format, application error</td><td>The integrity of the image contents</td></tr>
+</tbody></table></div>
+<p>Do not assume every two-number jump is an error. Some workflows intentionally render every second or fifth frame. The intended interval comes from the job specification, export settings, or delivery notes—not from the names alone.</p>
+
+<h2>A small frame list that makes the gap visible</h2>
+<p>Consider these <strong>illustrative filenames</strong> for one PNG render pass:</p>
+<pre><code>sceneA_0100.png
+sceneA_0101.png
+sceneA_0103.png
+sceneA_0104.png</code></pre>
+<p>If the intended step is one frame, <code>0102</code> is a missing-number candidate <em>between</em> two existing files. However, the list cannot establish whether frames <code>0099</code> or <code>0105</code> should also exist; it has no knowledge of the required start or end frame. That is why the delivery range matters.</p>
+<p>Now compare a different list:</p>
+<pre><code>sceneA_0100.png
+sceneA_0102.png
+sceneA_0104.png</code></pre>
+<p>If this is a planned every-other-frame export, the spacing is deliberate. Treating <code>0101</code> and <code>0103</code> as necessarily lost would invent a problem. A checker may infer an interval from a few names, but it cannot replace the production specification.</p>
+
+<h2>The pre-import audit: six decisions</h2>
+<ol>
+<li><strong>Preserve your source.</strong> Copy the folder or use a read-only inspection workflow. Do not batch-rename the only copy, especially if an existing project already links to it.</li>
+<li><strong>Define one pass.</strong> Keep <code>sceneA_beauty_</code>, <code>sceneA_depth_</code>, and other render passes separate. A same-looking number can legitimately exist in each pass.</li>
+<li><strong>Record the expected range and step.</strong> For example, frames 0100–0104 at step 1 have five expected positions. That count assumes the range is inclusive and no deliberate skip exists.</li>
+<li><strong>Compare actual numbers in that family.</strong> Look for interior gaps, repeated sequence positions, unexpected padding width, and files that use a different extension or naming pattern.</li>
+<li><strong>Check the flagged source files.</strong> Confirm with the render log or source application whether a missing number represents a failed render, an intentional omission, or a different output directory.</li>
+<li><strong>Import a verified copy.</strong> Use the receiving application's documented sequence settings and inspect the resulting duration and frames before relying on the sequence downstream.</li>
+</ol>
+<p>The order matters. Renaming every file to make the numbers look continuous can hide an incomplete render instead of fixing it.</p>
+
+<h2>Check a larger filename list with SeqName</h2>
+<p>For a folder with many numbered stills, <a href="/tools/seqname/">SeqName's filename sequence checker</a> can shortlist the names that deserve attention. Choose related files or a folder, run the check, and review its gap, duplicate, zero-padding, extension, and pattern findings. The page also offers CSV and JSON report exports for documenting the review.</p>
+<p>SeqName uses <strong>selected filenames and relative folder paths</strong>. It does not read the image content, upload the selected files as part of its analysis, create replacement frames, or rename anything automatically. The report is a list of <em>filename-based candidates</em>, not a declaration that footage is visually complete.</p>
+<p>To interpret the sample above, compare the expected step of 1 and candidate gap 0102 with the original export range. If you have several numeric tokens such as <code>shot03_v02_frame0100.exr</code>, first establish which token counts frames. That separate decision is covered by <a href="/posts/46-find-sequence-number-in-complex-filenames">Which Number Is the Sequence? Auditing Filenames with Dates, Versions, and Frame Numbers</a>.</p>
+
+<h2>Check the importing application next</h2>
+<p>Adobe's After Effects documentation says that a still-image sequence should use files in the same folder with a consistent numeric or alphabetic naming pattern. If files do not group as expected, check the <strong>Sequence</strong> option in the Import dialog before renaming the originals.</p>
+<p>Adobe also documents <strong>Force alphabetical order</strong> as an import option for sequences whose numbering has gaps. That can change how files are brought in; it does <em>not</em> recreate missing source frames. Depending on import settings, After Effects may warn about missing frames and show placeholders. If an expected file seems present but unavailable—for example, a broken shortcut or offline storage—Adobe documents a slower <strong>Verify Individual Files</strong> option for sequence imports.</p>
+<p>These are After Effects-specific controls, not universal settings for every video editor. Confirm the current labels in the version you are using. Do not change the underlying filenames just to match a menu option you saw in a different application.</p>
+<p>If your next step is an FFmpeg image-sequence import, the file pattern matters too. FFmpeg's own FAQ shows that <code>img%03d.jpg</code> addresses three-digit names like <code>img001.jpg</code>, and its documentation describes <code>-start_number</code> for ranges that do not begin at the default number. A naming mismatch and a genuinely missing image are not the same fault. Validate the actual folder names before building an import command.</p>
+
+<h2>What to do with each finding</h2>
+<ul>
+<li><strong>Interior gap confirmed:</strong> ask for the missing render or regenerate the specific frame if the source project permits it. Do not silently shift later frame numbers.</li>
+<li><strong>Possible duplicate number:</strong> check whether the files belong to different passes, cameras, directories, or formats. A repeated number is not proof of duplicate image content.</li>
+<li><strong>Mixed padding such as 099 and 0100:</strong> decide the intended naming width, preview a rename plan on a copy, and check whether downstream projects rely on the old paths.</li>
+<li><strong>Missing expected first or last frame:</strong> compare the export log or delivery manifest. A checker cannot infer filenames that lie outside the observed range.</li>
+<li><strong>All numbers present, import fails:</strong> inspect storage access, file readability, supported image format, and the importing application's diagnostics. Filename analysis has reached its limit.</li>
+</ul>
+<p>Keep the check report beside the source range and any render/export notes. A useful delivery note states: pass, expected first/last frame, step, detected filename candidates, reviewed exceptions, and whether the import was successfully checked in the receiving app.</p>
+
+<h2>Ready to import?</h2>
+<p>A sequence is ready for the next stage when you can explain its numeric range, intended interval, pass grouping, known gaps, and destination application's behavior. If an exception remains, mark it explicitly rather than hiding it through a rename. For a general audit of numbered files outside image/video work, see <a href="/posts/43-find-missing-duplicate-filename-numbers">Missing or Duplicate Filename Numbers: A Safe Sequence Audit</a>.</p>
+
+<h2>Primary documentation</h2>
+<ul>
+<li><a href="https://helpx.adobe.com/after-effects/desktop/import-files/import-still-images/preparing-importing-still-images.html" target="_blank" rel="noopener">Adobe After Effects — Preparing and importing still images (updated May 5, 2026)</a></li>
+<li><a href="https://ffmpeg.org/faq.html" target="_blank" rel="noopener">FFmpeg FAQ — Image sequences, numeric filename patterns and start numbers</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-formats.html" target="_blank" rel="noopener">FFmpeg Formats Documentation — image2 sequence pattern and start_number</a></li>
+</ul>
+<nav aria-label="Article navigation" class="post-return-nav"><a href="/blog/">← Back to Guides</a><a href="/">Home</a></nav>
+</article></main>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
+</body></html>
