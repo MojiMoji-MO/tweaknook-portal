@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Fix a custom Mac app shortcut that does nothing. Check the exact menu command, App Shortcuts settings, macOS conflicts, keyboard layout, and safe alternatives." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>Mac Custom Keyboard Shortcut Not Working? Check Menu Names and Conflicts | Tweaknook</title>
+<link href="https://tweaknook.com/posts/49-mac-custom-shortcut-not-working" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="Tweaknook" property="og:site_name"/>
+<meta content="Mac Custom Keyboard Shortcut Not Working? Check Menu Names and Conflicts" property="og:title"/>
+<meta content="Fix a custom Mac app shortcut that does nothing. Check the exact menu command, App Shortcuts settings, macOS conflicts, keyboard layout, and safe alternatives." property="og:description"/>
+<meta content="https://tweaknook.com/posts/49-mac-custom-shortcut-not-working" property="og:url"/>
+<meta content="2026-10-26" property="article:published_time"/>
+<meta content="2026-10-26" property="article:modified_time"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Mac Custom Keyboard Shortcut Not Working? Check Menu Names and Conflicts" name="twitter:title"/>
+<meta content="Fix a custom Mac app shortcut that does nothing. Check the exact menu command, App Shortcuts settings, macOS conflicts, keyboard layout, and safe alternatives." name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mac Custom Keyboard Shortcut Not Working? Check Menu Names and Conflicts","description":"Fix a custom Mac app shortcut that does nothing. Check the exact menu command, App Shortcuts settings, macOS conflicts, keyboard layout, and safe alternatives.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-10-26","dateModified":"2026-10-26","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/49-mac-custom-shortcut-not-working"},"url":"https://tweaknook.com/posts/49-mac-custom-shortcut-not-working","inLanguage":"en"}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-21E5Z191ZY');</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+</head>
+<body>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
+<main class="container"><article class="page-content">
+<div style="margin-bottom:30px"><a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a><h1>Mac Custom Keyboard Shortcut Not Working? Check Menu Names and Conflicts</h1><div class="post-meta">Published on October 26, 2026 • Updated on October 26, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p>A custom keyboard shortcut on a Mac may appear in System Settings yet do nothing in the intended app. Before assigning a different combination, check two things: <strong>does the app have the exact menu command you entered, and is another shortcut already using those keys?</strong> A menu-title mismatch and a key conflict require different fixes. Changing random keyboard settings will not reliably solve both.</p>
+<p>This guide is for shortcuts added through <strong>System Settings → Keyboard → Keyboard Shortcuts → App Shortcuts</strong>. It does not cover automations created in the Shortcuts app, arbitrary macros, or a website's own keyboard settings. These mechanisms are not interchangeable.</p>
+<h2>Which failure are you seeing?</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>What happens</th><th>First thing to inspect</th><th>What would distinguish the cause</th></tr></thead><tbody>
+<tr><td>The shortcut is listed, but the menu action never runs.</td><td>Menu title and chosen application</td><td>The command must exist in that app's menus and its name must match.</td></tr>
+<tr><td>Spotlight or another macOS action opens instead.</td><td>System-wide shortcut ownership</td><td>The key combination may already belong to macOS.</td></tr>
+<tr><td>It works in one app, but not a second app.</td><td>App-specific versus All Applications scope</td><td>The two apps may have different menu commands or assignments.</td></tr>
+<tr><td>The shortcut only fails with F1–F12 or on another keyboard.</td><td>Fn/Globe behavior and input source</td><td>The physical keys or keyboard layout may not be producing the intended combination.</td></tr>
+<tr><td>The shortcut works sometimes, depending on the document.</td><td>Whether the menu command is enabled</td><td>The app may disable that command in the current state.</td></tr>
+</tbody></table></div>
+<p>The last row is a useful diagnostic distinction: a gray, unavailable menu command is an app-state problem, not proof that another shortcut has intercepted the keys.</p>
+<h2>Start with the application's menu bar</h2>
+<p>Open the actual app and put it in front. Use the mouse to find the command in the macOS menu bar. Can you select it? Does clicking it perform the action? If not, stop troubleshooting the keyboard shortcut and investigate the app's command or document state first.</p>
+<p>If the menu action works, record its exact wording, punctuation, and location. A command named <code>Export…</code> is not necessarily the same as <code>Export as PDF…</code>; an ellipsis is not decorative when defining an App Shortcut. Apple specifically requires the <em>menu title</em> entered in App Shortcuts to match the app's menu command, including relevant punctuation and submenu structure.</p>
+<p>For a nested command, follow Apple's notation rules for menu paths instead of guessing from the final submenu label. Apple's example for a File-menu PDF export uses the menu path format <code>File-&gt;Export as PDF…</code>. <strong>Use it only if your app actually has that menu path</strong>; it is an example of syntax, not a claim that every app includes that command. Apple's guidance explains how to represent arrow separators and ellipses in the field, including typing three periods without spaces for an ellipsis.</p>
+<h2>Recreate only the incorrect assignment</h2>
+<ol>
+<li>Open <strong>Apple menu → System Settings → Keyboard → Keyboard Shortcuts → App Shortcuts</strong>.</li>
+<li>Select the custom shortcut and check its <strong>Application</strong> and <strong>Menu Title</strong>. If it is intended for one program, select that program rather than All Applications.</li>
+<li>Correct the menu title to match the app's visible command. Keep the command's exact spelling and punctuation; recheck after an app update or localization change.</li>
+<li>Enter the intended key combination and save it. If the settings screen shows an existing assignment or warning, resolve that collision instead of repeating the same shortcut.</li>
+<li>Return to the app and try the command with the app active and the menu item enabled.</li>
+</ol>
+<p>Use <strong>All Applications</strong> only for a menu command you genuinely expect to exist with the same name across apps. It will not make an absent menu command appear. Apple notes that App Shortcuts are for existing menu commands, not a general way to launch apps or perform arbitrary tasks.</p>
+<h2>Before changing the keys, identify who owns them</h2>
+<p>A familiar combination can already be taken. For example, <kbd>Command + Space</kbd> is documented as a macOS Spotlight shortcut. A custom app assignment with those same keys is a poor first candidate unless you understand and deliberately change the existing behavior. Check System Settings → Keyboard → Keyboard Shortcuts, particularly the system categories relevant to your combination. Apple documents warning indicators for conflicts and allows you to change the affected assignment. <a href="https://support.apple.com/en-euro/guide/mac-help/mchlp2864/27/mac/27" rel="noopener" target="_blank">Apple's conflict-resolution instructions</a> explain the procedure.</p>
+<p>When several combinations are under consideration, <a href="/tools/hotkeyradar/">HotkeyRadar's keyboard shortcut checker</a> can compare a candidate with its documented macOS, Safari, Chrome, and other supported browser records. Choose macOS and the browser or system scope you actually need. It also lets you add shortcuts from your own applications to a locally saved reference library and check them later.</p>
+<p><strong>What the checker cannot do:</strong> it cannot read the menu titles in your installed apps, discover every third-party hotkey or remapper, inspect your current keyboard layout, or guarantee that a combination works. A result with no known match is a screening result, not permission to skip an actual test. The built-in vendor-reference data has its own published review date, so confirm the current behavior against Apple and the app's current menu.</p>
+<h2>Two examples that look similar but need different repairs</h2>
+<p><strong>Case A — incorrect menu title (illustrative).</strong> A person wants a shortcut for a menu command displayed as <code>Export as PDF…</code>, but types <code>Export to PDF</code> into App Shortcuts. Changing the key combination does not repair the missing command match. The useful test is to activate that exact menu item using the mouse, then correct the menu title and submenu notation as needed. No particular keyboard combination is assumed to be free.</p>
+<p><strong>Case B — reserved combination (illustrative).</strong> A custom action is assigned to <kbd>Command + Space</kbd>, and pressing it activates Spotlight. That is consistent with the documented system shortcut. The next action is to choose a different candidate or intentionally change the conflicting macOS assignment, then verify both Spotlight and the custom app command. The fact that the menu title is perfect would not by itself resolve this collision.</p>
+<p>These are diagnostic examples, not claims of a physical Mac test. The important distinction is <em>text lookup</em> versus <em>key ownership</em>. A troubleshooting step that addresses one does not automatically address the other.</p>
+<h2>If it still fails, use this short second pass</h2>
+<ul>
+<li><strong>Check the input source:</strong> symbols and physical key locations can change with keyboard layouts. Read the app's menu bar and, if necessary, use Keyboard Viewer to determine which keys the Mac is receiving. Apple notes that shortcut behavior can vary by language and layout.</li>
+<li><strong>Check Fn and Globe:</strong> combinations involving function keys may require Fn or Globe depending on keyboard hardware and settings. Do not treat every function-key failure as a conflict.</li>
+<li><strong>Check app version and availability:</strong> some apps do not support App Shortcuts for a particular command, and menus can change between releases. If the command is dimmed, put the app into a state where it is available before testing.</li>
+<li><strong>Check the target app:</strong> a shortcut created for one app does not automatically govern a second app with a similar menu. Reconfirm the application selection.</li>
+<li><strong>Check user-installed remappers separately:</strong> a keyboard utility or third-party app can handle combinations not included in a browser-based reference data set. Review its settings directly; do not infer them from HotkeyRadar.</li>
+</ul>
+<h2>Confirm the change without creating a new problem</h2>
+<p>Keep a simple record of the <em>application, exact menu title, previous combination, proposed combination, and observed result</em>. This is especially useful when several apps use overlapping commands. The test should be small and reversible:</p>
+<ol>
+<li>Click the original app menu item and note what a successful operation looks like.</li>
+<li>Run the replacement keyboard shortcut while the same menu item is enabled.</li>
+<li>Open a second app or a different document state and verify the shortcut does not trigger an unwanted global command.</li>
+<li>Check whether the displaced original shortcut still behaves as intended. Restore it if the new binding creates a worse conflict.</li>
+</ol>
+<p>If the assignment fails even with a verified menu title, app selection, active command, and non-conflicting candidate, consult the app developer's shortcut documentation. Apple's App Shortcuts feature does not override every application's custom keyboard handler.</p>
+<p>For the distinct problem of shortcuts that fail specifically inside a Chrome-based web app, see <a href="/posts/47-chrome-web-app-shortcut-not-working">the Chrome web-app shortcut diagnostic</a>. If you are choosing one new combination before configuring any app, the broader <a href="/posts/42-check-keyboard-shortcut-conflicts">shortcut conflict screening guide</a> covers system, browser, and user-library scopes.</p>
+<h2>Official sources</h2>
+<ul>
+<li><a href="https://support.apple.com/guide/mac-help/create-keyboard-shortcuts-for-apps-mchlp2271/mac" rel="noopener" target="_blank">Apple Mac User Guide — Create keyboard shortcuts for apps</a> (menu title, application scope, and limitations)</li>
+<li><a href="https://support.apple.com/en-euro/guide/mac-help/mchlp2864/27/mac/27" rel="noopener" target="_blank">Apple Mac User Guide — Change a conflicting keyboard shortcut</a> (conflict indicators and settings)</li>
+<li><a href="https://support.apple.com/guide/mac-help/if-keyboard-shortcuts-dont-work-mchlp1407/mac" rel="noopener" target="_blank">Apple Mac User Guide — If keyboard shortcuts don't work</a> (Fn/Globe, app version, and warnings)</li>
+<li><a href="https://support.apple.com/en-us/102650" rel="noopener" target="_blank">Apple Support — Mac keyboard shortcuts</a> (modifier terminology and system shortcuts)</li>
+</ul>
+<nav aria-label="Article navigation" class="post-return-nav"><a href="/blog/">← Back to Guides</a><a href="/">Home</a></nav>
+</article></main>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
+</body></html>
