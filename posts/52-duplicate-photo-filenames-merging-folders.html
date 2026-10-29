@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Two photo folders both contain IMG_0001.JPG? Prevent overwrites with a collision map, a staged copy, safe naming, and filename-only checks in SeqName." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>Duplicate Photo Filenames Across Folders? Merge Without Overwriting | Tweaknook</title>
+<link href="https://tweaknook.com/posts/52-duplicate-photo-filenames-merging-folders" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="Tweaknook" property="og:site_name"/>
+<meta content="Duplicate Photo Filenames Across Folders? Merge Without Overwriting" property="og:title"/>
+<meta content="Two photo folders both contain IMG_0001.JPG? Prevent overwrites with a collision map, a staged copy, safe naming, and filename-only checks in SeqName." property="og:description"/>
+<meta content="https://tweaknook.com/posts/52-duplicate-photo-filenames-merging-folders" property="og:url"/>
+<meta content="2026-10-29" property="article:published_time"/>
+<meta content="2026-10-29" property="article:modified_time"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Duplicate Photo Filenames Across Folders? Merge Without Overwriting" name="twitter:title"/>
+<meta content="Two photo folders both contain IMG_0001.JPG? Prevent overwrites with a collision map, a staged copy, safe naming, and filename-only checks in SeqName." name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Duplicate Photo Filenames Across Folders? Merge Without Overwriting","description":"Two photo folders both contain IMG_0001.JPG? Prevent overwrites with a collision map, a staged copy, safe naming, and filename-only checks in SeqName.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-10-29","dateModified":"2026-10-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/52-duplicate-photo-filenames-merging-folders"},"url":"https://tweaknook.com/posts/52-duplicate-photo-filenames-merging-folders","inLanguage":"en"}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-21E5Z191ZY');</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+</head>
+<body>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
+<main class="container"><article class="page-content">
+<div style="margin-bottom:30px"><a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a><h1>Duplicate Photo Filenames Across Folders? Merge Without Overwriting</h1><div class="post-meta">Published on October 29, 2026 • Updated on October 29, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p>Two folders can each contain <code>IMG_0001.JPG</code> without any problem—until you copy both into the <em>same destination folder</em>. At that point, the filenames collide even if the pictures are completely different. <strong>Do not choose Replace or overwrite based on matching names.</strong> Preserve the original folders, map the intended destination names, and test the merge in a separate staging folder first.</p>
+<p>This is a filename collision problem, not automatically a duplicate-photo problem. A repeated number, an identical basename, and identical file contents are three different claims. You can resolve the first two using paths and proposed names; deciding the third requires a content comparison outside a filename checker.</p>
+<h2>Where the collision actually happens</h2>
+<p>Imagine two camera cards copied into separate folders. The paths are unique now, but an attempt to flatten both folders into one removes the part of the path that made them distinct. Here's an <em>illustrative</em> mapping; the labels <code>card-A</code> and <code>card-B</code> identify their sources, not capture dates or proven camera metadata.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Original path</th><th>Unsafe flattened name</th><th>Proposed name in a new staging folder</th></tr></thead><tbody>
+<tr><td><code>card-A/IMG_0001.JPG</code></td><td><code>IMG_0001.JPG</code></td><td><code>card-A_IMG_0001.JPG</code></td></tr>
+<tr><td><code>card-B/IMG_0001.JPG</code></td><td><code>IMG_0001.JPG</code></td><td><code>card-B_IMG_0001.JPG</code></td></tr>
+<tr><td><code>card-B/IMG_0002.JPG</code></td><td><code>IMG_0002.JPG</code></td><td><code>card-B_IMG_0002.JPG</code></td></tr>
+<tr><td><code>card-A/IMG_0001.XMP</code></td><td><code>IMG_0001.XMP</code></td><td><code>card-A_IMG_0001.XMP</code></td></tr>
+</tbody></table></div>
+<p>The <code>.XMP</code> row represents a possible sidecar, not an extra JPEG. If a workflow uses sidecars, preserve the file association when proposing a new stem; don't rename the picture and accidentally leave its associated metadata file behind. Review the requirements of the photo editor or archive before changing either name.</p>
+<h2>Choose between preserving folders and creating a flat collection</h2>
+<p><strong>If the receiving app accepts folders:</strong> the simplest safe merge may be <code>archive/card-A/...</code> and <code>archive/card-B/...</code>. No basename changes are needed. An app that refers to original paths may still require a relink after any move, so test its import using copies.</p>
+<p><strong>If the destination requires one flat folder:</strong> add a meaningful and stable source identifier to each copied filename, such as a card label, batch code, or verified project ID. Avoid labels based on an unverified capture date. The identifier must be unique across all selected source folders, not just one pair.</p>
+<p><strong>If the intention is to discard apparent duplicates:</strong> stop. Equal names do not establish equal bytes, visual content, editing history, or ownership. Do a separate content-aware review before any deletion. The <a href="/posts/24-powershell-duplicate-finder">PowerShell duplicate-file guide</a> explains a hash-based inspection method; it is a different test from sequence-number checking.</p>
+<h2>Build the destination collision map before copying</h2>
+<p>Create a small sheet or text manifest with four fields: <strong>source relative path, original filename, proposed destination filename, and decision</strong>. This takes the guesswork out of a copy prompt. It also makes it possible to roll back by matching every output name to one original.</p>
+<ol>
+<li>Count the source files in each folder. Include sidecars and non-image items that the receiving workflow genuinely needs, but exclude unrelated cache and temporary files <em>only after reviewing them</em>.</li>
+<li>Write the exact destination name for every source. If you will keep subfolders, record the full relative destination path rather than only the basename.</li>
+<li>Find destination names that repeat. On a destination that ignores case, treat <code>IMG_0001.JPG</code> and <code>img_0001.jpg</code> as a potential collision too. Case behavior differs by filesystem.</li>
+<li>Fix every duplicate <em>proposed destination</em> before moving data. Recheck that the source and destination lists have the same number of entries and that no proposed name points to two different originals.</li>
+</ol>
+<p>For example, a destination sheet containing two rows for <code>IMG_0001.JPG</code> is a direct collision. A sheet containing <code>card-A_IMG_0001.JPG</code> and <code>card-B_IMG_0001.JPG</code> avoids that particular collision, assuming neither name already exists in the staging folder. Numbers by themselves are not a sufficient unique key.</p>
+<h2>Use SeqName to review repeated number families—not file contents</h2>
+<p><a href="/tools/seqname/">SeqName's filename sequence checker</a> can help find repeated sequence numbers and inconsistent naming before a merge. If you can select a common parent folder that contains both source folders, the browser can supply their relative paths. Start with the default <strong>Check each folder separately</strong> setting to inspect each original sequence without mixing camera cards. Then, if the filename patterns are comparable, turn that setting off to inspect repeated-number candidates across folders.</p>
+<p>Use <strong>Separate by extension</strong> when JPEGs and other deliverables must be evaluated independently; review the default <strong>Allow common sidecar pairs</strong> setting when companion files exist. An exported CSV or JSON report can support your manual review. These settings are for sequence analysis, not a substitute for the full destination-name map.</p>
+<p><strong>Important limit:</strong> SeqName reads selected filenames and relative paths in the browser, not image pixels, photo hashes, or embedded metadata. It cannot tell whether two <code>IMG_0001.JPG</code> files are identical, cannot guarantee that every flattened destination collision has been found, and will not rename or copy anything. Some file pickers may not preserve a folder hierarchy when you select loose files; if paths are missing, inspect the original folders separately and compare your own manifest. A missing-number warning might reflect a camera reset or intentionally separate batches rather than lost photos.</p>
+<h2>Stage the copy so an error cannot destroy the originals</h2>
+<p>Keep an independent backup of the source folders and choose a <strong>new, empty destination</strong> for the trial merge. Do not use the only archive as your test area.</p>
+<ol>
+<li>Copy the intact source folders into a staging location first. This gives you a baseline with the full original paths preserved.</li>
+<li>For a required flat collection, create a separate empty <code>merged-review</code> folder and copy files into it using the approved, unique destination names from the manifest. Leave the originals untouched.</li>
+<li>If the file manager reports an existing name, <strong>stop that copy</strong>. Check which entry the manifest missed rather than clicking Replace, Skip All, or a similarly broad choice.</li>
+<li>Count the resulting files, including paired sidecars. Every planned source must have exactly one staged destination; open a few image files from different batches and check the source-to-destination mapping.</li>
+<li>Open the <em>staged copy</em> in the actual editing or import application. Confirm the application still recognizes its images and any associated sidecars before adopting the merged folder.</li>
+</ol>
+<p>Why insist on an empty target? Copy behavior differs across tools. Apple documents that Finder's folder-merge option is not a guarantee against replacing same-named files. Python's standard <code>shutil.copy()</code> also replaces an existing destination file when given a file target. Neither interface should be treated as a collision audit on your behalf.</p>
+<h2>What to do when the merged count looks wrong</h2>
+<p><strong>Fewer outputs than source entries:</strong> review the manifest for a skipped file, overwrite, filtered extension, or an unintended duplicate destination. Restore from the untouched source, not from memory. <strong>More outputs than planned:</strong> look for repeated copy passes, editor-generated sidecars, or a second export. Keep unknown files until you identify them.</p>
+<p><strong>Sequence warnings after the merge:</strong> ask whether each camera card was supposed to have its own numbering. Number <code>0001</code> appearing twice across separate cards is often a source-label issue, not proof that a photo is missing. For a true gap within a single expected series, use the separate <a href="/posts/43-find-missing-duplicate-filename-numbers">sequence audit guide</a>. If the destination uses text sorting after filenames are unique, the <a href="/posts/50-numbered-filenames-sort-wrong">numbered-file sorting guide</a> covers zero-padding as a different problem.</p>
+<p>When the staged folder passes file-count, mapping, sample-open, and downstream-import checks, retain the original source folders until the new archive has been backed up and its references verified. A successful merge is one in which every source is accounted for—not merely one in which the duplicate-name warning disappears.</p>
+<h2>Source documentation</h2>
+<ul>
+<li><a href="https://support.apple.com/en-sa/guide/mac-help/mh26885/mac" target="_blank" rel="noopener">Apple Mac User Guide — Organize files in folders</a> (Finder's same-name folder Merge, Stop, and Replace behavior)</li>
+<li><a href="https://docs.python.org/3/library/shutil.html" target="_blank" rel="noopener">Python documentation — shutil file operations</a> (existing-file replacement with <code>copy()</code>, and copy-tree behavior)</li>
+<li><a href="https://docs.python.org/3/library/hashlib.html" target="_blank" rel="noopener">Python documentation — hashlib</a> (content-based checks require actual file bytes)</li>
+</ul>
+<nav aria-label="Article navigation" class="post-return-nav"><a href="/blog/">← Back to Guides</a><a href="/">Home</a></nav>
+</article></main>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
+</body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Ctrl+Shift+P not opening the VS Code Command Palette? Use F1, check browser interception, inspect keybinding logs, and change only the conflicting rule." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="9IFfrIaaIDA3qVu14EQQADGzeDtqQR3NOpDHKliHijM" name="google-site-verification"/>
+<title>VS Code Ctrl+Shift+P Not Working? Restore the Command Palette | Tweaknook</title>
+<link href="https://tweaknook.com/posts/51-vscode-ctrl-shift-p-not-working" rel="canonical"/>
+<link href="/tweaknook-favi.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="Tweaknook" property="og:site_name"/>
+<meta content="VS Code Ctrl+Shift+P Not Working? Restore the Command Palette" property="og:title"/>
+<meta content="Ctrl+Shift+P not opening the VS Code Command Palette? Use F1, check browser interception, inspect keybinding logs, and change only the conflicting rule." property="og:description"/>
+<meta content="https://tweaknook.com/posts/51-vscode-ctrl-shift-p-not-working" property="og:url"/>
+<meta content="2026-10-29" property="article:published_time"/>
+<meta content="2026-10-29" property="article:modified_time"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="VS Code Ctrl+Shift+P Not Working? Restore the Command Palette" name="twitter:title"/>
+<meta content="Ctrl+Shift+P not opening the VS Code Command Palette? Use F1, check browser interception, inspect keybinding logs, and change only the conflicting rule." name="twitter:description"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"VS Code Ctrl+Shift+P Not Working? Restore the Command Palette","description":"Ctrl+Shift+P not opening the VS Code Command Palette? Use F1, check browser interception, inspect keybinding logs, and change only the conflicting rule.","author":{"@type":"Organization","name":"Tweaknook Editorial","url":"https://tweaknook.com/about"},"publisher":{"@type":"Organization","name":"Tweaknook","url":"https://tweaknook.com/"},"datePublished":"2026-10-29","dateModified":"2026-10-29","mainEntityOfPage":{"@type":"WebPage","@id":"https://tweaknook.com/posts/51-vscode-ctrl-shift-p-not-working"},"url":"https://tweaknook.com/posts/51-vscode-ctrl-shift-p-not-working","inLanguage":"en"}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-21E5Z191ZY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-21E5Z191ZY');</script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4172601772952843"></script>
+</head>
+<body>
+<header class="site-header"><div class="container header-inner"><div class="header-top"><a aria-label="Tweaknook home" class="brand-link" href="/"><span class="logo-text">tweaknook</span></a></div><nav aria-label="Primary navigation"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a></nav></div></header>
+<main class="container"><article class="page-content">
+<div style="margin-bottom:30px"><a class="post-category" href="/blog/#tools-checks">Tool-backed checks</a><h1>VS Code Ctrl+Shift+P Not Working? Restore the Command Palette</h1><div class="post-meta">Published on October 29, 2026 • Updated on October 29, 2026 • By <a href="/about">Tweaknook Editorial</a></div></div>
+<p><strong>If Ctrl+Shift+P does nothing in VS Code, try F1 first.</strong> If the Command Palette opens with F1 but not with Ctrl+Shift+P, the feature is probably available; the key combination is not reaching the same command. The next question is whether you are in the desktop editor or in <code>vscode.dev</code> inside a browser. Those cases have different remedies.</p>
+<p>On macOS, the default Command Palette shortcut is <kbd>Shift + Command + P</kbd>, not Ctrl+Shift+P. The checks below use Windows/Linux keys unless otherwise stated. Don't reset the keyboard or reinstall VS Code before finding which layer handles the shortcut.</p>
+<h2>Try the command without its shortcut</h2>
+<p>Open <strong>View → Command Palette</strong>, or press <kbd>F1</kbd> (on some laptops you may need an Fn key). Type a harmless command such as <code>Preferences: Open Keyboard Shortcuts</code> and confirm the palette responds. You have now separated <em>access to the Command Palette</em> from <em>the keybinding that opens it</em>.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>What you observe</th><th>Likely layer to check next</th><th>Safest next action</th></tr></thead><tbody>
+<tr><td>F1 opens the palette, but Ctrl+Shift+P opens a browser window.</td><td>The web browser may reserve the combination.</td><td>Keep using F1; check the browser-specific case below.</td></tr>
+<tr><td>F1 works in desktop VS Code, but a different editor action runs.</td><td>Another VS Code binding or context rule may be winning.</td><td>Inspect bindings for that exact keystroke.</td></tr>
+<tr><td>F1 works, but Ctrl+Shift+P produces no visible action.</td><td>Input may be intercepted before VS Code or mapped differently.</td><td>Use VS Code's keyboard troubleshooting log.</td></tr>
+<tr><td>The key works in one editor view but not another.</td><td>Focus or a <code>when</code> condition may differ.</td><td>Repeat the test with the editor focused, then inspect the rule.</td></tr>
+<tr><td>Even the View menu command cannot open the palette.</td><td>This is not merely a missing keybinding.</td><td>Investigate the editor window or app state separately.</td></tr>
+</tbody></table></div>
+<h2>Using VS Code in Firefox? The browser may own the keys</h2>
+<p>Microsoft explicitly documents that <strong>Ctrl+Shift+P cannot open the Command Palette in VS Code for the Web in Firefox</strong> because Firefox reserves the shortcut. Its documented workaround is <kbd>F1</kbd>. On macOS, the affected Command Palette combination is <kbd>Shift + Command + P</kbd>. Trying to rewrite VS Code's local desktop keybindings will not fix the browser's reserved shortcut on a web page.</p>
+<p>This distinction matters if the same repository works in desktop VS Code but fails after opening <code>vscode.dev</code> or a browser-based Codespace. First verify which environment is visible in the address bar or app window. In a browser, click into the code editor and try F1. If it opens the palette, use that supported path instead of disabling browser security features or installing a keyboard remapper just to reclaim one shortcut.</p>
+<p>If you're not in Firefox, don't assume the same cause. Browser, operating system, installed extensions, and the page's focus can affect shortcuts in different ways. Compare the same action via F1 and the intended keys in your actual browser rather than applying a Firefox-specific fix elsewhere.</p>
+<h2>On the desktop, let VS Code report the keys it received</h2>
+<p>VS Code includes a built-in diagnostic specifically for this. It is more useful than guessing which extension took over the shortcut.</p>
+<ol>
+<li>Press <kbd>F1</kbd> to open the palette. Run <strong>Developer: Toggle Keyboard Shortcuts Troubleshooting</strong>.</li>
+<li>With the Output panel visible, focus the editor and press <kbd>Ctrl + Shift + P</kbd> once. On a Mac, press <kbd>Shift + Command + P</kbd>.</li>
+<li>Read the new keyboard-shortcut log entry. Look for the key combination VS Code received and the command or rule it resolved. The exact messages can differ by version.</li>
+<li>Repeat in the UI location where the shortcut normally fails, then compare. A different active focus can change which conditional rule is eligible.</li>
+<li>Toggle the troubleshooting command off when finished; no global keyboard settings need to change during this inspection.</li>
+</ol>
+<p><strong>How to interpret it:</strong> if VS Code logs a different key than the one you intended, investigate keyboard layout, hardware, modifier state, or a remapper. If it logs the intended key but picks another action, inspect the editor's keybinding rules. If there is no corresponding log event, the keystroke may have been consumed outside VS Code; that is a clue, not conclusive identification of the culprit. Compare with a second known shortcut and test with the same focus before assigning blame.</p>
+<h2>Find the competing binding instead of wiping all shortcuts</h2>
+<p>Open <strong>Preferences: Open Keyboard Shortcuts</strong> from F1. Use the keyboard recording control in the Shortcuts editor to search for the physical combination, and inspect every matching result. VS Code's <strong>Show Same Keybindings</strong> command is designed for this case.</p>
+<p>Two rules can use the same keys without both being active: a rule's <code>when</code> expression controls its scope. The documentation explains that matching rules are evaluated in precedence order and that user-defined keybindings can override defaults. Check the action, the active context, and whether you deliberately changed a shortcut or installed an extension that added one. The correct repair may be to remove <em>one</em> obsolete override rather than choose a completely new global shortcut.</p>
+<p>Before editing <code>keybindings.json</code>, save a copy of your current custom bindings. If the Shortcut editor shows an unintended user assignment, remove or restore that specific assignment and retry. Don't paste a guessed replacement JSON rule from a forum: it may work only in one editor context, break a second command, or introduce a syntax error.</p>
+<h2>A concrete example: two machines, two different fixes</h2>
+<p><strong>Browser case (documented).</strong> A developer opens <code>vscode.dev</code> in Firefox and presses Ctrl+Shift+P. The Command Palette stays closed, while F1 opens it. That behavior fits Microsoft's documented Firefox reservation. The low-risk solution is to use F1 in the web editor, not to reset VS Code's desktop profile.</p>
+<p><strong>Desktop case (illustrative).</strong> The palette works from the View menu, but Ctrl+Shift+P runs an unrelated extension command. The troubleshooting log reports that unrelated command for the exact keys. The useful next step is to find the competing binding and review its <code>when</code> condition or override. Changing browser permissions would not address a binding already resolved inside the desktop editor.</p>
+<h2>Where HotkeyRadar can help when choosing a replacement</h2>
+<p>If a replacement combination is genuinely necessary, use <a href="/tools/hotkeyradar/">HotkeyRadar</a> to screen it against the tool's documented browser and operating-system records. Choose the relevant OS and browser, then try its built-in <kbd>Ctrl + Shift + P</kbd> example or enter your proposed keys. It can also store a manually entered VS Code shortcut under <strong>My Shortcuts</strong> or a <strong>Shortcut Set</strong> for later planning.</p>
+<p>HotkeyRadar cannot read your VS Code configuration, inspect installed extensions, capture every OS-level remapper, or run VS Code's diagnostic log. Its reference dataset has a published coverage date and may not reflect later browser customizations. Treat a known collision as a prompt to investigate, and a result without a match as <em>not yet verified</em>, not as a guarantee that the keys are free.</p>
+<p>For choosing combinations before assigning them, see the broader <a href="/posts/42-check-keyboard-shortcut-conflicts">shortcut conflict screening guide</a>. If the failing action happens inside a Chrome web app rather than VS Code, the <a href="/posts/47-chrome-web-app-shortcut-not-working">Chrome web-app diagnostic</a> covers browser and extension ownership separately.</p>
+<h2>Verify the repair with the same task that failed</h2>
+<p>Return focus to the original VS Code editor or browser tab. Open the Command Palette using the intended shortcut twice and confirm it shows the list of commands rather than a browser action or another editor command. If you changed a user binding, check a second editor context and confirm the previous command still has a usable shortcut or menu path. If the result is worse, restore the copied bindings and use F1 while you investigate.</p>
+<p>The key diagnostic is simple: <strong>F1 tells you whether the palette is reachable; the shortcut log and environment tell you who has the keys.</strong> Fix the layer that failed, not every keyboard setting on the machine.</p>
+<h2>Official references</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/remote/vscode-web" target="_blank" rel="noopener">VS Code for the Web — keyboard shortcut limitations</a> (Firefox reservation and F1 workaround)</li>
+<li><a href="https://code.visualstudio.com/docs/configure/keybindings" target="_blank" rel="noopener">Visual Studio Code — keyboard shortcuts</a> (troubleshooting logs, rule conflicts, <code>when</code> clauses)</li>
+<li><a href="https://code.visualstudio.com/docs/reference/default-keybindings" target="_blank" rel="noopener">VS Code — default keyboard shortcuts reference</a> (Command Palette defaults on Windows, Linux, and macOS)</li>
+</ul>
+<nav aria-label="Article navigation" class="post-return-nav"><a href="/blog/">← Back to Guides</a><a href="/">Home</a></nav>
+</article></main>
+<footer><div class="container"><div class="legal-links"><a href="/tools/">Tools</a><a href="/blog/">Guides</a><a href="/about">About</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div><p>© 2026 tweaknook.com. All rights reserved.</p></div></footer>
+</body></html>
